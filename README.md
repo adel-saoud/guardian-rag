@@ -3,8 +3,12 @@
 > Privacy-safe RAG pipeline. Detects and redacts PII at ingestion, then audits
 > every generated answer before it reaches the user. EU AI Act Article 10-aligned
 > by design.
+>
+> **100% recall, 0.93 precision** on a 91-entity synthetic golden corpus.
+> Run it yourself: `uv run python scripts/eval.py --with-gliner`.
 
 [![CI](https://github.com/adel-saoud/guardian-rag/actions/workflows/ci.yml/badge.svg)](https://github.com/adel-saoud/guardian-rag/actions/workflows/ci.yml)
+[![Eval](https://github.com/adel-saoud/guardian-rag/actions/workflows/eval.yml/badge.svg)](https://github.com/adel-saoud/guardian-rag/actions/workflows/eval.yml)
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue)](https://www.python.org/)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![Pyright](https://img.shields.io/badge/types-pyright%20strict-1f5fff)](https://github.com/microsoft/pyright)
