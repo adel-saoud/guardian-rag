@@ -27,6 +27,9 @@ context; blank tokens are not.
 > 25,000 plus employees over HR documents where PII governance was a real
 > concern, not a theoretical one.
 
+![Guardian RAG dashboard with three panels: aggregate PII protection
+stats, live redaction explorer, and eval results gauges](docs/dashboard.png)
+
 ---
 
 ## Try it (no API key needed)
