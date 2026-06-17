@@ -2,7 +2,7 @@
 
 This is the only object the API layer touches. It holds the OllamaClient
 plus configuration (model id, sampling). The post-generation PII audit
-happens in Layer 5 and wraps this object's output.
+runs over this object's output before the answer reaches the user.
 """
 
 from __future__ import annotations

@@ -34,7 +34,7 @@ If the audit itself crashes:
   section.
 - The auditor and ingestion share **the same detector + redactor
   instances** so leaks are caught using identical rules to ingestion.
-- See [[001-presidio-gliner-orchestration]] for the detector composition
+- See [ADR 001](001-presidio-gliner-orchestration.md) for the detector composition
   reused here.
 - Fail-closed by default; `GUARDIAN_AUDIT_FAIL_CLOSED=false` re-raises
   the underlying exception (only useful for offline tooling).

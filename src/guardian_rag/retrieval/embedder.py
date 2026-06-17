@@ -2,7 +2,7 @@
 
 The backend is a `Protocol` so tests can inject a deterministic fake. The
 real backend (sentence-transformers) lives in `_real_backends.py` and is
-imported lazily, matching the pattern Layer 1 uses for GLiNER and DeBERTa.
+imported lazily, mirroring the pattern used for GLiNER and DeBERTa.
 """
 
 from __future__ import annotations

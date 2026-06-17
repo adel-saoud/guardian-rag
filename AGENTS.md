@@ -6,12 +6,9 @@ Guardian RAG: privacy-safe RAG pipeline with two-stage PII detection at ingestio
 
 ## Companion projects
 
-- llm-regression-detector: CI quality gate for LLM systems
-  `/Users/adelsaoud/Documents/GithubPersonalProject/llm-regression-detector/`
-- llm-gateway: RAG-aware LLM gateway with cost attribution
-  `/Users/adelsaoud/Documents/GithubPersonalProject/llm-gateway/`
-- llm-cost-autopilot: two-stage zero-shot complexity router
-  `/Users/adelsaoud/Documents/GithubPersonalProject/llm-cost-autopilot/`
+- [llm-regression-detector](https://github.com/adel-saoud/llm-regression-detector): CI quality gate for LLM systems
+- [llm-gateway](https://github.com/adel-saoud/llm-gateway): RAG-aware LLM gateway with cost attribution
+- [llm-cost-autopilot](https://github.com/adel-saoud/llm-cost-autopilot): two-stage zero-shot complexity router
 
 Four projects, three axes:
 

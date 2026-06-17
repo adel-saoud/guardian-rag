@@ -23,7 +23,7 @@ stays within its latency budget.
 - High structured-PII precision (regex is deterministic).
 - High unstructured-PII recall (GLiNER is the current best span model).
 - Two collaborators to wire, mocked separately in tests.
-- See [[002-gliner-over-privacy-filter]] for why GLiNER, not the
+- See [ADR 002](002-gliner-over-privacy-filter.md) for why GLiNER, not the
   Presidio + `openai/privacy-filter` combination some references suggest.
-- See [[003-conditional-deberta-validation]] for the safety net when
+- See [ADR 003](003-conditional-deberta-validation.md) for the safety net when
   GLiNER spans land in the low-confidence range.
