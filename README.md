@@ -28,7 +28,7 @@ so retrieval still works: `[PERSON_1] reported to [PERSON_2]` is useful
 context; blank tokens are not.
 
 > Inspired by operating DaiLY at Decathlon France, a RAG system serving
-> 25,000 plus employees over HR documents where PII governance was a real
+> 30,000+ employees over HR documents where PII governance was a real
 > concern, not a theoretical one.
 
 ![Guardian RAG dashboard with three panels: aggregate PII protection
