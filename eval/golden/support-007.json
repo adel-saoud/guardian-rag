@@ -1,0 +1,26 @@
+{
+  "document_id": "support-007",
+  "category": "support",
+  "text": "Subscription cancellation requested by Gloria Reyes. Card on file was 4111-1111-1111-1111. Confirmation: carla.diaz@example.com.",
+  "entities": [
+    {
+      "text": "Gloria Reyes",
+      "entity_type": "PERSON",
+      "start": 39,
+      "end": 51
+    },
+    {
+      "text": "4111-1111-1111-1111",
+      "entity_type": "CREDIT_CARD",
+      "start": 70,
+      "end": 89
+    },
+    {
+      "text": "carla.diaz@example.com",
+      "entity_type": "EMAIL",
+      "start": 105,
+      "end": 127
+    }
+  ],
+  "qa_pairs": []
+}

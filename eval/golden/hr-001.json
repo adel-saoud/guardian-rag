@@ -1,0 +1,37 @@
+{
+  "document_id": "hr-001",
+  "category": "hr",
+  "text": "Welcome to the company, Alice Bennett. Your manager will be David Owens. For any HR question, write to bob.chen@example.com or call +1-555-0142.",
+  "entities": [
+    {
+      "text": "Alice Bennett",
+      "entity_type": "PERSON",
+      "start": 24,
+      "end": 37
+    },
+    {
+      "text": "David Owens",
+      "entity_type": "PERSON",
+      "start": 60,
+      "end": 71
+    },
+    {
+      "text": "bob.chen@example.com",
+      "entity_type": "EMAIL",
+      "start": 103,
+      "end": 123
+    },
+    {
+      "text": "+1-555-0142",
+      "entity_type": "PHONE",
+      "start": 132,
+      "end": 143
+    }
+  ],
+  "qa_pairs": [
+    {
+      "question": "Who should I contact for HR questions?",
+      "reference_answer": "The HR contact email is the address mentioned in the document."
+    }
+  ]
+}

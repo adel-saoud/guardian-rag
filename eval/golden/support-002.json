@@ -1,0 +1,26 @@
+{
+  "document_id": "support-002",
+  "category": "support",
+  "text": "Billing dispute opened by Bob Chen. Disputed charge applied to card 4012-8888-8888-1881. Followup contact: david.owens@example.com.",
+  "entities": [
+    {
+      "text": "Bob Chen",
+      "entity_type": "PERSON",
+      "start": 26,
+      "end": 34
+    },
+    {
+      "text": "4012-8888-8888-1881",
+      "entity_type": "CREDIT_CARD",
+      "start": 68,
+      "end": 87
+    },
+    {
+      "text": "david.owens@example.com",
+      "entity_type": "EMAIL",
+      "start": 107,
+      "end": 130
+    }
+  ],
+  "qa_pairs": []
+}

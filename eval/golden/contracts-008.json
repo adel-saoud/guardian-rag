@@ -1,0 +1,26 @@
+{
+  "document_id": "contracts-008",
+  "category": "contracts",
+  "text": "Licensing terms for Hooli Inc software granted to Hiro Tanaka. Renewal payment card: 5454-5454-5454-5454. Support: gloria.reyes@example.com.",
+  "entities": [
+    {
+      "text": "Hiro Tanaka",
+      "entity_type": "PERSON",
+      "start": 50,
+      "end": 61
+    },
+    {
+      "text": "5454-5454-5454-5454",
+      "entity_type": "CREDIT_CARD",
+      "start": 85,
+      "end": 104
+    },
+    {
+      "text": "gloria.reyes@example.com",
+      "entity_type": "EMAIL",
+      "start": 115,
+      "end": 139
+    }
+  ],
+  "qa_pairs": []
+}

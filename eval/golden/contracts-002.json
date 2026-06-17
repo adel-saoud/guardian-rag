@@ -1,0 +1,26 @@
+{
+  "document_id": "contracts-002",
+  "category": "contracts",
+  "text": "Non-disclosure agreement between Globex Industries and Bob Chen. Counterpart contact: david.owens@example.com. Phone: +34-91-555-0987.",
+  "entities": [
+    {
+      "text": "Bob Chen",
+      "entity_type": "PERSON",
+      "start": 55,
+      "end": 63
+    },
+    {
+      "text": "david.owens@example.com",
+      "entity_type": "EMAIL",
+      "start": 86,
+      "end": 109
+    },
+    {
+      "text": "+34-91-555-0987",
+      "entity_type": "PHONE",
+      "start": 118,
+      "end": 133
+    }
+  ],
+  "qa_pairs": []
+}

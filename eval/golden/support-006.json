@@ -1,0 +1,26 @@
+{
+  "document_id": "support-006",
+  "category": "support",
+  "text": "Password reset link sent to Faisal Khan at faisal.khan@example.com. Original request came from 192.0.2.146.",
+  "entities": [
+    {
+      "text": "Faisal Khan",
+      "entity_type": "PERSON",
+      "start": 28,
+      "end": 39
+    },
+    {
+      "text": "faisal.khan@example.com",
+      "entity_type": "EMAIL",
+      "start": 43,
+      "end": 66
+    },
+    {
+      "text": "192.0.2.146",
+      "entity_type": "IP_ADDRESS",
+      "start": 95,
+      "end": 106
+    }
+  ],
+  "qa_pairs": []
+}

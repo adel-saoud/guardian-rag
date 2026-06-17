@@ -1,0 +1,26 @@
+{
+  "document_id": "hr-007",
+  "category": "hr",
+  "text": "Termination notice for Gloria Reyes. Final settlement will be wired to DE89370400440532013000 within 30 days. Inquiries: +39-06-555-0876.",
+  "entities": [
+    {
+      "text": "Gloria Reyes",
+      "entity_type": "PERSON",
+      "start": 23,
+      "end": 35
+    },
+    {
+      "text": "DE89370400440532013000",
+      "entity_type": "BANK_ACCOUNT",
+      "start": 71,
+      "end": 93
+    },
+    {
+      "text": "+39-06-555-0876",
+      "entity_type": "PHONE",
+      "start": 121,
+      "end": 136
+    }
+  ],
+  "qa_pairs": []
+}

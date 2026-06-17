@@ -1,0 +1,26 @@
+{
+  "document_id": "support-009",
+  "category": "support",
+  "text": "Bug report filed by Iris Whyte. Crash recorded from IP 192.168.1.105. Reach back at +1-555-0142.",
+  "entities": [
+    {
+      "text": "Iris Whyte",
+      "entity_type": "PERSON",
+      "start": 20,
+      "end": 30
+    },
+    {
+      "text": "192.168.1.105",
+      "entity_type": "IP_ADDRESS",
+      "start": 55,
+      "end": 68
+    },
+    {
+      "text": "+1-555-0142",
+      "entity_type": "PHONE",
+      "start": 84,
+      "end": 95
+    }
+  ],
+  "qa_pairs": []
+}

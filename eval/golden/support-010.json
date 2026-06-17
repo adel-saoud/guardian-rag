@@ -1,0 +1,26 @@
+{
+  "document_id": "support-010",
+  "category": "support",
+  "text": "Account verification requested for Jack Murphy. Verification code sent to hiro.tanaka@example.com. Backup phone: +81-3-5555-1234.",
+  "entities": [
+    {
+      "text": "Jack Murphy",
+      "entity_type": "PERSON",
+      "start": 35,
+      "end": 46
+    },
+    {
+      "text": "hiro.tanaka@example.com",
+      "entity_type": "EMAIL",
+      "start": 74,
+      "end": 97
+    },
+    {
+      "text": "+81-3-5555-1234",
+      "entity_type": "PHONE",
+      "start": 113,
+      "end": 128
+    }
+  ],
+  "qa_pairs": []
+}

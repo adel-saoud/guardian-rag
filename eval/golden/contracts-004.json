@@ -1,0 +1,26 @@
+{
+  "document_id": "contracts-004",
+  "category": "contracts",
+  "text": "Lease agreement for office space signed by David Owens. Rent transfers will land in NL91ABNA0417164300. Landlord contact: +31-20-555-0345.",
+  "entities": [
+    {
+      "text": "David Owens",
+      "entity_type": "PERSON",
+      "start": 43,
+      "end": 54
+    },
+    {
+      "text": "NL91ABNA0417164300",
+      "entity_type": "BANK_ACCOUNT",
+      "start": 84,
+      "end": 102
+    },
+    {
+      "text": "+31-20-555-0345",
+      "entity_type": "PHONE",
+      "start": 122,
+      "end": 137
+    }
+  ],
+  "qa_pairs": []
+}

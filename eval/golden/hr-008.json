@@ -1,0 +1,26 @@
+{
+  "document_id": "hr-008",
+  "category": "hr",
+  "text": "Benefits enrollment confirmation: Hiro Tanaka. Spouse listed: Elena Petrov. Pension contribution will be debited from IE29AIBK93115212345678.",
+  "entities": [
+    {
+      "text": "Hiro Tanaka",
+      "entity_type": "PERSON",
+      "start": 34,
+      "end": 45
+    },
+    {
+      "text": "Elena Petrov",
+      "entity_type": "PERSON",
+      "start": 62,
+      "end": 74
+    },
+    {
+      "text": "IE29AIBK93115212345678",
+      "entity_type": "BANK_ACCOUNT",
+      "start": 118,
+      "end": 140
+    }
+  ],
+  "qa_pairs": []
+}
