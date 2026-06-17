@@ -1,0 +1,26 @@
+{
+  "document_id": "hr-006",
+  "category": "hr",
+  "text": "We are pleased to announce the promotion of Faisal Khan to senior engineer. Reporting line shifts to Jack Murphy. HR updates will go through bob.chen@example.com.",
+  "entities": [
+    {
+      "text": "Faisal Khan",
+      "entity_type": "PERSON",
+      "start": 44,
+      "end": 55
+    },
+    {
+      "text": "Jack Murphy",
+      "entity_type": "PERSON",
+      "start": 101,
+      "end": 112
+    },
+    {
+      "text": "bob.chen@example.com",
+      "entity_type": "EMAIL",
+      "start": 141,
+      "end": 161
+    }
+  ],
+  "qa_pairs": []
+}

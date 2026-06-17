@@ -1,0 +1,26 @@
+{
+  "document_id": "contracts-007",
+  "category": "contracts",
+  "text": "Partnership memorandum: Pied Piper and counterpart Gloria Reyes. Joint account for shared expenses: FR1420041010050500013M02606. Steering committee email: bob.chen@example.com.",
+  "entities": [
+    {
+      "text": "Gloria Reyes",
+      "entity_type": "PERSON",
+      "start": 51,
+      "end": 63
+    },
+    {
+      "text": "FR1420041010050500013M02606",
+      "entity_type": "BANK_ACCOUNT",
+      "start": 100,
+      "end": 127
+    },
+    {
+      "text": "bob.chen@example.com",
+      "entity_type": "EMAIL",
+      "start": 155,
+      "end": 175
+    }
+  ],
+  "qa_pairs": []
+}

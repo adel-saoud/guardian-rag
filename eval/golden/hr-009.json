@@ -1,0 +1,26 @@
+{
+  "document_id": "hr-009",
+  "category": "hr",
+  "text": "Training completion certificate awarded to Iris Whyte. Trainer: Jack Murphy. Certificate copy sent to gloria.reyes@example.com.",
+  "entities": [
+    {
+      "text": "Iris Whyte",
+      "entity_type": "PERSON",
+      "start": 43,
+      "end": 53
+    },
+    {
+      "text": "Jack Murphy",
+      "entity_type": "PERSON",
+      "start": 64,
+      "end": 75
+    },
+    {
+      "text": "gloria.reyes@example.com",
+      "entity_type": "EMAIL",
+      "start": 102,
+      "end": 126
+    }
+  ],
+  "qa_pairs": []
+}

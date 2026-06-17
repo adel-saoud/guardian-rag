@@ -1,0 +1,26 @@
+{
+  "document_id": "support-008",
+  "category": "support",
+  "text": "Feature request from Hiro Tanaka. Replies will go to elena.petrov@example.com. Account region matches IP 172.31.255.1.",
+  "entities": [
+    {
+      "text": "Hiro Tanaka",
+      "entity_type": "PERSON",
+      "start": 21,
+      "end": 32
+    },
+    {
+      "text": "elena.petrov@example.com",
+      "entity_type": "EMAIL",
+      "start": 53,
+      "end": 77
+    },
+    {
+      "text": "172.31.255.1",
+      "entity_type": "IP_ADDRESS",
+      "start": 105,
+      "end": 117
+    }
+  ],
+  "qa_pairs": []
+}

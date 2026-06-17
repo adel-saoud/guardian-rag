@@ -1,0 +1,32 @@
+{
+  "document_id": "hr-010",
+  "category": "hr",
+  "text": "Internal transfer authorised for Jack Murphy effective next quarter. New manager: Faisal Khan. Onboarding email: elena.petrov@example.com. Office phone: +49-30-555-0234.",
+  "entities": [
+    {
+      "text": "Jack Murphy",
+      "entity_type": "PERSON",
+      "start": 33,
+      "end": 44
+    },
+    {
+      "text": "Faisal Khan",
+      "entity_type": "PERSON",
+      "start": 82,
+      "end": 93
+    },
+    {
+      "text": "elena.petrov@example.com",
+      "entity_type": "EMAIL",
+      "start": 113,
+      "end": 137
+    },
+    {
+      "text": "+49-30-555-0234",
+      "entity_type": "PHONE",
+      "start": 153,
+      "end": 168
+    }
+  ],
+  "qa_pairs": []
+}

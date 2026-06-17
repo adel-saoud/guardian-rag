@@ -1,0 +1,26 @@
+{
+  "document_id": "contracts-010",
+  "category": "contracts",
+  "text": "Subcontracting agreement: prime Jack Murphy engages Tyrell Corporation. Sub-tier payments to CH9300762011623852957. Notifications: faisal.khan@example.com.",
+  "entities": [
+    {
+      "text": "Jack Murphy",
+      "entity_type": "PERSON",
+      "start": 32,
+      "end": 43
+    },
+    {
+      "text": "CH9300762011623852957",
+      "entity_type": "BANK_ACCOUNT",
+      "start": 93,
+      "end": 114
+    },
+    {
+      "text": "faisal.khan@example.com",
+      "entity_type": "EMAIL",
+      "start": 131,
+      "end": 154
+    }
+  ],
+  "qa_pairs": []
+}

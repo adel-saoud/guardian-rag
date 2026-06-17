@@ -1,0 +1,26 @@
+{
+  "document_id": "contracts-009",
+  "category": "contracts",
+  "text": "Supplier contract with Aperture Labs. Counterpart signer: Iris Whyte. Wire transfers go to IT60X0542811101000000123456. Counterpart phone: +44-7700-900123.",
+  "entities": [
+    {
+      "text": "Iris Whyte",
+      "entity_type": "PERSON",
+      "start": 58,
+      "end": 68
+    },
+    {
+      "text": "IT60X0542811101000000123456",
+      "entity_type": "BANK_ACCOUNT",
+      "start": 91,
+      "end": 118
+    },
+    {
+      "text": "+44-7700-900123",
+      "entity_type": "PHONE",
+      "start": 139,
+      "end": 154
+    }
+  ],
+  "qa_pairs": []
+}

@@ -1,0 +1,26 @@
+{
+  "document_id": "contracts-003",
+  "category": "contracts",
+  "text": "Sales contract: buyer Carla Diaz purchases licences from Initech Solutions. Payment card on file ends with 5555-5555-5555-4444. Notifications: jack.murphy@example.com.",
+  "entities": [
+    {
+      "text": "Carla Diaz",
+      "entity_type": "PERSON",
+      "start": 22,
+      "end": 32
+    },
+    {
+      "text": "5555-5555-5555-4444",
+      "entity_type": "CREDIT_CARD",
+      "start": 107,
+      "end": 126
+    },
+    {
+      "text": "jack.murphy@example.com",
+      "entity_type": "EMAIL",
+      "start": 143,
+      "end": 166
+    }
+  ],
+  "qa_pairs": []
+}

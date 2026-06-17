@@ -1,0 +1,26 @@
+{
+  "document_id": "hr-002",
+  "category": "hr",
+  "text": "Performance review for Bob Chen. Reviewer: David Owens. Overall rating: exceeds expectations. Recommended raise paid to DE89370400440532013000.",
+  "entities": [
+    {
+      "text": "Bob Chen",
+      "entity_type": "PERSON",
+      "start": 23,
+      "end": 31
+    },
+    {
+      "text": "David Owens",
+      "entity_type": "PERSON",
+      "start": 43,
+      "end": 54
+    },
+    {
+      "text": "DE89370400440532013000",
+      "entity_type": "BANK_ACCOUNT",
+      "start": 120,
+      "end": 142
+    }
+  ],
+  "qa_pairs": []
+}

@@ -1,0 +1,26 @@
+{
+  "document_id": "contracts-005",
+  "category": "contracts",
+  "text": "Vendor onboarding for Wayne Enterprises. Primary contact: Elena Petrov at iris.whyte@example.com. Bank for net-30 payment: FR1420041010050500013M02606.",
+  "entities": [
+    {
+      "text": "Elena Petrov",
+      "entity_type": "PERSON",
+      "start": 58,
+      "end": 70
+    },
+    {
+      "text": "iris.whyte@example.com",
+      "entity_type": "EMAIL",
+      "start": 74,
+      "end": 96
+    },
+    {
+      "text": "FR1420041010050500013M02606",
+      "entity_type": "BANK_ACCOUNT",
+      "start": 123,
+      "end": 150
+    }
+  ],
+  "qa_pairs": []
+}

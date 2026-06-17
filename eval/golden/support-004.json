@@ -1,0 +1,26 @@
+{
+  "document_id": "support-004",
+  "category": "support",
+  "text": "Product complaint logged by David Owens. Customer reachable at +49-30-555-0234 or hiro.tanaka@example.com.",
+  "entities": [
+    {
+      "text": "David Owens",
+      "entity_type": "PERSON",
+      "start": 28,
+      "end": 39
+    },
+    {
+      "text": "+49-30-555-0234",
+      "entity_type": "PHONE",
+      "start": 63,
+      "end": 78
+    },
+    {
+      "text": "hiro.tanaka@example.com",
+      "entity_type": "EMAIL",
+      "start": 82,
+      "end": 105
+    }
+  ],
+  "qa_pairs": []
+}

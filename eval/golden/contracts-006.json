@@ -1,0 +1,26 @@
+{
+  "document_id": "contracts-006",
+  "category": "contracts",
+  "text": "Consulting agreement: Faisal Khan engaged by Stark Industries. Fees deposited to IE29AIBK93115212345678. Project lead: Elena Petrov.",
+  "entities": [
+    {
+      "text": "Faisal Khan",
+      "entity_type": "PERSON",
+      "start": 22,
+      "end": 33
+    },
+    {
+      "text": "IE29AIBK93115212345678",
+      "entity_type": "BANK_ACCOUNT",
+      "start": 81,
+      "end": 103
+    },
+    {
+      "text": "Elena Petrov",
+      "entity_type": "PERSON",
+      "start": 119,
+      "end": 131
+    }
+  ],
+  "qa_pairs": []
+}

@@ -1,0 +1,26 @@
+{
+  "document_id": "support-005",
+  "category": "support",
+  "text": "Shipping inquiry for Elena Petrov. Tracking call placed to +353-1-555-0567. Replies go to jack.murphy@example.com.",
+  "entities": [
+    {
+      "text": "Elena Petrov",
+      "entity_type": "PERSON",
+      "start": 21,
+      "end": 33
+    },
+    {
+      "text": "+353-1-555-0567",
+      "entity_type": "PHONE",
+      "start": 59,
+      "end": 74
+    },
+    {
+      "text": "jack.murphy@example.com",
+      "entity_type": "EMAIL",
+      "start": 90,
+      "end": 113
+    }
+  ],
+  "qa_pairs": []
+}

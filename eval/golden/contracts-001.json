@@ -1,0 +1,31 @@
+{
+  "document_id": "contracts-001",
+  "category": "contracts",
+  "text": "Service agreement signed between Acme Corp and the client Alice Bennett. Invoices will be wired to BE71096123456769. Escalations: david.owens@example.com.",
+  "entities": [
+    {
+      "text": "Alice Bennett",
+      "entity_type": "PERSON",
+      "start": 58,
+      "end": 71
+    },
+    {
+      "text": "BE71096123456769",
+      "entity_type": "BANK_ACCOUNT",
+      "start": 99,
+      "end": 115
+    },
+    {
+      "text": "david.owens@example.com",
+      "entity_type": "EMAIL",
+      "start": 130,
+      "end": 153
+    }
+  ],
+  "qa_pairs": [
+    {
+      "question": "Where will invoices be wired?",
+      "reference_answer": "Invoices will be wired to the bank account listed in the agreement."
+    }
+  ]
+}

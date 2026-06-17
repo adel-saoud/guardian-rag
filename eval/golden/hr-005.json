@@ -1,0 +1,20 @@
+{
+  "document_id": "hr-005",
+  "category": "hr",
+  "text": "Disciplinary notice issued to Elena Petrov. This notice is filed by HR. Appeals can be sent to hiro.tanaka@example.com within 14 days.",
+  "entities": [
+    {
+      "text": "Elena Petrov",
+      "entity_type": "PERSON",
+      "start": 30,
+      "end": 42
+    },
+    {
+      "text": "hiro.tanaka@example.com",
+      "entity_type": "EMAIL",
+      "start": 95,
+      "end": 118
+    }
+  ],
+  "qa_pairs": []
+}

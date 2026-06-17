@@ -1,0 +1,26 @@
+{
+  "document_id": "support-003",
+  "category": "support",
+  "text": "Refund request for Carla Diaz. Refund will be returned to card 3782-822463-10005. Confirmation sent to faisal.khan@example.com.",
+  "entities": [
+    {
+      "text": "Carla Diaz",
+      "entity_type": "PERSON",
+      "start": 19,
+      "end": 29
+    },
+    {
+      "text": "3782-822463-10005",
+      "entity_type": "CREDIT_CARD",
+      "start": 63,
+      "end": 80
+    },
+    {
+      "text": "faisal.khan@example.com",
+      "entity_type": "EMAIL",
+      "start": 103,
+      "end": 126
+    }
+  ],
+  "qa_pairs": []
+}

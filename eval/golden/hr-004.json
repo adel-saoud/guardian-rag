@@ -1,0 +1,26 @@
+{
+  "document_id": "hr-004",
+  "category": "hr",
+  "text": "Leave request approved for David Owens. Coverage will be provided by Iris Whyte. Forward any urgent matter to faisal.khan@example.com.",
+  "entities": [
+    {
+      "text": "David Owens",
+      "entity_type": "PERSON",
+      "start": 27,
+      "end": 38
+    },
+    {
+      "text": "Iris Whyte",
+      "entity_type": "PERSON",
+      "start": 69,
+      "end": 79
+    },
+    {
+      "text": "faisal.khan@example.com",
+      "entity_type": "EMAIL",
+      "start": 110,
+      "end": 133
+    }
+  ],
+  "qa_pairs": []
+}

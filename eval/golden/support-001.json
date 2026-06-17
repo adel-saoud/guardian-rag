@@ -1,0 +1,31 @@
+{
+  "document_id": "support-001",
+  "category": "support",
+  "text": "Customer Alice Bennett reports they cannot log in. Login attempts came from IP 10.0.0.42. Account email: alice.bennett@example.com.",
+  "entities": [
+    {
+      "text": "Alice Bennett",
+      "entity_type": "PERSON",
+      "start": 9,
+      "end": 22
+    },
+    {
+      "text": "10.0.0.42",
+      "entity_type": "IP_ADDRESS",
+      "start": 79,
+      "end": 88
+    },
+    {
+      "text": "alice.bennett@example.com",
+      "entity_type": "EMAIL",
+      "start": 105,
+      "end": 130
+    }
+  ],
+  "qa_pairs": [
+    {
+      "question": "What IP address did the login attempts come from?",
+      "reference_answer": "The login attempts came from the IP address listed in the ticket."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "document_id": "hr-003",
+  "category": "hr",
+  "text": "Salary adjustment notice for Carla Diaz. New net salary will be deposited to ES9121000418450200051332 starting next month. Contact payroll at gloria.reyes@example.com.",
+  "entities": [
+    {
+      "text": "Carla Diaz",
+      "entity_type": "PERSON",
+      "start": 29,
+      "end": 39
+    },
+    {
+      "text": "ES9121000418450200051332",
+      "entity_type": "BANK_ACCOUNT",
+      "start": 77,
+      "end": 101
+    },
+    {
+      "text": "gloria.reyes@example.com",
+      "entity_type": "EMAIL",
+      "start": 142,
+      "end": 166
+    }
+  ],
+  "qa_pairs": []
+}
