@@ -24,6 +24,6 @@ Use `urchade/gliner_multi_pii-v1` instead.
 - ~14x parameter reduction makes the pipeline CPU-viable.
 - Multilingual coverage matches Guardian's EU AI Act target audience.
 - We accept the slight precision dip GLiNER shows on long-form
-  organisation names. [[003-conditional-deberta-validation]] covers the
+  organisation names. [ADR 003](003-conditional-deberta-validation.md) covers the
   spans with the highest false-positive risk.
 - See `pii/gliner_recognizer.py` for the label → PII type mapping.
