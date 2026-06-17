@@ -1,0 +1,54 @@
+name: Eval
+
+on:
+  schedule:
+    # Weekly: every Monday at 06:00 UTC. The eval is deterministic
+    # (synthetic corpus, pinned models) so running on every push would
+    # just burn CI minutes without changing the result. Run on demand
+    # via the manual trigger when the corpus or detector changes.
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+concurrency:
+  group: eval-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  eval:
+    name: PII recall + precision on the 30-doc golden corpus
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
+
+      - name: Set up Python
+        run: uv python install 3.11
+
+      - name: Cache HuggingFace models
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-${{ runner.os }}-gliner-multi-pii-v1-deberta-v3-xsmall
+
+      - name: Install dependencies (with ml extra)
+        run: uv sync --extra dev --extra ml
+
+      - name: Run the eval with gates
+        run: |
+          uv run python scripts/eval.py \
+            --with-gliner \
+            --recall-gate 0.85 \
+            --precision-gate 0.85 \
+            --report eval/report.html
+
+      - name: Upload HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-report
+          path: eval/report.html
