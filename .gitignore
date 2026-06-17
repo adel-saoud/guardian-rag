@@ -216,3 +216,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Guardian RAG, project-specific runtime artifacts
+.idea/
+data/
+docs/_tab*.png
+eval/report.html

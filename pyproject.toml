@@ -1,0 +1,191 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "guardian-rag"
+version = "0.1.0"
+description = "Privacy-safe RAG pipeline with two-stage PII detection at ingestion and a post-generation audit on every answer. EU AI Act Article 10-aligned by design."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+authors = [{ name = "Adel Saoud" }]
+keywords = [
+    "rag",
+    "pii-detection",
+    "privacy",
+    "eu-ai-act",
+    "gliner",
+    "presidio",
+    "llmops",
+    "qdrant",
+    "ollama",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    "Topic :: Security",
+]
+
+dependencies = [
+    "pydantic>=2.11",
+    "pydantic-settings>=2.8",
+    "httpx>=0.28",
+    "structlog>=25.0",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "tenacity>=9.0",
+    "rich>=14.0",
+    "tiktoken>=0.8",
+    "langchain-text-splitters>=0.3",
+    "rank-bm25>=0.2.2",
+    "qdrant-client>=1.12",
+    "presidio-analyzer>=2.2",
+    "presidio-anonymizer>=2.2",
+    "pypdf>=5.1",
+    "markdown-it-py>=3.0",
+    "jinja2>=3.1",
+]
+
+[project.optional-dependencies]
+ml = [
+    "gliner>=0.2.13",
+    "sentence-transformers>=3.0",
+    "transformers>=4.45",
+    "torch>=2.4",
+    "numpy>=1.26",
+]
+dashboard = ["streamlit>=1.45", "plotly>=6.0", "pandas>=2.2", "pillow>=11.0"]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+    "pytest-cov>=6.0",
+    "pytest-mock>=3.14",
+    "ruff>=0.11",
+    "pyright>=1.1.400",
+    "pre-commit>=4.0",
+    "respx>=0.21",
+]
+
+[project.urls]
+Homepage = "https://github.com/adel-saoud/guardian-rag"
+Repository = "https://github.com/adel-saoud/guardian-rag"
+Issues = "https://github.com/adel-saoud/guardian-rag/issues"
+
+[project.scripts]
+guardian = "guardian_rag.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/guardian_rag"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E", "W",
+    "F",
+    "I",
+    "B",
+    "C4",
+    "UP",
+    "SIM",
+    "RUF",
+    "N",
+    "ANN",
+    "S",
+    "PT",
+    "TID",
+    "PL",
+    "TRY",
+]
+ignore = [
+    "ANN401",
+    "PLR0912",
+    "PLR0913",
+    "PLR0915",
+    "PLR2004",
+    "PLC0415",
+    "PLW0108",
+    "TRY003",
+    "TRY004",
+    "TRY301",
+    "RUF001",
+    "RUF002",
+    "RUF003",
+    "S101",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["ANN", "PLR2004", "S101", "S105", "S106", "S311"]
+"scripts/**/*.py" = ["ANN", "S311", "T201"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
+
+[tool.pyright]
+include = ["src", "tests"]
+exclude = [
+    "src/guardian_rag/dashboard/app.py",
+    "src/guardian_rag/pii/_real_backends.py",
+    "src/guardian_rag/retrieval/_real_backends.py",
+]
+typeCheckingMode = "strict"
+pythonVersion = "3.11"
+reportMissingTypeStubs = "warning"
+reportUnknownMemberType = "warning"
+reportUnknownArgumentType = "warning"
+reportUnknownVariableType = "warning"
+
+[[tool.pyright.executionEnvironments]]
+root = "tests"
+extraPaths = ["."]
+reportUnknownMemberType = "none"
+reportUnknownArgumentType = "none"
+reportUnknownVariableType = "none"
+reportUnknownParameterType = "none"
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = [
+    "-ra",
+    "--strict-markers",
+    "--strict-config",
+    "--cov=guardian_rag",
+    "--cov-report=term-missing",
+    "--cov-report=xml",
+]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+markers = [
+    "integration: end-to-end tests using mock backends (deselect with -m 'not integration')",
+]
+
+[tool.coverage.run]
+source = ["src/guardian_rag"]
+branch = true
+omit = [
+    "src/guardian_rag/dashboard/*",
+    "src/guardian_rag/pii/_real_backends.py",
+    "src/guardian_rag/retrieval/_real_backends.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "raise NotImplementedError",
+]
+fail_under = 85
