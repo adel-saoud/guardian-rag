@@ -8,7 +8,7 @@
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue)](https://www.python.org/)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![Pyright](https://img.shields.io/badge/types-pyright%20strict-1f5fff)](https://github.com/microsoft/pyright)
-[![Coverage](https://img.shields.io/badge/coverage-92%25-brightgreen)](pyproject.toml)
+[![Coverage](https://img.shields.io/badge/coverage-93%25-brightgreen)](pyproject.toml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 ---
@@ -62,7 +62,7 @@ Expected output:
 
 PII Recall      100.0%
 PII Precision   0.93
-Faithfulness    <measured> (requires Ollama, see below)
+Faithfulness    N/A  (informational, requires Ollama)
 Leaks caught    0  (post-generation audit)
 ```
 
@@ -80,7 +80,7 @@ Expected response headers on every `/v1/query`:
 ```
 X-Guardian-Pii-Audit:    clean | redacted
 X-Guardian-Chunks-Used:  <n>
-X-Guardian-Faithfulness:
+X-Guardian-Faithfulness: <reserved, judge wiring is on the roadmap>
 X-Guardian-Request-Id:   chatcmpl-<uuid>
 ```
 
@@ -204,22 +204,22 @@ Full module map and design decisions in [`context/architecture.md`](context/arch
 
 ## Tech stack
 
-| | Library / Tool | Role |
+| | Library / Tool | What it does |
 |:--|:--|:--|
-| **PII** | `presidio-analyzer` | Stage-1 regex recognisers, no spaCy load |
-| | `gliner` | Stage-2 NER for unstructured PII |
-| | `transformers` | Stage-3 DeBERTa zero-shot validator |
-| **RAG** | `langchain-text-splitters` + `tiktoken` | Hierarchical chunking |
-| | `sentence-transformers` | MiniLM embeddings |
-| | `qdrant-client` | Vector store (hermetic in-memory mode for tests) |
-| | `rank-bm25` | In-memory BM25 index for hybrid retrieval |
-| **Generation** | `httpx` + `tenacity` | Async Ollama client with retry |
-| **API** | `fastapi` + `uvicorn` | HTTP surface |
-| **Dashboard** | `streamlit` + `plotly` + `pandas` | 3-panel demo UI |
-| **Dev** | `uv` | Fast package manager + lockfile |
-| | `ruff` | Lint + format in one tool |
-| | `pyright` strict | 0 errors, 0 warnings, full type coverage |
-| | `pytest` + `pytest-asyncio` | Hermetic test suite, no network, no keys |
+| **PII** | `presidio-analyzer` | Microsoft's open-source PII toolkit. Handles emails, IBANs, credit cards via regex. |
+| | `gliner` | Small AI model (~100M params) that finds PII spans. You pass the entity types as a plain list at runtime, no per-use-case training. |
+| | `transformers` | Runs the DeBERTa "is this actually a person name?" validator on borderline GLiNER spans. |
+| **RAG** | `langchain-text-splitters` + `tiktoken` | Splits documents into the parent/child chunk hierarchy. |
+| | `sentence-transformers` | MiniLM embeddings for dense retrieval. |
+| | `qdrant-client` | Vector store. Real Qdrant in production, in-process for tests. |
+| | `rank-bm25` | Keyword search alongside vector search so rare terms (IBANs, product codes) still rank. |
+| **Generation** | `httpx` + `tenacity` | Async client for Ollama with retry. |
+| **API** | `fastapi` + `uvicorn` | HTTP surface. |
+| **Dashboard** | `streamlit` + `plotly` + `pandas` | 3-panel demo UI. |
+| **Dev** | `uv` | Package manager + lockfile. |
+| | `ruff` | Lint + format. |
+| | `pyright` strict | Type checker. 0 errors, 0 warnings across the project. |
+| | `pytest` + `pytest-asyncio` | Hermetic test suite. No network, no keys. |
 
 ---
 
@@ -268,10 +268,11 @@ See [`src/guardian_rag/config.py`](src/guardian_rag/config.py) for the complete 
 - [llm-gateway](https://github.com/adel-saoud/llm-gateway), RAG-aware LLM gateway with per-stage cost attribution
 - [llm-cost-autopilot](https://github.com/adel-saoud/llm-cost-autopilot), two-stage zero-shot complexity router that picks the cheapest capable model
 
-Four projects, three axes: **gateway** tracks where the budget went,
-**autopilot** prevents it going to the wrong place, **detector** catches
-quality drops when prompts change, **guardian** keeps personal data out
-of both the index and the response.
+Four projects, three axes:
+
+- **Cost**: `gateway` tracks where the budget went; `autopilot` prevents it going to the wrong place.
+- **Quality**: `detector` catches quality drops when prompts change.
+- **Privacy**: `guardian` keeps personal data out of both the index and the response.
 
 ---
 

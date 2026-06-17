@@ -142,7 +142,7 @@ def main() -> int:
     console.print(
         f"\nPII Recall      {report.overall.recall:.1%}\n"
         f"PII Precision   {report.overall.precision:.2f}\n"
-        f"Faithfulness    <measured>\n"
+        f"Faithfulness    N/A  (informational, requires Ollama)\n"
         f"Leaks caught    {report.leaks_caught}  (post-generation audit)\n"
     )
 

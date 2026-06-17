@@ -27,6 +27,7 @@ Query path:
 | `guardian_rag/pii/_real_backends.py`   | Lazy GLiNER + DeBERTa model loads (pyright-excluded)       |
 | `guardian_rag/ingestion/`              | Loader, hierarchical chunker, pipeline, redaction store    |
 | `guardian_rag/retrieval/`              | Embedder, Qdrant store, BM25 index, hybrid retriever       |
+| `guardian_rag/retrieval/_real_backends.py` | Lazy sentence-transformers backend (pyright-excluded)  |
 | `guardian_rag/generation/`             | Ollama client, grounded prompt, citation verification      |
 | `guardian_rag/eval/`                   | Golden corpus loader, recall + precision runner, judge     |
 | `guardian_rag/api/`                    | FastAPI surface (5 routes), lifespan, dependency container |
@@ -76,7 +77,7 @@ knobs:
 - **Deterministic**, fake backends behind `Protocol` interfaces, fixed
   embeddings via hash functions, in-memory Qdrant.
 - **Coverage gate at 85%**, enforced in `pyproject.toml`.
-- **125 tests** at the time of writing, ~92% coverage.
+- **130 tests** at the time of writing, ~93% coverage.
 
 ## Decision records
 

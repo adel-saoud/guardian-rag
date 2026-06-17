@@ -13,7 +13,11 @@ Guardian RAG: privacy-safe RAG pipeline with two-stage PII detection at ingestio
 - llm-cost-autopilot: two-stage zero-shot complexity router
   `/Users/adelsaoud/Documents/GithubPersonalProject/llm-cost-autopilot/`
 
-The four projects answer different questions on different axes: gateway tracks where the budget went, autopilot prevents it going to the wrong place, detector catches quality drops when prompts change, and guardian keeps personal data out of both the index and the response.
+Four projects, three axes:
+
+- Cost: gateway tracks where the budget went; autopilot prevents it going to the wrong place.
+- Quality: detector catches quality drops when prompts change.
+- Privacy: guardian keeps personal data out of both the index and the response.
 
 ## Principles
 
@@ -64,7 +68,7 @@ uv run streamlit run src/guardian_rag/dashboard/app.py
 - The PII engine is injected via FastAPI `Depends`, never constructed in routes.
 - `GUARDIAN_DEBERTA_THRESHOLD` (default 0.85) controls whether the validator fires. Lower the threshold and DeBERTa becomes a hot path. Raise it and the safety net narrows.
 - The post-generation audit is mandatory. If the audit raises, the answer is redacted, never returned raw.
-- `dashboard/app.py` and `pii/_real_backends.py` are excluded from pyright. Keep them small so the exclusion does not hide real bugs.
+- `dashboard/app.py`, `pii/_real_backends.py`, and `retrieval/_real_backends.py` are excluded from pyright. Keep them small so the exclusion does not hide real bugs.
 
 ## Key interview talking points
 
