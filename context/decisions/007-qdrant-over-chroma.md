@@ -29,7 +29,7 @@ slower to spin up.
 - Tests run in milliseconds without Docker.
 - Production stack runs Qdrant in Docker via `docker-compose.yml`.
 - Single collection design (children with embedded parent payload) keeps
-  the storage layer simple. See [[004-hierarchical-chunking]] for the
+  the storage layer simple. See [ADR 004](004-hierarchical-chunking.md) for the
   parent/child rationale.
 - Point IDs use dashed-UUID format. Qdrant's local mode validates these
   strictly; the chunker emits `str(uuid.uuid4())` so the same id is

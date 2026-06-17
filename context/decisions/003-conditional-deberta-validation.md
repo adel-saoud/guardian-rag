@@ -21,7 +21,7 @@ probability falls below `accept_threshold` (default 0.5) are dropped.
 
 - Conditional cost: DeBERTa only runs on borderline spans, not all spans.
 - Mirrors the two-stage routing pattern in
-  `llm-cost-autopilot` ([[004-hierarchical-chunking]] for the other
+  `llm-cost-autopilot` ([ADR 004](004-hierarchical-chunking.md) for the other
   major two-stage decision).
 - Tuning surface: lowering the score threshold turns DeBERTa into a hot
   path; raising it narrows the safety net.

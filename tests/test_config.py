@@ -1,4 +1,4 @@
-"""Smoke tests for `Settings` so PR 1 ships with green CI."""
+"""Smoke tests for `Settings`."""
 
 from __future__ import annotations
 

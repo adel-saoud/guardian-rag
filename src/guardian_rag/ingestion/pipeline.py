@@ -1,8 +1,8 @@
 """End-to-end ingestion pipeline: detect, redact, chunk, persist redaction map.
 
-Embedding and vector-store writes are exposed via a `Protocol` so Layer 3
-can plug in the real Qdrant adapter and Layer 2 tests can use a stub. The
-pipeline orchestrates the steps in the only safe order:
+Embedding and vector-store writes are exposed via a `Protocol` so the
+Qdrant adapter is injected at runtime and tests can use a no-op stub.
+The pipeline orchestrates the steps in the only safe order:
 
     1. Detect PII on the raw document.
     2. Redact spans with typed placeholders.
@@ -33,8 +33,8 @@ logger = structlog.get_logger(__name__)
 class VectorSink(Protocol):
     """Where chunks land after redaction and chunking.
 
-    Layer 3 supplies a Qdrant-backed implementation. Tests can supply a
-    no-op or in-memory fake without depending on Qdrant.
+    Production wires this up with the Qdrant-backed `QdrantStore`. Tests
+    can supply a no-op or in-memory fake without depending on Qdrant.
     """
 
     def upsert(
@@ -47,7 +47,7 @@ class VectorSink(Protocol):
 
 
 class NullVectorSink:
-    """No-op sink, useful for Layer 2 tests and dry-run ingestion."""
+    """No-op sink, useful for tests and dry-run ingestion."""
 
     def __init__(self) -> None:
         self.parents: list[ParentChunk] = []

@@ -28,4 +28,4 @@ a single payload lookup.
   collection.
 - Implementation: `langchain_text_splitters.RecursiveCharacterTextSplitter`
   with `tiktoken` encoding `cl100k_base`.
-- See [[007-qdrant-over-chroma]] for the storage layer choice.
+- See [ADR 007](007-qdrant-over-chroma.md) for the storage layer choice.
