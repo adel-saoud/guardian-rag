@@ -72,9 +72,7 @@ def _load_redaction_maps() -> list[dict]:
     return out
 
 
-tab1, tab2, tab3 = st.tabs(
-    ["PII Protection Stats", "Redaction Explorer", "Eval Results"]
-)
+tab1, tab2, tab3 = st.tabs(["PII Protection Stats", "Redaction Explorer", "Eval Results"])
 
 # ── Panel 1: PII Protection Stats ───────────────────────────────────────────
 with tab1:

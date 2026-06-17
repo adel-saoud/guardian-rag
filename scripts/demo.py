@@ -97,9 +97,7 @@ async def main() -> None:
     )
 
     console.print("\n[bold]Ingesting sample document[/bold]")
-    result = pipeline.ingest(
-        Document(document_id="hr-demo", text=SAMPLE_DOC, source="demo")
-    )
+    result = pipeline.ingest(Document(document_id="hr-demo", text=SAMPLE_DOC, source="demo"))
     console.print(f"  entities detected: {result.n_entities}")
     console.print(f"  parents: {len(result.parent_chunks)}")
     console.print(f"  children: {len(result.child_chunks)}")
@@ -122,9 +120,7 @@ async def main() -> None:
         grounded = await generator.generate(SAMPLE_QUERY, retrieval.parents)
         audit = auditor.audit(grounded.answer)
 
-        console.print(
-            f"\n[bold]Answer[/bold] (audit={'clean' if audit.clean else 'redacted'}):"
-        )
+        console.print(f"\n[bold]Answer[/bold] (audit={'clean' if audit.clean else 'redacted'}):")
         console.print(audit.answer)
 
 
