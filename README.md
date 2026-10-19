@@ -21,15 +21,16 @@ Standard RAG pipelines ingest documents, embed them, and return answers.
 None of them ask: what if those documents contain names, IBANs, or passport
 numbers?
 
-**This one does.** Guardian RAG runs a two-stage PII detection pipeline
+**This one does.** Guardian RAG runs a three-stage PII detection pipeline (Presidio, GLiNER,
+then DeBERTa validation on low-confidence spans only)
 before any document enters the vector store, and audits every generated
 answer before it reaches the user. PII is replaced with typed placeholders
 so retrieval still works: `[PERSON_1] reported to [PERSON_2]` is useful
 context; blank tokens are not.
 
-> Inspired by operating DaiLY at Decathlon France, a RAG system serving
-> 30,000+ employees over HR documents where PII governance was a real
-> concern, not a theoretical one.
+> **Why I built this.** Running RAG over HR documents for tens of thousands
+> of employees, the hard question was never retrieval quality. It was: what
+> happens when a document contains a name, an ID or bank details?
 
 ![Guardian RAG dashboard with three panels: aggregate PII protection
 stats, live redaction explorer, and eval results gauges](docs/dashboard.png)
