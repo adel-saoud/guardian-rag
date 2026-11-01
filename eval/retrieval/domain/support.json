@@ -1,0 +1,1437 @@
+[
+  {
+    "topic_id": "support-password-reset-sso",
+    "category": "support",
+    "title": "Password Reset and SSO Login Guide",
+    "sections": [
+      "This article explains how users regain access when they forget a password or when single sign-on stops working on this edition. It covers members, guests and workspace owners. Self-service reset starts from the Forgot password link on the sign-in page, which sends a one-time link to the email address on the account. The link expires after {reset_link_ttl} minutes and works only once; requesting a new link cancels every earlier one. If no message arrives within five minutes, ask the user to check quarantine and spam folders before raising a ticket. Agents must never ask for a current password, a full recovery code or a screenshot of the authenticator app, and any message requesting one should be reported to the security mailbox as phishing.",
+      "A new password must be at least {password_min_length} characters long and cannot match any of the previous ten passwords on the account. Passphrases are accepted and encouraged; there is no requirement for symbols, but every new password is checked against a list of known breached passwords and rejected if it appears there. After {lockout_attempts} consecutive failed sign-in attempts the account is locked for {lockout_minutes} minutes. The lock clears on its own, and a successful password reset also clears it immediately. Agents can see the lock status and the time it ends on the user record, but they cannot unlock an account manually, because doing so would bypass the protection against password guessing.",
+      "When a workspace uses single sign-on, users authenticate through {sso_protocol}. If the administrator has set SSO to enforced, the Forgot password link is hidden for managed users and passwords must be reset in the company identity provider, not in the product. Agents should not try to send a product reset link in this case, because it will be ignored. Administrators configure the connection under {sso_settings_path}, where they upload the identity provider metadata, map the email attribute and choose which domains are managed. Unmanaged users, such as external guests, keep their own password and use the normal reset flow even when SSO is enforced for everyone else in the workspace.",
+      "Most SSO failures come from configuration drift on the identity provider side. The three common errors are an expired signing certificate, an email attribute that no longer matches the address in the workspace, and clock drift between servers larger than the tolerated window of three minutes. Ask the administrator to download the SSO debug log from the connection page and attach it to the ticket. A successful SSO sign-in creates a session that lasts {session_hours} hours, after which users are sent back to the identity provider to authenticate again. Signing out of the identity provider does not end an active product session; administrators who need that should revoke sessions from the user record.",
+      "If self-service steps do not restore access, open a ticket in the Access queue with the workspace ID, the affected email domain and the exact error text. The first response target for this edition is {response_target}. When the person locked out is the only workspace owner, recovery requires identity verification before any change is made. That check is run by {person} ({email}) on the identity assurance team, who can be reached on {phone} for urgent cases during business hours. Verification usually takes one business day once the documents arrive. Agents must not transfer ownership, change the account email or disable SSO on request without a completed verification record."
+    ],
+    "variants": [
+      {
+        "variant_id": "cloud-starter",
+        "label": "Lumora Cloud, Starter plan",
+        "slots": {
+          "reset_link_ttl": "60",
+          "password_min_length": "10",
+          "lockout_attempts": "5",
+          "lockout_minutes": "15",
+          "sso_protocol": "OpenID Connect only",
+          "sso_settings_path": "Settings, Security, Sign-in",
+          "session_hours": "12",
+          "response_target": "1 business day"
+        }
+      },
+      {
+        "variant_id": "cloud-business",
+        "label": "Lumora Cloud, Business plan",
+        "slots": {
+          "reset_link_ttl": "30",
+          "password_min_length": "12",
+          "lockout_attempts": "6",
+          "lockout_minutes": "20",
+          "sso_protocol": "SAML 2.0 or OpenID Connect",
+          "sso_settings_path": "Admin Console, Identity, SSO",
+          "session_hours": "10",
+          "response_target": "8 business hours"
+        }
+      },
+      {
+        "variant_id": "cloud-enterprise",
+        "label": "Lumora Cloud, Enterprise plan",
+        "slots": {
+          "reset_link_ttl": "20",
+          "password_min_length": "14",
+          "lockout_attempts": "8",
+          "lockout_minutes": "30",
+          "sso_protocol": "SAML 2.0 with SCIM user provisioning",
+          "sso_settings_path": "Admin Console, Identity, Connections",
+          "session_hours": "8",
+          "response_target": "2 hours"
+        }
+      },
+      {
+        "variant_id": "cloud-government",
+        "label": "Lumora Cloud, Government region",
+        "slots": {
+          "reset_link_ttl": "10",
+          "password_min_length": "16",
+          "lockout_attempts": "3",
+          "lockout_minutes": "60",
+          "sso_protocol": "SAML 2.0 with signed assertions and smart card step-up",
+          "sso_settings_path": "Admin Console, Compliance, Federation",
+          "session_hours": "4",
+          "response_target": "1 hour",
+          "audit_retention_years": "7"
+        },
+        "extra_section": "Government region addendum: sign-in for this region is accepted only from network ranges registered by the customer, and reset links are blocked when they are requested from an unregistered address. Every reset, lockout and SSO configuration change is written to an audit log that the customer can export for {audit_retention_years} years. Support staff handling these tickets must hold the regional clearance and work from the dedicated support environment, never from a personal device or a shared office machine."
+      },
+      {
+        "variant_id": "server-7-2",
+        "label": "Lumora Server 7.2, self-hosted",
+        "slots": {
+          "reset_link_ttl": "45",
+          "password_min_length": "12",
+          "lockout_attempts": "5",
+          "lockout_minutes": "30",
+          "sso_protocol": "LDAP bind or SAML 2.0",
+          "sso_settings_path": "Server Admin, Authentication, Providers",
+          "session_hours": "24",
+          "response_target": "4 business hours",
+          "eol_date": "31 March 2027"
+        },
+        "extra_section": "Version 7.2 addendum: this release reaches end of support on {eol_date}. Its LDAP connector caches group membership for one hour, so a user removed from the directory can still sign in until the cache refreshes. Administrators can force a refresh from the command line with the directory sync tool. Customers should plan the upgrade to 8.0, which replaces the cache with live directory lookups and removes this delay."
+      },
+      {
+        "variant_id": "server-8-0",
+        "label": "Lumora Server 8.0, self-hosted",
+        "slots": {
+          "reset_link_ttl": "30",
+          "password_min_length": "14",
+          "lockout_attempts": "7",
+          "lockout_minutes": "25",
+          "sso_protocol": "SAML 2.0 or OpenID Connect",
+          "sso_settings_path": "Server Admin, Identity, Federation",
+          "session_hours": "12",
+          "response_target": "4 business hours"
+        }
+      }
+    ]
+  },
+  {
+    "topic_id": "support-vpn-setup",
+    "category": "support",
+    "title": "Remote Access VPN Setup",
+    "sections": [
+      "This guide covers installing and connecting the corporate remote access VPN for the group named in the title. The supported client is {client_version}, distributed through the company software center; copies downloaded from other sources are blocked by the gateway. Before installing, the device must be enrolled in device management and show a compliant status, otherwise the client installs but the connection is refused at the posture check. Installation needs no admin rights on managed devices. After installation, sign out and back in once so the client service starts with the user session. The client checks for updates every day and installs them silently at the next disconnect.",
+      "The client connects to {gateway_host}, which is preloaded in the connection profile and should never be edited by hand. Authentication uses {auth_method}. The device certificate is issued automatically during enrollment and renewed every twelve months; an expired certificate shows as error 809 or as a failed TLS handshake in the client log. Users who replace their phone must register the new authenticator before the old one is wiped, or they will need an identity check at the service desk to reset their second factor. Shared or kiosk devices cannot connect at all, because the certificate is bound to a named user.",
+      "Routing policy for this group: {split_tunnel_policy}. Users should not install a second VPN product, a personal proxy or a browser privacy extension that tunnels traffic, as these conflict with the routing table and break name resolution for internal hosts. Internal sites are reached by their short names only while connected; if a short name does not resolve, run the repair DNS action in the client before opening a ticket. Printing to office printers from home is not supported through the VPN. Large file transfers to internal shares are allowed but should use the sync client rather than a mapped drive for reliability.",
+      "Common connection problems have known fixes. If pages load partially or uploads hang, the network path is probably dropping large packets; set the client MTU to {mtu_value} under advanced settings and reconnect. If the client connects and then drops after a few minutes on hotel or airport networks, switch the transport from UDP to TCP. Sessions are disconnected after {idle_timeout} without traffic, and the client then asks for the second factor again. Collect logs with the export diagnostics button, which bundles the client log, the routing table and the posture check result into one archive that can be attached to the ticket.",
+      "The IT service desk supports this group from {helpdesk_hours}. Outside those hours, only full gateway outages are handled, through the on-call line. For an individual connection problem, open a ticket in the Network Access category with the diagnostics archive, the network type (home, mobile hotspot or public) and the time of the last failure. Repeated certificate or posture failures on the same device are escalated to the endpoint team. Regional VPN questions and access requests for restricted subnets go to {person} ({email}), the network access owner for this group, who approves or rejects them within two business days."
+    ],
+    "variants": [
+      {
+        "variant_id": "windows-rotterdam",
+        "label": "Windows laptops, Rotterdam office",
+        "slots": {
+          "client_version": "Tessellate Connect 5.4.2 for Windows",
+          "gateway_host": "gw-rtm.halvard.example",
+          "auth_method": "the device certificate plus a push approval in the Halvard Authenticator app",
+          "split_tunnel_policy": "split tunneling is enabled, and only the 10.40.0.0/16 range and the intranet domain suffix are routed through the tunnel",
+          "mtu_value": "1380",
+          "idle_timeout": "8 hours",
+          "helpdesk_hours": "07:00 to 19:00 CET, Monday to Friday"
+        }
+      },
+      {
+        "variant_id": "macos-rotterdam",
+        "label": "macOS laptops, Rotterdam office",
+        "slots": {
+          "client_version": "Tessellate Connect 5.4.0 for macOS",
+          "gateway_host": "gw-rtm.halvard.example",
+          "auth_method": "the device certificate plus a push approval in the Halvard Authenticator app",
+          "split_tunnel_policy": "split tunneling is enabled for the 10.40.0.0/16 range, and video calls are always forced outside the tunnel",
+          "mtu_value": "1400",
+          "idle_timeout": "8 hours",
+          "helpdesk_hours": "07:00 to 19:00 CET, Monday to Friday"
+        }
+      },
+      {
+        "variant_id": "windows-singapore",
+        "label": "Windows laptops, Singapore office",
+        "slots": {
+          "client_version": "Tessellate Connect 5.3.9 for Windows",
+          "gateway_host": "gw-sin.halvard.example",
+          "auth_method": "the device certificate plus a six digit code from the hardware token",
+          "split_tunnel_policy": "full tunnel, meaning all traffic, including general internet browsing, is routed through the Singapore gateway to meet local data rules",
+          "mtu_value": "1360",
+          "idle_timeout": "4 hours",
+          "helpdesk_hours": "08:00 to 20:00 SGT, Monday to Saturday",
+          "log_retention_days": "180"
+        },
+        "extra_section": "Singapore addendum: because of local data handling rules, the Singapore gateway keeps connection metadata for {log_retention_days} days, and these records may be reviewed by the regional compliance team. Staff travelling to mainland China must request the travel profile at least ten working days before departure, as the standard profile will not connect there. Hardware tokens that are lost abroad must be reported the same day."
+      },
+      {
+        "variant_id": "linux-austin",
+        "label": "Linux workstations, Austin office",
+        "slots": {
+          "client_version": "Tessellate Connect CLI 5.2.1 for Linux",
+          "gateway_host": "gw-aus.halvard.example",
+          "auth_method": "the device certificate plus a FIDO2 security key",
+          "split_tunnel_policy": "split tunneling is enabled for the 10.80.0.0/14 range only",
+          "mtu_value": "1420",
+          "idle_timeout": "12 hours",
+          "helpdesk_hours": "06:00 to 18:00 CT, Monday to Friday"
+        }
+      },
+      {
+        "variant_id": "macos-austin",
+        "label": "macOS laptops, Austin office",
+        "slots": {
+          "client_version": "Tessellate Connect 5.4.0 for macOS",
+          "gateway_host": "gw-aus.halvard.example",
+          "auth_method": "the device certificate plus a push approval in the Halvard Authenticator app",
+          "split_tunnel_policy": "split tunneling is enabled for the 10.80.0.0/14 range and the build cache servers",
+          "mtu_value": "1400",
+          "idle_timeout": "12 hours",
+          "helpdesk_hours": "06:00 to 18:00 CT, Monday to Friday"
+        }
+      },
+      {
+        "variant_id": "contractors",
+        "label": "External contractors, all sites",
+        "slots": {
+          "client_version": "Tessellate Connect 5.4.2 in restricted mode",
+          "gateway_host": "gw-partner.halvard.example",
+          "auth_method": "a username, a password and an SMS code, with no device certificate",
+          "split_tunnel_policy": "full tunnel, with access limited to the contractor portal and the ticketing system",
+          "mtu_value": "1380",
+          "idle_timeout": "2 hours",
+          "helpdesk_hours": "07:00 to 19:00 CET, Monday to Friday",
+          "extension_notice_days": "5"
+        },
+        "extra_section": "Contractor addendum: VPN access for contractors is tied to the end date of their engagement in the vendor system and stops automatically at midnight on that date. Extensions must be requested by the sponsoring manager at least {extension_notice_days} working days in advance. Contractors may only connect from devices issued or approved by the company, never from a personal machine, and their sessions are recorded."
+      }
+    ]
+  },
+  {
+    "topic_id": "support-refund-policy",
+    "category": "support",
+    "title": "Customer Refund Policy",
+    "sections": [
+      "This policy tells agents when a customer can get their money back for an order placed with the store named in the title and how to process it. Customers may return most items within {refund_window} of delivery for a full refund of the item price. The window starts on the delivery date recorded by the carrier, not the order date. Orders delivered in several parcels have one window per parcel. Items bought as gifts can be returned by the recipient with the gift receipt, in which case the refund goes to the original payment method and the buyer is told by email. Personalised items, opened hygiene products and gift cards are never refundable.",
+      "Returned items must arrive complete, with accessories and manuals. Unopened items are refunded in full. Opened items that work and show no damage are refunded minus a restocking fee of {restocking_fee}, which covers inspection and repackaging. Damaged or incomplete returns are either sent back to the customer at our cost or refunded at a reduced amount agreed with them in writing. Agents may waive the restocking fee once per customer per year when the customer has a good order history, and must record the waiver reason on the order. Items marked final sale on the product page follow a special rule: {sale_items_rule}.",
+      "{return_shipping_rule} When an item arrives faulty or the wrong item was sent, return shipping is always free and the original delivery charge is refunded too. Customers should use the prepaid label generated from their order page; returns sent without a label, or with a different carrier, are accepted but may take longer to match to the order. Collection from the customer's address is available for items above thirty kilograms, and the agent books it directly in the carrier portal. Never ask a customer to pay a carrier directly or to send cash, and never accept a return at an office.",
+      "Refunds are issued once the warehouse confirms the return, usually within two working days of receipt. The money then reaches the customer within {processing_days}, depending on the bank. {refund_method_rule} Customers who paid with a gift card receive store credit, which never expires. If a customer reports that a refund has not arrived after the stated time, check the refund reference in the payment console and send it to them so their bank can trace it, before opening an investigation with the payments team. Do not issue a second refund while the first one is still pending.",
+      "Agents can approve refunds up to {approval_threshold} on their own. Larger refunds, refunds outside the return window and any refund to a different payment method than the one used for the order need approval from a team lead. The current approver for this region is {person} ({email}). Goodwill refunds without a return, such as for a late delivery or a minor defect the customer chooses to keep, are capped at twenty percent of the item price and are tracked monthly per agent. Suspected abuse, for example repeated returns of used items, should be flagged to the fraud team instead of being refused in the chat."
+    ],
+    "variants": [
+      {
+        "variant_id": "eu",
+        "label": "Brightwell Home Store, EU customers",
+        "slots": {
+          "refund_window": "30 days",
+          "restocking_fee": "10 percent of the item price",
+          "sale_items_rule": "final sale items can still be returned within the 14 day legal withdrawal period, without a restocking fee",
+          "return_shipping_rule": "Return shipping is free for customers in the EU.",
+          "processing_days": "5 to 10 working days",
+          "refund_method_rule": "Refunds go back to the original card, wallet or bank account; a SEPA transfer is used when the original method is no longer available.",
+          "approval_threshold": "250 euros"
+        }
+      },
+      {
+        "variant_id": "uk",
+        "label": "Brightwell Home Store, UK customers",
+        "slots": {
+          "refund_window": "35 days",
+          "restocking_fee": "10 percent of the item price",
+          "sale_items_rule": "final sale items can be returned within 14 days of delivery under consumer contract rules, without a restocking fee",
+          "return_shipping_rule": "Return shipping costs 4.95 pounds, deducted from the refund, unless the customer is a loyalty member.",
+          "processing_days": "3 to 7 working days",
+          "refund_method_rule": "Refunds go back to the original card; refunds to closed cards are paid by bank transfer after the customer confirms their details.",
+          "approval_threshold": "200 pounds"
+        }
+      },
+      {
+        "variant_id": "us",
+        "label": "Brightwell Home Store, US customers",
+        "slots": {
+          "refund_window": "60 days",
+          "restocking_fee": "15 percent of the item price",
+          "sale_items_rule": "final sale items are not refundable unless they arrive damaged",
+          "return_shipping_rule": "Return shipping costs 7.99 dollars, deducted from the refund, and is free on orders above 150 dollars.",
+          "processing_days": "5 to 14 business days",
+          "refund_method_rule": "Refunds go back to the original card; refunds to debit cards can take a full billing cycle to show.",
+          "approval_threshold": "300 dollars"
+        }
+      },
+      {
+        "variant_id": "canada",
+        "label": "Brightwell Home Store, Canadian customers",
+        "slots": {
+          "refund_window": "30 days",
+          "restocking_fee": "15 percent of the item price",
+          "sale_items_rule": "final sale items are refundable only as store credit",
+          "return_shipping_rule": "Return shipping is free in Canada except for the territories, where a 12 dollar fee is deducted from the refund.",
+          "processing_days": "5 to 10 business days",
+          "refund_method_rule": "Refunds go back to the original card, and customers in Quebec may ask for a cheque instead.",
+          "approval_threshold": "350 Canadian dollars"
+        }
+      },
+      {
+        "variant_id": "australia",
+        "label": "Brightwell Home Store, Australian customers",
+        "slots": {
+          "refund_window": "45 days",
+          "restocking_fee": "zero, because local consumer law does not allow one for working items returned in good condition",
+          "sale_items_rule": "final sale items can be returned only if they are faulty",
+          "return_shipping_rule": "Return shipping is free for metropolitan postcodes and costs 9.95 dollars for regional postcodes.",
+          "processing_days": "3 to 10 business days",
+          "refund_method_rule": "Refunds go back to the original card; orders paid with an instalment provider are refunded to that provider, which cancels the remaining payments.",
+          "approval_threshold": "400 Australian dollars",
+          "major_fault_months": "6"
+        },
+        "extra_section": "Australia addendum: for a major fault the customer chooses between a refund and a replacement, and no fee ever applies. Agents must not push store credit as the only option. Faults reported within {major_fault_months} months of delivery are treated as major faults by default unless the warehouse inspection shows otherwise. Keep the inspection report on the order in case the customer escalates to a consumer agency."
+      },
+      {
+        "variant_id": "trade",
+        "label": "Brightwell Trade, business accounts",
+        "slots": {
+          "refund_window": "14 days",
+          "restocking_fee": "20 percent of the item price",
+          "sale_items_rule": "final sale items are not refundable for trade accounts",
+          "return_shipping_rule": "Business accounts pay their own return shipping unless the item is faulty.",
+          "processing_days": "10 working days",
+          "refund_method_rule": "Trade accounts paying by invoice receive a credit note against the next invoice instead of a cash refund, unless they ask in writing for a bank transfer.",
+          "approval_threshold": "1,000 euros",
+          "bulk_return_units": "20"
+        },
+        "extra_section": "Trade account addendum: returns of more than {bulk_return_units} units from one order must be pre-approved by the account manager before a label is issued, and the warehouse may inspect them on a pallet basis rather than item by item. Credit notes are issued in the same currency as the original invoice and expire after twelve months if they are not used."
+      }
+    ]
+  },
+  {
+    "topic_id": "support-billing-disputes",
+    "category": "support",
+    "title": "Billing Disputes and Chargebacks",
+    "sections": [
+      "This article explains how support handles a customer who disagrees with a charge, and what happens when a customer goes straight to their bank instead. A billing dispute is a request to support to correct an invoice. Customers can raise one within {dispute_window} of the invoice date, through the billing page or by replying to the invoice email. Agents should first check the usage records and the plan history, because most disputes come from seats added by another admin, a proration after a plan change, or tax applied after a missing VAT number. Explain the charge line by line before offering any credit.",
+      "Agents may issue a service credit of up to {agent_credit_limit} per account per billing period without approval, for example when a charge is correct but the customer was confused by a plan change. Credits are applied to the next invoice and never paid out as cash. Corrections larger than that, or any refund of a paid invoice, go to the {finance_queue} queue with the invoice number, the disputed amount and a short explanation. Finance answers within three business days. While a dispute is open the disputed amount is excluded from dunning emails, but the rest of the invoice remains due on the normal date.",
+      "A chargeback happens when the customer asks their bank or card issuer to reverse the payment. The payment provider notifies us and debits the amount immediately, plus a non-refundable fee of {chargeback_fee}. We have {chargeback_response_days} to submit evidence, so chargeback tickets are always set to high priority. Evidence normally includes the signed order form or the accepted terms, sign-in logs showing the service was used, the invoice and any messages where the customer acknowledged the charge. The payments team assembles and submits the evidence; support agents only collect the conversation history and must never pressure the customer to withdraw the claim.",
+      "While a chargeback is open, {suspension_rule} If the customer wins, the debit stands and the account balance shows the reversed amount as unpaid. If we win, the funds return to us within about two weeks. Customers who want to settle can pay the amount by bank transfer to the collections account {iban}, quoting the invoice number, after which we tell the bank that the dispute is resolved. A second chargeback on the same account within twelve months leads to a mandatory switch to invoice billing with payment in advance, and the customer is told this in writing.",
+      "Unpaid amounts that cannot be recovered are written off by finance. Support can recommend a write-off for small balances up to {writeoff_limit}, for example the remainder of a disputed proration, but cannot approve it. Above that amount the decision belongs to the credit controller, currently {person} ({email}), who reviews cases weekly. Never promise a customer that a balance will be cancelled before the write-off is approved and visible on the account. Record every dispute outcome in the billing history tab, as the information is used in annual revenue audits and in any later legal claim."
+    ],
+    "variants": [
+      {
+        "variant_id": "card-eu",
+        "label": "Card payments, Lumora Europe B.V.",
+        "slots": {
+          "dispute_window": "60 days",
+          "agent_credit_limit": "50 euros",
+          "finance_queue": "Billing EU",
+          "chargeback_fee": "15 euros",
+          "chargeback_response_days": "7 calendar days",
+          "suspension_rule": "the account stays active, but no new seats or add-ons can be bought.",
+          "writeoff_limit": "100 euros"
+        }
+      },
+      {
+        "variant_id": "card-us",
+        "label": "Card payments, Lumora Inc. (United States)",
+        "slots": {
+          "dispute_window": "90 days",
+          "agent_credit_limit": "75 dollars",
+          "finance_queue": "Billing Americas",
+          "chargeback_fee": "20 dollars",
+          "chargeback_response_days": "10 calendar days",
+          "suspension_rule": "the account stays active for 14 days and is then moved to read-only access until the dispute closes.",
+          "writeoff_limit": "150 dollars",
+          "copy_deadline_days": "5"
+        },
+        "extra_section": "United States addendum: customers in some states may ask for a copy of the signed order form under consumer protection rules; send it within {copy_deadline_days} business days of the request. Disputes from government buyers paying with a purchasing card go to the public sector billing desk, not to the standard queue, because those buyers follow their own dispute procedure. Log each copy request on the ticket with the date it was sent and the method used."
+      },
+      {
+        "variant_id": "sepa-eu",
+        "label": "SEPA direct debit, Lumora Europe B.V.",
+        "slots": {
+          "dispute_window": "60 days",
+          "agent_credit_limit": "50 euros",
+          "finance_queue": "Billing EU",
+          "chargeback_fee": "8 euros",
+          "chargeback_response_days": "10 calendar days for debits claimed as unauthorised (refund requests within eight weeks of the debit cannot be contested at all)",
+          "suspension_rule": "the direct debit mandate is suspended and the next invoices must be paid by card or bank transfer.",
+          "writeoff_limit": "100 euros",
+          "sepa_retry_days": "5"
+        },
+        "extra_section": "SEPA addendum: a returned direct debit, for example because of insufficient funds, is not a chargeback and is retried once after {sepa_retry_days} days. Only debits disputed as unauthorised follow the chargeback steps above. Customers who change bank must sign a new mandate, because the old mandate reference cannot be reused with a different account. If the retry also fails, the customer is asked to pay the open invoice by card within seven days."
+      },
+      {
+        "variant_id": "card-uk",
+        "label": "Card payments, Lumora UK Ltd",
+        "slots": {
+          "dispute_window": "45 days",
+          "agent_credit_limit": "40 pounds",
+          "finance_queue": "Billing UK",
+          "chargeback_fee": "15 pounds",
+          "chargeback_response_days": "9 calendar days",
+          "suspension_rule": "the account stays active, but the customer is asked to add a second payment method within 7 days.",
+          "writeoff_limit": "80 pounds"
+        }
+      },
+      {
+        "variant_id": "card-ca",
+        "label": "Card payments, Lumora Canada Inc.",
+        "slots": {
+          "dispute_window": "90 days",
+          "agent_credit_limit": "75 Canadian dollars",
+          "finance_queue": "Billing Americas",
+          "chargeback_fee": "25 Canadian dollars",
+          "chargeback_response_days": "12 calendar days",
+          "suspension_rule": "the account stays active for 30 days and is then moved to read-only access.",
+          "writeoff_limit": "150 Canadian dollars"
+        }
+      },
+      {
+        "variant_id": "card-apac",
+        "label": "Card payments, Lumora APAC Pte. Ltd. (Singapore)",
+        "slots": {
+          "dispute_window": "30 days",
+          "agent_credit_limit": "60 Singapore dollars",
+          "finance_queue": "Billing APAC",
+          "chargeback_fee": "30 Singapore dollars",
+          "chargeback_response_days": "7 calendar days",
+          "suspension_rule": "the account is moved to read-only access immediately.",
+          "writeoff_limit": "120 Singapore dollars"
+        }
+      }
+    ]
+  },
+  {
+    "topic_id": "support-api-rate-limits",
+    "category": "support",
+    "title": "API Rate Limits and Throttling",
+    "sections": [
+      "Every request to the Orbitly API counts against the limits of the workspace that owns the API key, not the individual key, so splitting traffic over several keys does not raise the ceiling. On this tier the sustained limit is {requests_per_minute} requests per minute, measured over a rolling sixty second window. Short spikes are absorbed by a burst allowance of {burst_allowance} requests, which refills at the sustained rate. Read and write calls share the same budget. Health checks and the token endpoint are exempt. Limits apply per region, so a workspace using two regions has two separate budgets.",
+      "Besides the per minute limit, the API caps the number of requests in flight at the same time at {concurrency_limit} per workspace. Requests above that number are rejected at once rather than queued. Long running calls such as report generation hold a slot until they finish, so integrations that start many reports in parallel are the usual cause of concurrency errors. There is also a daily quota of {daily_quota} requests, reset at midnight UTC. Usage against both limits is visible in the developer dashboard with a one minute delay, and an email warning is sent when the daily quota reaches eighty percent.",
+      "Bulk endpoints accept many records per call and are the recommended way to import or sync large datasets. On this tier a bulk call can carry up to {bulk_batch_size} records and counts as a single request against the per minute limit, but each record counts against the daily quota. Bulk jobs run asynchronously: the call returns a job ID, and the client should poll the job status endpoint no more than once every ten seconds. Polling faster than that is itself throttled. Failed records are listed in the job result and can be resubmitted without resending the whole batch.",
+      "When a limit is exceeded the API returns HTTP status 429 with a JSON error body naming the limit that was hit. {retry_guidance} Clients should back off exponentially with jitter, starting at one second and capping at sixty seconds, and must not retry immediately in a tight loop. Repeated violations over an hour can trigger a temporary block of fifteen minutes on the workspace, which shows as status 403 with the reason code rate_block. The official SDKs already implement this back-off, so customers seeing frequent blocks are usually calling the API with their own HTTP client.",
+      "Customers who need higher limits should first check whether bulk endpoints and caching cover their case. {limit_increase_rule} Requests are reviewed by the platform team, who look at the last thirty days of traffic before deciding. Temporary increases for a migration or a launch are possible for up to two weeks. For contractual questions, the customer's account manager is {person} ({email}). Support agents must not promise a specific limit before the platform team has approved it, and any approved change is recorded on the workspace so other agents can see it."
+    ],
+    "variants": [
+      {
+        "variant_id": "free-v2",
+        "label": "Free tier, API version 2",
+        "slots": {
+          "requests_per_minute": "60",
+          "burst_allowance": "20",
+          "concurrency_limit": "5",
+          "daily_quota": "10,000",
+          "bulk_batch_size": "100",
+          "retry_guidance": "Version 2 returns a Retry-After header in seconds, and the X-RateLimit-Remaining and X-RateLimit-Reset headers are included on every response.",
+          "limit_increase_rule": "Limits on the free tier cannot be raised; the customer must move to a paid tier.",
+          "v2_sunset_date": "1 June 2027"
+        },
+        "extra_section": "Version 2 addendum: API version 2 stops accepting new free tier keys on {v2_sunset_date}. Existing keys keep working until then, but new integrations should be built on version 3, which also gives the free tier higher limits. Customers who ask about the migration should be pointed to the version 3 upgrade guide in the developer documentation. Version 2 free keys created before that date are not migrated automatically and must be replaced by the customer."
+      },
+      {
+        "variant_id": "growth-v2",
+        "label": "Growth tier, API version 2",
+        "slots": {
+          "requests_per_minute": "600",
+          "burst_allowance": "100",
+          "concurrency_limit": "20",
+          "daily_quota": "500,000",
+          "bulk_batch_size": "500",
+          "retry_guidance": "Version 2 returns a Retry-After header in seconds, and the X-RateLimit-Remaining and X-RateLimit-Reset headers are included on every response.",
+          "limit_increase_rule": "Growth customers can request an increase of up to two times the standard limits through a support ticket stating their expected peak traffic."
+        }
+      },
+      {
+        "variant_id": "scale-v2",
+        "label": "Scale tier, API version 2",
+        "slots": {
+          "requests_per_minute": "3,000",
+          "burst_allowance": "500",
+          "concurrency_limit": "50",
+          "daily_quota": "5,000,000",
+          "bulk_batch_size": "1,000",
+          "retry_guidance": "Version 2 returns a Retry-After header in seconds, and the X-RateLimit-Remaining and X-RateLimit-Reset headers are included on every response.",
+          "limit_increase_rule": "Scale customers can request increases of up to five times the standard limits through a support ticket; anything above that needs a dedicated environment."
+        }
+      },
+      {
+        "variant_id": "growth-v3",
+        "label": "Growth tier, API version 3",
+        "slots": {
+          "requests_per_minute": "900",
+          "burst_allowance": "150",
+          "concurrency_limit": "25",
+          "daily_quota": "750,000",
+          "bulk_batch_size": "1,000",
+          "retry_guidance": "Version 3 returns the standard RateLimit and RateLimit-Policy headers and a Retry-After header in seconds; the old X-RateLimit headers are no longer sent.",
+          "limit_increase_rule": "Growth customers on version 3 can request an increase of up to two times the standard limits directly from the developer dashboard, without a ticket."
+        }
+      },
+      {
+        "variant_id": "scale-v3",
+        "label": "Scale tier, API version 3",
+        "slots": {
+          "requests_per_minute": "5,000",
+          "burst_allowance": "1,000",
+          "concurrency_limit": "80",
+          "daily_quota": "10,000,000",
+          "bulk_batch_size": "2,500",
+          "retry_guidance": "Version 3 returns the standard RateLimit and RateLimit-Policy headers and a Retry-After header in seconds; the old X-RateLimit headers are no longer sent.",
+          "limit_increase_rule": "Scale customers on version 3 can request increases of up to five times the standard limits from the developer dashboard; larger increases need a dedicated environment."
+        }
+      },
+      {
+        "variant_id": "enterprise-v3",
+        "label": "Enterprise dedicated, API version 3",
+        "slots": {
+          "requests_per_minute": "20,000",
+          "burst_allowance": "4,000",
+          "concurrency_limit": "250",
+          "daily_quota": "50,000,000",
+          "bulk_batch_size": "5,000",
+          "retry_guidance": "Version 3 returns the standard RateLimit and RateLimit-Policy headers and a Retry-After header in seconds; the old X-RateLimit headers are no longer sent.",
+          "limit_increase_rule": "Enterprise dedicated limits are set in the order form and changed only through a contract amendment, which usually takes five business days.",
+          "dedicated_regions": "Frankfurt and Northern Virginia"
+        },
+        "extra_section": "Dedicated environment addendum: enterprise dedicated workspaces run on isolated capacity in {dedicated_regions}, so their traffic is not affected by the load of other customers. Planned capacity changes are announced to the customer's technical contact at least ten business days ahead, and emergency changes are explained in writing within one business day. Dedicated capacity is reserved for the customer even when it is idle, which is reflected in the contract price."
+      }
+    ]
+  },
+  {
+    "topic_id": "support-data-export",
+    "category": "support",
+    "title": "Exporting Your Account Data",
+    "sections": [
+      "This article explains how customers can get a copy of their data out of the product, either for their own records, for an auditor or before moving to another system. Exports are started from Settings, Data, Export, and only users with the {export_role} role can see that page. Each export is a snapshot of the data at the moment the job starts; later changes are not included. The customer chooses a date range and the record types, such as ledgers, invoices, contacts or payroll runs. Exports include custom fields but not saved report layouts or dashboard settings, which must be recreated by hand in the new system.",
+      "Data is exported as {export_formats}. Each file holds at most {max_rows} rows; larger record sets are split into numbered files inside one archive, and the archive includes a manifest listing the row count per file so customers can check that nothing is missing. Amounts are exported in the account's base currency with a separate column for the transaction currency. Dates use the ISO format regardless of the language setting. Customers importing into a spreadsheet should open the files with UTF-8 encoding, otherwise names with accents appear garbled, which is the most common export complaint we receive.",
+      "Document attachments such as receipts and scanned invoices are handled separately: {attachments_rule} Attachments keep their original file names, prefixed with the record ID so they can be matched back. Large attachment exports can take several hours. The customer receives an email when the archive is ready, with a download link that stays valid for {link_expiry_hours} hours and works only for the user who started the export. If the link expires the export can be started again; there is no limit on the number of manual exports per day, but only one can run at a time.",
+      "{scheduled_exports} Scheduled and manual exports appear in the export history, which shows who started each job, when and with which filters. The history is kept for one year and is often requested by auditors. If an export fails, the history shows the error code: E-TIMEOUT usually means the date range is too wide and should be split, while E-PERM means the user lost the required role while the job was running. Agents can rerun a failed export on the customer's behalf only after the customer confirms the filters in writing, and they note the confirmation on the ticket.",
+      "When a subscription is cancelled the account becomes read-only, and exports remain available for {retention_after_cancel}. After that period the data is deleted and cannot be exported, even if the customer reactivates. Customers who need an export after this point, for a tax inspection for example, should be told plainly that it is no longer possible. Requests for exports in a custom format or a direct database extract are not part of the standard service; forward them to the data services lead, {person} ({email}), who can quote for professional services work and agree a delivery date with the customer."
+    ],
+    "variants": [
+      {
+        "variant_id": "accounting-standard",
+        "label": "Ledgerline Accounting, Standard plan",
+        "slots": {
+          "export_role": "Owner",
+          "export_formats": "CSV files",
+          "max_rows": "100,000",
+          "attachments_rule": "they are not included in Standard plan exports and must be downloaded one by one from each record, unless the customer upgrades to Premium for bulk attachment export.",
+          "link_expiry_hours": "24",
+          "scheduled_exports": "Scheduled exports are not available on the Standard plan; every export must be started by hand.",
+          "retention_after_cancel": "30 days"
+        }
+      },
+      {
+        "variant_id": "accounting-premium",
+        "label": "Ledgerline Accounting, Premium plan",
+        "slots": {
+          "export_role": "Owner or Admin",
+          "export_formats": "CSV or Excel files",
+          "max_rows": "500,000",
+          "attachments_rule": "they can be included by ticking Include attachments, which adds a separate folder to the archive.",
+          "link_expiry_hours": "72",
+          "scheduled_exports": "Premium accounts can schedule a weekly or monthly export to a connected cloud storage folder; scheduled files are overwritten each time unless versioning is turned on for that folder.",
+          "retention_after_cancel": "90 days"
+        }
+      },
+      {
+        "variant_id": "accounting-legacy-v4",
+        "label": "Ledgerline Accounting, legacy version 4",
+        "slots": {
+          "export_role": "Administrator",
+          "export_formats": "CSV files or a single XML file in the version 4 schema",
+          "max_rows": "65,000",
+          "attachments_rule": "version 4 exports attachments only as a separate ZIP file built overnight, requested from the legacy admin console.",
+          "link_expiry_hours": "48",
+          "scheduled_exports": "Version 4 supports nightly scheduled exports to an SFTP server configured by the customer.",
+          "retention_after_cancel": "60 days",
+          "legacy_eol_date": "30 September 2027",
+          "legacy_audit_years": "5"
+        },
+        "extra_section": "Version 4 addendum: version 4 reaches end of life on {legacy_eol_date}. Customers still on it should export a full archive before migrating, because audit trails older than {legacy_audit_years} years are not carried over to the current platform. The migration team can check the archive with the customer before the old account is switched off. Archives exported from version 4 can still be opened after the switch-off, because they use plain CSV and XML."
+      },
+      {
+        "variant_id": "payroll-eu",
+        "label": "Ledgerline Payroll, EU region",
+        "slots": {
+          "export_role": "Payroll Admin",
+          "export_formats": "CSV files, plus a payslip PDF for each employee and pay period",
+          "max_rows": "200,000",
+          "attachments_rule": "employee documents are exported only when the payroll admin confirms a lawful purpose in the export dialog, and every such export is logged for the data protection officer.",
+          "link_expiry_hours": "12",
+          "scheduled_exports": "Scheduled exports are limited to a monthly payroll journal sent to the customer's accounting system; full exports must be started by hand.",
+          "retention_after_cancel": "6 months, to cover statutory payroll corrections",
+          "access_request_days": "30"
+        },
+        "extra_section": "EU payroll addendum: an employee can ask their employer, not us, for a copy of their own payroll data. If an employee contacts support directly, direct them to their employer's payroll team and do not export anything for them. Requests that reach the employer must be fulfilled within {access_request_days} days, and the export history can serve as evidence that this was done."
+      },
+      {
+        "variant_id": "payroll-us",
+        "label": "Ledgerline Payroll, US region",
+        "slots": {
+          "export_role": "Payroll Admin",
+          "export_formats": "CSV files, plus year-end tax form PDFs for each employee",
+          "max_rows": "200,000",
+          "attachments_rule": "pay stubs and year-end tax documents are included automatically, while other employee uploads must be selected by document type.",
+          "link_expiry_hours": "24",
+          "scheduled_exports": "Payroll US accounts can schedule a quarterly export to SFTP to support tax filings.",
+          "retention_after_cancel": "7 years for tax records, and 90 days for everything else"
+        }
+      },
+      {
+        "variant_id": "partner-edition",
+        "label": "Ledgerline Accounting, Accountant Partner edition",
+        "slots": {
+          "export_role": "Partner Admin",
+          "export_formats": "CSV or Excel files, with one archive per client company",
+          "max_rows": "500,000",
+          "attachments_rule": "attachments can be included per client, but exporting attachments for more than ten clients at once requires splitting the job.",
+          "link_expiry_hours": "72",
+          "scheduled_exports": "Partners can schedule exports for each client company separately, up to a daily frequency.",
+          "retention_after_cancel": "90 days after the client is removed from the partner account"
+        }
+      }
+    ]
+  },
+  {
+    "topic_id": "support-account-deletion",
+    "category": "support",
+    "title": "Account Deletion and Data Erasure Requests",
+    "sections": [
+      "This article describes what happens when a customer asks to close their account and have their data erased, and what support must check before starting. Only the account owner can request deletion, through Settings, Account, Delete account, or in writing to support from the owner's email address. {confirmation_method} Before deletion, remind the customer that it is permanent and suggest they export their data first, as described in the data export article. Accounts with an unpaid balance can still be deleted, but the balance remains due and is handled by collections. Deletion of a single user inside an account is a different process and is done by the account admin.",
+      "After the request is confirmed, the account enters a grace period of {grace_period_days} days. During that time users cannot sign in, scheduled jobs and integrations stop, and the owner can cancel the deletion by replying to the confirmation email or by asking support. When the grace period ends, the account and its data are permanently removed from the live systems within {purge_days} days. The customer receives a final email when this is done. Support cannot restore any data after that point, and reactivating with the same email address creates a new, empty account with no history.",
+      "Backups are not edited record by record. Deleted data remains in encrypted backups until those backups expire, which happens {backup_purge_days} days after the live deletion. Backups are only used to recover from a platform incident, and if a restore ever happens, previously deleted accounts are deleted again before the system goes back online. Customers sometimes ask for a certificate of deletion; we can provide a standard letter confirming the dates of live deletion and backup expiry, signed by the data protection team, but not a log of each individual record.",
+      "Some records must be kept by law even after the account is deleted. For this region we keep {retained_records} for {retention_years} years, in a restricted archive that only the finance and legal teams can access. These records are not used for marketing or analytics. The rest of the account data, including users, contacts, documents and attachments, is deleted as described above. If a customer objects to the retention, explain the legal basis and offer to forward the objection to the data protection officer rather than arguing the point in the ticket.",
+      "Requests made under data protection law, such as a right to erasure request from an individual user rather than the account owner, must be answered within {response_deadline}. Log them in the privacy queue the same day, even if they arrive through chat or social media. The data protection officer for this region is {person} ({email}), and postal requests can be sent to {address}. Never ask the requester why they want their data erased, and do not require them to use a specific form. Identity checks are allowed only to the extent needed to confirm that the request comes from the person concerned."
+    ],
+    "variants": [
+      {
+        "variant_id": "accounting-eu",
+        "label": "Ledgerline Accounting, EU region",
+        "slots": {
+          "confirmation_method": "The owner must confirm by clicking a link sent to their email address and entering a code from their second factor.",
+          "grace_period_days": "14",
+          "purge_days": "30",
+          "backup_purge_days": "35",
+          "retained_records": "invoices and ledger entries",
+          "retention_years": "10",
+          "response_deadline": "one month, extendable by two further months for complex requests"
+        }
+      },
+      {
+        "variant_id": "accounting-us",
+        "label": "Ledgerline Accounting, US region",
+        "slots": {
+          "confirmation_method": "The owner must confirm by clicking a link sent to their email address.",
+          "grace_period_days": "30",
+          "purge_days": "45",
+          "backup_purge_days": "90",
+          "retained_records": "invoices, ledger entries and tax documents",
+          "retention_years": "7",
+          "response_deadline": "45 days"
+        }
+      },
+      {
+        "variant_id": "accounting-uk",
+        "label": "Ledgerline Accounting, UK region",
+        "slots": {
+          "confirmation_method": "The owner must confirm by clicking a link sent to their email address and entering a code from their second factor, as in the EU region.",
+          "grace_period_days": "14",
+          "purge_days": "30",
+          "backup_purge_days": "35",
+          "retained_records": "invoices and ledger entries",
+          "retention_years": "6",
+          "response_deadline": "one calendar month"
+        }
+      },
+      {
+        "variant_id": "accounting-brazil",
+        "label": "Ledgerline Accounting, Brazil region",
+        "slots": {
+          "confirmation_method": "The owner must confirm by clicking the email link and must also accept the deletion terms shown in Portuguese.",
+          "grace_period_days": "15",
+          "purge_days": "30",
+          "backup_purge_days": "60",
+          "retained_records": "fiscal invoices and ledger entries",
+          "retention_years": "5",
+          "response_deadline": "15 days",
+          "register_years": "5"
+        },
+        "extra_section": "Brazil addendum: data for this region is hosted in Sao Paulo, and every deletion request must also be logged in the local register kept for the national data protection authority. Register entries contain only the request date, the account ID and the completion date, and they are kept for {register_years} years after the deletion is completed. Agents must not include any customer content in the register, and must answer register queries only through the legal team."
+      },
+      {
+        "variant_id": "payroll-eu",
+        "label": "Ledgerline Payroll, EU region",
+        "slots": {
+          "confirmation_method": "The owner must confirm by email link and second factor code, and a second payroll admin must approve the request within seven days.",
+          "grace_period_days": "30",
+          "purge_days": "30",
+          "backup_purge_days": "35",
+          "retained_records": "payslips, payroll journals and tax filings",
+          "retention_years": "10",
+          "response_deadline": "one month"
+        }
+      },
+      {
+        "variant_id": "expenses-mobile",
+        "label": "Ledgerline Expenses mobile app, individual users",
+        "slots": {
+          "confirmation_method": "Users can confirm in the app with their device passcode or biometrics.",
+          "grace_period_days": "7",
+          "purge_days": "14",
+          "backup_purge_days": "30",
+          "retained_records": "receipts linked to expense claims already submitted to an employer",
+          "retention_years": "3",
+          "response_deadline": "one month",
+          "store_cancel_delay": "48 hours"
+        },
+        "extra_section": "Mobile addendum: deleting the app from the phone does not delete the account. If the user's employer pays for the subscription, the user can delete their personal account only after leaving the employer's workspace, which the employer admin does from the web console. Subscriptions bought through an app store must be cancelled separately in that store, which can take up to {store_cancel_delay} to stop billing."
+      }
+    ]
+  },
+  {
+    "topic_id": "support-outage-escalation",
+    "category": "support",
+    "title": "Outage Escalation Runbook",
+    "sections": [
+      "This runbook tells the support engineer on duty what to do when customers report that the service named in the title is down or badly degraded. Start by confirming the impact: check the synthetic monitors, the error rate dashboard and the number of tickets opened in the last fifteen minutes. For this service, a severity 1 incident means {sev1_definition}. Anything smaller is a severity 2 or 3 and follows the normal queue. When in doubt, declare the higher severity; downgrading later costs nothing, while a late page costs customer trust and often breaks contractual response times.",
+      "Once severity 1 is declared, page the on-call engineer through the paging tool. The engineer must acknowledge within {ack_minutes} minutes. If there is no acknowledgement, the page escalates automatically to the secondary, and the support engineer should also phone the primary on-call lead for this service, {person}, on {phone}. Open the incident bridge in {bridge_channel} and post the incident ID, the start time, the monitors that fired and three representative ticket numbers. Keep customer details out of the bridge; link to tickets instead of pasting their content, because bridge logs are shared widely.",
+      "Customers must hear from us quickly, even before the cause is known. Publish a first status page notice within {status_page_minutes} minutes of declaring severity 1, using the investigating template, and link it in every new ticket about the outage. After that, update the status page every {update_interval}, even if the only news is that work continues. Support agents should tag all related tickets with the incident ID so they can be answered in bulk when the incident is resolved. Do not give customers an estimated time of recovery unless the incident commander has approved one in the bridge.",
+      "Mitigation decisions belong to the incident commander, who is the on-call engineer unless someone more senior takes over explicitly in the bridge. For this service, {rollback_authority} If the incident lasts more than one hour, or affects data integrity, escalate to the engineering duty manager, {person_2} ({phone_2}), who decides whether to inform executives and key accounts. Support does not contact key accounts directly during an incident; account managers do that with wording approved in the bridge. Keep a running timeline in the bridge with the time of each action, because it becomes the backbone of the review.",
+      "When monitors have been green for thirty minutes, the incident commander declares the incident resolved. Support then publishes the resolved notice, replies to tagged tickets with the approved summary, and closes them after the customer confirms. A written review is due within {postmortem_days} business days and must include the timeline, the customer impact in numbers, the root cause and follow-up actions with owners. Customers on contracts with service credits can request them based on the review's impact numbers; route those requests to billing, not to engineering. The support engineer on duty adds a short note on what slowed detection or communication."
+    ],
+    "variants": [
+      {
+        "variant_id": "payments-v3",
+        "label": "Payments API, version 3",
+        "slots": {
+          "sev1_definition": "more than 5 percent of payment requests failing for five minutes, or any duplicate charges",
+          "ack_minutes": "5",
+          "bridge_channel": "the inc-payments chat channel with a video call",
+          "status_page_minutes": "10",
+          "update_interval": "20 minutes",
+          "rollback_authority": "any engineer on the rota may roll back a deployment without asking, but feature flags for card schemes need the commander's approval.",
+          "postmortem_days": "3"
+        }
+      },
+      {
+        "variant_id": "payments-v4",
+        "label": "Payments API, version 4",
+        "slots": {
+          "sev1_definition": "more than 2 percent of payment requests failing for three minutes, any duplicate charges, or settlement files delayed by over an hour",
+          "ack_minutes": "5",
+          "bridge_channel": "the inc-payments-v4 chat channel with a video call",
+          "status_page_minutes": "10",
+          "update_interval": "15 minutes",
+          "rollback_authority": "rollbacks run through the automated canary tool, which reverts on its own when error budgets burn; a manual rollback needs the commander's approval.",
+          "postmortem_days": "3",
+          "security_notify_minutes": "30"
+        },
+        "extra_section": "Version 4 addendum: because version 4 handles card data directly, any incident that might expose card numbers must also be reported to the security team within {security_notify_minutes} minutes of being suspected. The card scheme notification clock starts at that point, so the bridge must record the exact time. Security then decides whether forensic logging needs to be preserved before any rollback."
+      },
+      {
+        "variant_id": "portal-eu",
+        "label": "Customer portal, EU cluster",
+        "slots": {
+          "sev1_definition": "users in two or more EU countries unable to sign in or load the dashboard for ten minutes",
+          "ack_minutes": "10",
+          "bridge_channel": "the inc-portal chat channel",
+          "status_page_minutes": "15",
+          "update_interval": "30 minutes",
+          "rollback_authority": "the commander may roll back application deployments, but any database migration rollback needs the EU data owner present in the bridge.",
+          "postmortem_days": "5",
+          "notice_languages": "English, French and German"
+        },
+        "extra_section": "EU cluster addendum: if personal data may have been exposed or lost, notify the privacy team immediately. The regulator must be informed within 72 hours of awareness, so the bridge must record the exact time the team became aware. Status page notices for the EU cluster are published in {notice_languages}, using the approved translations kept with the templates."
+      },
+      {
+        "variant_id": "portal-us",
+        "label": "Customer portal, US cluster",
+        "slots": {
+          "sev1_definition": "more than 10 percent of US sessions failing for ten minutes",
+          "ack_minutes": "10",
+          "bridge_channel": "the inc-portal chat channel",
+          "status_page_minutes": "15",
+          "update_interval": "30 minutes",
+          "rollback_authority": "the commander may roll back any deployment from the last 24 hours without further approval.",
+          "postmortem_days": "5"
+        }
+      },
+      {
+        "variant_id": "mobile-backend-2025",
+        "label": "Mobile backend, 2025 revision",
+        "slots": {
+          "sev1_definition": "push notifications or sync failing for more than 20 percent of active devices for fifteen minutes",
+          "ack_minutes": "15",
+          "bridge_channel": "the inc-mobile chat channel",
+          "status_page_minutes": "20",
+          "update_interval": "45 minutes",
+          "rollback_authority": "backend rollbacks are allowed, but app store builds cannot be rolled back, so the commander decides whether to switch features off remotely through configuration.",
+          "postmortem_days": "7"
+        }
+      },
+      {
+        "variant_id": "data-pipeline-2026",
+        "label": "Reporting data pipeline, 2026 revision",
+        "slots": {
+          "sev1_definition": "customer reports delivered more than four hours late, or any report showing wrong figures",
+          "ack_minutes": "15",
+          "bridge_channel": "the inc-data chat channel",
+          "status_page_minutes": "30",
+          "update_interval": "one hour",
+          "rollback_authority": "the commander may pause ingestion, but deleting or reprocessing customer data needs approval from the data platform lead.",
+          "postmortem_days": "7"
+        }
+      }
+    ]
+  },
+  {
+    "topic_id": "support-mobile-sync",
+    "category": "support",
+    "title": "Mobile App Sync Troubleshooting",
+    "sections": [
+      "This article helps agents fix problems where changes made on a phone or tablet do not appear on the web, or the other way round. The app syncs automatically every {sync_interval} while it is open and connected, and immediately after the user saves a record. Users can force a sync by pulling down on the record list. Before troubleshooting, confirm the app version from Settings, About, and check that the device runs at least {min_os}; older systems still open the app but sync is disabled and a banner explains why. Check the status page as well, since a backend incident looks exactly like a device problem.",
+      "Records created or edited without a connection are stored on the device and sent when the connection returns. The app can hold up to {offline_limit} of offline changes; past that point it stops accepting new edits and asks the user to reconnect. Offline changes are lost if the app is deleted or the user signs out before syncing, and the sign-out screen warns about this with the number of pending changes. Agents should always ask how many pending changes the sync indicator shows before suggesting a reinstall, because a reinstall at that point destroys the user's unsent work.",
+      "When the same record was changed on two devices before either synced, the app resolves the conflict as follows: {conflict_rule} The version that was not kept is saved in the record history for thirty days, so it can be restored by the user or an admin from the web app. Conflicts are the most common cause of reports that the app lost changes. Show the user where record history is before escalating, and ask them to avoid editing the same record on two devices at once. Admins can also export the history of a single record for review.",
+      "Photos and file attachments sync separately from record data, and only over Wi-Fi unless the user enables mobile data uploads. Each attachment can be up to {max_attachment_mb} MB; larger files stay on the device with a warning icon. If sync stops when the app is in the background, check the operating system setting: {background_setting} Battery saver modes on many devices pause background sync completely, which users rarely realise. Ask the user to keep the app open on Wi-Fi for a few minutes, which usually clears a backlog of attachments without any further action.",
+      "If the steps above do not help, collect the sync log and escalate to the mobile team. To get it, {log_steps} The log contains record IDs and timestamps but no record content, so it can be attached to the ticket safely. Escalations should include the app version, the device model, the operating system version, the number of pending changes and the time of the last successful sync. Mobile escalations are triaged by {person} ({email}) on the mobile support desk, who replies within one business day and may ask the user for a short screen recording."
+    ],
+    "variants": [
+      {
+        "variant_id": "ios-v6",
+        "label": "Fieldnote for iOS, version 6",
+        "slots": {
+          "sync_interval": "5 minutes",
+          "min_os": "iOS 15",
+          "offline_limit": "500 changes",
+          "conflict_rule": "the change saved last on any device wins for the whole record, and the other device shows a notice.",
+          "max_attachment_mb": "25",
+          "background_setting": "under Settings, General, Background App Refresh, the app must be switched on.",
+          "log_steps": "open Settings, Help, tap the version number five times and choose Send sync log, which opens an email draft addressed to support.",
+          "v6_cutoff_date": "15 January 2027"
+        },
+        "extra_section": "Version 6 addendum: version 6 stops syncing on {v6_cutoff_date}. Users who have not updated by then can still read records already on the device but cannot send changes. Encourage users to sync all pending changes before updating, because the upgrade migrates only data that has already reached the server. After the cutoff, the app shows a banner on every screen asking the user to install the latest version from the store."
+      },
+      {
+        "variant_id": "ios-v7",
+        "label": "Fieldnote for iOS, version 7",
+        "slots": {
+          "sync_interval": "2 minutes",
+          "min_os": "iOS 16",
+          "offline_limit": "2,000 changes",
+          "conflict_rule": "changes are merged field by field, and only when the same field was changed on both devices does the later change win.",
+          "max_attachment_mb": "100",
+          "background_setting": "under Settings, General, Background App Refresh, the app must be switched on, and Low Power Mode must be off.",
+          "log_steps": "open Settings, Help, Diagnostics and tap Share sync log, then choose the support upload option."
+        }
+      },
+      {
+        "variant_id": "android-v6",
+        "label": "Fieldnote for Android, version 6",
+        "slots": {
+          "sync_interval": "5 minutes",
+          "min_os": "Android 10",
+          "offline_limit": "500 changes",
+          "conflict_rule": "the change saved last on any device wins for the whole record, and the other device shows a notice.",
+          "max_attachment_mb": "25",
+          "background_setting": "under Settings, Apps, Fieldnote, Battery, the app must be set to Unrestricted.",
+          "log_steps": "open Settings, Help, tap the version number five times and choose Send sync log, which opens an email draft addressed to support."
+        }
+      },
+      {
+        "variant_id": "android-v7",
+        "label": "Fieldnote for Android, version 7",
+        "slots": {
+          "sync_interval": "2 minutes",
+          "min_os": "Android 11",
+          "offline_limit": "2,000 changes",
+          "conflict_rule": "changes are merged field by field, and only when the same field was changed on both devices does the later change win.",
+          "max_attachment_mb": "100",
+          "background_setting": "under Settings, Apps, Fieldnote, Battery, the app must be set to Unrestricted, and on some phone brands it must also be removed from the sleeping apps list.",
+          "log_steps": "open Settings, Help, Diagnostics and tap Share sync log, then choose the support upload option."
+        }
+      },
+      {
+        "variant_id": "ipad-v7",
+        "label": "Fieldnote for iPad, version 7",
+        "slots": {
+          "sync_interval": "2 minutes",
+          "min_os": "iPadOS 16",
+          "offline_limit": "5,000 changes",
+          "conflict_rule": "changes are merged field by field, and when the same field was changed on both devices the user sees both versions side by side and picks one.",
+          "max_attachment_mb": "250",
+          "background_setting": "under Settings, General, Background App Refresh, the app must be switched on; windows left in the background in Stage Manager sync only every 15 minutes.",
+          "log_steps": "open Settings, Help, Diagnostics and tap Share sync log, or drag the log file from the Files app into the ticket portal."
+        }
+      },
+      {
+        "variant_id": "rugged-v7",
+        "label": "Fieldnote for rugged Android handhelds, version 7",
+        "slots": {
+          "sync_interval": "1 minute",
+          "min_os": "Android 11 with the enterprise build of the app",
+          "offline_limit": "10,000 changes",
+          "conflict_rule": "the change from the device that scanned the item wins, because scans are treated as the source of truth on the warehouse floor.",
+          "max_attachment_mb": "10",
+          "background_setting": "background sync is controlled by the device management profile, so users cannot change it; ask the customer's IT team to check that the profile allows the app to run in the background.",
+          "log_steps": "the customer's IT team pulls the log remotely through device management, or the user holds the side scan button for ten seconds inside the app and chooses Export log.",
+          "dock_sync_interval": "10 minutes"
+        },
+        "extra_section": "Rugged handheld addendum: these devices are often shared between shift workers. Each worker must sign out at the end of the shift only after the pending change counter shows zero. Devices left in the charging dock keep syncing every {dock_sync_interval} even when locked, so a full sync can be forced by docking the device for a short while. If a docked device still shows pending changes after an hour, check the dock network cable before escalating the case."
+      }
+    ]
+  },
+  {
+    "topic_id": "support-2fa-recovery",
+    "category": "support",
+    "title": "Two-Factor Authentication Recovery",
+    "sections": [
+      "This article covers users who cannot complete two-factor sign-in because they lost their phone, changed number or deleted the authenticator app. Supported second factors on this edition are {second_factor_methods}. When a user turns on two-factor authentication, the product generates {backup_code_count} single use backup codes and asks the user to store them safely. A backup code works in place of the second factor once and is then spent. Users can see how many codes remain and generate a fresh set from their security settings, which invalidates the old set at once.",
+      "The fastest recovery path is an administrator reset. {admin_reset_rule} After the reset, the user signs in with their password only and is forced to enrol a new factor before reaching any data. Administrators should verify the request through a channel other than the one it arrived on, for example by calling the user on a number from the company directory, because second factor resets are a common target of social engineering. Every reset is recorded in the audit log with the administrator's name and the time of the change.",
+      "When the user is the only administrator, or the workspace has no administrator who can act, support runs a recovery check instead. The user submits a request from the sign-in page through the Lost access to my second factor link. We then ask for {verification_docs}. Once the check passes, a recovery hold of {recovery_wait_hours} hours starts, during which a notice is sent to every email address on the account. If nobody objects, the second factor is removed at the end of the hold. The hold cannot be shortened by support, whatever the urgency claimed.",
+      "Users can mark a browser as trusted at sign-in, which skips the second factor on that browser for {trusted_device_days} days. Trusted browsers are cleared when the password changes, when an administrator resets the factor and when the user signs out of all sessions. {enforcement_rule} Agents should remind users that a trusted browser is not a recovery method: if they lose their phone, they should generate new backup codes from the trusted browser right away, before the trust expires. Shared and public computers must never be marked as trusted.",
+      "Escalate to the identity assurance team when the documents do not match, when someone objects during the hold, or when the request looks like an account takeover attempt, for example a recent password reset followed by a factor reset from a new country. The team lead is {person} ({email}). Never read out backup codes, never disable two-factor authentication for a whole workspace on request, and never add a phone number to an account on the user's behalf. Record each recovery case with the verification evidence reference, but do not store copies of identity documents in the ticket."
+    ],
+    "variants": [
+      {
+        "variant_id": "cloud-starter",
+        "label": "Lumora Cloud, Starter plan",
+        "slots": {
+          "second_factor_methods": "authenticator app codes and SMS codes",
+          "backup_code_count": "8",
+          "admin_reset_rule": "On the Starter plan, the workspace owner can reset another member's second factor from the Members page.",
+          "verification_docs": "a reply from the account email address and the last four digits of the card used to pay the most recent invoice",
+          "recovery_wait_hours": "72",
+          "trusted_device_days": "30",
+          "enforcement_rule": "Two-factor authentication is optional on the Starter plan, and each user chooses whether to enable it."
+        }
+      },
+      {
+        "variant_id": "cloud-business",
+        "label": "Lumora Cloud, Business plan",
+        "slots": {
+          "second_factor_methods": "authenticator app codes, SMS codes and push approval in the mobile app",
+          "backup_code_count": "10",
+          "admin_reset_rule": "Any admin can reset a member's second factor from Admin Console, Users, Security.",
+          "verification_docs": "a reply from the account email address, the workspace ID and confirmation of the last invoice amount",
+          "recovery_wait_hours": "48",
+          "trusted_device_days": "30",
+          "enforcement_rule": "Admins can require two-factor authentication for everyone, and users without a factor are then asked to enrol at their next sign-in."
+        }
+      },
+      {
+        "variant_id": "cloud-enterprise",
+        "label": "Lumora Cloud, Enterprise plan",
+        "slots": {
+          "second_factor_methods": "authenticator app codes, push approval and FIDO2 security keys",
+          "backup_code_count": "10",
+          "admin_reset_rule": "Only admins with the Security Admin role can reset a factor, and resets for other admins need approval from a second Security Admin.",
+          "verification_docs": "a signed request on company letterhead from a named authorised contact, followed by a video call to match the contact's photo ID",
+          "recovery_wait_hours": "24",
+          "trusted_device_days": "14",
+          "enforcement_rule": "Two-factor authentication is always enforced on Enterprise, and admins can restrict the allowed methods to security keys only.",
+          "break_glass_accounts": "3"
+        },
+        "extra_section": "Enterprise addendum: customers with a named technical account manager can pre-register up to {break_glass_accounts} break-glass administrator accounts, protected by security keys stored offline in a safe. These accounts are the recommended way to recover when every regular administrator is locked out, and their use triggers an alert to all other administrators. Break-glass sign-ins are also reported in the monthly security summary sent to the customer, so that every use can be reviewed and justified."
+      },
+      {
+        "variant_id": "cloud-government",
+        "label": "Lumora Cloud, Government region",
+        "slots": {
+          "second_factor_methods": "smart cards and FIDO2 security keys only",
+          "backup_code_count": "5",
+          "admin_reset_rule": "Factor resets are performed only by the customer's registered security officer, in person or over a verified video call.",
+          "verification_docs": "a request from the customer's registered security officer and an identity check, in person or by video, against a government issued ID",
+          "recovery_wait_hours": "96",
+          "trusted_device_days": "7",
+          "enforcement_rule": "Two-factor authentication is mandatory in this region, and trusted browsers are disabled by default unless the customer's security officer turns them on."
+        }
+      },
+      {
+        "variant_id": "server-7-2",
+        "label": "Lumora Server 7.2, self-hosted",
+        "slots": {
+          "second_factor_methods": "authenticator app codes and email codes",
+          "backup_code_count": "8",
+          "admin_reset_rule": "Server administrators reset factors from Server Admin, Users, with the Reset 2FA action, which only the system administrator role can use.",
+          "verification_docs": "proof from the customer's system administrator that the request is genuine, sent from the support portal account linked to the licence",
+          "recovery_wait_hours": "12",
+          "trusted_device_days": "60",
+          "enforcement_rule": "Enforcement is set per server in the configuration file and applies to all users after the next restart.",
+          "auth_service_name": "lumora-auth"
+        },
+        "extra_section": "Version 7.2 addendum: email codes on 7.2 depend on the server's own mail relay. If the relay is down, users cannot receive codes, so check outgoing mail before treating the case as a lost factor. The command line reset tool on 7.2 requires a restart of the {auth_service_name} service afterwards, which signs out every active user. Schedule the restart outside business hours where possible, and warn the customer about it before running the tool."
+      },
+      {
+        "variant_id": "server-8-0",
+        "label": "Lumora Server 8.0, self-hosted",
+        "slots": {
+          "second_factor_methods": "authenticator app codes, email codes and FIDO2 security keys",
+          "backup_code_count": "10",
+          "admin_reset_rule": "Server administrators reset factors from Server Admin, Identity, Users, and can delegate this right to group managers.",
+          "verification_docs": "proof from the customer's system administrator, sent from the support portal account linked to the licence, together with the server's licence ID",
+          "recovery_wait_hours": "24",
+          "trusted_device_days": "45",
+          "enforcement_rule": "Enforcement is set per group in Server Admin and takes effect immediately without a restart."
+        }
+      }
+    ]
+  },
+  {
+    "topic_id": "support-shipping-delays",
+    "category": "support",
+    "title": "Handling Shipping Delays",
+    "sections": [
+      "This guide explains how to answer customers whose order has not arrived on time and what we can offer them. For this delivery service, orders placed before {order_cutoff} on a working day leave the warehouse the same day, and later orders leave the next working day. Delivery is handled by {carrier_name}, and the promised delivery time shown at checkout is {promised_window} from dispatch. Agents should always check the tracking page and the warehouse dispatch record before replying, because many late orders turn out to be waiting for stock and were never dispatched at all.",
+      "An order counts as late when it has not been delivered {late_threshold} after the end of the promised window. Before that point, reassure the customer, share the tracking link and explain any delay message from the carrier, such as a missed delivery attempt or a regional disruption. Do not open a carrier investigation before the order is late; the carrier rejects early requests and it delays the real one. If tracking shows the parcel was delivered but the customer has nothing, ask them to check with neighbours and any safe place for one day before treating it as missing.",
+      "Once an order is late, agents may offer {late_compensation}. Compensation is applied once per order, not per message, and is recorded on the order with the reason code LATE. If the customer no longer needs the item, they may cancel; if it arrives after cancellation, they can refuse it or return it free of charge using the refund policy steps. Customers who ask for compensation because of a carrier strike or extreme weather announced on our status banner are told plainly that the offer does not apply to announced disruptions, though they may still cancel.",
+      "A parcel with no tracking movement for {lost_after_days} working days is treated as lost. Open an investigation in the carrier portal with the tracking number and the declared value. Do not wait for the result before helping the customer: for items in stock, send a free replacement at once; for items out of stock, offer a full refund. Carrier investigations take up to three weeks, and if the parcel turns up afterwards it is returned to the warehouse. Customers never need to deal with the carrier themselves, and agents should not ask them to.",
+      "High value orders and repeated losses at the same address are reviewed by the logistics team before any replacement is sent. For this delivery service the review threshold is {review_threshold} of order value. The logistics contact who handles these reviews and carrier escalations is {person} ({email}), reachable on {phone} during warehouse hours. Agents must never share a carrier driver's name or phone number with a customer, and never promise a delivery slot that the carrier has not confirmed in tracking. If a customer complains about driver conduct, collect the details and forward them to the logistics contact, who raises it with the carrier."
+    ],
+    "variants": [
+      {
+        "variant_id": "germany-standard",
+        "label": "Brightwell Home Store, Germany, standard delivery",
+        "slots": {
+          "order_cutoff": "14:00",
+          "carrier_name": "Rheinpost Parcel",
+          "promised_window": "2 to 4 working days",
+          "late_threshold": "2 working days",
+          "late_compensation": "a 10 percent voucher on the next order, or a refund of the delivery fee if one was paid",
+          "lost_after_days": "7",
+          "review_threshold": "500 euros"
+        }
+      },
+      {
+        "variant_id": "germany-express",
+        "label": "Brightwell Home Store, Germany, express delivery",
+        "slots": {
+          "order_cutoff": "16:00",
+          "carrier_name": "Rheinpost Express",
+          "promised_window": "1 working day",
+          "late_threshold": "1 working day",
+          "late_compensation": "a full refund of the express delivery fee, applied automatically once tracking confirms the delay",
+          "lost_after_days": "5",
+          "review_threshold": "500 euros"
+        }
+      },
+      {
+        "variant_id": "france-standard",
+        "label": "Brightwell Home Store, France, standard delivery",
+        "slots": {
+          "order_cutoff": "13:00",
+          "carrier_name": "Colis Azur",
+          "promised_window": "3 to 5 working days",
+          "late_threshold": "3 working days",
+          "late_compensation": "a refund of the delivery fee and a 5 percent voucher",
+          "lost_after_days": "10",
+          "review_threshold": "400 euros"
+        }
+      },
+      {
+        "variant_id": "uk-standard",
+        "label": "Brightwell Home Store, UK, standard delivery",
+        "slots": {
+          "order_cutoff": "15:00",
+          "carrier_name": "Thamesway Logistics",
+          "promised_window": "2 to 3 working days",
+          "late_threshold": "2 working days",
+          "late_compensation": "a 5 pound voucher, or a refund of the delivery fee if that is higher",
+          "lost_after_days": "8",
+          "review_threshold": "350 pounds"
+        }
+      },
+      {
+        "variant_id": "us-ground",
+        "label": "Brightwell Home Store, United States, ground delivery",
+        "slots": {
+          "order_cutoff": "12:00 Eastern time",
+          "carrier_name": "Prairie Freightlines",
+          "promised_window": "3 to 7 business days",
+          "late_threshold": "3 business days",
+          "late_compensation": "a 10 dollar store credit, rising to 25 dollars for orders above 200 dollars",
+          "lost_after_days": "10",
+          "review_threshold": "750 dollars",
+          "remote_delivery_days": "14"
+        },
+        "extra_section": "United States addendum: deliveries to Alaska, Hawaii and PO boxes are excluded from the promised window and can take up to {remote_delivery_days} business days. Late compensation does not apply to these addresses unless the delay goes beyond that. Agents should check the shipping address before quoting any delivery estimate to the customer. For PO boxes, large items cannot be shipped at all, and the checkout should already have blocked the order."
+      },
+      {
+        "variant_id": "netherlands-freight",
+        "label": "Brightwell Home Store, Netherlands, two-person freight delivery",
+        "slots": {
+          "order_cutoff": "11:00",
+          "carrier_name": "Polderlink Home Delivery",
+          "promised_window": "a booked delivery slot within 5 to 10 working days",
+          "late_threshold": "2 working days",
+          "late_compensation": "a 50 euro refund on the delivery charge and free rebooking of the slot",
+          "lost_after_days": "14",
+          "review_threshold": "1,500 euros",
+          "missed_slot_fee": "45 euros"
+        },
+        "extra_section": "Freight addendum: two-person delivery includes carrying the item to the room of choice and taking the packaging away. Customers must be at home during the booked slot; a missed slot is charged {missed_slot_fee} for rebooking unless the carrier itself was late. Assembly is not included and cannot be added after dispatch. If the carrier misses the slot itself, the next slot is booked for free and the compensation above applies in full."
+      }
+    ]
+  },
+  {
+    "topic_id": "support-warranty-rma",
+    "category": "support",
+    "title": "Warranty Claims and RMA Process",
+    "sections": [
+      "This article explains how agents handle a warranty claim from the first contact until the repaired or replaced unit reaches the customer. Products covered here carry a warranty of {warranty_period} from the delivery date on the original invoice. Ask for the serial number, a description of the fault and the proof of purchase. Serial numbers are printed under the ear cushion, on the base plate or on the back panel depending on the product. Run the guided diagnostic in the support console before raising a return, because about a third of reported faults are fixed by a firmware update or a factory reset.",
+      "If the diagnostic confirms a hardware fault, raise a return merchandise authorisation in the console. The RMA number starts with {rma_prefix} followed by six digits and must be written on the outside of the package. The customer has {ship_window_days} days to send the unit; after that the RMA expires and a new one is needed. The repair centre for this product line is at {address}, and the console generates a prepaid label with that address where shipping is prepaid. Units sent without an RMA number are held for thirty days and then returned to the sender.",
+      "{shipping_cost_rule} Customers should remove personal accessories, ear tips, cables that were not in the original box and any stickers before sending, as the repair centre does not return items that were not part of the product. Pack the unit in the original box if possible, or in a sturdy box with padding; damage in transit caused by poor packing is not covered. Agents should tell the customer to keep the drop-off receipt until the repair centre confirms arrival, which normally happens within two working days of delivery to the centre.",
+      "The repair centre inspects each unit and either repairs it or replaces it with an equivalent unit, which may be refurbished. Target turnaround is {repair_turnaround} from arrival to dispatch. The replacement keeps the remaining original warranty or ninety days, whichever is longer. {advance_replacement_rule} If the inspection finds no fault, the unit is returned with a test report and the customer is not charged, but a second no-fault return within six months is charged an inspection fee. Customers can follow progress on the order page, where each RMA moves through received, inspected, repaired and dispatched.",
+      "The warranty does not cover {warranty_exclusions}. When inspection finds damage of this kind, the repair centre sends a quote for a paid repair, and the customer has fourteen days to accept it before the unit is returned unrepaired. Disputes about whether damage is excluded go to the warranty desk lead, {person} ({email}), who decides within five working days and may ask for photos. Statutory consumer rights in the customer's country apply in addition to this warranty, and agents must never tell a customer that the warranty replaces those rights."
+    ],
+    "variants": [
+      {
+        "variant_id": "x2-headphones-eu",
+        "label": "Kestrel X2 headphones, EU customers",
+        "slots": {
+          "warranty_period": "24 months",
+          "rma_prefix": "RMA-EU",
+          "ship_window_days": "21",
+          "shipping_cost_rule": "Shipping to the repair centre is free for customers in the EU, and the repaired unit comes back by tracked delivery at our cost.",
+          "repair_turnaround": "7 working days",
+          "advance_replacement_rule": "Advance replacement is not offered for headphones; the customer waits for the repaired or replaced unit.",
+          "warranty_exclusions": "worn ear cushions, headbands broken by drops, water damage, or batteries that have lost capacity through normal ageing after the first year"
+        }
+      },
+      {
+        "variant_id": "x2-headphones-us",
+        "label": "Kestrel X2 headphones, US customers",
+        "slots": {
+          "warranty_period": "12 months",
+          "rma_prefix": "RMA-US",
+          "ship_window_days": "30",
+          "shipping_cost_rule": "Customers in the US pay for shipping to the repair centre; we pay for the return trip.",
+          "repair_turnaround": "10 business days",
+          "advance_replacement_rule": "Customers who bought the extended protection plan get an advance replacement shipped before they return the faulty unit.",
+          "warranty_exclusions": "worn ear cushions, drop or water damage, or batteries that have lost capacity through normal ageing",
+          "extended_plan_months": "24"
+        },
+        "extra_section": "US addendum: customers in California can choose a repair at an authorised service partner instead of mailing the unit. The partner list is in the console, and partners bill us directly for covered repairs. The extended protection plan adds {extended_plan_months} months of cover on top of the standard warranty and also covers one accidental drop. Plan holders must register the plan within thirty days of purchase, otherwise only the standard warranty applies to the unit."
+      },
+      {
+        "variant_id": "dock-pro-v2",
+        "label": "Kestrel Dock Pro, hardware version 2",
+        "slots": {
+          "warranty_period": "24 months",
+          "rma_prefix": "RMA-DK2",
+          "ship_window_days": "21",
+          "shipping_cost_rule": "Shipping is free in both directions for docks.",
+          "repair_turnaround": "10 working days",
+          "advance_replacement_rule": "Version 2 docks are no longer manufactured, so faulty units are replaced with a version 3 dock, which needs the newer power adapter included in the box.",
+          "warranty_exclusions": "damage from third-party power adapters, bent connectors or firmware modified by the user"
+        }
+      },
+      {
+        "variant_id": "dock-pro-v3",
+        "label": "Kestrel Dock Pro, hardware version 3",
+        "slots": {
+          "warranty_period": "36 months",
+          "rma_prefix": "RMA-DK3",
+          "ship_window_days": "21",
+          "shipping_cost_rule": "Shipping is free in both directions for docks.",
+          "repair_turnaround": "5 working days",
+          "advance_replacement_rule": "Business customers can request an advance replacement against a card authorisation; the hold is released when the faulty unit arrives.",
+          "warranty_exclusions": "damage from third-party power adapters, bent connectors or firmware modified by the user"
+        }
+      },
+      {
+        "variant_id": "studio-monitors-business",
+        "label": "Kestrel Studio monitors, business customers",
+        "slots": {
+          "warranty_period": "60 months",
+          "rma_prefix": "RMA-BIZ",
+          "ship_window_days": "14",
+          "shipping_cost_rule": "For business customers we collect the unit from their site with a courier booked by the repair centre, at our cost.",
+          "repair_turnaround": "3 working days",
+          "advance_replacement_rule": "Business customers with a service contract get a loan unit within two working days for the duration of the repair.",
+          "warranty_exclusions": "damage from incorrect rack mounting, power surges without a surge protector, or use in outdoor installations",
+          "fleet_threshold": "20"
+        },
+        "extra_section": "Business customer addendum: for installations of more than {fleet_threshold} monitors, the customer can hold spare units on site under a stock agreement and swap faulty units themselves. They then raise one RMA per monthly batch of returns instead of one per unit, and the repair centre replenishes the spare stock. The stock agreement is reviewed every year, and spare units that are never used are counted against the next order of the customer."
+      },
+      {
+        "variant_id": "refurbished",
+        "label": "Kestrel certified refurbished products",
+        "slots": {
+          "warranty_period": "12 months",
+          "rma_prefix": "RMA-RF",
+          "ship_window_days": "14",
+          "shipping_cost_rule": "Shipping to the repair centre is free, but refurbished units are replaced rather than repaired whenever stock allows.",
+          "repair_turnaround": "10 working days",
+          "advance_replacement_rule": "Advance replacement is not available for refurbished products.",
+          "warranty_exclusions": "cosmetic marks already described on the product page, worn ear cushions, or drop and water damage"
+        }
+      }
+    ]
+  },
+  {
+    "topic_id": "support-laptop-provisioning",
+    "category": "support",
+    "title": "Laptop Provisioning for New Hires",
+    "sections": [
+      "This article describes how IT prepares a laptop for a new hire in the group named in the title, from the hiring manager's request to the first login. The hiring manager must raise the device request in the IT portal at least {request_lead_days} working days before the start date, as soon as the offer is signed. Requests arriving later are still handled, but the new hire may start on a loaner device. The request needs the start date, the role, the cost centre and whether the person needs any hardware beyond the standard kit, such as a second screen.",
+      "The standard device for this group is {standard_model}. Exceptions, for example a different model for accessibility reasons, need approval from the IT asset manager, {person} ({email}), and are usually granted within two days. Every device is enrolled in device management before it leaves IT, with full disk encryption turned on and the recovery key escrowed. The device is assigned to the new hire by name in the asset register, which is also where the serial number is recorded for insurance and for the return process when the person leaves the company.",
+      "Each laptop is shipped with {preinstalled_software}, plus the security agent, the VPN client and the company browser profile, which nobody may remove. Further software is installed from the self-service software center after the first login. {admin_rights_rule} Licences for paid tools are assigned to the person, not the device, and are requested by the manager in the same portal. Personal software, games and browser extensions outside the approved list are not allowed and are flagged by the security agent within a day. Operating system updates install automatically on the second Tuesday of each month.",
+      "{delivery_method} On day one, the new hire signs in with the temporary password from the welcome email, sets a new password and enrols a second factor before reaching their mailbox. IT runs a fifteen minute welcome call at 09:30 local time to check that everything works. The new hire may also order accessories, such as a monitor, keyboard, headset or docking station, from the catalogue within a budget of {accessory_budget}; items above the budget need the manager's approval. Accessories ordered in the first week usually arrive within five working days.",
+      "When the person leaves, the laptop and any accessories worth more than fifty euros must be returned within {return_days} days of the last working day. IT sends a prepaid return box to the home address or collects the device at the office. Devices that are not returned are locked remotely and wiped, and their value may be deducted from the final pay where local law allows it. Lost or stolen devices must be reported to IT and to the security mailbox within twenty four hours, whatever the time of day, so that the device can be locked."
+    ],
+    "variants": [
+      {
+        "variant_id": "engineering-berlin",
+        "label": "Engineering hires, Berlin office",
+        "slots": {
+          "request_lead_days": "10",
+          "standard_model": "a 16 inch developer laptop with 32 GB of memory and 1 TB of storage, running macOS",
+          "preinstalled_software": "the office suite, the chat client, the code editor and the container runtime",
+          "admin_rights_rule": "Engineers receive temporary local admin rights through the privilege tool, granted for 30 minutes at a time and logged.",
+          "delivery_method": "Laptops for the Berlin office are handed over at the IT desk on the third floor on the first morning.",
+          "accessory_budget": "400 euros",
+          "return_days": "7"
+        }
+      },
+      {
+        "variant_id": "sales-berlin",
+        "label": "Sales hires, Berlin office",
+        "slots": {
+          "request_lead_days": "7",
+          "standard_model": "a 14 inch ultralight laptop with 16 GB of memory, running Windows",
+          "preinstalled_software": "the office suite, the chat client, the CRM desktop app and the video conferencing client",
+          "admin_rights_rule": "Sales staff do not receive local admin rights.",
+          "delivery_method": "Laptops for the Berlin office are handed over at the IT desk on the third floor on the first morning.",
+          "accessory_budget": "250 euros",
+          "return_days": "7"
+        }
+      },
+      {
+        "variant_id": "engineering-toronto",
+        "label": "Engineering hires, Toronto office",
+        "slots": {
+          "request_lead_days": "12",
+          "standard_model": "a 16 inch developer laptop with 64 GB of memory running macOS, or a Linux workstation laptop on request",
+          "preinstalled_software": "the office suite, the chat client, the code editor and the container runtime",
+          "admin_rights_rule": "Engineers receive temporary local admin rights through the privilege tool, granted for 60 minutes at a time and logged.",
+          "delivery_method": "Laptops for the Toronto office are couriered to the new hire's home three working days before the start date.",
+          "accessory_budget": "550 Canadian dollars",
+          "return_days": "10"
+        }
+      },
+      {
+        "variant_id": "design-toronto",
+        "label": "Design hires, Toronto office",
+        "slots": {
+          "request_lead_days": "12",
+          "standard_model": "a 16 inch laptop with 36 GB of memory and a factory calibrated display, running macOS",
+          "preinstalled_software": "the office suite, the chat client, the design suite and the font manager",
+          "admin_rights_rule": "Designers do not receive local admin rights, but fonts and design plugins can be installed from the software center.",
+          "delivery_method": "Laptops for the Toronto office are couriered to the new hire's home three working days before the start date.",
+          "accessory_budget": "800 Canadian dollars, which can include a colour accurate external display",
+          "return_days": "10"
+        }
+      },
+      {
+        "variant_id": "support-manila",
+        "label": "Customer support hires, Manila office",
+        "slots": {
+          "request_lead_days": "15",
+          "standard_model": "a 14 inch laptop with 16 GB of memory, running Windows, with a wired noise cancelling headset",
+          "preinstalled_software": "the office suite, the chat client, the ticketing desktop app and the softphone",
+          "admin_rights_rule": "Support staff do not receive local admin rights, and USB storage devices are blocked.",
+          "delivery_method": "Laptops for the Manila office are handed over on the first day of onboarding training, in the training room on the 12th floor.",
+          "accessory_budget": "6,000 Philippine pesos",
+          "return_days": "5",
+          "night_pickup_time": "18:00"
+        },
+        "extra_section": "Manila addendum: because of frequent power interruptions, every support hire also receives a small uninterruptible power supply for shifts worked from home. Night shift hires collect their laptop from the security desk in the lobby after {night_pickup_time} on their first evening, and the welcome call is moved to the start of their shift. Night shift hires who cannot reach the office on the first evening can ask their team lead to arrange a courier delivery instead."
+      },
+      {
+        "variant_id": "remote-all-countries",
+        "label": "Fully remote hires, all countries",
+        "slots": {
+          "request_lead_days": "15",
+          "standard_model": "a 14 inch laptop with 16 GB of memory, running Windows or macOS depending on the role",
+          "preinstalled_software": "the office suite, the chat client and the video conferencing client, plus the tools for the role",
+          "admin_rights_rule": "Local admin rights follow the rule for the role, exactly as for office based staff.",
+          "delivery_method": "Laptops for remote hires are shipped from the nearest regional depot and must be signed for in person; IT confirms the delivery address with the new hire by phone first.",
+          "accessory_budget": "the local equivalent of 300 euros",
+          "return_days": "14",
+          "eor_extra_days": "5"
+        },
+        "extra_section": "Remote hire addendum: in countries where we employ people through an employer of record, the laptop is owned by the company but shipped by the local partner, which can add {eor_extra_days} working days to delivery. Customs duties are paid by the company and never by the new hire, who should refuse any delivery that asks for payment. IT tracks these deliveries with the partner and tells the manager as soon as a delay is known."
+      }
+    ]
+  },
+  {
+    "topic_id": "support-webhook-failures",
+    "category": "support",
+    "title": "Troubleshooting Webhook Delivery Failures",
+    "sections": [
+      "Webhooks notify a customer's server when events happen in their Orbitly workspace, such as an order being created or a payment being settled. On this tier a workspace can register up to {max_endpoints} endpoints, each subscribed to a chosen list of event types. We send each event as an HTTPS POST with a JSON body. The receiving server must answer with any 2xx status within {timeout_seconds} seconds; anything else, including a redirect, counts as a failure. Endpoints must use a public hostname with a valid TLS certificate. Self-signed certificates and plain HTTP are rejected when the endpoint is saved.",
+      "Failed deliveries are retried automatically. {retry_schedule} Each retry carries the same event ID, so receivers should store processed IDs and ignore duplicates; delivery is at least once, never exactly once, and events can arrive out of order. The delivery log in the developer dashboard shows every attempt with the status code, the response time and the first kilobyte of the response body, which is usually enough to see whether the customer's firewall, their framework or their own code rejected the call. Delivery logs are kept for thirty days and can be filtered by event type.",
+      "Every request is signed so the receiver can check that it came from us. The signature is sent in the {signature_header} header and is an HMAC SHA-256 of the timestamp and the raw request body, using the endpoint's signing secret. The most common verification bug is computing the signature over a parsed and re-serialised body rather than the raw bytes. Receivers should also reject requests whose timestamp is more than five minutes old. Signing secrets can be rotated from the endpoint page; during a rotation both secrets stay valid for twenty four hours.",
+      "{disable_rule} The workspace owners receive an email when an endpoint is disabled, and a banner appears on the developer dashboard. Once the customer has fixed their server, they re-enable the endpoint from the dashboard. Events that occurred while the endpoint was disabled are not sent automatically; they can be replayed from the event list for up to {replay_days} days, either one by one or in bulk by time range. Bulk replays are sent at a reduced pace so they do not overwhelm the receiver, and they count against the normal webhook volume.",
+      "Before escalating, ask the customer for the endpoint ID, an affected event ID and the time range. Check the delivery log for the status code pattern: timeouts point to slow processing on their side, so they should acknowledge first and process asynchronously; 401 or 403 responses usually mean a signature or firewall problem; connection errors suggest DNS or certificate issues. If the log shows no attempts at all, escalate to the integrations team through {person} ({email}), as this may be a fault on our side. Customers who need our sending IP ranges for an allowlist can find them in the developer documentation."
+    ],
+    "variants": [
+      {
+        "variant_id": "growth-v2",
+        "label": "Growth tier, API version 2",
+        "slots": {
+          "max_endpoints": "5",
+          "timeout_seconds": "10",
+          "retry_schedule": "Version 2 retries up to 8 times over about 24 hours, with the gap doubling from one minute.",
+          "signature_header": "X-Orbitly-Signature",
+          "disable_rule": "An endpoint is disabled automatically after every delivery to it has failed for 3 consecutive days.",
+          "replay_days": "7",
+          "v2_webhook_sunset": "1 June 2027"
+        },
+        "extra_section": "Version 2 addendum: version 2 signatures do not include a timestamp, so the five minute rule above applies only from version 3. Customers on version 2 should plan their migration before {v2_webhook_sunset}, when version 2 webhooks stop being sent. Both versions can run side by side during the migration on separate endpoints. Agents should check which version an endpoint uses before discussing signature errors with the customer, since the rules differ."
+      },
+      {
+        "variant_id": "scale-v2",
+        "label": "Scale tier, API version 2",
+        "slots": {
+          "max_endpoints": "20",
+          "timeout_seconds": "10",
+          "retry_schedule": "Version 2 retries up to 8 times over about 24 hours, with the gap doubling from one minute.",
+          "signature_header": "X-Orbitly-Signature",
+          "disable_rule": "An endpoint is disabled automatically after every delivery to it has failed for 5 consecutive days.",
+          "replay_days": "14"
+        }
+      },
+      {
+        "variant_id": "growth-v3",
+        "label": "Growth tier, API version 3",
+        "slots": {
+          "max_endpoints": "10",
+          "timeout_seconds": "15",
+          "retry_schedule": "Version 3 retries up to 12 times over about 72 hours, with exponential back-off and jitter.",
+          "signature_header": "Orbitly-Signature-V3",
+          "disable_rule": "An endpoint is disabled automatically when more than 95 percent of deliveries to it fail over 3 days.",
+          "replay_days": "14"
+        }
+      },
+      {
+        "variant_id": "scale-v3",
+        "label": "Scale tier, API version 3",
+        "slots": {
+          "max_endpoints": "50",
+          "timeout_seconds": "15",
+          "retry_schedule": "Version 3 retries up to 12 times over about 72 hours, with exponential back-off and jitter.",
+          "signature_header": "Orbitly-Signature-V3",
+          "disable_rule": "An endpoint is disabled automatically when more than 95 percent of deliveries to it fail over 5 days, and the customer's technical contact is warned after the first day.",
+          "replay_days": "30"
+        }
+      },
+      {
+        "variant_id": "enterprise-v3",
+        "label": "Enterprise dedicated, API version 3",
+        "slots": {
+          "max_endpoints": "200",
+          "timeout_seconds": "30",
+          "retry_schedule": "Enterprise dedicated workspaces on version 3 retry up to 20 times over 7 days, and the schedule can be tuned per endpoint in the contract.",
+          "signature_header": "Orbitly-Signature-V3",
+          "disable_rule": "Endpoints are never disabled automatically on enterprise dedicated workspaces; instead an alert goes to the customer's on-call address after 2 hours of continuous failures.",
+          "replay_days": "90",
+          "private_link_days": "10"
+        },
+        "extra_section": "Dedicated addendum: enterprise dedicated workspaces can receive webhooks over a private network link instead of the public internet. In that case the IP allowlist does not apply and the endpoint may use a private hostname, provided its certificate is issued by an authority the customer has uploaded to the workspace. Setup takes about {private_link_days} business days. Private link setup is requested by the customer technical contact through the account team, not through a normal ticket."
+      },
+      {
+        "variant_id": "free-v3",
+        "label": "Free tier, API version 3",
+        "slots": {
+          "max_endpoints": "1",
+          "timeout_seconds": "5",
+          "retry_schedule": "Free tier endpoints on version 3 are retried up to 3 times within one hour.",
+          "signature_header": "Orbitly-Signature-V3",
+          "disable_rule": "An endpoint is disabled automatically after 24 hours of continuous failures.",
+          "replay_days": "3"
+        }
+      }
+    ]
+  },
+  {
+    "topic_id": "support-subscription-plan-changes",
+    "category": "support",
+    "title": "Changing Subscription Plans: Upgrades and Downgrades",
+    "sections": [
+      "This article explains how a customer moves between plans and what changes on their bill. Plan changes are made from Billing, Plan, by {who_can_change}. Upgrades take effect immediately: new features, limits and support levels are available as soon as the payment is confirmed. {upgrade_billing_rule} Customers who are unsure which plan fits can start a fourteen day trial of the higher plan from the same page without changing their bill, and the trial ends automatically if they do nothing. Only one trial per plan is allowed for each account, and agents cannot reset it.",
+      "Downgrades work differently. {downgrade_timing} Until then the customer keeps every feature of the current plan. When the downgrade happens, features that the lower plan lacks are switched off, but the data they created is kept read-only, so nothing is lost if the customer upgrades again later. Agents should list the features the customer will lose before confirming, using the plan comparison table, because surprises at downgrade time cause most complaints and chargebacks in this area. A scheduled downgrade can be cancelled at any time before it takes effect.",
+      "{downgrade_refund} Credits are not paid out as cash and expire if the subscription is cancelled. Customers who downgrade because of a service problem, for example after an outage, should be routed to the billing disputes process instead, because a goodwill credit may suit them better than a downgrade. Tax is recalculated on the new plan price, so customers in countries with VAT will see the tax line change too. Invoices issued before the change are never reissued. If the customer pays by bank transfer, any credit appears on the next invoice as a separate line.",
+      "Each plan has a minimum number of paid seats. For this subscription the minimum is {seat_minimum}. Removing seats follows the same timing as a downgrade, while adding seats is billed at once on a pro rata basis. If the customer's usage is above the limits of the lower plan when the downgrade runs, {over_limit_rule} Agents can see current usage against each plan's limits on the account summary and should check it before confirming any downgrade. Storage, members and automation runs are the limits that most often block a downgrade in practice.",
+      "Some changes need a person rather than the billing page: switching the billing currency, moving between monthly and annual billing in the middle of a term, merging two subscriptions, or changing the legal entity on invoices. Send these to the subscriptions team. The contact for plan change exceptions is {person} ({email}). Customers who want to leave entirely should follow the cancellation and account deletion articles; a downgrade to the lowest plan is often a better offer for customers who are leaving because of price, and agents may suggest it once, but not more than once."
+    ],
+    "variants": [
+      {
+        "variant_id": "lumora-monthly",
+        "label": "Lumora Cloud, monthly billing",
+        "slots": {
+          "who_can_change": "the workspace owner or a billing admin",
+          "upgrade_billing_rule": "The customer pays the price difference for the rest of the current month, calculated by the day, on the card on file.",
+          "downgrade_timing": "A downgrade takes effect at the start of the next monthly billing period.",
+          "downgrade_refund": "Monthly plans do not give a refund or credit for the unused part of the month after a downgrade.",
+          "seat_minimum": "1",
+          "over_limit_rule": "the downgrade is postponed and the owner is emailed a list of what to reduce; the change is retried daily for 14 days and then cancelled."
+        }
+      },
+      {
+        "variant_id": "lumora-annual",
+        "label": "Lumora Cloud, annual billing",
+        "slots": {
+          "who_can_change": "the workspace owner or a billing admin",
+          "upgrade_billing_rule": "The price difference for the rest of the annual term is charged at once, calculated by the day, and the renewal date stays the same.",
+          "downgrade_timing": "A downgrade takes effect at the next annual renewal date and must be scheduled at least 30 days before that date.",
+          "downgrade_refund": "Annual plans do not give a refund for a downgrade, because it only takes effect at renewal.",
+          "seat_minimum": "5",
+          "over_limit_rule": "the downgrade still runs at renewal, and the items above the limit become read-only until usage is reduced."
+        }
+      },
+      {
+        "variant_id": "lumora-reseller",
+        "label": "Lumora Cloud, bought through a reseller",
+        "slots": {
+          "who_can_change": "the reseller only, at the customer's request, since the customer's admins see the plan page as read-only",
+          "upgrade_billing_rule": "The reseller invoices the customer for the upgrade under its own terms, and we bill the reseller pro rata.",
+          "downgrade_timing": "A downgrade takes effect at the end of the reseller's contract term with the customer, as confirmed by the reseller in the partner portal.",
+          "downgrade_refund": "Any refund or credit is agreed between the reseller and the customer; we never refund end customers directly.",
+          "seat_minimum": "10",
+          "over_limit_rule": "the reseller is asked to confirm the reduction with the customer before the change runs.",
+          "transfer_notice_days": "15"
+        },
+        "extra_section": "Reseller addendum: if the customer wants to move from the reseller to direct billing, the reseller must first release the subscription in the partner portal. The transfer happens at the end of the reseller term, and the customer must add a payment method at least {transfer_notice_days} days before that date to avoid an interruption of service. Credits held with the reseller are not transferred, so the customer should use them before the move."
+      },
+      {
+        "variant_id": "ledgerline-monthly",
+        "label": "Ledgerline Accounting, monthly billing",
+        "slots": {
+          "who_can_change": "the account owner only",
+          "upgrade_billing_rule": "The new price applies from the day of the upgrade, and a pro rata charge for the rest of the month appears on the next invoice.",
+          "downgrade_timing": "A downgrade takes effect immediately, except for payroll add-ons, which change at the end of the current pay period.",
+          "downgrade_refund": "After an immediate downgrade, the unused part of the month is added as account credit against the next invoice.",
+          "seat_minimum": "1",
+          "over_limit_rule": "the downgrade is blocked until the customer reduces usage, and a message on the plan page explains which limit is exceeded."
+        }
+      },
+      {
+        "variant_id": "ledgerline-annual",
+        "label": "Ledgerline Accounting, annual billing",
+        "slots": {
+          "who_can_change": "the account owner only",
+          "upgrade_billing_rule": "The price difference for the rest of the year is charged at once, and the customer can choose to restart the annual term from the upgrade date.",
+          "downgrade_timing": "A downgrade takes effect at the next renewal date and can be scheduled up to the day before renewal.",
+          "downgrade_refund": "Customers who downgrade within 30 days after an annual renewal receive a credit for the price difference; after that, no credit is given.",
+          "seat_minimum": "3",
+          "over_limit_rule": "the downgrade is blocked until the customer reduces usage."
+        }
+      },
+      {
+        "variant_id": "orbitly-usage",
+        "label": "Orbitly API, usage-based contracts",
+        "slots": {
+          "who_can_change": "a workspace admin with the Billing role",
+          "upgrade_billing_rule": "A higher tier raises the committed monthly spend from the first day of the next calendar month, while the higher limits apply immediately.",
+          "downgrade_timing": "A downgrade lowers the commitment from the next contract anniversary and needs 60 days written notice.",
+          "downgrade_refund": "Unused committed spend is neither refunded nor carried over after a downgrade.",
+          "seat_minimum": "zero, because usage-based contracts are measured by request volume rather than seats",
+          "over_limit_rule": "requests above the new tier's limits are billed at the overage rate instead of being blocked.",
+          "overage_review_percent": "25"
+        },
+        "extra_section": "Usage contract addendum: customers who exceed their committed spend by more than {overage_review_percent} percent for three months in a row are contacted by their account manager with an offer for the next tier, which usually costs less than paying overage. Agents should mention this when a customer complains about overage charges. Overage charges already invoiced are not reduced retroactively when the customer accepts such an offer for the following tier."
+      }
+    ]
+  }
+]

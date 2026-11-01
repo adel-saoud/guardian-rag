@@ -1,0 +1,135 @@
+{"query_id": "contracts-msa-payment-terms-q1", "query": "How many days does the German pharma customer have to pay our invoices under the MSA?", "document_id": "contracts-msa-payment-terms--kestrel-pharma"}
+{"query_id": "contracts-msa-payment-terms-q2", "query": "Lumen Bay hotels contract interest rate on late payments", "document_id": "contracts-msa-payment-terms--lumen-bay-hotels"}
+{"query_id": "contracts-msa-payment-terms-q3", "query": "can we get paid early through the Spanish steel client's bank financing scheme?", "document_id": "contracts-msa-payment-terms--ferrum-steelworks"}
+{"query_id": "contracts-mutual-nda-q1", "query": "standstill clause in the NDA with the investment firm looking at a minority stake", "document_id": "contracts-mutual-nda--saltmarsh-capital"}
+{"query_id": "contracts-mutual-nda-q2", "query": "warehouse robots integration NDA, how long does confidentiality survive after the disclosure period ends?", "document_id": "contracts-mutual-nda--pinecrest-robotics"}
+{"query_id": "contracts-mutual-nda-q3", "query": "French white label cosmetics NDA: deadline to confirm oral disclosures in writing", "document_id": "contracts-mutual-nda--aurelle-cosmetiques"}
+{"query_id": "contracts-software-licence-q1", "query": "is the Quarry Analytics 5 licence counted by named users or concurrent users?", "document_id": "contracts-software-licence--quarry-analytics-v5"}
+{"query_id": "contracts-software-licence-q2", "query": "LedgerPeak private cloud audit notice period", "document_id": "contracts-software-licence--ledgerpeak-erp-cloud"}
+{"query_id": "contracts-software-licence-q3", "query": "can our engineers install the CAD software on their home computer too?", "document_id": "contracts-software-licence--palisade-cad"}
+{"query_id": "contracts-office-lease-q1", "query": "what security deposit or bank guarantee did we give for the Dutch office by the station?", "document_id": "contracts-office-lease--utrecht-stationsplein"}
+{"query_id": "contracts-office-lease-q2", "query": "earliest date we can break the Turin lease", "document_id": "contracts-office-lease--turin-lingotto"}
+{"query_id": "contracts-office-lease-q3", "query": "does a break notice for the Lyon office have to be served by a bailiff?", "document_id": "contracts-office-lease--lyon-part-dieu"}
+{"query_id": "contracts-supplier-onboarding-q1", "query": "how do we verify a new supplier's bank account for the Spanish company", "document_id": "contracts-supplier-onboarding--iberia-bilbao"}
+{"query_id": "contracts-supplier-onboarding-q2", "query": "W-9 missing or TIN mismatch for a US vendor, what happens to payments?", "document_id": "contracts-supplier-onboarding--us-subsidiary"}
+{"query_id": "contracts-supplier-onboarding-q3", "query": "first payment hold period for new suppliers at the Danish and Swedish entities", "document_id": "contracts-supplier-onboarding--nordics-aarhus"}
+{"query_id": "contracts-data-processing-agreement-q1", "query": "breach notification deadline for our database host running London and Manchester data centres", "document_id": "contracts-data-processing-agreement--nestorra-uk"}
+{"query_id": "contracts-data-processing-agreement-q2", "query": "how much notice does the email marketing processor give before adding a subprocessor", "document_id": "contracts-data-processing-agreement--parcelpoint-mail"}
+{"query_id": "contracts-data-processing-agreement-q3", "query": "is call recording paused when callers read out card numbers to the outsourced contact centre?", "document_id": "contracts-data-processing-agreement--voxline-porto"}
+{"query_id": "contracts-sla-service-credits-q1", "query": "Stratus Pro US East service credit claim deadline", "document_id": "contracts-sla-service-credits--stratus-pro-us"}
+{"query_id": "contracts-sla-service-credits-q2", "query": "maximum monthly service credit on the Enterprise hosting plan in Europe", "document_id": "contracts-sla-service-credits--stratus-enterprise-eu"}
+{"query_id": "contracts-sla-service-credits-q3", "query": "does the payments gateway SLA include an authorisation response time target?", "document_id": "contracts-sla-service-credits--helio-payments"}
+{"query_id": "contracts-consulting-sow-q1", "query": "total fee cap for the ERP finance rollout at the Bilbao entity", "document_id": "contracts-consulting-sow--veltane-erp-iberia"}
+{"query_id": "contracts-consulting-sow-q2", "query": "how many days do we have to accept deliverables in phase 2 of the data governance work", "document_id": "contracts-consulting-sow--cobalt-data-governance"}
+{"query_id": "contracts-consulting-sow-q3", "query": "is there a success fee in the small business pricing review engagement?", "document_id": "contracts-consulting-sow--aldermoor-pricing"}
+{"query_id": "contracts-employment-template-q1", "query": "probation period for permanent hires in Utrecht", "document_id": "contracts-employment-template--netherlands-utrecht"}
+{"query_id": "contracts-employment-template-q2", "query": "resignation notice period for employees at the Bilbao office", "document_id": "contracts-employment-template--spain-bilbao"}
+{"query_id": "contracts-employment-template-q3", "query": "right to disconnect rules for cadres in Lyon", "document_id": "contracts-employment-template--france-lyon"}
+{"query_id": "contracts-non-compete-q1", "query": "how much is a French engineer paid each month while bound by a non-compete", "document_id": "contracts-non-compete--france-cadres"}
+{"query_id": "contracts-non-compete-q2", "query": "Dutch employees: how long after leaving are they barred from soliciting clients?", "document_id": "contracts-non-compete--netherlands-staff"}
+{"query_id": "contracts-non-compete-q3", "query": "is salary from the next job offset against non-compete compensation for German engineers?", "document_id": "contracts-non-compete--germany-engineering"}
+{"query_id": "contracts-liability-indemnity-q1", "query": "liability cap in the SD-WAN implementation contract", "document_id": "contracts-liability-indemnity--orbivane-sdwan"}
+{"query_id": "contracts-liability-indemnity-q2", "query": "who pays Revenue penalties if the Irish payroll provider files wrong figures?", "document_id": "contracts-liability-indemnity--vireo-payroll"}
+{"query_id": "contracts-liability-indemnity-q3", "query": "deadline to notify the infrastructure hosting provider of an IP infringement claim", "document_id": "contracts-liability-indemnity--tessellate-hosting"}
+{"query_id": "contracts-termination-for-convenience-q1", "query": "earliest exit date for the application support contract with the Spanish consultancy", "document_id": "contracts-termination-for-convenience--veltane-application-support"}
+{"query_id": "contracts-termination-for-convenience-q2", "query": "what fee do we owe if we cancel the analytics platform subscription for convenience", "document_id": "contracts-termination-for-convenience--ashgrove-analytics"}
+{"query_id": "contracts-termination-for-convenience-q3", "query": "if we end the Leeds facilities contract do the cleaning staff transfer under TUPE?", "document_id": "contracts-termination-for-convenience--clearpath-facilities-leeds"}
+{"query_id": "contracts-renewal-auto-renewal-q1", "query": "how far ahead must we give notice to stop the Quarry analytics support from auto renewing?", "document_id": "contracts-renewal-auto-renewal--quarrystone-support"}
+{"query_id": "contracts-renewal-auto-renewal-q2", "query": "max price increase when the transactional email subscription rolls over", "document_id": "contracts-renewal-auto-renewal--quillmail-email"}
+{"query_id": "contracts-renewal-auto-renewal-q3", "query": "can we lock prices for three years when renewing the HR platform?", "document_id": "contracts-renewal-auto-renewal--lumivex-hr-platform"}
+{"query_id": "contracts-ip-assignment-q1", "query": "when do we own the design system work, on delivery or once the invoice is paid?", "document_id": "contracts-ip-assignment--kanto-design-system"}
+{"query_id": "contracts-ip-assignment-q2", "query": "does the data pipeline contractor need architecture board sign off to use open source libraries?", "document_id": "contracts-ip-assignment--riverbend-data-pipeline"}
+{"query_id": "contracts-ip-assignment-q3", "query": "bonus per patent filed for the shift optimisation research contractor", "document_id": "contracts-ip-assignment--redwood-ridge-algorithm"}
+{"query_id": "contracts-product-warranty-q1", "query": "how long is the warranty on T300 time clocks sold in the UK", "document_id": "contracts-product-warranty--timeclock-t300-uk"}
+{"query_id": "contracts-product-warranty-q2", "query": "do we have to send a faulty R20 badge reader back to get a replacement?", "document_id": "contracts-product-warranty--badgegate-r20"}
+{"query_id": "contracts-product-warranty-q3", "query": "are implied warranties limited for K10 kiosks in the US and Canada?", "document_id": "contracts-product-warranty--kiosk-k10-us"}
+{"query_id": "hr-parental-leave-q1", "query": "how many weeks off do partners get under the older 2023 Lyon parental policy?", "document_id": "hr-parental-leave--lyon-2023"}
+{"query_id": "hr-parental-leave-q2", "query": "Rotterdam: how long do I need to have worked here before the enhanced parental pay applies", "document_id": "hr-parental-leave--rotterdam-2025"}
+{"query_id": "hr-parental-leave-q3", "query": "what support is there for easing back into work after baby leave for the Krakow team", "document_id": "hr-parental-leave--krakow-2025"}
+{"query_id": "hr-sick-leave-q1", "query": "after how many weeks off sick does the Madrid office send you to occupational health", "document_id": "hr-sick-leave--madrid-spain"}
+{"query_id": "hr-sick-leave-q2", "query": "Vienna sick pay days at full salary", "document_id": "hr-sick-leave--vienna-austria"}
+{"query_id": "hr-sick-leave-q3", "query": "warehouse shift worker in Lyon calling in sick, what is the deadline to let them know?", "document_id": "hr-sick-leave--lyon-warehouse"}
+{"query_id": "hr-annual-leave-carryover-q1", "query": "last year's Lisbon rules: how many holiday days could roll over and by when did we have to use them?", "document_id": "hr-annual-leave-carryover--lisbon-2024"}
+{"query_id": "hr-annual-leave-carryover-q2", "query": "who signs off carrying over more holiday than the automatic limit at the Munich site", "document_id": "hr-annual-leave-carryover--munich-2025"}
+{"query_id": "hr-annual-leave-carryover-q3", "query": "Milan reduced working time permit hours per year", "document_id": "hr-annual-leave-carryover--milan-2025"}
+{"query_id": "hr-remote-hybrid-work-q1", "query": "under the old 2023 Amsterdam hybrid rules, how many days a year could we work from another country?", "document_id": "hr-remote-hybrid-work--amsterdam-2023"}
+{"query_id": "hr-remote-hybrid-work-q2", "query": "home office desk and chair budget Barcelona", "document_id": "hr-remote-hybrid-work--barcelona-2025"}
+{"query_id": "hr-remote-hybrid-work-q3", "query": "which weekday is everyone supposed to be in the London office", "document_id": "hr-remote-hybrid-work--london-2025"}
+{"query_id": "hr-expense-reimbursement-q1", "query": "for expenses under the 2022 French version of the policy, what was the daily meal limit when travelling?", "document_id": "hr-expense-reimbursement--france-2022"}
+{"query_id": "hr-expense-reimbursement-q2", "query": "German entity: above what claim total do I need the budget owner to approve as well", "document_id": "hr-expense-reimbursement--germany-2025"}
+{"query_id": "hr-expense-reimbursement-q3", "query": "Sweden mileage rate own car business trip", "document_id": "hr-expense-reimbursement--sweden-2025"}
+{"query_id": "hr-business-travel-booking-q1", "query": "Zurich hotel nightly limit", "document_id": "hr-business-travel-booking--zurich-2025"}
+{"query_id": "hr-business-travel-booking-q2", "query": "under the old Brussels travel rules could a regular employee fly business class on a long haul trip?", "document_id": "hr-business-travel-booking--brussels-2023"}
+{"query_id": "hr-business-travel-booking-q3", "query": "Dublin staff: which agency do I ring if my flight is cancelled in the middle of a trip", "document_id": "hr-business-travel-booking--dublin-2025"}
+{"query_id": "hr-relocation-allowance-q1", "query": "on the 2023 relocation package for people moving to Dublin, how many days of temporary housing were covered", "document_id": "hr-relocation-allowance--dublin-2023"}
+{"query_id": "hr-relocation-allowance-q2", "query": "if I quit a year after relocating to Toronto, do I have to pay back the move costs?", "document_id": "hr-relocation-allowance--toronto-2025"}
+{"query_id": "hr-relocation-allowance-q3", "query": "associate internal transfer relocation lump sum amount", "document_id": "hr-relocation-allowance--internal-associate-2025"}
+{"query_id": "hr-performance-review-cycle-q1", "query": "in last year's engineering review cycle, how long did an improvement plan last", "document_id": "hr-performance-review-cycle--engineering-2024"}
+{"query_id": "hr-performance-review-cycle-q2", "query": "when do pay rises from the sales performance review kick in?", "document_id": "hr-performance-review-cycle--sales-2025"}
+{"query_id": "hr-performance-review-cycle-q3", "query": "rating scale used in reviews for the graduate scheme", "document_id": "hr-performance-review-cycle--graduates-2025"}
+{"query_id": "hr-probation-period-q1", "query": "probation length for non cadre staff in France", "document_id": "hr-probation-period--france-employees"}
+{"query_id": "hr-probation-period-q2", "query": "Germany: by when does the manager have to make the final probation decision", "document_id": "hr-probation-period--germany-2025"}
+{"query_id": "hr-probation-period-q3", "query": "can my trial period in Poland be extended if my manager is still unsure about me?", "document_id": "hr-probation-period--poland-2025"}
+{"query_id": "hr-overtime-on-call-q1", "query": "Krakow engineers on call weekly allowance", "document_id": "hr-overtime-on-call--krakow-engineering"}
+{"query_id": "hr-overtime-on-call-q2", "query": "maximum weekly working hours including call outs for the Lyon IT ops people", "document_id": "hr-overtime-on-call--lyon-it-ops"}
+{"query_id": "hr-overtime-on-call-q3", "query": "Dublin support centre: if I take time off instead of overtime pay, how much time off do I get per hour worked?", "document_id": "hr-overtime-on-call--dublin-support"}
+{"query_id": "hr-pension-contributions-q1", "query": "under the old 2022 UK pension rules, when did the company's contributions vest", "document_id": "hr-pension-contributions--uk-2022"}
+{"query_id": "hr-pension-contributions-q2", "query": "Irish pension employer match", "document_id": "hr-pension-contributions--ireland-2025"}
+{"query_id": "hr-pension-contributions-q3", "query": "who administers the workplace pension for staff employed by our German company?", "document_id": "hr-pension-contributions--germany-2025"}
+{"query_id": "hr-health-insurance-enrolment-q1", "query": "2024 Spanish medical plan: how many days did new joiners have to sign up", "document_id": "hr-health-insurance-enrolment--spain-2024"}
+{"query_id": "hr-health-insurance-enrolment-q2", "query": "are my kids covered for free on the Italian health insurance?", "document_id": "hr-health-insurance-enrolment--italy-2025"}
+{"query_id": "hr-health-insurance-enrolment-q3", "query": "UK private medical cover, which insurer is it", "document_id": "hr-health-insurance-enrolment--uk-2025"}
+{"query_id": "hr-learning-budget-q1", "query": "back in 2023, what was the yearly training budget for engineers", "document_id": "hr-learning-budget--engineering-2023"}
+{"query_id": "hr-learning-budget-q2", "query": "can sales people pay for an industry event ticket out of their learning budget?", "document_id": "hr-learning-budget--sales-2025"}
+{"query_id": "hr-learning-budget-q3", "query": "accountant in finance passes exams then leaves after 18 months, do I repay the qualification?", "document_id": "hr-learning-budget--finance-legal-2025"}
+{"query_id": "hr-whistleblowing-q1", "query": "under the previous French whistleblowing procedure, how long were case records kept", "document_id": "hr-whistleblowing--france-2022"}
+{"query_id": "hr-whistleblowing-q2", "query": "UK ethics hotline: how soon should I get feedback on what was done after reporting a concern", "document_id": "hr-whistleblowing--uk-2025"}
+{"query_id": "hr-whistleblowing-q3", "query": "which outside body can staff of our Dutch entity report misconduct to directly", "document_id": "hr-whistleblowing--netherlands-2025"}
+{"query_id": "hr-resignation-offboarding-q1", "query": "under the 2023 Dutch leaver rules, how did we send back the laptop", "document_id": "hr-resignation-offboarding--netherlands-2023"}
+{"query_id": "hr-resignation-offboarding-q2", "query": "notice period for a non manager resigning in Spain", "document_id": "hr-resignation-offboarding--spain-2025"}
+{"query_id": "hr-resignation-offboarding-q3", "query": "Singapore: when is my final salary paid after I hand in my notice?", "document_id": "hr-resignation-offboarding--singapore-2025"}
+{"query_id": "support-password-reset-sso-q1", "query": "How long does the password reset email link stay valid for government region tenants?", "document_id": "support-password-reset-sso--cloud-government"}
+{"query_id": "support-password-reset-sso-q2", "query": "self-hosted 7.2 which sign-in protocols can we federate with", "document_id": "support-password-reset-sso--server-7-2"}
+{"query_id": "support-password-reset-sso-q3", "query": "enterprise customer locked out, how many failed attempts trigger the lock?", "document_id": "support-password-reset-sso--cloud-enterprise"}
+{"query_id": "support-vpn-setup-q1", "query": "Does the VPN on Singapore Windows laptops route all traffic or only internal ranges?", "document_id": "support-vpn-setup--windows-singapore"}
+{"query_id": "support-vpn-setup-q2", "query": "MTU value to use for vpn on linux machines in the Texas office", "document_id": "support-vpn-setup--linux-austin"}
+{"query_id": "support-vpn-setup-q3", "query": "contractor VPN idle disconnect time", "document_id": "support-vpn-setup--contractors"}
+{"query_id": "support-refund-policy-q1", "query": "do UK shoppers pay for return postage when they send something back", "document_id": "support-refund-policy--uk"}
+{"query_id": "support-refund-policy-q2", "query": "How many days does an American customer have to return an item for a full refund?", "document_id": "support-refund-policy--us"}
+{"query_id": "support-refund-policy-q3", "query": "trade account refund paid as credit note or bank transfer?", "document_id": "support-refund-policy--trade"}
+{"query_id": "support-billing-disputes-q1", "query": "fee we get charged when a Canadian card customer files a chargeback", "document_id": "support-billing-disputes--card-ca"}
+{"query_id": "support-billing-disputes-q2", "query": "Singapore entity, card chargeback open: does the customer keep access to their workspace?", "document_id": "support-billing-disputes--card-apac"}
+{"query_id": "support-billing-disputes-q3", "query": "max service credit an agent can give without approval, UK card customers", "document_id": "support-billing-disputes--card-uk"}
+{"query_id": "support-api-rate-limits-q1", "query": "growth plan on v3: maximum records per bulk call", "document_id": "support-api-rate-limits--growth-v3"}
+{"query_id": "support-api-rate-limits-q2", "query": "concurrent request cap for the scale tier on the version 2 API", "document_id": "support-api-rate-limits--scale-v2"}
+{"query_id": "support-api-rate-limits-q3", "query": "We're on enterprise dedicated, how do we get our API limits raised?", "document_id": "support-api-rate-limits--enterprise-v3"}
+{"query_id": "support-data-export-q1", "query": "Premium accounting export download link expires after how many hours?", "document_id": "support-data-export--accounting-premium"}
+{"query_id": "support-data-export-q2", "query": "can exports be scheduled on the old v4 accounting product", "document_id": "support-data-export--accounting-legacy-v4"}
+{"query_id": "support-data-export-q3", "query": "after cancelling US payroll, how long can we still download our data", "document_id": "support-data-export--payroll-us"}
+{"query_id": "support-account-deletion-q1", "query": "grace period before a Brazilian accounting account is actually deleted", "document_id": "support-account-deletion--accounting-brazil"}
+{"query_id": "support-account-deletion-q2", "query": "How long does deleted data stay in backups for US accounting customers?", "document_id": "support-account-deletion--accounting-us"}
+{"query_id": "support-account-deletion-q3", "query": "payroll in Europe: what records do you keep after we close the account, and for how many years", "document_id": "support-account-deletion--payroll-eu"}
+{"query_id": "support-outage-escalation-q1", "query": "payments API v4 outage, what failure rate makes it a sev1", "document_id": "support-outage-escalation--payments-v4"}
+{"query_id": "support-outage-escalation-q2", "query": "EU portal incident, can the commander roll back a database migration alone?", "document_id": "support-outage-escalation--portal-eu"}
+{"query_id": "support-outage-escalation-q3", "query": "what counts as severity 1 for the reporting pipeline", "document_id": "support-outage-escalation--data-pipeline-2026"}
+{"query_id": "support-mobile-sync-q1", "query": "iPad app v7 how many offline changes before it stops accepting edits", "document_id": "support-mobile-sync--ipad-v7"}
+{"query_id": "support-mobile-sync-q2", "query": "sync conflict on warehouse handheld scanners, which device's change is kept?", "document_id": "support-mobile-sync--rugged-v7"}
+{"query_id": "support-mobile-sync-q3", "query": "minimum Android version needed for sync in Fieldnote 6", "document_id": "support-mobile-sync--android-v6"}
+{"query_id": "support-2fa-recovery-q1", "query": "Starter plan user lost their phone with 2FA on, what do we ask them for to prove who they are?", "document_id": "support-2fa-recovery--cloud-starter"}
+{"query_id": "support-2fa-recovery-q2", "query": "2FA recovery hold length, government region", "document_id": "support-2fa-recovery--cloud-government"}
+{"query_id": "support-2fa-recovery-q3", "query": "Lumora Server 8 trusted browser skips the second factor for how many days", "document_id": "support-2fa-recovery--server-8-0"}
+{"query_id": "support-shipping-delays-q1", "query": "German express order arrived a day late, what compensation do we give", "document_id": "support-shipping-delays--germany-express"}
+{"query_id": "support-shipping-delays-q2", "query": "UK standard delivery cut-off time for same day dispatch", "document_id": "support-shipping-delays--uk-standard"}
+{"query_id": "support-shipping-delays-q3", "query": "Dutch two-person furniture delivery, customer wasn't home for the slot, is there a charge?", "document_id": "support-shipping-delays--netherlands-freight"}
+{"query_id": "support-warranty-rma-q1", "query": "warranty length on dock pro hardware v3", "document_id": "support-warranty-rma--dock-pro-v3"}
+{"query_id": "support-warranty-rma-q2", "query": "X2 headphones bought in the States, who pays shipping to send them in for repair?", "document_id": "support-warranty-rma--x2-headphones-us"}
+{"query_id": "support-warranty-rma-q3", "query": "what prefix do RMA numbers use for refurbished units", "document_id": "support-warranty-rma--refurbished"}
+{"query_id": "support-laptop-provisioning-q1", "query": "what laptop spec does a new engineer at the Toronto site get", "document_id": "support-laptop-provisioning--engineering-toronto"}
+{"query_id": "support-laptop-provisioning-q2", "query": "night shift support new starter in Manila, where and when to pick up the laptop", "document_id": "support-laptop-provisioning--support-manila"}
+{"query_id": "support-laptop-provisioning-q3", "query": "do new engineers in Berlin get local admin on their laptop, and for how long", "document_id": "support-laptop-provisioning--engineering-berlin"}
+{"query_id": "support-webhook-failures-q1", "query": "webhook response timeout on the free plan, API v3", "document_id": "support-webhook-failures--free-v3"}
+{"query_id": "support-webhook-failures-q2", "query": "scale tier v3: how many days back can we replay events after our endpoint got disabled", "document_id": "support-webhook-failures--scale-v3"}
+{"query_id": "support-webhook-failures-q3", "query": "how many webhook endpoints can a growth workspace on API v2 register", "document_id": "support-webhook-failures--growth-v2"}
+{"query_id": "support-subscription-plan-changes-q1", "query": "Ledgerline monthly: if I downgrade, do I get credit for the rest of the month?", "document_id": "support-subscription-plan-changes--ledgerline-monthly"}
+{"query_id": "support-subscription-plan-changes-q2", "query": "how far before renewal must a Lumora annual downgrade be scheduled", "document_id": "support-subscription-plan-changes--lumora-annual"}
+{"query_id": "support-subscription-plan-changes-q3", "query": "we bought Lumora through a partner, can our own admin change the plan?", "document_id": "support-subscription-plan-changes--lumora-reseller"}

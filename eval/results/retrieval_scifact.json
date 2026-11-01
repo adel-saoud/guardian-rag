@@ -1,0 +1,36 @@
+{
+  "dataset": "scifact",
+  "n_documents": 5183,
+  "n_queries": 300,
+  "children_per_query": 30,
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "reranker_model": "cross-encoder/ms-marco-MiniLM-L6-v2",
+  "results": {
+    "dense": {
+      "ndcg@10": 0.6580545601245054,
+      "recall@10": 0.8087777777777777,
+      "mrr@10": 0.6119193121693122,
+      "latency_p50_ms": 103.92487500212155,
+      "latency_p95_ms": 217.4164159805514
+    },
+    "hybrid (bm25_weight=0.4)": {
+      "ndcg@10": 0.7028002548430048,
+      "recall@10": 0.8248888888888889,
+      "mrr@10": 0.6664563492063492,
+      "latency_p50_ms": 109.21166697517037,
+      "latency_p95_ms": 287.7552080026362
+    },
+    "hybrid + rerank": {
+      "ndcg@10": 0.7113114628742435,
+      "recall@10": 0.8576666666666667,
+      "mrr@10": 0.6711044973544974,
+      "latency_p50_ms": 357.87462498410605,
+      "latency_p95_ms": 1320.884707994992
+    }
+  },
+  "rerank_vs_hybrid": {
+    "ndcg@10_delta": 0.008511208031238771,
+    "ci95_low": -0.015421260144819676,
+    "ci95_high": 0.03319611265108144
+  }
+}

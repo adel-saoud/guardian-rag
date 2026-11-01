@@ -1,0 +1,30 @@
+{"query": "Which bank account receives invoice payments for the Acme service deal?", "document_id": "contracts-001"}
+{"query": "Who is the counterpart on the Globex confidentiality agreement?", "document_id": "contracts-002"}
+{"query": "Which card pays for the Initech licence purchase?", "document_id": "contracts-003"}
+{"query": "Where is the rent for the office lease paid?", "document_id": "contracts-004"}
+{"query": "What are the net-30 payment details for the Wayne Enterprises supplier setup?", "document_id": "contracts-005"}
+{"query": "Where are consulting fees from Stark Industries deposited?", "document_id": "contracts-006"}
+{"query": "Which account covers shared costs in the Pied Piper partnership?", "document_id": "contracts-007"}
+{"query": "How is the Hooli software licence renewed?", "document_id": "contracts-008"}
+{"query": "Where do wire payments under the Aperture Labs supply contract go?", "document_id": "contracts-009"}
+{"query": "Where do payments to the Tyrell subcontractor go?", "document_id": "contracts-010"}
+{"query": "Who should a new joiner contact with HR questions on day one?", "document_id": "hr-001"}
+{"query": "What rating did the latest performance appraisal give?", "document_id": "hr-002"}
+{"query": "When does the new net pay after the salary change start?", "document_id": "hr-003"}
+{"query": "Who covers for the employee while they are on approved leave?", "document_id": "hr-004"}
+{"query": "How many days are there to appeal a disciplinary notice?", "document_id": "hr-005"}
+{"query": "Who was promoted to senior engineer?", "document_id": "hr-006"}
+{"query": "When will the final settlement after termination be paid?", "document_id": "hr-007"}
+{"query": "Which account are pension contributions taken from in the benefits enrollment?", "document_id": "hr-008"}
+{"query": "Who delivered the training that led to the completion certificate?", "document_id": "hr-009"}
+{"query": "When does the internal move to a new team take effect?", "document_id": "hr-010"}
+{"query": "A customer is unable to sign in to their account", "document_id": "support-001"}
+{"query": "Which card was hit by the charge the customer is disputing?", "document_id": "support-002"}
+{"query": "Where will the refund be credited?", "document_id": "support-003"}
+{"query": "How can we reach the customer who complained about the product?", "document_id": "support-004"}
+{"query": "Where is my parcel, delivery tracking question", "document_id": "support-005"}
+{"query": "Where did the password reset request originate from?", "document_id": "support-006"}
+{"query": "Customer wants to cancel their subscription", "document_id": "support-007"}
+{"query": "Which region is the account that asked for a new feature in?", "document_id": "support-008"}
+{"query": "Where did the application crash come from in the bug report?", "document_id": "support-009"}
+{"query": "Where was the account verification code sent?", "document_id": "support-010"}

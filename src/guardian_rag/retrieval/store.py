@@ -5,6 +5,11 @@ is the child embedding and whose payload carries the enclosing parent's
 text and order. Retrieving top-K children therefore yields the parent
 context for generation without a second round-trip.
 
+The payload also carries the parent's prompt-injection verdict. Children
+of a quarantined parent are excluded from dense search and from the BM25
+corpus, so they can never be retrieved. Points written before screening
+existed have no verdict and are re-screened at query time.
+
 The store implements the `VectorSink` Protocol from the ingestion layer so
 the ingestion pipeline can use it transparently.
 """
@@ -32,6 +37,7 @@ logger = structlog.get_logger(__name__)
 
 
 _BM25_SCROLL_BATCH = 256
+"""Points per `scroll` page when rebuilding BM25. Bounds memory per round-trip."""
 
 
 class QdrantStore:
@@ -64,12 +70,8 @@ class QdrantStore:
         self._collection = collection_name
         self._ensure_collection(recreate=recreate)
 
-    @property
-    def collection_name(self) -> str:
-        return self._collection
-
-    # ── Lifecycle ──────────────────────────────────────────────────────
     def _ensure_collection(self, recreate: bool) -> None:
+        """Create the cosine collection sized to the embedder, dropping it first if asked."""
         exists = self._client.collection_exists(self._collection)
         if exists and not recreate:
             return
@@ -88,12 +90,12 @@ class QdrantStore:
             dim=self._embedder.dim,
         )
 
-    # ── Write path ─────────────────────────────────────────────────────
     def upsert(
         self,
         parent_chunks: list[ParentChunk],
         child_chunks: list[ChildChunk],
     ) -> None:
+        """Embed the children and store one point per child, carrying its parent in the payload."""
         if not child_chunks:
             return
         parents_by_id = {p.chunk_id: p for p in parent_chunks}
@@ -118,6 +120,8 @@ class QdrantStore:
                 "parent_id": parent.chunk_id,
                 "parent_text": parent.text,
                 "parent_order": parent.order,
+                "injection_quarantined": parent.injection_quarantined,
+                "screener_id": parent.screener_id,
             }
             points.append(
                 PointStruct(
@@ -133,7 +137,6 @@ class QdrantStore:
             collection=self._collection,
         )
 
-    # ── Read path ──────────────────────────────────────────────────────
     def search_dense(
         self,
         query: str,
@@ -144,11 +147,15 @@ class QdrantStore:
         if top_k <= 0:
             return []
         vector = self._embedder.embed_one(query)
-        query_filter: Filter | None = None
+        # `must_not` on a missing key keeps the point, so pre-screening
+        # data stays retrievable and is re-screened at query time.
+        query_filter = Filter(
+            must_not=[FieldCondition(key="injection_quarantined", match=MatchValue(value=True))]
+        )
         if document_id is not None:
-            query_filter = Filter(
-                must=[FieldCondition(key="document_id", match=MatchValue(value=document_id))]
-            )
+            query_filter.must = [
+                FieldCondition(key="document_id", match=MatchValue(value=document_id))
+            ]
         response = self._client.query_points(
             collection_name=self._collection,
             query=vector,
@@ -170,37 +177,44 @@ class QdrantStore:
         return {str(point.id): _point_to_hit(point) for point in points}
 
     def parents_from_hits(self, hits: list[RetrievalHit]) -> list[ParentChunk]:
-        """Build a deduplicated list of parents from a set of retrieval hits.
+        """Return the parents of `hits`, deduplicated, in order of first appearance.
 
-        Order is preserved: the first time a parent_id appears, that parent
-        is added. Subsequent appearances are skipped.
+        One child per parent is read back in a single `retrieve` call, since
+        the parent text lives in the child's payload.
         """
-        seen: set[str] = set()
-        parents: list[ParentChunk] = []
+        first_child_by_parent: dict[str, str] = {}
         for hit in hits:
-            if hit.parent_id in seen:
+            first_child_by_parent.setdefault(hit.parent_id, hit.chunk_id)
+        if not first_child_by_parent:
+            return []
+        points = self._client.retrieve(
+            collection_name=self._collection,
+            ids=cast("list[Any]", list(first_child_by_parent.values())),
+            with_payload=True,
+        )
+        payload_by_child = {str(point.id): dict(point.payload or {}) for point in points}
+        parents: list[ParentChunk] = []
+        for child_id in first_child_by_parent.values():
+            payload: dict[str, Any] | None = payload_by_child.get(child_id)
+            if payload is None:
                 continue
-            seen.add(hit.parent_id)
-            point = self._client.retrieve(
-                collection_name=self._collection,
-                ids=cast("list[Any]", [hit.chunk_id]),
-                with_payload=True,
-            )
-            if not point:
-                continue
-            payload: dict[str, Any] = dict(point[0].payload or {})
             parents.append(
                 ParentChunk(
                     chunk_id=str(payload["parent_id"]),
                     document_id=str(payload["document_id"]),
                     text=str(payload["parent_text"]),
                     order=int(payload["parent_order"]),
+                    injection_quarantined=bool(payload.get("injection_quarantined", False)),
+                    screener_id=_optional_str(payload.get("screener_id")),
                 )
             )
         return parents
 
     def iter_children_for_bm25(self) -> list[tuple[str, str]]:
-        """Scroll every child point and return `(chunk_id, child_text)` pairs."""
+        """Scroll every retrievable child and return `(chunk_id, child_text)` pairs.
+
+        Children of quarantined parents are skipped so BM25 cannot surface them.
+        """
         results: list[tuple[str, str]] = []
         offset: Any = None
         while True:
@@ -213,6 +227,8 @@ class QdrantStore:
             )
             for point in points:
                 payload: dict[str, Any] = dict(point.payload or {})
+                if payload.get("injection_quarantined") is True:
+                    continue
                 results.append((str(point.id), str(payload.get("child_text", ""))))
             if next_offset is None:
                 break
@@ -220,10 +236,17 @@ class QdrantStore:
         return results
 
     def count(self) -> int:
+        """Exact number of points (child chunks) in the collection."""
         return int(self._client.count(self._collection, exact=True).count)
 
 
+def _optional_str(value: Any) -> str | None:
+    """Keep a missing payload value as None instead of the string "None"."""
+    return None if value is None else str(value)
+
+
 def _point_to_hit(point: Any) -> RetrievalHit:
+    """Turn a Qdrant point into a hit. `retrieve` records have no score, so they get 0."""
     payload: dict[str, Any] = dict(point.payload or {})
     score = float(getattr(point, "score", 0.0) or 0.0)
     return RetrievalHit(

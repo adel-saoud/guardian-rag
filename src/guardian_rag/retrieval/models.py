@@ -10,8 +10,9 @@ from guardian_rag.ingestion.models import ParentChunk
 class RetrievalHit(BaseModel):
     """One child chunk that survived hybrid ranking.
 
-    `score` is the post-fusion score from the hybrid retriever. The raw
-    dense and BM25 scores are kept too so the dashboard can show users
+    `score` is the final ranking score: the cross-encoder score when the
+    reranker ran, otherwise the fused hybrid score. The raw dense, BM25,
+    fused and rerank scores are kept too so the dashboard can show users
     why a chunk surfaced.
     """
 
@@ -25,6 +26,8 @@ class RetrievalHit(BaseModel):
     score: float
     dense_score: float | None = None
     bm25_score: float | None = None
+    fused_score: float | None = None
+    rerank_score: float | None = None
 
 
 class RetrievalResult(BaseModel):
