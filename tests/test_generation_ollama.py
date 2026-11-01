@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from typing import Any
 
 import httpx
@@ -13,7 +14,7 @@ from guardian_rag.generation.ollama import ChatMessage, OllamaClient, OllamaErro
 def _client(handler: Any) -> OllamaClient:
     transport = httpx.MockTransport(handler)
     http = httpx.AsyncClient(transport=transport, base_url="http://ollama")
-    return OllamaClient(http=http, max_retries=2)
+    return OllamaClient(http=http, think=False, max_retries=2)
 
 
 async def test_chat_parses_structured_response():
@@ -21,7 +22,7 @@ async def test_chat_parses_structured_response():
         return httpx.Response(
             200,
             json={
-                "model": "llama3.2:3b",
+                "model": "qwen3.5:4b",
                 "message": {"role": "assistant", "content": "hello back"},
                 "prompt_eval_count": 12,
                 "eval_count": 7,
@@ -31,7 +32,7 @@ async def test_chat_parses_structured_response():
 
     client = _client(handler)
     result = await client.chat(
-        model="llama3.2:3b",
+        model="qwen3.5:4b",
         messages=[ChatMessage(role="user", content="hi")],
     )
     assert result.content == "hello back"
@@ -64,6 +65,21 @@ async def test_chat_sends_options_when_provided():
     body = captured["payload"].decode("utf-8")
     assert '"num_predict":64' in body
     assert '"temperature":0.3' in body
+
+
+@pytest.mark.parametrize("think", [False, True])
+async def test_chat_sends_think(think: bool):
+    captured: dict[str, Any] = {}
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        captured["payload"] = json.loads(request.read())
+        return httpx.Response(200, json={"model": "m", "message": {"content": "x"}})
+
+    http = httpx.AsyncClient(transport=httpx.MockTransport(handler), base_url="http://ollama")
+    await OllamaClient(http=http, think=think).chat(
+        model="m", messages=[ChatMessage(role="user", content="hi")]
+    )
+    assert captured["payload"]["think"] is think
 
 
 async def test_4xx_raises_ollama_error():
@@ -109,4 +125,4 @@ async def test_malformed_body_raises_ollama_error():
 def test_max_retries_must_be_positive():
     http = httpx.AsyncClient()
     with pytest.raises(ValueError, match="max_retries"):
-        OllamaClient(http=http, max_retries=0)
+        OllamaClient(http=http, think=False, max_retries=0)

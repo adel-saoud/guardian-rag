@@ -30,8 +30,7 @@ def test_verify_pairs_indices_with_parent_ids():
     answer = "Salary policy is reviewed yearly [1]. Bonuses are discretionary [2]."
     result = verify_citations(answer, parents)
     assert result.cited_parent_ids == ["p1", "p2"]
-    assert result.has_citations
-    assert result.all_citations_grounded
+    assert result.ungrounded_citations == []
 
 
 def test_duplicate_citations_dedupe_preserve_first_order():
@@ -47,10 +46,9 @@ def test_out_of_range_citation_flagged():
     result = verify_citations(answer, parents)
     assert result.cited_parent_ids == []
     assert result.ungrounded_citations == [3]
-    assert not result.all_citations_grounded
 
 
 def test_no_parents_no_citations():
     result = verify_citations("answer with no citation tokens", [])
-    assert not result.has_citations
-    assert result.all_citations_grounded
+    assert result.cited_parent_ids == []
+    assert result.ungrounded_citations == []

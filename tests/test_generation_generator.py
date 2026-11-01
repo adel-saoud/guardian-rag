@@ -33,31 +33,30 @@ def _generator(content: str) -> Generator:
 
     transport = httpx.MockTransport(handler)
     http = httpx.AsyncClient(transport=transport, base_url="http://ollama")
-    return Generator(ollama=OllamaClient(http=http), model="m")
+    return Generator(ollama=OllamaClient(http=http, think=False), model="m")
 
 
 async def test_generator_returns_refusal_with_no_parents():
     gen = _generator("(unused)")
     result = await gen.generate("q", [])
     assert result.answer == REFUSAL_TEXT
-    assert not result.has_citations
+    assert result.cited_parent_ids == []
 
 
 async def test_generator_returns_grounded_answer():
     gen = _generator("Salary rule applies [1]. Bonus rule applies [2].")
     result = await gen.generate("policy?", _parents(["a", "b"]))
     assert result.cited_parent_ids == ["p0", "p1"]
-    assert result.all_citations_grounded
+    assert result.ungrounded_citations == []
 
 
 async def test_generator_flags_ungrounded_citation():
     gen = _generator("Per [9], answer is X.")
     result = await gen.generate("policy?", _parents(["only one"]))
     assert result.ungrounded_citations == [9]
-    assert not result.all_citations_grounded
 
 
-async def test_generator_passes_payload_options():
+async def test_generator_keeps_ollama_sampling_defaults():
     captured: dict[str, Any] = {}
 
     def handler(request: httpx.Request) -> httpx.Response:
@@ -69,13 +68,22 @@ async def test_generator_passes_payload_options():
 
     transport = httpx.MockTransport(handler)
     http = httpx.AsyncClient(transport=transport, base_url="http://ollama")
-    gen = Generator(
-        ollama=OllamaClient(http=http),
-        model="m",
-        max_output_tokens=32,
-        temperature=0.2,
-    )
+    gen = Generator(ollama=OllamaClient(http=http, think=False), model="m")
     await gen.generate("q", _parents(["c"]))
-    body = captured["body"]
-    assert '"num_predict":32' in body
-    assert '"temperature":0.2' in body
+    assert '"options"' not in captured["body"]
+
+
+async def test_generator_sends_temperature_when_set():
+    captured: dict[str, Any] = {}
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        captured["body"] = request.read().decode("utf-8")
+        return httpx.Response(
+            200,
+            json={"model": "m", "message": {"role": "assistant", "content": "ok"}},
+        )
+
+    http = httpx.AsyncClient(transport=httpx.MockTransport(handler), base_url="http://ollama")
+    gen = Generator(ollama=OllamaClient(http=http, think=False), model="m", temperature=0.0)
+    await gen.generate("q", _parents(["c"]))
+    assert '"temperature":0.0' in captured["body"].replace(" ", "")
