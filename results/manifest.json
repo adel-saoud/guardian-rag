@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-31T22:08:04+00:00",
+  "generated_at": "2026-11-01T21:37:12+00:00",
   "command": "uv run python scripts/reproduce.py",
   "git": {
     "commit": "uncommitted",
@@ -10,16 +10,16 @@
     "guardian-rag": "0.2.0",
     "presidio-analyzer": "2.2.362",
     "spacy": "3.8.16",
-    "gliner": "0.2.26",
-    "transformers": "5.1.0",
-    "torch": "2.12.0",
-    "sentence-transformers": "5.5.1",
-    "qdrant-client": "1.18.0",
+    "gliner": "0.2.30",
+    "transformers": "5.22.0",
+    "torch": "2.15.0",
+    "sentence-transformers": "6.2.0",
+    "qdrant-client": "1.20.0",
     "rank-bm25": "0.2.2"
   },
   "hardware": {
     "system": "Darwin",
-    "release": "27.0.0",
+    "release": "27.2.0",
     "machine": "arm64",
     "cpu": "Apple M4 Pro",
     "cpu_count": 14,
@@ -207,14 +207,14 @@
     {
       "name": "latency_p50_ms",
       "suite": "retrieval/scifact/dense",
-      "value": 103.92487500212155,
+      "value": 70.97829099984665,
       "n": 300,
       "n_documents": 5183
     },
     {
       "name": "latency_p95_ms",
       "suite": "retrieval/scifact/dense",
-      "value": 217.4164159805514,
+      "value": 120.34124999991036,
       "n": 300,
       "n_documents": 5183
     },
@@ -242,14 +242,14 @@
     {
       "name": "latency_p50_ms",
       "suite": "retrieval/scifact/hybrid (bm25_weight=0.4)",
-      "value": 109.21166697517037,
+      "value": 68.89612500071962,
       "n": 300,
       "n_documents": 5183
     },
     {
       "name": "latency_p95_ms",
       "suite": "retrieval/scifact/hybrid (bm25_weight=0.4)",
-      "value": 287.7552080026362,
+      "value": 143.72575000015786,
       "n": 300,
       "n_documents": 5183
     },
@@ -277,14 +277,14 @@
     {
       "name": "latency_p50_ms",
       "suite": "retrieval/scifact/hybrid + rerank",
-      "value": 357.87462498410605,
+      "value": 130.60204199973668,
       "n": 300,
       "n_documents": 5183
     },
     {
       "name": "latency_p95_ms",
       "suite": "retrieval/scifact/hybrid + rerank",
-      "value": 1320.884707994992,
+      "value": 256.5008330002456,
       "n": 300,
       "n_documents": 5183
     },
@@ -323,14 +323,14 @@
     {
       "name": "latency_p50_ms",
       "suite": "retrieval/golden/dense",
-      "value": 8.724790997803211,
+      "value": 6.15383300009853,
       "n": 30,
       "n_documents": 30
     },
     {
       "name": "latency_p95_ms",
       "suite": "retrieval/golden/dense",
-      "value": 32.22900000400841,
+      "value": 12.308250000387488,
       "n": 30,
       "n_documents": 30
     },
@@ -358,14 +358,14 @@
     {
       "name": "latency_p50_ms",
       "suite": "retrieval/golden/hybrid (bm25_weight=0.4)",
-      "value": 8.331707998877391,
+      "value": 3.710250000040105,
       "n": 30,
       "n_documents": 30
     },
     {
       "name": "latency_p95_ms",
       "suite": "retrieval/golden/hybrid (bm25_weight=0.4)",
-      "value": 9.09983299789019,
+      "value": 4.0154170001187595,
       "n": 30,
       "n_documents": 30
     },
@@ -393,14 +393,14 @@
     {
       "name": "latency_p50_ms",
       "suite": "retrieval/golden/hybrid + rerank",
-      "value": 26.9650419941172,
+      "value": 17.636625000704953,
       "n": 30,
       "n_documents": 30
     },
     {
       "name": "latency_p95_ms",
       "suite": "retrieval/golden/hybrid + rerank",
-      "value": 51.73587502213195,
+      "value": 18.366792000051646,
       "n": 30,
       "n_documents": 30
     },
@@ -418,7 +418,7 @@
     {
       "name": "ndcg@10",
       "suite": "retrieval/domain/dense",
-      "value": 0.8181705674069011,
+      "value": 0.8176570604296669,
       "n": 135,
       "n_documents": 270
     },
@@ -432,21 +432,21 @@
     {
       "name": "mrr@10",
       "suite": "retrieval/domain/dense",
-      "value": 0.7618283362727807,
+      "value": 0.7612110523221635,
       "n": 135,
       "n_documents": 270
     },
     {
       "name": "latency_p50_ms",
       "suite": "retrieval/domain/dense",
-      "value": 14.353708975249901,
+      "value": 10.775375000775966,
       "n": 135,
       "n_documents": 270
     },
     {
       "name": "latency_p95_ms",
       "suite": "retrieval/domain/dense",
-      "value": 40.329875017050654,
+      "value": 17.717666999487847,
       "n": 135,
       "n_documents": 270
     },
@@ -474,21 +474,21 @@
     {
       "name": "latency_p50_ms",
       "suite": "retrieval/domain/hybrid (bm25_weight=0.4)",
-      "value": 16.147457994520664,
+      "value": 12.553624999782187,
       "n": 135,
       "n_documents": 270
     },
     {
       "name": "latency_p95_ms",
       "suite": "retrieval/domain/hybrid (bm25_weight=0.4)",
-      "value": 21.365749998949468,
+      "value": 15.87095800005045,
       "n": 135,
       "n_documents": 270
     },
     {
       "name": "ndcg@10",
       "suite": "retrieval/domain/hybrid + rerank",
-      "value": 0.8880773227658721,
+      "value": 0.8878884361652221,
       "n": 135,
       "n_documents": 270
     },
@@ -502,33 +502,33 @@
     {
       "name": "mrr@10",
       "suite": "retrieval/domain/hybrid + rerank",
-      "value": 0.8518694885361552,
+      "value": 0.8516225749559082,
       "n": 135,
       "n_documents": 270
     },
     {
       "name": "latency_p50_ms",
       "suite": "retrieval/domain/hybrid + rerank",
-      "value": 121.64920798386447,
+      "value": 65.17724999957863,
       "n": 135,
       "n_documents": 270
     },
     {
       "name": "latency_p95_ms",
       "suite": "retrieval/domain/hybrid + rerank",
-      "value": 178.10420799651183,
+      "value": 117.2937080000338,
       "n": 135,
       "n_documents": 270
     },
     {
       "name": "rerank_minus_hybrid_ndcg@10",
       "suite": "retrieval/domain",
-      "value": -0.01383304711933206,
+      "value": -0.0140219337199821,
       "n": 135,
       "n_documents": 270,
       "ci95": [
-        -0.04264238696172591,
-        0.014337470557315853
+        -0.04273558692985302,
+        0.014102785950155593
       ]
     },
     {
@@ -849,13 +849,13 @@
     {
       "name": "judge_agreement",
       "suite": "faithfulness/judge",
-      "value": 0.9,
+      "value": 0.8666666666666667,
       "n": 30
     },
     {
       "name": "judge_cohen_kappa",
       "suite": "faithfulness/judge",
-      "value": 0.7963800904977376,
+      "value": 0.7272727272727274,
       "n": 30
     }
   ]

@@ -54,8 +54,8 @@ is what makes the rates readable at all.
   judged correct with original context, 80.0% with redacted context.
   All five drops are company-name questions
   ([0013](0013-redact-organisation-names.md)).
-- Judge agreement with the labels 90.0%, Cohen's kappa 0.80 (suite
-  `faithfulness/judge`); 3 false positives, 0 false negatives
+- Judge agreement with the labels 86.7%, Cohen's kappa 0.73 (suite
+  `faithfulness/judge`); 4 false positives, 0 false negatives
   (`eval/results/faithfulness.json`, `judge_agreement`), so the judge
   leans lenient.
 - The first judge prompt ("semantically equivalent") agreed with the

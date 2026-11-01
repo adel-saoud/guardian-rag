@@ -60,13 +60,13 @@ BEIR SciFact test split, 5,183 abstracts, 300 queries, CPU
 
 | Config | nDCG@10 | Recall@10 | MRR@10 | p50 ms | p95 ms |
 |:--|--:|--:|--:|--:|--:|
-| dense | 0.658 | 0.809 | 0.612 | 104 | 217 |
-| hybrid (bm25_weight 0.4) | 0.703 | 0.825 | 0.666 | 109 | 288 |
-| hybrid + rerank | 0.711 | 0.858 | 0.671 | 358 | 1,321 |
+| dense | 0.658 | 0.809 | 0.612 | 71 | 120 |
+| hybrid (bm25_weight 0.4) | 0.703 | 0.825 | 0.666 | 69 | 144 |
+| hybrid + rerank | 0.711 | 0.858 | 0.671 | 131 | 257 |
 
 Rerank minus hybrid, nDCG@10: +0.009, 95% paired bootstrap CI -0.015 to
 +0.033 (`retrieval/scifact`, `rerank_minus_hybrid_ndcg@10`). The interval
-contains 0, while p50 latency goes from 109 to 358 ms.
+contains 0, while p50 latency goes from 69 to 131 ms.
 
 In-domain sanity check: 270 synthetic HR, contract and support documents
 in families of six near-duplicates (`guardian_rag.eval.domain_corpus`,
@@ -76,9 +76,9 @@ author (`eval/retrieval/domain_queries.jsonl`), CPU (suites
 
 | Config | nDCG@10 | Recall@10 | MRR@10 | p50 ms | p95 ms |
 |:--|--:|--:|--:|--:|--:|
-| dense | 0.818 | 0.993 | 0.762 | 14 | 40 |
-| hybrid (bm25_weight 0.4) | 0.902 | 1.000 | 0.869 | 16 | 21 |
-| hybrid + rerank | 0.888 | 1.000 | 0.852 | 122 | 178 |
+| dense | 0.818 | 0.993 | 0.761 | 11 | 18 |
+| hybrid (bm25_weight 0.4) | 0.902 | 1.000 | 0.869 | 13 | 16 |
+| hybrid + rerank | 0.888 | 1.000 | 0.852 | 65 | 117 |
 
 Rerank minus hybrid, nDCG@10: -0.014, CI -0.043 to +0.014
 (`retrieval/domain`). Recall@10 is 1.000 for both, so the reranker only

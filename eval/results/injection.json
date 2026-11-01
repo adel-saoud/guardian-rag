@@ -3,8 +3,8 @@
   "classifier_threshold": 0.5,
   "results": {
     "own/rules": {
-      "latency_p50_ms": 0.005500012775883079,
-      "latency_p95_ms": 0.010457995813339949,
+      "latency_p50_ms": 0.0056249991757795215,
+      "latency_p95_ms": 0.010124999789695721,
       "all": {
         "n_injection": 40,
         "n_benign": 20,
@@ -47,8 +47,8 @@
       }
     },
     "own/classifier": {
-      "latency_p50_ms": 30.751499987673014,
-      "latency_p95_ms": 178.6195000167936,
+      "latency_p50_ms": 20.451250000405707,
+      "latency_p95_ms": 141.1267500006943,
       "threshold_sweep": {
         "0.5": {
           "n_injection": 40,
@@ -133,8 +133,8 @@
       }
     },
     "own/classifier+rules": {
-      "latency_p50_ms": 24.827082990668714,
-      "latency_p95_ms": 30.090624990407377,
+      "latency_p50_ms": 18.821583000317332,
+      "latency_p95_ms": 20.87262499935605,
       "all": {
         "n_injection": 40,
         "n_benign": 20,
@@ -177,8 +177,8 @@
       }
     },
     "deepset_test/rules": {
-      "latency_p50_ms": 0.0046670029405504465,
-      "latency_p95_ms": 0.01966601121239364,
+      "latency_p50_ms": 0.0045829992814105935,
+      "latency_p95_ms": 0.018667000404093415,
       "all": {
         "n_injection": 60,
         "n_benign": 56,
@@ -211,8 +211,8 @@
       }
     },
     "deepset_test/classifier": {
-      "latency_p50_ms": 28.127958008553833,
-      "latency_p95_ms": 397.71941598155536,
+      "latency_p50_ms": 19.55229200029862,
+      "latency_p95_ms": 355.8764580002389,
       "threshold_sweep": {
         "0.5": {
           "n_injection": 60,
@@ -287,8 +287,8 @@
       }
     },
     "deepset_test/classifier+rules": {
-      "latency_p50_ms": 28.38058298220858,
-      "latency_p95_ms": 33.11066600144841,
+      "latency_p50_ms": 18.538332999924023,
+      "latency_p95_ms": 24.244541999905778,
       "all": {
         "n_injection": 60,
         "n_benign": 56,
@@ -321,8 +321,8 @@
       }
     },
     "golden_corpus/rules": {
-      "latency_p50_ms": 0.006832997314631939,
-      "latency_p95_ms": 0.009082985343411565,
+      "latency_p50_ms": 0.006166999810375273,
+      "latency_p95_ms": 0.009249999493476935,
       "all": {
         "n_injection": 0,
         "n_benign": 30,
@@ -365,8 +365,8 @@
       }
     },
     "golden_corpus/classifier": {
-      "latency_p50_ms": 26.575625000987202,
-      "latency_p95_ms": 68.73566599097103,
+      "latency_p50_ms": 19.03924999987794,
+      "latency_p95_ms": 21.881874999962747,
       "threshold_sweep": {
         "0.5": {
           "n_injection": 0,
@@ -451,8 +451,8 @@
       }
     },
     "golden_corpus/classifier+rules": {
-      "latency_p50_ms": 24.95437502511777,
-      "latency_p95_ms": 28.514457982964814,
+      "latency_p50_ms": 18.9963330003593,
+      "latency_p95_ms": 20.592500000020664,
       "all": {
         "n_injection": 0,
         "n_benign": 30,
