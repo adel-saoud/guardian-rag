@@ -1,4 +1,4 @@
-"""Eval harness: golden corpus + recall/precision/faithfulness runners."""
+"""Eval harness: golden corpus, PII recall and precision, faithfulness judge."""
 
 from __future__ import annotations
 

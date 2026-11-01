@@ -22,5 +22,10 @@
       "end": 140
     }
   ],
-  "qa_pairs": []
+  "qa_pairs": [
+    {
+      "question": "How will the pension contribution be paid?",
+      "reference_answer": "It will be debited from a bank account."
+    }
+  ]
 }

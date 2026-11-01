@@ -1,15 +1,15 @@
 """PII recall + precision over the golden corpus.
 
-For each golden document we run the same `PiiDetector` ingestion uses,
-then compare detections against the planted manifest. A detection counts
-as a match if it overlaps a planted entity by at least one character.
+Each golden document goes through the given `PiiDetector`, and the
+detections are compared with the planted manifest. A match is an overlap
+of at least one character.
 
-Recall = matched_planted / planted_total
-Precision = matched_planted / detected_total
+Recall = planted entities overlapped by a detection / planted entities
+Precision = detections overlapping a planted entity / detections
 
-We use overlap rather than exact-offset equality because tokenisers
-disagree about whitespace boundaries. A 1-character overlap is enough to
-say "we caught this PII".
+Overlap rather than exact offsets because recognisers disagree about span
+boundaries (a trailing period, a title before a name). One overlapping
+character is enough to say the PII was caught.
 """
 
 from __future__ import annotations
@@ -26,23 +26,21 @@ logger = structlog.get_logger(__name__)
 
 
 def _overlaps(planted: GoldenEntity, detected: PiiEntity) -> bool:
+    """True if the two spans share at least one character."""
     return planted.start < detected.end and detected.start < planted.end
 
 
-def _evaluate_document(
-    document: GoldenDocument,
-    detector: PiiDetector,
-) -> tuple[EvalCounts, list[PiiEntity]]:
+def _evaluate_document(document: GoldenDocument, detector: PiiDetector) -> EvalCounts:
+    """Count planted, detected and matched entities for one document."""
     detected = detector.detect(document.text)
     recall_hits = sum(1 for p in document.entities if any(_overlaps(p, d) for d in detected))
     precision_hits = sum(1 for d in detected if any(_overlaps(p, d) for p in document.entities))
-    counts = EvalCounts(
+    return EvalCounts(
         planted=len(document.entities),
         detected=len(detected),
         recall_hits=recall_hits,
         precision_hits=precision_hits,
     )
-    return counts, detected
 
 
 def run_pii_eval(
@@ -60,7 +58,7 @@ def run_pii_eval(
     total_precision = 0
 
     for document in corpus:
-        counts, _detected = _evaluate_document(document, detector)
+        counts = _evaluate_document(document, detector)
         by_category_planted[document.category] += counts.planted
         by_category_detected[document.category] += counts.detected
         by_category_recall[document.category] += counts.recall_hits

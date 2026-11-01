@@ -22,5 +22,10 @@
       "end": 95
     }
   ],
-  "qa_pairs": []
+  "qa_pairs": [
+    {
+      "question": "What did the bug report record?",
+      "reference_answer": "A crash."
+    }
+  ]
 }

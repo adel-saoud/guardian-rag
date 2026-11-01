@@ -22,5 +22,10 @@
       "end": 130
     }
   ],
-  "qa_pairs": []
+  "qa_pairs": [
+    {
+      "question": "What did the customer open, and about what?",
+      "reference_answer": "A billing dispute about a charge on their card."
+    }
+  ]
 }

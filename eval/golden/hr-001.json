@@ -30,8 +30,8 @@
   ],
   "qa_pairs": [
     {
-      "question": "Who should I contact for HR questions?",
-      "reference_answer": "The HR contact email is the address mentioned in the document."
+      "question": "How can a new employee reach HR?",
+      "reference_answer": "By writing to the HR email address or calling the HR phone number."
     }
   ]
 }

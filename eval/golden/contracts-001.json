@@ -24,8 +24,8 @@
   ],
   "qa_pairs": [
     {
-      "question": "Where will invoices be wired?",
-      "reference_answer": "Invoices will be wired to the bank account listed in the agreement."
+      "question": "Which company signed the service agreement?",
+      "reference_answer": "Acme Corp."
     }
   ]
 }

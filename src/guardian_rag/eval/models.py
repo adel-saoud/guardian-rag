@@ -28,6 +28,7 @@ class GoldenEntity(BaseModel):
 
     @model_validator(mode="after")
     def _check_offsets(self) -> GoldenEntity:
+        """Reject empty or inverted spans so a bad manifest fails at load time."""
         if self.end <= self.start:
             raise ValueError(f"end ({self.end}) must be > start ({self.start})")
         return self
@@ -40,7 +41,7 @@ class GoldenQA(BaseModel):
 
     question: str
     reference_answer: str
-    """The answer a perfect model would produce against the redacted context."""
+    """The answer a perfect model would give; placeholders count as matches for names."""
 
 
 class GoldenDocument(BaseModel):
@@ -78,14 +79,18 @@ class EvalCounts(BaseModel):
 
     @property
     def recall(self) -> float:
+        """Share of planted entities found; 0.0 when nothing was planted."""
         return self.recall_hits / self.planted if self.planted else 0.0
 
     @property
     def precision(self) -> float:
+        """Share of detections that overlap a planted entity; 0.0 when nothing was detected."""
         return self.precision_hits / self.detected if self.detected else 0.0
 
 
 class FaithfulnessResult(BaseModel):
+    """One `FaithfulnessJudge` verdict, with the inputs kept for review."""
+
     model_config = ConfigDict(frozen=True, extra="forbid")
 
     document_id: str
@@ -97,18 +102,9 @@ class FaithfulnessResult(BaseModel):
 
 
 class EvalReport(BaseModel):
-    """Aggregate eval outcome printed by `scripts/eval.py`."""
+    """PII recall and precision, overall and per category, printed by `scripts/eval.py`."""
 
     model_config = ConfigDict(frozen=True, extra="forbid")
 
     overall: EvalCounts
     per_category: dict[str, EvalCounts] = Field(default_factory=lambda: {})
-    faithfulness: list[FaithfulnessResult] = Field(default_factory=lambda: [])
-    leaks_caught: int = 0
-    """Post-generation audit captures across all evaluated answers."""
-
-    @property
-    def faithfulness_rate(self) -> float:
-        if not self.faithfulness:
-            return 0.0
-        return sum(1 for r in self.faithfulness if r.verdict) / len(self.faithfulness)

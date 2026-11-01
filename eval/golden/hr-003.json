@@ -22,5 +22,10 @@
       "end": 166
     }
   ],
-  "qa_pairs": []
+  "qa_pairs": [
+    {
+      "question": "When will the new salary start being deposited?",
+      "reference_answer": "Starting next month."
+    }
+  ]
 }

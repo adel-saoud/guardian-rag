@@ -1,0 +1,449 @@
+{
+  "generator_model": "qwen3.5:4b",
+  "generator_temperature": 0.0,
+  "judge_model": "qwen3.5:4b",
+  "think": false,
+  "faithfulness": {
+    "n": 30,
+    "original_rate": 0.9333333333333333,
+    "redacted_rate": 0.8,
+    "redacted_minus_original": -0.1333333333333333
+  },
+  "judge_agreement": {
+    "n": 30,
+    "agreement": 0.9,
+    "cohen_kappa": 0.7963800904977376,
+    "true_positives": 16,
+    "false_positives": 3,
+    "true_negatives": 11,
+    "false_negatives": 0,
+    "labels": "eval/faithfulness/judge_labels.jsonl",
+    "labelled_by": [
+      "maintainer"
+    ]
+  },
+  "cases": [
+    {
+      "document_id": "contracts-001",
+      "question": "Which company signed the service agreement?",
+      "reference_answer": "Acme Corp.",
+      "original_answer": "Acme Corp signed the service agreement [1].",
+      "redacted_answer": "The service agreement was signed between [ORGANIZATION_1] and the client [PERSON_1]. [1]",
+      "original_verdict": true,
+      "redacted_verdict": false
+    },
+    {
+      "document_id": "contracts-002",
+      "question": "What kind of agreement is this, and which company is a party to it?",
+      "reference_answer": "A non-disclosure agreement with Globex Industries.",
+      "original_answer": "This is a non-disclosure agreement between Globex Industries and Bob Chen [1].",
+      "redacted_answer": "This is a non-disclosure agreement between [ORGANIZATION_1] and [PERSON_1] [1].",
+      "original_verdict": true,
+      "redacted_verdict": false
+    },
+    {
+      "document_id": "contracts-003",
+      "question": "What does the buyer purchase, and from which company?",
+      "reference_answer": "Licences from Initech Solutions.",
+      "original_answer": "The buyer purchases licences from Initech Solutions [1].",
+      "redacted_answer": "The buyer [PERSON_1] purchases licences from [ORGANIZATION_1] [1].",
+      "original_verdict": true,
+      "redacted_verdict": true
+    },
+    {
+      "document_id": "contracts-004",
+      "question": "What is being leased?",
+      "reference_answer": "Office space.",
+      "original_answer": "Based on the provided context, a lease agreement for **office space** was signed by David Owens [1].",
+      "redacted_answer": "Based on the provided context, a lease agreement for **office space** has been signed. [1]",
+      "original_verdict": true,
+      "redacted_verdict": true
+    },
+    {
+      "document_id": "contracts-005",
+      "question": "What are the payment terms for the vendor?",
+      "reference_answer": "Net-30.",
+      "original_answer": "The payment terms for the vendor are net-30. [1]",
+      "redacted_answer": "The payment terms are net-30. [1]",
+      "original_verdict": true,
+      "redacted_verdict": true
+    },
+    {
+      "document_id": "contracts-006",
+      "question": "Which company engaged the consultant?",
+      "reference_answer": "Stark Industries.",
+      "original_answer": "Stark Industries engaged the consultant. [1]",
+      "redacted_answer": "[ORGANIZATION_1] engaged [PERSON_1]. [1]",
+      "original_verdict": true,
+      "redacted_verdict": false
+    },
+    {
+      "document_id": "contracts-007",
+      "question": "What is the joint account used for?",
+      "reference_answer": "Shared expenses.",
+      "original_answer": "I do not know based on the provided context.",
+      "redacted_answer": "The joint account, [BANK_ACCOUNT_1], is used for shared expenses between [ORGANIZATION_1] and [PERSON_1]. [1]",
+      "original_verdict": false,
+      "redacted_verdict": true
+    },
+    {
+      "document_id": "contracts-008",
+      "question": "Whose software is licensed under these terms?",
+      "reference_answer": "Hooli Inc.",
+      "original_answer": "The software licensed under these terms belongs to Hooli Inc, and the license was granted to Hiro Tanaka [1].",
+      "redacted_answer": "The software licensed under these terms belongs to [ORGANIZATION_1].",
+      "original_verdict": true,
+      "redacted_verdict": false
+    },
+    {
+      "document_id": "contracts-009",
+      "question": "How are payments to the supplier made?",
+      "reference_answer": "By wire transfer.",
+      "original_answer": "Payments to the supplier, Aperture Labs, are made via wire transfers to IT60X0542811101000000123456 [1].",
+      "redacted_answer": "Payments to the supplier are made via wire transfers to [BANK_ACCOUNT_1]. [1]",
+      "original_verdict": true,
+      "redacted_verdict": true
+    },
+    {
+      "document_id": "contracts-010",
+      "question": "Which company is engaged under the subcontracting agreement?",
+      "reference_answer": "Tyrell Corporation.",
+      "original_answer": "Tyrell Corporation is engaged under the subcontracting agreement [1].",
+      "redacted_answer": "Under the subcontracting agreement, prime [PERSON_1] engages [ORGANIZATION_1]. [1]",
+      "original_verdict": true,
+      "redacted_verdict": false
+    },
+    {
+      "document_id": "hr-001",
+      "question": "How can a new employee reach HR?",
+      "reference_answer": "By writing to the HR email address or calling the HR phone number.",
+      "original_answer": "A new employee can reach HR by writing to [EMAIL_1] or calling +1-555-0142. [1]",
+      "redacted_answer": "A new employee can reach HR by writing to [EMAIL_1] or calling [PHONE_1]. [1]",
+      "original_verdict": true,
+      "redacted_verdict": true
+    },
+    {
+      "document_id": "hr-002",
+      "question": "What overall rating did the performance review give?",
+      "reference_answer": "Exceeds expectations.",
+      "original_answer": "The performance review gave an overall rating of \"exceeds expectations\" [1].",
+      "redacted_answer": "The performance review gave an overall rating of \"exceeds expectations\" for [PERSON_1] by [PERSON_2]. [1]",
+      "original_verdict": true,
+      "redacted_verdict": true
+    },
+    {
+      "document_id": "hr-003",
+      "question": "When will the new salary start being deposited?",
+      "reference_answer": "Starting next month.",
+      "original_answer": "The new net salary will be deposited starting next month [1].",
+      "redacted_answer": "The new salary will start being deposited next month [1].",
+      "original_verdict": true,
+      "redacted_verdict": true
+    },
+    {
+      "document_id": "hr-004",
+      "question": "What was decided about the leave request?",
+      "reference_answer": "The leave request was approved.",
+      "original_answer": "The leave request for David Owens was approved [1].",
+      "redacted_answer": "The leave request for [PERSON_1] was approved.",
+      "original_verdict": true,
+      "redacted_verdict": true
+    },
+    {
+      "document_id": "hr-005",
+      "question": "How long does the employee have to send an appeal?",
+      "reference_answer": "Within 14 days.",
+      "original_answer": "The employee has 14 days to send an appeal [1].",
+      "redacted_answer": "The employee has 14 days to send an appeal. [1]",
+      "original_verdict": true,
+      "redacted_verdict": true
+    },
+    {
+      "document_id": "hr-006",
+      "question": "Which position was the employee promoted to?",
+      "reference_answer": "Senior engineer.",
+      "original_answer": "Faisal Khan was promoted to senior engineer [1].",
+      "redacted_answer": "The employee was promoted to senior engineer [1].",
+      "original_verdict": true,
+      "redacted_verdict": true
+    },
+    {
+      "document_id": "hr-007",
+      "question": "Within how many days will the final settlement be wired?",
+      "reference_answer": "Within 30 days.",
+      "original_answer": "The final settlement will be wired within 30 days [1].",
+      "redacted_answer": "The final settlement will be wired within 30 days [1].",
+      "original_verdict": true,
+      "redacted_verdict": true
+    },
+    {
+      "document_id": "hr-008",
+      "question": "How will the pension contribution be paid?",
+      "reference_answer": "It will be debited from a bank account.",
+      "original_answer": "The pension contribution will be debited from IE29AIBK93115212345678 [1].",
+      "redacted_answer": "The pension contribution will be debited from [BANK_ACCOUNT_1]. [1]",
+      "original_verdict": true,
+      "redacted_verdict": true
+    },
+    {
+      "document_id": "hr-009",
+      "question": "What was awarded to the employee?",
+      "reference_answer": "A training completion certificate.",
+      "original_answer": "A training completion certificate was awarded to Iris Whyte [1].",
+      "redacted_answer": "A training completion certificate was awarded to [PERSON_1]. [1]",
+      "original_verdict": true,
+      "redacted_verdict": true
+    },
+    {
+      "document_id": "hr-010",
+      "question": "When does the internal transfer take effect?",
+      "reference_answer": "Next quarter.",
+      "original_answer": "The internal transfer takes effect next quarter [1].",
+      "redacted_answer": "The internal transfer takes effect next quarter [1].",
+      "original_verdict": true,
+      "redacted_verdict": true
+    },
+    {
+      "document_id": "support-001",
+      "question": "What problem does the customer report?",
+      "reference_answer": "They cannot log in.",
+      "original_answer": "The customer reports that they cannot log in [1].",
+      "redacted_answer": "The customer reports that they cannot log in.",
+      "original_verdict": true,
+      "redacted_verdict": true
+    },
+    {
+      "document_id": "support-002",
+      "question": "What did the customer open, and about what?",
+      "reference_answer": "A billing dispute about a charge on their card.",
+      "original_answer": "The customer opened a billing dispute regarding a charge applied to card 4012-8888-8888-1881 [1].",
+      "redacted_answer": "The customer opened a billing dispute regarding a disputed charge applied to card [CREDIT_CARD_1] [1].",
+      "original_verdict": true,
+      "redacted_verdict": true
+    },
+    {
+      "document_id": "support-003",
+      "question": "Where will the refund be returned?",
+      "reference_answer": "To the customer's card.",
+      "original_answer": "The refund will be returned to card 3782-822463-10005 [1].",
+      "redacted_answer": "The refund will be returned to card [CREDIT_CARD_1] [1].",
+      "original_verdict": true,
+      "redacted_verdict": true
+    },
+    {
+      "document_id": "support-004",
+      "question": "What kind of issue was logged?",
+      "reference_answer": "A product complaint.",
+      "original_answer": "I do not know based on the provided context.",
+      "redacted_answer": "I do not know based on the provided context.",
+      "original_verdict": false,
+      "redacted_verdict": false
+    },
+    {
+      "document_id": "support-005",
+      "question": "What is the customer's inquiry about?",
+      "reference_answer": "Shipping.",
+      "original_answer": "The customer's inquiry is related to shipping for Elena Petrov [1].",
+      "redacted_answer": "The customer's inquiry is about shipping. [1]",
+      "original_verdict": true,
+      "redacted_verdict": true
+    },
+    {
+      "document_id": "support-006",
+      "question": "What was sent to the user?",
+      "reference_answer": "A password reset link.",
+      "original_answer": "A password reset link was sent to Faisal Khan at faisal.khan@example.com [1].",
+      "redacted_answer": "A password reset link was sent to [PERSON_1] at [EMAIL_1]. [1]",
+      "original_verdict": true,
+      "redacted_verdict": true
+    },
+    {
+      "document_id": "support-007",
+      "question": "What did the customer request?",
+      "reference_answer": "Cancellation of their subscription.",
+      "original_answer": "The customer, Gloria Reyes, requested a subscription cancellation [1].",
+      "redacted_answer": "The customer requested a subscription cancellation.",
+      "original_verdict": true,
+      "redacted_verdict": true
+    },
+    {
+      "document_id": "support-008",
+      "question": "What kind of request did the customer make?",
+      "reference_answer": "A feature request.",
+      "original_answer": "The customer made a feature request. [1]",
+      "redacted_answer": "The customer made a feature request. [1]",
+      "original_verdict": true,
+      "redacted_verdict": true
+    },
+    {
+      "document_id": "support-009",
+      "question": "What did the bug report record?",
+      "reference_answer": "A crash.",
+      "original_answer": "The bug report recorded a crash from IP 192.168.1.105 and requested to reach back at +1-555-0142 [1].",
+      "redacted_answer": "The bug report was filed by [PERSON_1] and recorded a crash from IP [IP_ADDRESS_1].",
+      "original_verdict": true,
+      "redacted_verdict": true
+    },
+    {
+      "document_id": "support-010",
+      "question": "What was sent for the account verification?",
+      "reference_answer": "A verification code.",
+      "original_answer": "A verification code was sent to hiro.tanaka@example.com [1].",
+      "redacted_answer": "A verification code was sent to [EMAIL_1].",
+      "original_verdict": true,
+      "redacted_verdict": true
+    }
+  ],
+  "judge_cases": [
+    {
+      "case_id": "judge-001",
+      "label": true,
+      "verdict": true
+    },
+    {
+      "case_id": "judge-002",
+      "label": false,
+      "verdict": false
+    },
+    {
+      "case_id": "judge-003",
+      "label": true,
+      "verdict": true
+    },
+    {
+      "case_id": "judge-004",
+      "label": false,
+      "verdict": false
+    },
+    {
+      "case_id": "judge-005",
+      "label": true,
+      "verdict": true
+    },
+    {
+      "case_id": "judge-006",
+      "label": false,
+      "verdict": false
+    },
+    {
+      "case_id": "judge-007",
+      "label": true,
+      "verdict": true
+    },
+    {
+      "case_id": "judge-008",
+      "label": false,
+      "verdict": false
+    },
+    {
+      "case_id": "judge-009",
+      "label": true,
+      "verdict": true
+    },
+    {
+      "case_id": "judge-010",
+      "label": false,
+      "verdict": false
+    },
+    {
+      "case_id": "judge-011",
+      "label": true,
+      "verdict": true
+    },
+    {
+      "case_id": "judge-012",
+      "label": false,
+      "verdict": false
+    },
+    {
+      "case_id": "judge-013",
+      "label": true,
+      "verdict": true
+    },
+    {
+      "case_id": "judge-014",
+      "label": false,
+      "verdict": true
+    },
+    {
+      "case_id": "judge-015",
+      "label": true,
+      "verdict": true
+    },
+    {
+      "case_id": "judge-016",
+      "label": false,
+      "verdict": false
+    },
+    {
+      "case_id": "judge-017",
+      "label": true,
+      "verdict": true
+    },
+    {
+      "case_id": "judge-018",
+      "label": false,
+      "verdict": true
+    },
+    {
+      "case_id": "judge-019",
+      "label": true,
+      "verdict": true
+    },
+    {
+      "case_id": "judge-020",
+      "label": false,
+      "verdict": false
+    },
+    {
+      "case_id": "judge-021",
+      "label": true,
+      "verdict": true
+    },
+    {
+      "case_id": "judge-022",
+      "label": false,
+      "verdict": true
+    },
+    {
+      "case_id": "judge-023",
+      "label": true,
+      "verdict": true
+    },
+    {
+      "case_id": "judge-024",
+      "label": false,
+      "verdict": false
+    },
+    {
+      "case_id": "judge-025",
+      "label": true,
+      "verdict": true
+    },
+    {
+      "case_id": "judge-026",
+      "label": true,
+      "verdict": true
+    },
+    {
+      "case_id": "judge-027",
+      "label": false,
+      "verdict": false
+    },
+    {
+      "case_id": "judge-028",
+      "label": true,
+      "verdict": true
+    },
+    {
+      "case_id": "judge-029",
+      "label": true,
+      "verdict": true
+    },
+    {
+      "case_id": "judge-030",
+      "label": false,
+      "verdict": false
+    }
+  ]
+}

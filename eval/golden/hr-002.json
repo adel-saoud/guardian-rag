@@ -22,5 +22,10 @@
       "end": 142
     }
   ],
-  "qa_pairs": []
+  "qa_pairs": [
+    {
+      "question": "What overall rating did the performance review give?",
+      "reference_answer": "Exceeds expectations."
+    }
+  ]
 }

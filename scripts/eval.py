@@ -1,19 +1,20 @@
 """Run the PII recall + precision eval over the 30-doc golden corpus.
 
-By default Stage 1 (Presidio) runs over the corpus, which keeps the eval
-hermetic. Pass `--with-gliner` to load the real GLiNER backend (slow on
-first run because it downloads the model). Faithfulness is not run from
-this script: it needs Ollama and is wired into the dashboard instead.
+By default only Presidio runs, which keeps the eval hermetic. Pass
+`--with-gliner` to add the real GLiNER backend (slow on first run: it
+downloads the model). The DeBERTa validator is not part of this eval, so
+the numbers measure Presidio plus GLiNER.
 
 Usage:
     uv run python scripts/eval.py
     uv run python scripts/eval.py --docs eval/golden --report eval/report.html
-    uv run python scripts/eval.py --with-gliner
+    uv run python scripts/eval.py --with-gliner --out eval/results/pii.json
 """
 
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from pathlib import Path
 
@@ -31,17 +32,17 @@ console = Console()
 
 
 def _build_detector(with_gliner: bool) -> PiiDetector:
+    """Presidio alone, or Presidio plus GLiNER at the default 0.5 threshold."""
     presidio = PresidioEngine()
     if not with_gliner:
         return PiiDetector(presidio=presidio)
     from guardian_rag.pii._real_backends import RealGlinerBackend
 
-    backend = RealGlinerBackend()
-    gliner = GlinerRecognizer(backend=backend)
-    return PiiDetector(presidio=presidio, gliner=gliner)
+    return PiiDetector(presidio=presidio, gliner=GlinerRecognizer(backend=RealGlinerBackend()))
 
 
 def _format_table(report: EvalReport) -> Table:
+    """Per-category rows plus an overall row, for the terminal."""
     table = Table(title="Guardian RAG · PII detection eval")
     table.add_column("Slice")
     table.add_column("Planted", justify="right")
@@ -75,6 +76,7 @@ def _format_table(report: EvalReport) -> Table:
 
 
 def _write_html_report(report: EvalReport, path: Path) -> None:
+    """Same table as standalone HTML, uploaded as a CI artifact by `eval.yml`."""
     rows = "".join(
         f"<tr><td>{cat}</td><td>{c.planted}</td><td>{c.detected}</td>"
         f"<td>{c.recall_hits}</td><td>{c.precision_hits}</td>"
@@ -112,9 +114,13 @@ tr.total {{ font-weight: 600; background: #f7fafc; }}
 
 
 def main() -> int:
+    """Run the eval and return 1 when recall or precision is below its gate."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--docs", type=Path, default=Path("eval/golden"))
     parser.add_argument("--report", type=Path, default=None)
+    parser.add_argument(
+        "--out", type=Path, default=None, help="Write the counts as JSON (read by reproduce.py)."
+    )
     parser.add_argument(
         "--with-gliner",
         action="store_true",
@@ -142,9 +148,35 @@ def main() -> int:
     console.print(
         f"\nPII Recall      {report.overall.recall:.1%}\n"
         f"PII Precision   {report.overall.precision:.2f}\n"
-        f"Faithfulness    N/A  (informational, requires Ollama)\n"
-        f"Leaks caught    {report.leaks_caught}  (post-generation audit)\n"
     )
+
+    if args.out is not None:
+        args.out.parent.mkdir(parents=True, exist_ok=True)
+        args.out.write_text(
+            json.dumps(
+                {
+                    "detector": "presidio+gliner" if args.with_gliner else "presidio",
+                    "n_documents": len(corpus),
+                    "overall": {
+                        **report.overall.model_dump(),
+                        "recall": report.overall.recall,
+                        "precision": report.overall.precision,
+                    },
+                    "per_category": {
+                        category: {
+                            **counts.model_dump(),
+                            "recall": counts.recall,
+                            "precision": counts.precision,
+                        }
+                        for category, counts in sorted(report.per_category.items())
+                    },
+                },
+                indent=2,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+        console.print(f"[dim]wrote {args.out}[/dim]")
 
     if args.report is not None:
         args.report.parent.mkdir(parents=True, exist_ok=True)

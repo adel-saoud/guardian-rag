@@ -22,5 +22,10 @@
       "end": 106
     }
   ],
-  "qa_pairs": []
+  "qa_pairs": [
+    {
+      "question": "What was sent to the user?",
+      "reference_answer": "A password reset link."
+    }
+  ]
 }

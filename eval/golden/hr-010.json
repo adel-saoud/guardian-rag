@@ -28,5 +28,10 @@
       "end": 168
     }
   ],
-  "qa_pairs": []
+  "qa_pairs": [
+    {
+      "question": "When does the internal transfer take effect?",
+      "reference_answer": "Next quarter."
+    }
+  ]
 }

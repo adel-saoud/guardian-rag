@@ -16,5 +16,10 @@
       "end": 118
     }
   ],
-  "qa_pairs": []
+  "qa_pairs": [
+    {
+      "question": "How long does the employee have to send an appeal?",
+      "reference_answer": "Within 14 days."
+    }
+  ]
 }

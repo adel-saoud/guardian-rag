@@ -22,5 +22,10 @@
       "end": 154
     }
   ],
-  "qa_pairs": []
+  "qa_pairs": [
+    {
+      "question": "Which company is engaged under the subcontracting agreement?",
+      "reference_answer": "Tyrell Corporation."
+    }
+  ]
 }

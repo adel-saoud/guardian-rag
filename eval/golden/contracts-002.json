@@ -22,5 +22,10 @@
       "end": 133
     }
   ],
-  "qa_pairs": []
+  "qa_pairs": [
+    {
+      "question": "What kind of agreement is this, and which company is a party to it?",
+      "reference_answer": "A non-disclosure agreement with Globex Industries."
+    }
+  ]
 }

@@ -22,5 +22,10 @@
       "end": 166
     }
   ],
-  "qa_pairs": []
+  "qa_pairs": [
+    {
+      "question": "What does the buyer purchase, and from which company?",
+      "reference_answer": "Licences from Initech Solutions."
+    }
+  ]
 }
