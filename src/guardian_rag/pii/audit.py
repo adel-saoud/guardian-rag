@@ -23,10 +23,8 @@ from guardian_rag.pii.redactor import Redactor
 logger = structlog.get_logger(__name__)
 
 
-# Returned in place of the LLM answer when the audit itself crashed. Kept
-# deliberately short so the API layer can surface it to the user without
-# leaking implementation details.
 FAIL_CLOSED_REPLACEMENT = "[Audit failed: response redacted for safety]"
+"""Returned instead of the answer when the audit itself crashed. Short and generic on purpose."""
 
 
 class PostGenerationAuditor:
@@ -91,6 +89,7 @@ class PostGenerationAuditor:
 
 
 def _fail_closed(answer: str, phase: str) -> AuditResult:
+    """Log the audit crash and return the safe replacement, never the raw answer."""
     logger.exception(
         "audit.failed_closed",
         phase=phase,

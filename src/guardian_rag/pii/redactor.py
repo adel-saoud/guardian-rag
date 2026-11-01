@@ -14,6 +14,9 @@ from __future__ import annotations
 
 from guardian_rag.pii.models import PiiEntity, PiiEntityType, RedactionMap
 
+PLACEHOLDER_TEMPLATE = "[{entity_type}_{index}]"
+"""Renders as `[PERSON_1]`. The system prompt and the judge prompt describe this shape."""
+
 
 def _resolve_overlaps(entities: list[PiiEntity]) -> list[PiiEntity]:
     """Drop overlapping entities, keeping the higher-scoring one.
@@ -37,15 +40,9 @@ def _resolve_overlaps(entities: list[PiiEntity]) -> list[PiiEntity]:
 class Redactor:
     """Replace PII spans in source text with typed placeholders.
 
-    Parameters
-    ----------
-    placeholder_format:
-        Format string with two placeholders: entity type and index. Defaults
-        to ``"[{type}_{index}]"`` which produces e.g. ``[PERSON_1]``.
+    Stateless: numbering restarts on every `redact()` call, so a placeholder
+    is stable within one document only.
     """
-
-    def __init__(self, placeholder_format: str = "[{type}_{index}]") -> None:
-        self._format = placeholder_format
 
     def redact(
         self,
@@ -78,8 +75,8 @@ class Redactor:
             token = token_by_span.get(key)
             if token is None:
                 index_by_type[entity.entity_type] = index_by_type.get(entity.entity_type, 0) + 1
-                token = self._format.format(
-                    type=entity.entity_type.value,
+                token = PLACEHOLDER_TEMPLATE.format(
+                    entity_type=entity.entity_type.value,
                     index=index_by_type[entity.entity_type],
                 )
                 token_by_span[key] = token

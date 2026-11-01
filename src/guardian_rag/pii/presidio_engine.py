@@ -20,10 +20,6 @@ if TYPE_CHECKING:  # pragma: no cover
     from presidio_analyzer import EntityRecognizer
 
 
-# Map Presidio's canonical entity strings onto our domain enum. Anything we
-# do not have a slot for is dropped silently. Presidio supports more entity
-# types than this list, but we restrict ourselves to entities we can credibly
-# redact and re-use as RAG context.
 _PRESIDIO_TO_DOMAIN: dict[str, PiiEntityType] = {
     "EMAIL_ADDRESS": PiiEntityType.EMAIL,
     "PHONE_NUMBER": PiiEntityType.PHONE,
@@ -33,6 +29,11 @@ _PRESIDIO_TO_DOMAIN: dict[str, PiiEntityType] = {
     "US_SSN": PiiEntityType.SOCIAL_SECURITY,
     "URL": PiiEntityType.URL,
 }
+"""Presidio entity names mapped onto the domain enum. Unmapped entities are dropped.
+
+Presidio supports more types than this; the list is restricted to entities
+that can be redacted with a typed placeholder and still read as RAG context.
+"""
 
 
 def _build_default_recognizers() -> list[EntityRecognizer]:
@@ -68,21 +69,15 @@ class PresidioEngine:
     Parameters
     ----------
     recognizers:
-        Iterable of Presidio recognisers. If omitted, the default set
-        registers EmailRecognizer, PhoneRecognizer, IbanRecognizer,
-        CreditCardRecognizer, IpRecognizer, UsSsnRecognizer, UrlRecognizer.
-    language:
-        Presidio language code. Defaults to English. Other languages need
-        their own recogniser configuration.
+        Presidio recognisers to run. If omitted, the default set registers
+        EmailRecognizer, PhoneRecognizer, IbanRecognizer,
+        CreditCardRecognizer, IpRecognizer, UsSsnRecognizer, UrlRecognizer,
+        all with their English patterns. Other languages need their own
+        recognisers, passed here.
     """
 
-    def __init__(
-        self,
-        recognizers: list[EntityRecognizer] | None = None,
-        language: str = "en",
-    ) -> None:
+    def __init__(self, recognizers: list[EntityRecognizer] | None = None) -> None:
         self._recognizers = recognizers if recognizers is not None else _build_default_recognizers()
-        self._language = language
 
     def detect(self, text: str) -> list[PiiEntity]:
         """Run every recogniser against ``text`` and return merged entities."""
@@ -91,8 +86,7 @@ class PresidioEngine:
 
         results: list[PiiEntity] = []
         for recognizer in self._recognizers:
-            entities = recognizer.supported_entities
-            for entity_name in entities:
+            for entity_name in recognizer.supported_entities:
                 if entity_name not in _PRESIDIO_TO_DOMAIN:
                     continue
                 # `nlp_artifacts` is optional for EntityRecognizers; passing
