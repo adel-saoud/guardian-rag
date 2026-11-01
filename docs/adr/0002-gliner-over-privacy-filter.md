@@ -1,4 +1,11 @@
-# ADR 002: GLiNER over `openai/privacy-filter`
+---
+status: superseded by 0010
+date: 2026-10-31
+---
+
+# GLiNER over `openai/privacy-filter`
+
+Superseded by [0010](0010-three-stage-pii-detection.md), which merges 0001, 0002 and 0003. Kept for history; not updated since.
 
 ## Context
 
@@ -24,6 +31,6 @@ Use `urchade/gliner_multi_pii-v1` instead.
 - ~14x parameter reduction makes the pipeline CPU-viable.
 - Multilingual coverage matches Guardian's EU AI Act target audience.
 - We accept the slight precision dip GLiNER shows on long-form
-  organisation names. [ADR 003](003-conditional-deberta-validation.md) covers the
+  organisation names. [ADR 003](0003-conditional-deberta-validation.md) covers the
   spans with the highest false-positive risk.
 - See `pii/gliner_recognizer.py` for the label → PII type mapping.
