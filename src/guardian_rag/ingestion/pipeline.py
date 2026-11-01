@@ -8,10 +8,12 @@ The pipeline orchestrates the steps in the only safe order:
     2. Redact spans with typed placeholders.
     3. Persist the redaction map separately (never embedded).
     4. Chunk the redacted text into parents + children.
-    5. Hand parent + child chunks to the vector sink.
+    5. Screen every parent for prompt injection and stamp the verdict.
+    6. Hand parent + child chunks to the vector sink.
 
 Only clean (redacted) text reaches the vector sink. The original document
-never leaves this function.
+never leaves this function. Quarantined parents are still stored, flagged,
+so they stay auditable; retrieval excludes them.
 """
 
 from __future__ import annotations
@@ -23,6 +25,11 @@ import structlog
 from guardian_rag.ingestion.chunker import HierarchicalChunker
 from guardian_rag.ingestion.models import ChildChunk, Document, IngestionResult, ParentChunk
 from guardian_rag.ingestion.redaction_store import RedactionMapStore
+from guardian_rag.injection.screener import (
+    InjectionScreener,
+    NullScreener,
+    screen_parents_for_ingestion,
+)
 from guardian_rag.pii.detector import PiiDetector
 from guardian_rag.pii.redactor import Redactor
 
@@ -58,6 +65,7 @@ class NullVectorSink:
         parent_chunks: list[ParentChunk],
         child_chunks: list[ChildChunk],
     ) -> None:
+        """Keep the chunks in memory so callers can inspect what would be stored."""
         self.parents.extend(parent_chunks)
         self.children.extend(child_chunks)
 
@@ -78,6 +86,10 @@ class IngestionPipeline:
     vector_sink:
         Anything implementing `VectorSink`. Default `NullVectorSink` so the
         pipeline can run dry (useful for the eval harness).
+    screener:
+        Prompt-injection screener run on every parent. Default
+        `NullScreener` (explicit `off`), which stamps `screener_id="off"`
+        so query time knows these parents were not screened.
     """
 
     def __init__(
@@ -87,12 +99,14 @@ class IngestionPipeline:
         chunker: HierarchicalChunker,
         redaction_store: RedactionMapStore,
         vector_sink: VectorSink | None = None,
+        screener: InjectionScreener | None = None,
     ) -> None:
         self._detector = detector
         self._redactor = redactor
         self._chunker = chunker
         self._redaction_store = redaction_store
         self._vector_sink = vector_sink if vector_sink is not None else NullVectorSink()
+        self._screener = screener if screener is not None else NullScreener()
 
     def ingest(self, document: Document) -> IngestionResult:
         """Run the full pipeline over one document."""
@@ -105,8 +119,16 @@ class IngestionPipeline:
         self._redaction_store.save(redaction_map)
 
         parents, children = self._chunker.split(redacted_text, document.document_id)
+        parents = screen_parents_for_ingestion(self._screener, parents)
         self._vector_sink.upsert(parents, children)
 
+        result = IngestionResult(
+            document_id=document.document_id,
+            redacted_text=redacted_text,
+            redaction_map=redaction_map,
+            parent_chunks=parents,
+            child_chunks=children,
+        )
         logger.info(
             "ingestion.complete",
             document_id=document.document_id,
@@ -114,12 +136,6 @@ class IngestionPipeline:
             n_entities=len(entities),
             n_parents=len(parents),
             n_children=len(children),
+            n_quarantined_parents=result.n_quarantined_parents,
         )
-
-        return IngestionResult(
-            document_id=document.document_id,
-            redacted_text=redacted_text,
-            redaction_map=redaction_map,
-            parent_chunks=parents,
-            child_chunks=children,
-        )
+        return result

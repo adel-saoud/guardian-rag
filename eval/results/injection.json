@@ -1,0 +1,498 @@
+{
+  "classifier_model": "protectai/deberta-v3-base-prompt-injection-v2",
+  "classifier_threshold": 0.5,
+  "results": {
+    "own/rules": {
+      "latency_p50_ms": 0.005500012775883079,
+      "latency_p95_ms": 0.010457995813339949,
+      "all": {
+        "n_injection": 40,
+        "n_benign": 20,
+        "detection_rate": 0.525,
+        "false_positive_rate": 0.1,
+        "true_positives": 21,
+        "false_negatives": 19,
+        "true_negatives": 18,
+        "false_positives": 2
+      },
+      "benign": {
+        "n_injection": 0,
+        "n_benign": 20,
+        "detection_rate": null,
+        "false_positive_rate": 0.1,
+        "true_positives": 0,
+        "false_negatives": 0,
+        "true_negatives": 18,
+        "false_positives": 2
+      },
+      "direct": {
+        "n_injection": 20,
+        "n_benign": 0,
+        "detection_rate": 0.45,
+        "false_positive_rate": null,
+        "true_positives": 9,
+        "false_negatives": 11,
+        "true_negatives": 0,
+        "false_positives": 0
+      },
+      "indirect": {
+        "n_injection": 20,
+        "n_benign": 0,
+        "detection_rate": 0.6,
+        "false_positive_rate": null,
+        "true_positives": 12,
+        "false_negatives": 8,
+        "true_negatives": 0,
+        "false_positives": 0
+      }
+    },
+    "own/classifier": {
+      "latency_p50_ms": 30.751499987673014,
+      "latency_p95_ms": 178.6195000167936,
+      "threshold_sweep": {
+        "0.5": {
+          "n_injection": 40,
+          "n_benign": 20,
+          "detection_rate": 0.95,
+          "false_positive_rate": 0.15,
+          "true_positives": 38,
+          "false_negatives": 2,
+          "true_negatives": 17,
+          "false_positives": 3
+        },
+        "0.9": {
+          "n_injection": 40,
+          "n_benign": 20,
+          "detection_rate": 0.9,
+          "false_positive_rate": 0.15,
+          "true_positives": 36,
+          "false_negatives": 4,
+          "true_negatives": 17,
+          "false_positives": 3
+        },
+        "0.99": {
+          "n_injection": 40,
+          "n_benign": 20,
+          "detection_rate": 0.85,
+          "false_positive_rate": 0.15,
+          "true_positives": 34,
+          "false_negatives": 6,
+          "true_negatives": 17,
+          "false_positives": 3
+        },
+        "0.999": {
+          "n_injection": 40,
+          "n_benign": 20,
+          "detection_rate": 0.75,
+          "false_positive_rate": 0.0,
+          "true_positives": 30,
+          "false_negatives": 10,
+          "true_negatives": 20,
+          "false_positives": 0
+        }
+      },
+      "all": {
+        "n_injection": 40,
+        "n_benign": 20,
+        "detection_rate": 0.95,
+        "false_positive_rate": 0.15,
+        "true_positives": 38,
+        "false_negatives": 2,
+        "true_negatives": 17,
+        "false_positives": 3
+      },
+      "benign": {
+        "n_injection": 0,
+        "n_benign": 20,
+        "detection_rate": null,
+        "false_positive_rate": 0.15,
+        "true_positives": 0,
+        "false_negatives": 0,
+        "true_negatives": 17,
+        "false_positives": 3
+      },
+      "direct": {
+        "n_injection": 20,
+        "n_benign": 0,
+        "detection_rate": 0.95,
+        "false_positive_rate": null,
+        "true_positives": 19,
+        "false_negatives": 1,
+        "true_negatives": 0,
+        "false_positives": 0
+      },
+      "indirect": {
+        "n_injection": 20,
+        "n_benign": 0,
+        "detection_rate": 0.95,
+        "false_positive_rate": null,
+        "true_positives": 19,
+        "false_negatives": 1,
+        "true_negatives": 0,
+        "false_positives": 0
+      }
+    },
+    "own/classifier+rules": {
+      "latency_p50_ms": 24.827082990668714,
+      "latency_p95_ms": 30.090624990407377,
+      "all": {
+        "n_injection": 40,
+        "n_benign": 20,
+        "detection_rate": 0.975,
+        "false_positive_rate": 0.25,
+        "true_positives": 39,
+        "false_negatives": 1,
+        "true_negatives": 15,
+        "false_positives": 5
+      },
+      "benign": {
+        "n_injection": 0,
+        "n_benign": 20,
+        "detection_rate": null,
+        "false_positive_rate": 0.25,
+        "true_positives": 0,
+        "false_negatives": 0,
+        "true_negatives": 15,
+        "false_positives": 5
+      },
+      "direct": {
+        "n_injection": 20,
+        "n_benign": 0,
+        "detection_rate": 0.95,
+        "false_positive_rate": null,
+        "true_positives": 19,
+        "false_negatives": 1,
+        "true_negatives": 0,
+        "false_positives": 0
+      },
+      "indirect": {
+        "n_injection": 20,
+        "n_benign": 0,
+        "detection_rate": 1.0,
+        "false_positive_rate": null,
+        "true_positives": 20,
+        "false_negatives": 0,
+        "true_negatives": 0,
+        "false_positives": 0
+      }
+    },
+    "deepset_test/rules": {
+      "latency_p50_ms": 0.0046670029405504465,
+      "latency_p95_ms": 0.01966601121239364,
+      "all": {
+        "n_injection": 60,
+        "n_benign": 56,
+        "detection_rate": 0.1,
+        "false_positive_rate": 0.0,
+        "true_positives": 6,
+        "false_negatives": 54,
+        "true_negatives": 56,
+        "false_positives": 0
+      },
+      "likely_de": {
+        "n_injection": 17,
+        "n_benign": 17,
+        "detection_rate": 0.058823529411764705,
+        "false_positive_rate": 0.0,
+        "true_positives": 1,
+        "false_negatives": 16,
+        "true_negatives": 17,
+        "false_positives": 0
+      },
+      "likely_en": {
+        "n_injection": 43,
+        "n_benign": 39,
+        "detection_rate": 0.11627906976744186,
+        "false_positive_rate": 0.0,
+        "true_positives": 5,
+        "false_negatives": 38,
+        "true_negatives": 39,
+        "false_positives": 0
+      }
+    },
+    "deepset_test/classifier": {
+      "latency_p50_ms": 28.127958008553833,
+      "latency_p95_ms": 397.71941598155536,
+      "threshold_sweep": {
+        "0.5": {
+          "n_injection": 60,
+          "n_benign": 56,
+          "detection_rate": 0.36666666666666664,
+          "false_positive_rate": 0.0,
+          "true_positives": 22,
+          "false_negatives": 38,
+          "true_negatives": 56,
+          "false_positives": 0
+        },
+        "0.9": {
+          "n_injection": 60,
+          "n_benign": 56,
+          "detection_rate": 0.3333333333333333,
+          "false_positive_rate": 0.0,
+          "true_positives": 20,
+          "false_negatives": 40,
+          "true_negatives": 56,
+          "false_positives": 0
+        },
+        "0.99": {
+          "n_injection": 60,
+          "n_benign": 56,
+          "detection_rate": 0.3,
+          "false_positive_rate": 0.0,
+          "true_positives": 18,
+          "false_negatives": 42,
+          "true_negatives": 56,
+          "false_positives": 0
+        },
+        "0.999": {
+          "n_injection": 60,
+          "n_benign": 56,
+          "detection_rate": 0.21666666666666667,
+          "false_positive_rate": 0.0,
+          "true_positives": 13,
+          "false_negatives": 47,
+          "true_negatives": 56,
+          "false_positives": 0
+        }
+      },
+      "all": {
+        "n_injection": 60,
+        "n_benign": 56,
+        "detection_rate": 0.36666666666666664,
+        "false_positive_rate": 0.0,
+        "true_positives": 22,
+        "false_negatives": 38,
+        "true_negatives": 56,
+        "false_positives": 0
+      },
+      "likely_de": {
+        "n_injection": 17,
+        "n_benign": 17,
+        "detection_rate": 0.47058823529411764,
+        "false_positive_rate": 0.0,
+        "true_positives": 8,
+        "false_negatives": 9,
+        "true_negatives": 17,
+        "false_positives": 0
+      },
+      "likely_en": {
+        "n_injection": 43,
+        "n_benign": 39,
+        "detection_rate": 0.32558139534883723,
+        "false_positive_rate": 0.0,
+        "true_positives": 14,
+        "false_negatives": 29,
+        "true_negatives": 39,
+        "false_positives": 0
+      }
+    },
+    "deepset_test/classifier+rules": {
+      "latency_p50_ms": 28.38058298220858,
+      "latency_p95_ms": 33.11066600144841,
+      "all": {
+        "n_injection": 60,
+        "n_benign": 56,
+        "detection_rate": 0.43333333333333335,
+        "false_positive_rate": 0.0,
+        "true_positives": 26,
+        "false_negatives": 34,
+        "true_negatives": 56,
+        "false_positives": 0
+      },
+      "likely_de": {
+        "n_injection": 17,
+        "n_benign": 17,
+        "detection_rate": 0.47058823529411764,
+        "false_positive_rate": 0.0,
+        "true_positives": 8,
+        "false_negatives": 9,
+        "true_negatives": 17,
+        "false_positives": 0
+      },
+      "likely_en": {
+        "n_injection": 43,
+        "n_benign": 39,
+        "detection_rate": 0.4186046511627907,
+        "false_positive_rate": 0.0,
+        "true_positives": 18,
+        "false_negatives": 25,
+        "true_negatives": 39,
+        "false_positives": 0
+      }
+    },
+    "golden_corpus/rules": {
+      "latency_p50_ms": 0.006832997314631939,
+      "latency_p95_ms": 0.009082985343411565,
+      "all": {
+        "n_injection": 0,
+        "n_benign": 30,
+        "detection_rate": null,
+        "false_positive_rate": 0.0,
+        "true_positives": 0,
+        "false_negatives": 0,
+        "true_negatives": 30,
+        "false_positives": 0
+      },
+      "contracts": {
+        "n_injection": 0,
+        "n_benign": 10,
+        "detection_rate": null,
+        "false_positive_rate": 0.0,
+        "true_positives": 0,
+        "false_negatives": 0,
+        "true_negatives": 10,
+        "false_positives": 0
+      },
+      "hr": {
+        "n_injection": 0,
+        "n_benign": 10,
+        "detection_rate": null,
+        "false_positive_rate": 0.0,
+        "true_positives": 0,
+        "false_negatives": 0,
+        "true_negatives": 10,
+        "false_positives": 0
+      },
+      "support": {
+        "n_injection": 0,
+        "n_benign": 10,
+        "detection_rate": null,
+        "false_positive_rate": 0.0,
+        "true_positives": 0,
+        "false_negatives": 0,
+        "true_negatives": 10,
+        "false_positives": 0
+      }
+    },
+    "golden_corpus/classifier": {
+      "latency_p50_ms": 26.575625000987202,
+      "latency_p95_ms": 68.73566599097103,
+      "threshold_sweep": {
+        "0.5": {
+          "n_injection": 0,
+          "n_benign": 30,
+          "detection_rate": null,
+          "false_positive_rate": 0.1,
+          "true_positives": 0,
+          "false_negatives": 0,
+          "true_negatives": 27,
+          "false_positives": 3
+        },
+        "0.9": {
+          "n_injection": 0,
+          "n_benign": 30,
+          "detection_rate": null,
+          "false_positive_rate": 0.1,
+          "true_positives": 0,
+          "false_negatives": 0,
+          "true_negatives": 27,
+          "false_positives": 3
+        },
+        "0.99": {
+          "n_injection": 0,
+          "n_benign": 30,
+          "detection_rate": null,
+          "false_positive_rate": 0.06666666666666667,
+          "true_positives": 0,
+          "false_negatives": 0,
+          "true_negatives": 28,
+          "false_positives": 2
+        },
+        "0.999": {
+          "n_injection": 0,
+          "n_benign": 30,
+          "detection_rate": null,
+          "false_positive_rate": 0.03333333333333333,
+          "true_positives": 0,
+          "false_negatives": 0,
+          "true_negatives": 29,
+          "false_positives": 1
+        }
+      },
+      "all": {
+        "n_injection": 0,
+        "n_benign": 30,
+        "detection_rate": null,
+        "false_positive_rate": 0.1,
+        "true_positives": 0,
+        "false_negatives": 0,
+        "true_negatives": 27,
+        "false_positives": 3
+      },
+      "contracts": {
+        "n_injection": 0,
+        "n_benign": 10,
+        "detection_rate": null,
+        "false_positive_rate": 0.0,
+        "true_positives": 0,
+        "false_negatives": 0,
+        "true_negatives": 10,
+        "false_positives": 0
+      },
+      "hr": {
+        "n_injection": 0,
+        "n_benign": 10,
+        "detection_rate": null,
+        "false_positive_rate": 0.0,
+        "true_positives": 0,
+        "false_negatives": 0,
+        "true_negatives": 10,
+        "false_positives": 0
+      },
+      "support": {
+        "n_injection": 0,
+        "n_benign": 10,
+        "detection_rate": null,
+        "false_positive_rate": 0.3,
+        "true_positives": 0,
+        "false_negatives": 0,
+        "true_negatives": 7,
+        "false_positives": 3
+      }
+    },
+    "golden_corpus/classifier+rules": {
+      "latency_p50_ms": 24.95437502511777,
+      "latency_p95_ms": 28.514457982964814,
+      "all": {
+        "n_injection": 0,
+        "n_benign": 30,
+        "detection_rate": null,
+        "false_positive_rate": 0.1,
+        "true_positives": 0,
+        "false_negatives": 0,
+        "true_negatives": 27,
+        "false_positives": 3
+      },
+      "contracts": {
+        "n_injection": 0,
+        "n_benign": 10,
+        "detection_rate": null,
+        "false_positive_rate": 0.0,
+        "true_positives": 0,
+        "false_negatives": 0,
+        "true_negatives": 10,
+        "false_positives": 0
+      },
+      "hr": {
+        "n_injection": 0,
+        "n_benign": 10,
+        "detection_rate": null,
+        "false_positive_rate": 0.0,
+        "true_positives": 0,
+        "false_negatives": 0,
+        "true_negatives": 10,
+        "false_positives": 0
+      },
+      "support": {
+        "n_injection": 0,
+        "n_benign": 10,
+        "detection_rate": null,
+        "false_positive_rate": 0.3,
+        "true_positives": 0,
+        "false_negatives": 0,
+        "true_negatives": 7,
+        "false_positives": 3
+      }
+    }
+  }
+}

@@ -21,7 +21,6 @@ class Document(BaseModel):
     document_id: str
     text: str
     source: str = "unknown"
-    metadata: dict[str, str] = Field(default_factory=lambda: {})
 
 
 class ParentChunk(BaseModel):
@@ -30,6 +29,11 @@ class ParentChunk(BaseModel):
     Generation pulls the parent text for citation. The order field is
     stable within a document so the dashboard can render chunks in the
     right sequence.
+
+    `injection_quarantined` and `screener_id` carry the ingestion-time
+    prompt-injection verdict. Quarantine is per parent because the parent
+    is what the generator reads. `screener_id` is None for parents that
+    were never screened.
     """
 
     model_config = ConfigDict(frozen=True, extra="forbid")
@@ -38,6 +42,8 @@ class ParentChunk(BaseModel):
     document_id: str
     text: str
     order: int = Field(ge=0)
+    injection_quarantined: bool = False
+    screener_id: str | None = None
 
 
 class ChildChunk(BaseModel):
@@ -70,4 +76,10 @@ class IngestionResult(BaseModel):
 
     @property
     def n_entities(self) -> int:
+        """PII entities redacted from the document."""
         return len(self.redaction_map.entities)
+
+    @property
+    def n_quarantined_parents(self) -> int:
+        """Parents flagged by the injection screen, stored but never retrieved."""
+        return sum(1 for parent in self.parent_chunks if parent.injection_quarantined)

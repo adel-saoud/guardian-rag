@@ -18,11 +18,12 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from guardian_rag.ingestion.models import ChildChunk, ParentChunk
 
+TIKTOKEN_ENCODING = "cl100k_base"
+"""Token counter for chunk sizes, a proxy for what local models see (see module docstring)."""
 
-def _make_id() -> str:
-    # Qdrant point ids accept UUID strings in dashed form. Keeping that
-    # shape here means the same id can be used as a Qdrant point id
-    # without rewriting at the store boundary.
+
+def _new_chunk_id() -> str:
+    """Return a dashed UUID string: a valid Qdrant point id, so the store needs no rewrite."""
     return str(uuid.uuid4())
 
 
@@ -38,8 +39,6 @@ class HierarchicalChunker:
     child_overlap:
         Token overlap between adjacent children inside the same parent.
         Default 25 (~10% of child size). Parent chunks do not overlap.
-    encoding_name:
-        tiktoken encoding name. Default `cl100k_base`.
     """
 
     def __init__(
@@ -47,7 +46,6 @@ class HierarchicalChunker:
         parent_tokens: int = 1024,
         child_tokens: int = 256,
         child_overlap: int = 25,
-        encoding_name: str = "cl100k_base",
     ) -> None:
         if parent_tokens <= 0 or child_tokens <= 0:
             raise ValueError("chunk sizes must be positive")
@@ -57,12 +55,12 @@ class HierarchicalChunker:
             raise ValueError("child_overlap must be in [0, child_tokens)")
 
         self._parent_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
-            encoding_name=encoding_name,
+            encoding_name=TIKTOKEN_ENCODING,
             chunk_size=parent_tokens,
             chunk_overlap=0,
         )
         self._child_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
-            encoding_name=encoding_name,
+            encoding_name=TIKTOKEN_ENCODING,
             chunk_size=child_tokens,
             chunk_overlap=child_overlap,
         )
@@ -72,7 +70,7 @@ class HierarchicalChunker:
         text: str,
         document_id: str,
     ) -> tuple[list[ParentChunk], list[ChildChunk]]:
-        """Return parents and children, ready for storage."""
+        """Return parents and children with fresh ids; each child names its parent."""
         if not text.strip():
             return [], []
 
@@ -81,7 +79,7 @@ class HierarchicalChunker:
 
         parent_texts: list[str] = self._parent_splitter.split_text(text)
         for parent_order, parent_text in enumerate(parent_texts):
-            parent_id = _make_id()
+            parent_id = _new_chunk_id()
             parents.append(
                 ParentChunk(
                     chunk_id=parent_id,
@@ -94,7 +92,7 @@ class HierarchicalChunker:
             for child_order, child_text in enumerate(child_texts):
                 children.append(
                     ChildChunk(
-                        chunk_id=_make_id(),
+                        chunk_id=_new_chunk_id(),
                         document_id=document_id,
                         parent_id=parent_id,
                         text=child_text,
