@@ -1,10 +1,14 @@
 """Streamlit dashboard with three panels.
 
+Every panel runs the detector from `dashboard.detector`: the three stages the
+API runs, or Presidio alone (with a warning) when the `ml` extra is missing.
+
 Excluded from pyright since `streamlit`, `plotly`, and `pandas` ship
 without type stubs. Keep this file thin so the exclusion does not hide
 real bugs in the rest of the codebase.
 
 Run with:
+    uv sync --extra ml --extra dashboard
     uv run streamlit run src/guardian_rag/dashboard/app.py
 """
 
@@ -18,14 +22,16 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
+from guardian_rag.config import Settings
+from guardian_rag.dashboard.detector import build_dashboard_detector, ml_extra_installed
 from guardian_rag.eval.loader import load_golden_corpus
+from guardian_rag.eval.models import EvalReport, GoldenDocument
 from guardian_rag.eval.runner import run_pii_eval
 from guardian_rag.ingestion.chunker import HierarchicalChunker
 from guardian_rag.ingestion.models import Document
 from guardian_rag.ingestion.pipeline import IngestionPipeline, NullVectorSink
 from guardian_rag.ingestion.redaction_store import RedactionMapStore
 from guardian_rag.pii.detector import PiiDetector
-from guardian_rag.pii.presidio_engine import PresidioEngine
 from guardian_rag.pii.redactor import Redactor
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
@@ -35,17 +41,24 @@ REDACTION_DIR = PROJECT_ROOT / "data" / "redaction_maps"
 
 st.set_page_config(page_title="Guardian RAG", layout="wide")
 st.title("Guardian RAG")
-st.caption(
-    "Privacy-safe RAG with two-stage PII detection at ingestion and a "
-    "post-generation audit on every answer."
-)
+if not ml_extra_installed():
+    st.warning(
+        "Presidio stage only: names and other free-text PII are not detected. "
+        "Run `uv sync --extra ml --extra dashboard` for the full detector."
+    )
+
+
+@st.cache_resource
+def _detector() -> PiiDetector:
+    """Loaded once per server: GLiNER and DeBERTa take seconds to load."""
+    return build_dashboard_detector(Settings())
 
 
 @st.cache_resource
 def _pipeline() -> IngestionPipeline:
-    detector = PiiDetector(presidio=PresidioEngine())
+    """Ingestion that writes redaction maps and stores no vectors."""
     return IngestionPipeline(
-        detector=detector,
+        detector=_detector(),
         redactor=Redactor(),
         chunker=HierarchicalChunker(),
         redaction_store=RedactionMapStore(REDACTION_DIR),
@@ -53,14 +66,22 @@ def _pipeline() -> IngestionPipeline:
     )
 
 
+@st.cache_resource
+def _eval_report() -> EvalReport:
+    """Computed once per server: Streamlit reruns every tab on each interaction."""
+    return run_pii_eval(_load_corpus(), _detector())
+
+
 @st.cache_data
-def _load_corpus() -> list:
+def _load_corpus() -> list[GoldenDocument]:
+    """Golden corpus, or an empty list before `seed_demo_corpus.py` has run."""
     if not GOLDEN_DIR.exists():
         return []
     return load_golden_corpus(GOLDEN_DIR)
 
 
 def _load_redaction_maps() -> list[dict]:
+    """Every readable redaction map on disk; corrupt files are skipped, not fatal."""
     if not REDACTION_DIR.exists():
         return []
     out = []
@@ -72,10 +93,11 @@ def _load_redaction_maps() -> list[dict]:
     return out
 
 
-tab1, tab2, tab3 = st.tabs(["PII Protection Stats", "Redaction Explorer", "Eval Results"])
+stats_tab, explorer_tab, eval_tab = st.tabs(
+    ["PII Protection Stats", "Redaction Explorer", "Eval Results"]
+)
 
-# ── Panel 1: PII Protection Stats ───────────────────────────────────────────
-with tab1:
+with stats_tab:
     st.subheader("Aggregate PII protection")
     maps = _load_redaction_maps()
     n_docs = len(maps)
@@ -86,10 +108,9 @@ with tab1:
             entity_types[e["entity_type"]] += 1
             n_entities += 1
 
-    col_a, col_b, col_c = st.columns(3)
-    col_a.metric("Documents ingested", n_docs)
-    col_b.metric("Entities detected", n_entities)
-    col_c.metric("Leaks caught", 0, help="Post-generation audit leaks.")
+    documents_column, entities_column = st.columns(2)
+    documents_column.metric("Documents ingested", n_docs)
+    entities_column.metric("Entities detected", n_entities)
 
     if entity_types:
         df_types = pd.DataFrame(
@@ -97,16 +118,15 @@ with tab1:
         )
         fig = px.pie(df_types, values="count", names="type", hole=0.5)
         fig.update_layout(margin={"t": 10, "b": 10, "l": 10, "r": 10})
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig)
     else:
         st.info("Ingest a document to populate stats. Use the Redaction Explorer tab.")
 
-# ── Panel 2: Redaction Explorer ─────────────────────────────────────────────
-with tab2:
+with explorer_tab:
     st.subheader("Live redaction demo")
     st.caption(
-        "Paste any text. Guardian runs the same detection + redaction "
-        "pipeline used at ingestion and shows the result side by side."
+        "Paste any text. Guardian runs the ingestion redaction pipeline "
+        "and shows the result side by side."
     )
     sample = (
         "John Smith joined HR on 2025-03-12. "
@@ -148,12 +168,11 @@ with tab2:
             for e in result.redaction_map.entities
         ]
         if rows:
-            st.dataframe(pd.DataFrame(rows), use_container_width=True)
+            st.dataframe(pd.DataFrame(rows))
         else:
             st.caption("No PII detected.")
 
-# ── Panel 3: Eval Results ───────────────────────────────────────────────────
-with tab3:
+with eval_tab:
     st.subheader("Eval results")
     corpus = _load_corpus()
     if not corpus:
@@ -162,16 +181,10 @@ with tab3:
             "`uv run python scripts/eval.py` to populate this panel."
         )
     else:
-        detector = PiiDetector(presidio=PresidioEngine())
-        report = run_pii_eval(corpus, detector)
-        col1, col2, col3 = st.columns(3)
-        col1.metric("PII Recall", f"{report.overall.recall:.1%}", help="Gate >= 85%.")
-        col2.metric("PII Precision", f"{report.overall.precision:.2f}", help="Gate >= 0.85.")
-        col3.metric(
-            "Faithfulness",
-            f"{report.faithfulness_rate:.1%}" if report.faithfulness else "N/A",
-            help="Informational, requires Ollama.",
-        )
+        report = _eval_report()
+        recall_column, precision_column = st.columns(2)
+        recall_column.metric("PII Recall", f"{report.overall.recall:.1%}")
+        precision_column.metric("PII Precision", f"{report.overall.precision:.2f}")
 
         per_cat = [
             {
@@ -183,8 +196,4 @@ with tab3:
             }
             for cat, c in sorted(report.per_category.items())
         ]
-        st.dataframe(pd.DataFrame(per_cat), use_container_width=True)
-        st.caption(
-            "Baseline shown above uses Presidio only. Enable GLiNER via "
-            "`scripts/eval.py --with-gliner` for the full two-stage result."
-        )
+        st.dataframe(pd.DataFrame(per_cat))
