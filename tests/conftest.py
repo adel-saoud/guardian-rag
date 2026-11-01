@@ -11,18 +11,6 @@ from pathlib import Path
 
 import pytest
 
-from guardian_rag.config import Settings
-
-
-@pytest.fixture
-def settings(tmp_path: Path) -> Settings:
-    """Hermetic Settings with a tmp_path redaction-map directory."""
-    return Settings(
-        redaction_map_dir=str(tmp_path / "redaction_maps"),
-        qdrant_url="http://localhost:6333",
-        ollama_base_url="http://localhost:11434",
-    )
-
 
 @pytest.fixture
 def golden_corpus_dir() -> Path:

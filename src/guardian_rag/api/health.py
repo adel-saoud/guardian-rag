@@ -11,4 +11,5 @@ router = APIRouter()
 
 @router.get("/health", response_model=HealthResponse)
 def health() -> HealthResponse:
+    """Liveness only: answers once the lifespan has finished loading models."""
     return HealthResponse(status="ok")
