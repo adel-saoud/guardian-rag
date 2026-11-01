@@ -22,5 +22,10 @@
       "end": 161
     }
   ],
-  "qa_pairs": []
+  "qa_pairs": [
+    {
+      "question": "Which position was the employee promoted to?",
+      "reference_answer": "Senior engineer."
+    }
+  ]
 }

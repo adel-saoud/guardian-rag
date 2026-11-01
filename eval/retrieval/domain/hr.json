@@ -1,0 +1,1436 @@
+[
+  {
+    "topic_id": "hr-parental-leave",
+    "category": "hr",
+    "title": "Parental Leave Policy",
+    "sections": [
+      "This policy sets out paid parental leave for employees on the {site} payroll. It applies to birth parents, adoptive parents and parents through surrogacy, regardless of gender or marital status. To qualify for the enhanced company scheme, an employee must have completed {eligibility_months} months of continuous service by the expected week of birth or placement. Employees with shorter service still receive the statutory minimum that applies locally, and HR will explain what that covers. Contractors, interns on placements shorter than three months and agency staff are not covered by this document and should speak to their own employer. Where local law grants a more generous entitlement, the local law prevails and this policy tops it up rather than replacing it.",
+      "The primary carer is entitled to {primary_weeks} weeks of leave. During this period the company pays {primary_pay}, after which any remaining statutory leave is unpaid by the company but still fully protected. Leave can start up to eleven weeks before the expected due date, and must start no later than the day after the birth. For adoption, leave starts on the placement date or up to fourteen days before it. The two weeks immediately after a birth are compulsory rest for the birth parent and cannot be worked, even on a voluntary basis. Annual leave continues to accrue throughout the whole period, and employees can add accrued holiday at the end of their leave with their manager's agreement.",
+      "The second parent or partner is entitled to {secondary_weeks} weeks of fully paid leave, which can be taken in one block or split into a maximum of three blocks of at least one week each. All of it must be used within twelve months of the birth or placement, otherwise it lapses and cannot be paid out. Parents who both work for the company can share the primary entitlement through a shared leave arrangement, but the combined total can never exceed the primary allowance. Requests to split leave into more blocks than allowed go to the HR business partner, who decides within ten working days and records the reason for any refusal in the HR portal.",
+      "Employees must tell their manager and HR at least {notice_weeks} weeks before the intended start date, using the parental leave form in the HR portal. Attach the medical certificate confirming the due date, or the matching certificate from the adoption agency. HR confirms the leave dates, pay and expected return date in writing within five working days. If the baby arrives early, leave starts automatically and the notice requirement is waived. Questions about forms, pay calculations or eligibility for the {site} team go to {person} ({email}), or by phone on {phone}. Managers should not approve parental leave informally in chat or email, because only the portal record triggers the payroll changes.",
+      "Before returning, the employee and manager agree a return plan at least four weeks ahead. The company offers {return_phasing}, so people can rebuild their routine without losing pay. Employees have the right to return to the same role, or to a role of equal level and pay if the original job no longer exists. Keeping in touch days, up to ten per leave period, are optional, paid at the normal daily rate and do not end the leave. Employees who decide not to return must give their contractual notice. The company will not ask for repayment of enhanced pay unless they resign within three months of coming back, in which case the HR portal explains the pro rata clawback."
+    ],
+    "variants": [
+      {
+        "variant_id": "lyon-2025",
+        "label": "Lyon office, 2025 revision",
+        "slots": {
+          "site": "Lyon",
+          "eligibility_months": "6",
+          "primary_weeks": "20",
+          "primary_pay": "full salary for the first 16 weeks",
+          "secondary_weeks": "6",
+          "notice_weeks": "12",
+          "return_phasing": "a phased return at 60 percent of normal hours on full pay for the first four weeks"
+        }
+      },
+      {
+        "variant_id": "lyon-2023",
+        "label": "Lyon office, 2023 revision",
+        "slots": {
+          "site": "Lyon",
+          "eligibility_months": "12",
+          "primary_weeks": "16",
+          "primary_pay": "full salary for the first 10 weeks",
+          "secondary_weeks": "4",
+          "notice_weeks": "15",
+          "return_phasing": "a phased return at 80 percent of normal hours on full pay for the first two weeks"
+        }
+      },
+      {
+        "variant_id": "rotterdam-2025",
+        "label": "Rotterdam office, 2025 revision",
+        "slots": {
+          "site": "Rotterdam",
+          "eligibility_months": "3",
+          "primary_weeks": "18",
+          "primary_pay": "full salary for all 18 weeks",
+          "secondary_weeks": "5",
+          "notice_weeks": "10",
+          "return_phasing": "a phased return at 50 percent of normal hours on full pay for six weeks"
+        }
+      },
+      {
+        "variant_id": "krakow-2025",
+        "label": "Krakow office, 2025 revision",
+        "slots": {
+          "site": "Krakow",
+          "eligibility_months": "6",
+          "primary_weeks": "24",
+          "primary_pay": "80 percent of salary for the whole period",
+          "secondary_weeks": "3",
+          "notice_weeks": "14",
+          "return_phasing": "two extra remote working days per week for the first three months"
+        }
+      },
+      {
+        "variant_id": "dublin-2024",
+        "label": "Dublin office, 2024 revision",
+        "slots": {
+          "site": "Dublin",
+          "eligibility_months": "9",
+          "primary_weeks": "26",
+          "primary_pay": "full salary for the first 12 weeks and half salary for the next 8",
+          "secondary_weeks": "4",
+          "notice_weeks": "8",
+          "return_phasing": "a four day week on full pay for the first month",
+          "childcare_support": "EUR 250"
+        },
+        "extra_section": "Addendum for the {site} office: in addition to the paid weeks above, employees may take unpaid parent's leave of up to 26 weeks per child before the child turns twelve, in blocks of at least six weeks, with eight weeks of written notice. The company also contributes {childcare_support} per month toward registered childcare for the first twelve months after the return to work, paid through payroll on presentation of the childcare provider's invoice. Payments stop if the employee leaves or moves to another entity."
+      },
+      {
+        "variant_id": "munich-2025",
+        "label": "Munich office, 2025 revision",
+        "slots": {
+          "site": "Munich",
+          "eligibility_months": "6",
+          "primary_weeks": "14",
+          "primary_pay": "a top up above the statutory parental allowance so that net pay matches full salary",
+          "secondary_weeks": "8",
+          "notice_weeks": "12",
+          "return_phasing": "a phased return at 70 percent of normal hours on full pay for the first eight weeks"
+        },
+        "extra_section": "Addendum for the {site} office: employees can request statutory parental time off of up to three years per child in addition to the paid weeks above, unpaid by the company. Requests for time off within the first three years of the child's life need seven weeks of written notice. Payroll helps register the public parental allowance claim, and the company pays its top up only after the allowance decision letter has been uploaded to the HR portal. The works council must be informed of any refusal of part time work during this period."
+      }
+    ]
+  },
+  {
+    "topic_id": "hr-sick-leave",
+    "category": "hr",
+    "title": "Sickness Absence and Medical Certificates",
+    "sections": [
+      "Employees covered by the {site} contract who are too ill to work must tell their line manager no later than {report_by} on the first day of absence, by phone or a direct message, not only by email. They should say roughly how long they expect to be away and whether any urgent work needs covering. If the manager cannot be reached, they should call the duty HR line instead. The absence is then logged in the HR portal by the manager on the same day so that payroll and team planning stay accurate. Repeated failure to report absence on time without a good reason may be handled under the attendance procedure, separately from the illness itself.",
+      "For short absences employees can self certify for up to {self_cert_days} consecutive calendar days, including weekends, using the self certification form in the portal. From the next day onward a medical certificate from a doctor is required, and it must be uploaded {cert_deadline}. Certificates written in a language other than English or the local language should come with a short translation, which HR can arrange. Fit notes saying the employee may be fit for work with adjustments are discussed with the manager before the return date, so that the suggested adjustments, such as reduced hours or lighter duties, can be put in place. A missing certificate means the days are recorded as unauthorised absence.",
+      "Company sick pay is paid at full salary for the first {full_pay_days} working days of sickness in any rolling twelve month period. After that, the company pays {reduced_pay}, on top of any state benefit the employee receives. Sick pay entitlement does not reset when a new calendar year starts; it is measured over the twelve months before each absence. Employees in their probation period receive statutory sick pay only, unless their manager and HR agree otherwise in writing. Overtime and shift allowances are not included in sick pay, but fixed monthly allowances such as the car allowance continue to be paid for the whole period of company sick pay.",
+      "When an absence lasts longer than {oh_referral_weeks} weeks, or there are four separate absences in six months, the manager refers the employee to occupational health. The occupational health adviser reviews the medical situation, with the employee's consent, and recommends adjustments or a return plan. The report is shared with the employee first, and only the work related recommendations go to the manager. The HR contact for long term absence cases is {person} ({email}). Meetings during a long absence are held at a pace the employee can manage, and they may bring a colleague or a union representative to any formal meeting about their attendance or their return.",
+      "On return from any absence longer than three days, the manager holds a short return to work conversation within the first two days. The purpose is to check that the employee is well enough to work, agree any support needed and update the absence record. It is not a disciplinary meeting. Medical details are confidential and are never recorded in the manager's notes; only the dates, the existence of a certificate and any agreed adjustments are kept. Employees who fall ill during annual leave can convert those days to sick leave if they provide a medical certificate covering the dates, and the holiday is then credited back to their balance."
+    ],
+    "variants": [
+      {
+        "variant_id": "leeds-uk",
+        "label": "Leeds office, United Kingdom",
+        "slots": {
+          "site": "Leeds",
+          "report_by": "9:30 local time",
+          "self_cert_days": "seven",
+          "cert_deadline": "within three working days of the eighth day of absence",
+          "full_pay_days": "20",
+          "reduced_pay": "half salary for a further 20 working days",
+          "oh_referral_weeks": "four"
+        }
+      },
+      {
+        "variant_id": "lyon-france",
+        "label": "Lyon office, France",
+        "slots": {
+          "site": "Lyon",
+          "report_by": "9:00 local time",
+          "self_cert_days": "two",
+          "cert_deadline": "within 48 hours of the start of the absence",
+          "full_pay_days": "30",
+          "reduced_pay": "90 percent of salary for a further 30 days",
+          "oh_referral_weeks": "six"
+        }
+      },
+      {
+        "variant_id": "madrid-spain",
+        "label": "Madrid office, Spain",
+        "slots": {
+          "site": "Madrid",
+          "report_by": "10:00 local time",
+          "self_cert_days": "three",
+          "cert_deadline": "on the day it is issued",
+          "full_pay_days": "15",
+          "reduced_pay": "75 percent of salary until the sixtieth day of absence",
+          "oh_referral_weeks": "eight"
+        },
+        "extra_section": "Spain addendum: medical leave certificates are issued electronically by the public health service, and the company receives the official notification directly from the social security system. Employees therefore only need to upload the copy they were given, so that the manager can see the expected duration. From the fourth day of sickness, sick pay is shared between the company and social security, and payroll shows both amounts as separate lines on the payslip. Inspections by the mutual insurance company may be requested for long absences, and employees are expected to attend them."
+      },
+      {
+        "variant_id": "vienna-austria",
+        "label": "Vienna office, Austria",
+        "slots": {
+          "site": "Vienna",
+          "report_by": "8:30 local time",
+          "self_cert_days": "three",
+          "cert_deadline": "by the fourth working day of absence",
+          "full_pay_days": "42",
+          "reduced_pay": "half salary for a further four weeks",
+          "oh_referral_weeks": "six"
+        }
+      },
+      {
+        "variant_id": "dublin-ireland",
+        "label": "Dublin office, Ireland",
+        "slots": {
+          "site": "Dublin",
+          "report_by": "9:00 local time",
+          "self_cert_days": "two",
+          "cert_deadline": "within two working days",
+          "full_pay_days": "25",
+          "reduced_pay": "two thirds of salary for a further 15 working days",
+          "oh_referral_weeks": "five"
+        }
+      },
+      {
+        "variant_id": "lyon-warehouse",
+        "label": "Lyon distribution centre, shift staff",
+        "slots": {
+          "site": "Lyon distribution centre",
+          "report_by": "two hours before the start of the shift",
+          "self_cert_days": "two",
+          "cert_deadline": "within 48 hours, either handed to the shift supervisor or uploaded",
+          "full_pay_days": "20",
+          "reduced_pay": "80 percent of salary for a further 40 days",
+          "oh_referral_weeks": "four",
+          "machinery_days": "five"
+        },
+        "extra_section": "Distribution centre addendum: staff in forklift, picking or loading roles must not return to machinery work after an absence of more than {machinery_days} days until the site safety officer has signed the return form. Until then they are assigned to light duties at normal pay. Night shift workers who fall ill after midnight should call the shift hotline rather than messaging their manager, because managers are not on site at night. Injuries at work are reported separately through the accident book and are never recorded only as sickness."
+      }
+    ]
+  },
+  {
+    "topic_id": "hr-annual-leave-carryover",
+    "category": "hr",
+    "title": "Annual Leave and Carry Over Rules",
+    "sections": [
+      "Full time employees at the {site} office receive {entitlement_days} working days of paid annual leave per holiday year, plus {bank_holidays}. Part time employees receive a pro rata amount based on their contracted hours, calculated in hours rather than days so that uneven working patterns are handled fairly. The holiday year runs from 1 January to 31 December. New joiners and leavers receive a pro rata share for the months they work, rounded up to the nearest half day. Leave balances, bookings and approvals are all managed in the HR portal, which is the only valid record if there is ever a disagreement about how much leave is left.",
+      "Employees are expected to take most of their leave within the holiday year it belongs to. Rest matters, and unused leave is not a badge of commitment. Managers review team balances each quarter and should encourage anyone with a large balance to plan time off. At least ten working days per year should be taken, including one block of five consecutive days, unless a long absence makes this impossible. Leave requests should be submitted at least twice as far ahead as the length of the leave, for example two weeks ahead for one week off, and managers respond within five working days. Requests are approved in the order they are received when too many people ask for the same dates.",
+      "Up to {carryover_days} days of unused leave can be carried over into the next holiday year automatically, without any request. Carried days must be used by {carryover_deadline}, and any carried days still unused after that date are lost. The portal always deducts carried days first when leave is booked, so that the oldest days are used before the new allowance. Carry over above the automatic limit is only possible in exceptional cases, such as a critical project or a business freeze on holidays, and needs written approval from the {approval_role} before 15 December. Approved extra days follow the same deadline as the automatic carry over.",
+      "Different rules apply where leave could not be taken for reasons outside the employee's control. Leave not taken because of sickness, parental leave or another protected absence is carried over in full, and the deadline for using it is extended to eighteen months after the end of the holiday year in which it accrued. Employees should contact {person} ({email}) to have these balances adjusted, because the portal does not calculate them automatically. Requests to buy or sell holiday are not part of this policy and are handled under the flexible benefits scheme, during the annual enrolment window only.",
+      "Unused leave is normally not paid out while employment continues. On leaving, {payout_rule}. If an employee has taken more leave than they accrued by their leaving date, the excess days are deducted from the final salary, and this deduction is explained on the final payslip. Managers may ask leavers to use outstanding leave during the notice period where operational needs allow, but should give at least as many days of notice as the leave being required. Garden leave is handled separately and does not reduce the holiday balance. Questions about a final holiday calculation should be raised before the last working day."
+    ],
+    "variants": [
+      {
+        "variant_id": "lisbon-2025",
+        "label": "Lisbon office, 2025 holiday year",
+        "slots": {
+          "site": "Lisbon",
+          "entitlement_days": "22",
+          "bank_holidays": "the national public holidays and the municipal holiday on 13 June",
+          "carryover_days": "5",
+          "carryover_deadline": "30 April",
+          "approval_role": "country HR director",
+          "payout_rule": "all accrued and unused days are paid at the normal daily rate in the final salary"
+        }
+      },
+      {
+        "variant_id": "lisbon-2024",
+        "label": "Lisbon office, 2024 holiday year",
+        "slots": {
+          "site": "Lisbon",
+          "entitlement_days": "22",
+          "bank_holidays": "the national public holidays",
+          "carryover_days": "3",
+          "carryover_deadline": "31 March",
+          "approval_role": "head of department",
+          "payout_rule": "up to ten unused days are paid, and anything above that is lost"
+        }
+      },
+      {
+        "variant_id": "copenhagen-2025",
+        "label": "Copenhagen office, 2025 holiday year",
+        "slots": {
+          "site": "Copenhagen",
+          "entitlement_days": "25",
+          "bank_holidays": "the Danish public holidays and 24 and 31 December",
+          "carryover_days": "5",
+          "carryover_deadline": "30 September",
+          "approval_role": "country managing director",
+          "payout_rule": "unused statutory days are reported to the national holiday fund, which pays them out, while extra contractual days are paid in the final salary"
+        },
+        "extra_section": "Copenhagen addendum: under Danish holiday law leave accrues while it is being earned, at 2.08 days per month, and each year's leave can be used in a holiday period that runs from 1 September to 31 December of the following year. For statutory days this overrides the calendar year rule above. Employees can agree in writing to transfer days above the fourth week. The main summer holiday of three consecutive weeks should be taken between 1 May and 30 September, and managers must confirm summer plans by 31 March."
+      },
+      {
+        "variant_id": "munich-2025",
+        "label": "Munich office, 2025 holiday year",
+        "slots": {
+          "site": "Munich",
+          "entitlement_days": "28",
+          "bank_holidays": "the Bavarian public holidays",
+          "carryover_days": "10",
+          "carryover_deadline": "31 March",
+          "approval_role": "HR business partner together with the works council representative",
+          "payout_rule": "accrued days that could not be taken are paid at the average daily earnings of the last 13 weeks"
+        }
+      },
+      {
+        "variant_id": "dublin-2025",
+        "label": "Dublin office, 2025 holiday year",
+        "slots": {
+          "site": "Dublin",
+          "entitlement_days": "21",
+          "bank_holidays": "the Irish public holidays",
+          "carryover_days": "4",
+          "carryover_deadline": "31 May",
+          "approval_role": "head of department",
+          "payout_rule": "all accrued and unused days are paid, including any public holiday entitlement not yet received"
+        }
+      },
+      {
+        "variant_id": "milan-2025",
+        "label": "Milan office, 2025 holiday year",
+        "slots": {
+          "site": "Milan",
+          "entitlement_days": "26",
+          "bank_holidays": "the Italian national holidays and the feast of Saint Ambrose on 7 December",
+          "carryover_days": "8",
+          "carryover_deadline": "30 June",
+          "approval_role": "country HR director",
+          "payout_rule": "unused days are paid at the daily rate only if the manager confirms in writing that the leave could not be scheduled",
+          "rol_hours": "72"
+        },
+        "extra_section": "Milan addendum: in addition to annual leave, employees receive {rol_hours} hours of reduced working time permits per year under the national collective agreement. Permits are booked in hours in the portal under a separate leave type and do not count toward the carry over limit above. Unused permits must be used within 24 months of the end of the year in which they accrued; after that they are paid in the following payroll. Managers should plan permits together with holiday so that teams keep minimum cover."
+      }
+    ]
+  },
+  {
+    "topic_id": "hr-remote-hybrid-work",
+    "category": "hr",
+    "title": "Hybrid and Remote Working Policy",
+    "sections": [
+      "This policy describes how hybrid working operates for employees attached to the {site} office. Most roles are hybrid by default: employees are expected in the office {office_days} per week, and the whole team is asked to be present on {anchor_day} so that planning, workshops and social time happen in person. Roles that need physical presence, such as reception, facilities and lab staff, are excluded and follow their own rota. Fully remote arrangements are exceptions approved by the department head and reviewed every twelve months. Hybrid working is a working arrangement and not a contractual right, but changes to it are consulted on before they take effect.",
+      "Wherever they work, employees should be reachable during the core hours of {core_hours}, local time, and keep their calendar up to date so colleagues can see when they are available. Outside core hours people may organise their day flexibly, provided the contracted weekly hours are met and the rest rules are respected. Nobody is expected to answer messages in the evening or at weekends unless they are on call. Managers should avoid scheduling recurring meetings outside core hours, and where teams span several time zones the inconvenient meeting slots should rotate fairly between locations rather than always falling on the same people.",
+      "Each hybrid employee can claim up to {equipment_budget} once every three years for home office equipment, such as a desk, a chair, a monitor or a headset. Laptops and phones are supplied by IT and are not part of this budget. Purchases are claimed through the expenses tool with an itemised receipt, and the furniture remains the employee's property after the three years. In addition, a monthly allowance of {internet_allowance} is paid through payroll to help with internet and energy costs. The allowance is paid automatically to all employees on a hybrid or remote arrangement and stops in the month the arrangement ends.",
+      "Working temporarily from another country creates tax, social security and immigration risks for both the employee and the company. Employees may work from abroad for up to {remote_abroad_days} working days in any calendar year, only from countries on the approved list in the HR portal, and only after submitting a request at least three weeks ahead. Days spent working abroad on business trips do not count toward the limit. Requests above the limit are almost always declined. For questions about a specific destination, contact the mobility specialist {person} ({email}) before booking any travel, because some countries create obligations from the very first day.",
+      "Employees working from home are responsible for a safe and private workspace. A short self assessment of the home setup must be completed in the portal within the first month and repeated every two years. Confidential documents should not be printed at home, and screens must be locked whenever the device is left unattended, including in shared homes. Public wifi may only be used with the company VPN turned on. Any data incident, lost device or suspected phishing must be reported to the IT service desk immediately, wherever the employee is working, and the same incident rules apply as in the office."
+    ],
+    "variants": [
+      {
+        "variant_id": "amsterdam-2025",
+        "label": "Amsterdam office, 2025 policy",
+        "slots": {
+          "site": "Amsterdam",
+          "office_days": "three days",
+          "anchor_day": "Tuesday",
+          "core_hours": "10:00 to 15:00",
+          "equipment_budget": "EUR 600",
+          "internet_allowance": "EUR 35",
+          "remote_abroad_days": "20"
+        }
+      },
+      {
+        "variant_id": "amsterdam-2023",
+        "label": "Amsterdam office, 2023 policy",
+        "slots": {
+          "site": "Amsterdam",
+          "office_days": "two days",
+          "anchor_day": "Thursday",
+          "core_hours": "10:00 to 16:00",
+          "equipment_budget": "EUR 500",
+          "internet_allowance": "EUR 25",
+          "remote_abroad_days": "30"
+        }
+      },
+      {
+        "variant_id": "barcelona-2025",
+        "label": "Barcelona office, 2025 policy",
+        "slots": {
+          "site": "Barcelona",
+          "office_days": "two days",
+          "anchor_day": "Wednesday",
+          "core_hours": "9:30 to 14:30",
+          "equipment_budget": "EUR 450",
+          "internet_allowance": "EUR 30",
+          "remote_abroad_days": "25"
+        }
+      },
+      {
+        "variant_id": "london-2025",
+        "label": "London office, 2025 policy",
+        "slots": {
+          "site": "London",
+          "office_days": "three days",
+          "anchor_day": "Wednesday",
+          "core_hours": "10:00 to 16:00",
+          "equipment_budget": "GBP 400",
+          "internet_allowance": "GBP 26",
+          "remote_abroad_days": "15"
+        }
+      },
+      {
+        "variant_id": "warsaw-2025",
+        "label": "Warsaw office, 2025 policy",
+        "slots": {
+          "site": "Warsaw",
+          "office_days": "four days",
+          "anchor_day": "Monday",
+          "core_hours": "9:00 to 15:00",
+          "equipment_budget": "PLN 2,000",
+          "internet_allowance": "PLN 120",
+          "remote_abroad_days": "10"
+        },
+        "extra_section": "Poland addendum: under the Labour Code, the hybrid arrangement is agreed in writing and the company pays a monthly lump sum covering electricity and internet, which is the allowance described above. Employees may also request occasional remote work of up to 24 days per calendar year outside the hybrid pattern, for example for family reasons or a home repair. Occasional remote days are booked in the portal as a separate type, need the manager's approval and do not increase the allowance."
+      },
+      {
+        "variant_id": "tallinn-engineering",
+        "label": "Tallinn office, engineering teams",
+        "slots": {
+          "site": "Tallinn",
+          "office_days": "one day",
+          "anchor_day": "Thursday",
+          "core_hours": "11:00 to 15:00",
+          "equipment_budget": "EUR 800",
+          "internet_allowance": "EUR 40",
+          "remote_abroad_days": "45",
+          "hotspot_cap": "EUR 20"
+        },
+        "extra_section": "Engineering addendum: engineers on the incident rota in {site} must work from a location with a backup internet connection, such as a mobile hotspot, and the company reimburses the data plan up to {hotspot_cap} per month. Teams meet in person for a two day offsite once per quarter, and attendance is expected unless the manager agrees otherwise. Travel to the offsite is booked under the travel policy and is not counted as working from abroad."
+      }
+    ]
+  },
+  {
+    "topic_id": "hr-expense-reimbursement",
+    "category": "hr",
+    "title": "Expense Reimbursement Policy",
+    "sections": [
+      "This policy covers how employees of the entity based in {site} claim back business expenses they have paid personally. Claims are made in the expenses tool, one claim per trip or per month for regular costs, and must be submitted within {submit_days} days of the date the cost was incurred. Late claims are only accepted with a written explanation approved by the finance controller. Expenses must be necessary, reasonable and directly related to company business. Personal items, fines, upgrades for personal comfort and alcohol outside approved client entertainment are never reimbursed, even if a manager approved them.",
+      "An itemised receipt is required for every expense above {receipt_threshold}. Below that amount a short description in the tool is enough, but finance may still ask for evidence during the quarterly audit. Card slips that show only a total are not accepted as receipts. Photos of receipts taken with the mobile app count as originals, and paper receipts do not need to be kept once the photo is uploaded and legible. Lost receipts must be declared with the lost receipt form, which can be used at most three times in a calendar year. Foreign currency expenses are converted at the rate shown on the card statement.",
+      "Meals during business travel are reimbursed up to {meal_cap} per day, including tips, for actual costs incurred. Meals with colleagues only, where no external guest is present, are not reimbursed unless they take place during travel or are part of an approved team event. Employees using their own car for business journeys are reimbursed at {mileage_rate}, calculated from the shortest reasonable route. Commuting between home and the usual workplace is never claimable. Parking and tolls are reimbursed at cost with receipts, but parking fines and speeding penalties are always the driver's own responsibility.",
+      "Every claim is approved by the employee's line manager, who checks that the costs are genuine and within policy. Claims above {approval_limit} in total also need a second approval from the budget owner of the cost centre. Managers cannot approve their own claims, or claims for events they attended as the most senior person; these go to their own manager instead. Queries about a rejected claim go first to the approver and then to the expenses team contact {person} ({email}). Repeated or deliberate breaches of this policy are treated as misconduct and may also be reported to the internal audit team.",
+      "Approved claims are paid {payment_cycle} by bank transfer to the salary account held in payroll. Reimbursements are not taxable as long as they follow this policy, but allowances paid without receipts may appear on the payslip as taxable benefits where local rules require it. Employees who expect to spend a significant amount on a trip can request a company card instead of paying personally. Company card statements must be reconciled in the same tool within ten days of the statement date, and any personal spending on a company card must be repaid immediately."
+    ],
+    "variants": [
+      {
+        "variant_id": "france-2025",
+        "label": "France entity, 2025 version",
+        "slots": {
+          "site": "Paris",
+          "submit_days": "30",
+          "receipt_threshold": "EUR 15",
+          "meal_cap": "EUR 60",
+          "mileage_rate": "the rate in the national mileage scale for the car's fiscal horsepower",
+          "approval_limit": "EUR 750",
+          "payment_cycle": "every second Friday"
+        }
+      },
+      {
+        "variant_id": "uk-2025",
+        "label": "UK entity, 2025 version",
+        "slots": {
+          "site": "London",
+          "submit_days": "60",
+          "receipt_threshold": "GBP 10",
+          "meal_cap": "GBP 45",
+          "mileage_rate": "45 pence per mile for the first 10,000 miles and 25 pence per mile after that",
+          "approval_limit": "GBP 500",
+          "payment_cycle": "in the next monthly payroll run",
+          "late_meal_cap": "GBP 20"
+        },
+        "extra_section": "UK addendum: employees who are asked to work beyond 8 pm on a normal working day may claim an evening meal of up to {late_meal_cap} and a taxi home if public transport is not reasonably available. Both must be recorded in the claim with the reason and the name of the manager who asked for the late work. These items are covered by an agreement with the tax authority and are not reported as benefits, so they must not be combined with the daily meal allowance for travel."
+      },
+      {
+        "variant_id": "germany-2025",
+        "label": "Germany entity, 2025 version",
+        "slots": {
+          "site": "Munich",
+          "submit_days": "45",
+          "receipt_threshold": "EUR 20",
+          "meal_cap": "EUR 50",
+          "mileage_rate": "EUR 0.30 per kilometre",
+          "approval_limit": "EUR 1,000",
+          "payment_cycle": "weekly on Wednesdays"
+        }
+      },
+      {
+        "variant_id": "sweden-2025",
+        "label": "Sweden entity, 2025 version",
+        "slots": {
+          "site": "Stockholm",
+          "submit_days": "30",
+          "receipt_threshold": "SEK 150",
+          "meal_cap": "SEK 600",
+          "mileage_rate": "SEK 2.50 per kilometre",
+          "approval_limit": "SEK 8,000",
+          "payment_cycle": "in the next monthly payroll run"
+        }
+      },
+      {
+        "variant_id": "spain-2025",
+        "label": "Spain entity, 2025 version",
+        "slots": {
+          "site": "Madrid",
+          "submit_days": "20",
+          "receipt_threshold": "EUR 10",
+          "meal_cap": "EUR 55",
+          "mileage_rate": "EUR 0.26 per kilometre",
+          "approval_limit": "EUR 600",
+          "payment_cycle": "on the 15th and on the last working day of each month"
+        }
+      },
+      {
+        "variant_id": "france-2022",
+        "label": "France entity, 2022 version",
+        "slots": {
+          "site": "Paris",
+          "submit_days": "45",
+          "receipt_threshold": "EUR 25",
+          "meal_cap": "EUR 45",
+          "mileage_rate": "a flat EUR 0.32 per kilometre",
+          "approval_limit": "EUR 500",
+          "payment_cycle": "once a month together with salary"
+        },
+        "extra_section": "Status note: this version was replaced by the 2025 version on 1 January 2025, but it still governs claims for expenses incurred before that date. Claims for older expenses that are submitted after the deadline in this version are rejected automatically by the tool, and finance will not reopen them without approval from the finance controller. Employees who still hold unclaimed receipts from 2024 should submit them as soon as possible and mark the claim as falling under the 2022 rules."
+      }
+    ]
+  },
+  {
+    "topic_id": "hr-business-travel-booking",
+    "category": "hr",
+    "title": "Business Travel Booking Rules",
+    "sections": [
+      "All business travel for employees based in {site} is booked through {booking_tool}, which holds the negotiated fares and hotel rates and keeps the duty of care record that lets the company locate travellers in an emergency. Bookings made directly with airlines or hotels are not reimbursed unless the tool was unavailable and the traveller can show a screenshot of the error. Every trip needs pre approval from the line manager in the tool before tickets are issued. Travel for client projects must carry the project code so that the cost can be recharged correctly, and trips without a code are charged to the traveller's own department.",
+      "Flights and trains should be booked at least {advance_days} days before departure. Late bookings are allowed for urgent client needs, but the traveller must record the reason, and the cost difference may be reviewed by the budget owner. Travellers choose the lowest logical fare: the cheapest option within two hours of the preferred departure time, with no more than one connection on trips under six hours. Refundable fares are only used where the trip is genuinely likely to change. Personal travel combined with a business trip is allowed if it adds no cost to the company and the extra days are booked as leave.",
+      "{flight_class_rule} Upgrades to a higher class paid by the employee are allowed, but loyalty points or status cannot be used as a reason to choose a more expensive fare. For journeys where a direct train takes less than {rail_threshold}, travellers must take the train rather than fly, because the total door to door time is similar and the emissions are much lower. First class rail is permitted only when it costs less than standard class or when the traveller needs to work confidentially on board. Car hire is the last option and should be the smallest suitable category.",
+      "Hotel stays are limited to {hotel_cap} per night, excluding local taxes, in most cities. The booking tool shows preferred hotels near company offices and client sites; these should be used where available. Higher caps for expensive destinations such as New York or Zurich city centre are listed in the tool. Breakfast is included in the cap where offered. Travellers who stay with friends or family instead of a hotel can claim a small thank you allowance, listed in the tool, once per trip. Short term apartment rentals are only allowed for stays longer than two weeks, with prior approval from the budget owner.",
+      "For changes during a trip, travellers contact {travel_agency}, which runs a 24 hour support line on behalf of the company and can rebook flights, trains and hotels. The travel coordinator for the {site} office is {person} ({email}), who handles group bookings, visa invitation letters and travel to countries on the high risk list. Travel to high risk countries needs clearance from the corporate security team at least ten working days ahead. Lost luggage, cancellations and delays should be reported to the agency first, and any compensation paid by carriers belongs to the company when the company paid for the ticket."
+    ],
+    "variants": [
+      {
+        "variant_id": "brussels-2025",
+        "label": "Brussels office, 2025 rules",
+        "slots": {
+          "site": "Brussels",
+          "booking_tool": "the Routelane booking portal",
+          "advance_days": "14",
+          "flight_class_rule": "Economy class is used for all flights under six hours; flights of six hours or more may be booked in premium economy.",
+          "rail_threshold": "four hours",
+          "hotel_cap": "EUR 170",
+          "travel_agency": "Halcyon Travel Services"
+        }
+      },
+      {
+        "variant_id": "brussels-2023",
+        "label": "Brussels office, 2023 rules",
+        "slots": {
+          "site": "Brussels",
+          "booking_tool": "the Routelane booking portal",
+          "advance_days": "21",
+          "flight_class_rule": "Economy class is used for all flights regardless of duration; only directors and above may book business class, and only on overnight flights.",
+          "rail_threshold": "three hours",
+          "hotel_cap": "EUR 150",
+          "travel_agency": "Halcyon Travel Services"
+        },
+        "extra_section": "Transition note: these rules apply to trips booked before 1 March 2025. Trips booked under them but taken after that date keep the original class and hotel conditions, and no rebooking is needed. The current rules changed the advance booking period, the train threshold and the hotel cap, so travellers planning anything new should check the latest version in the booking portal before requesting approval. Managers approving older bookings should check the booking date rather than the travel date."
+      },
+      {
+        "variant_id": "zurich-2025",
+        "label": "Zurich office, 2025 rules",
+        "slots": {
+          "site": "Zurich",
+          "booking_tool": "the Routelane booking portal",
+          "advance_days": "10",
+          "flight_class_rule": "Economy class is used for flights under eight hours; business class is allowed on longer flights with director approval.",
+          "rail_threshold": "five hours",
+          "hotel_cap": "CHF 260",
+          "travel_agency": "Alpenreise Corporate"
+        },
+        "extra_section": "Switzerland addendum: travellers using the train within Switzerland should use the company half fare travelcard, which is issued to every employee who makes more than six business trips per year. Day trips to Geneva, Basel and Bern are always made by train, and a seat in the quiet carriage may be reserved. Taxis are reimbursed only after 22:00 or when the traveller is carrying heavy equipment. Mountain resort events are reached by train and the official shuttle, not by hire car."
+      },
+      {
+        "variant_id": "dublin-2025",
+        "label": "Dublin office, 2025 rules",
+        "slots": {
+          "site": "Dublin",
+          "booking_tool": "the Skyledger travel app",
+          "advance_days": "14",
+          "flight_class_rule": "Economy class is used for all flights under five hours; premium economy is allowed on flights longer than five hours.",
+          "rail_threshold": "three and a half hours",
+          "hotel_cap": "EUR 190",
+          "travel_agency": "Liffeyway Travel"
+        }
+      },
+      {
+        "variant_id": "milan-2025",
+        "label": "Milan office, 2025 rules",
+        "slots": {
+          "site": "Milan",
+          "booking_tool": "the Routelane booking portal",
+          "advance_days": "7",
+          "flight_class_rule": "Economy class is used for flights under ten hours; business class is allowed on flights longer than ten hours.",
+          "rail_threshold": "four hours",
+          "hotel_cap": "EUR 160",
+          "travel_agency": "Viaggi Meridiana"
+        }
+      },
+      {
+        "variant_id": "london-2025",
+        "label": "London office, 2025 rules",
+        "slots": {
+          "site": "London",
+          "booking_tool": "the Skyledger travel app",
+          "advance_days": "21",
+          "flight_class_rule": "Economy class is used for all flights within Europe; premium economy is allowed on intercontinental flights longer than seven hours.",
+          "rail_threshold": "four and a half hours",
+          "hotel_cap": "GBP 180",
+          "travel_agency": "Thamesbridge Travel"
+        }
+      }
+    ]
+  },
+  {
+    "topic_id": "hr-relocation-allowance",
+    "category": "hr",
+    "title": "Relocation Support and Allowance",
+    "sections": [
+      "This policy supports employees who move to {site} at the company's request, either as new hires recruited from another country or region, or as existing employees transferring into a permanent role. It does not apply to short term assignments, which follow the assignment policy, or to moves the employee requests for personal reasons. Eligibility is confirmed in the offer letter or transfer letter, which states the relocation package that applies. The package is designed to cover the reasonable costs of moving a household, not to compensate for differences in salary or cost of living, which are handled in the pay offer itself.",
+      "Every eligible employee receives a one off relocation payment of {lump_sum}, paid with the first salary after the start date in the new location. The payment is meant to cover miscellaneous costs such as deposits, connection fees, local registrations and small furniture purchases, and no receipts are needed. In addition, the company pays for up to {home_search_trips} to the new city before the move, for the employee and a partner, including flights, two hotel nights per trip and a relocation agent who arranges property viewings. Support with finding a school for children is included on the same trips.",
+      "On arrival, the company pays for temporary furnished accommodation for up to {temp_housing_days} days, booked through the relocation agent. Extensions are possible only when a signed lease starts within two weeks of the end of that period. Household goods are shipped door to door by the company's moving partner, up to {shipping_limit}. Cars, boats and wine collections are not covered, and pet transport can be partly reimbursed against receipts with prior approval. Insurance for the shipment is arranged by the moving partner at full replacement value, and any damage must be reported to the mover within seven days of delivery.",
+      "Relocation benefits may be taxable in the destination country, and the company {tax_support}. Visa, work permit and residence permit applications for the employee and their dependants are handled by the immigration provider at the company's cost, and the start date may move if a permit is delayed. Employees must not travel to start work before the permit is granted. Questions about a specific package or the status of a permit go to the global mobility partner {person} ({email}), who coordinates the relocation agent, the mover and payroll, and who confirms each step in writing.",
+      "An employee who resigns, or is dismissed for misconduct, within {clawback_months} months of the start date in the new location must repay the relocation costs on a sliding scale: the full amount in the first quarter of that period, then reducing in equal steps. Repayment does not apply if the employee leaves because of redundancy, ill health or a role change imposed by the company. The repayment agreement is signed before any costs are incurred. Amounts due are deducted from the final salary where local law allows, and any balance is invoiced to the employee with thirty days to pay."
+    ],
+    "variants": [
+      {
+        "variant_id": "dublin-2025",
+        "label": "Moves into Dublin, 2025 package",
+        "slots": {
+          "site": "Dublin",
+          "lump_sum": "EUR 6,000",
+          "home_search_trips": "two house hunting trips",
+          "temp_housing_days": "45",
+          "shipping_limit": "a 20 foot container",
+          "tax_support": "pays the income tax due on the shipment and temporary housing, so these are tax neutral for the employee",
+          "clawback_months": "24"
+        }
+      },
+      {
+        "variant_id": "dublin-2023",
+        "label": "Moves into Dublin, 2023 package",
+        "slots": {
+          "site": "Dublin",
+          "lump_sum": "EUR 4,000",
+          "home_search_trips": "one house hunting trip",
+          "temp_housing_days": "30",
+          "shipping_limit": "a 20 foot container",
+          "tax_support": "reports the benefits through payroll but does not cover the tax due",
+          "clawback_months": "18"
+        }
+      },
+      {
+        "variant_id": "amsterdam-2025",
+        "label": "Moves into Amsterdam, 2025 package",
+        "slots": {
+          "site": "Amsterdam",
+          "lump_sum": "EUR 7,500",
+          "home_search_trips": "two house hunting trips",
+          "temp_housing_days": "60",
+          "shipping_limit": "a 40 foot container",
+          "tax_support": "applies for the expat tax ruling on the employee's behalf where they qualify, and pays for one tax return preparation",
+          "clawback_months": "24",
+          "extension_days": "30"
+        },
+        "extra_section": "Netherlands addendum: newcomers must register at the municipality soon after arrival to receive a citizen service number, which payroll needs before it can pay the first salary. The relocation agent books the registration appointment and attends it with the employee. Because rental housing in {site} is scarce, the temporary housing period can be extended by up to {extension_days} days with HR approval even when no lease has been signed, provided the employee can show active viewings."
+      },
+      {
+        "variant_id": "singapore-2025",
+        "label": "Moves into Singapore, 2025 package",
+        "slots": {
+          "site": "Singapore",
+          "lump_sum": "SGD 10,000",
+          "home_search_trips": "one house hunting trip",
+          "temp_housing_days": "30",
+          "shipping_limit": "an air shipment of 500 kilograms plus a 20 foot sea container",
+          "tax_support": "pays for tax return preparation in the first two years",
+          "clawback_months": "12"
+        },
+        "extra_section": "Singapore addendum: the company sponsors a dependant's pass for a spouse and children, and a spouse who wants to work needs a separate pass of their own. Rental deposits of up to two months are advanced by the company and recovered through payroll over twelve months, interest free. The company also pays one application fee per child for an international school. Employees should not sign a lease before their own employment pass has been approved."
+      },
+      {
+        "variant_id": "toronto-2025",
+        "label": "Moves into Toronto, 2025 package",
+        "slots": {
+          "site": "Toronto",
+          "lump_sum": "CAD 8,000",
+          "home_search_trips": "two house hunting trips",
+          "temp_housing_days": "45",
+          "shipping_limit": "a 40 foot container",
+          "tax_support": "grosses up the taxable moving costs so that the employee is not out of pocket",
+          "clawback_months": "24"
+        }
+      },
+      {
+        "variant_id": "internal-associate-2025",
+        "label": "Internal transfers, associate level, 2025 package",
+        "slots": {
+          "site": "any company office",
+          "lump_sum": "EUR 3,000",
+          "home_search_trips": "one house hunting trip",
+          "temp_housing_days": "21",
+          "shipping_limit": "1,500 kilograms of household goods",
+          "tax_support": "reports the benefits through payroll but does not cover the tax due",
+          "clawback_months": "12"
+        }
+      }
+    ]
+  },
+  {
+    "topic_id": "hr-performance-review-cycle",
+    "category": "hr",
+    "title": "Performance Review Cycle",
+    "sections": [
+      "This document explains the performance review cycle for {population}. Reviews happen {cycle_frequency}, and their purpose is to give every employee clear feedback, agree goals and support decisions on pay and promotion in a consistent way. The cycle uses the performance module in the HR portal, which records goals, self assessments, peer feedback and the final rating. Employees who joined less than three months before a review window do not receive a rating in that window, but still have a goals conversation with their manager. Employees on long leave during the window are reviewed when they return.",
+      "The main review window opens in {review_months}. In the first two weeks employees write a self assessment against their goals and invite three to five peers to give feedback. Managers then draft the review, taking account of the self assessment, the peer input and evidence from the whole period. Peer feedback is visible to the manager only, and is summarised in the review without names. Employees should keep a short running record of their achievements during the year, because reviews based only on recent memory tend to be less fair. The review conversation itself should last at least forty five minutes.",
+      "Each review ends with an overall rating on {rating_scale}. Ratings describe performance against role expectations during the period, not potential or personality. There is no forced distribution, but every rating is reviewed in calibration by {calibration_body}, which compares ratings across teams so that similar performance receives similar ratings. A manager cannot share the final rating with the employee until calibration is complete. If calibration changes a draft rating, the manager is told the reason so that it can be explained honestly in the review conversation, and the change is recorded in the portal.",
+      "Ratings feed the annual pay review. The salary increase budget is allocated to managers using a matrix that combines the rating with the position of the salary in its band, so that people low in their band with strong ratings receive larger increases. Promotions are proposed during the same cycle and require a written case and evidence of working at the next level for at least six months. Pay increases and promotions take effect {raise_effective}. Bonus payouts for eligible roles are calculated separately but use the same rating. Employees on leave during the pay review still receive any increase on the same date.",
+      "Where performance is below expectations, the manager and HR agree a performance improvement plan lasting {pip_weeks} weeks, with specific goals, support and weekly check ins. The plan is a genuine chance to improve and not a formality before dismissal. Employees who disagree with their final rating can ask for a review within fifteen working days of the conversation by writing to the HR business partner {person} ({email}). The appeal is heard by a senior manager from outside the reporting line, who reads the review, the calibration notes and the employee's statement, and whose decision is final."
+    ],
+    "variants": [
+      {
+        "variant_id": "engineering-2025",
+        "label": "Engineering, 2025 cycle",
+        "slots": {
+          "population": "all engineering staff in every office",
+          "cycle_frequency": "twice a year, with a full review at year end and a lighter mid year check in",
+          "review_months": "November",
+          "rating_scale": "a five point scale from Below expectations to Exceptional",
+          "calibration_body": "the engineering leadership calibration panel",
+          "raise_effective": "on 1 January",
+          "pip_weeks": "8"
+        }
+      },
+      {
+        "variant_id": "engineering-2024",
+        "label": "Engineering, 2024 cycle",
+        "slots": {
+          "population": "all engineering staff in every office",
+          "cycle_frequency": "once a year",
+          "review_months": "December",
+          "rating_scale": "a four point scale from Not meeting to Outstanding",
+          "calibration_body": "the monthly engineering directors meeting",
+          "raise_effective": "on 1 March",
+          "pip_weeks": "12"
+        }
+      },
+      {
+        "variant_id": "sales-2025",
+        "label": "Sales teams, 2025 cycle",
+        "slots": {
+          "population": "all quota carrying sales staff",
+          "cycle_frequency": "every quarter, with a full annual review at year end",
+          "review_months": "January",
+          "rating_scale": "a three point scale of Below, Meets and Exceeds",
+          "calibration_body": "the regional sales leadership group",
+          "raise_effective": "on 1 April",
+          "pip_weeks": "6"
+        },
+        "extra_section": "Sales addendum: quota attainment counts for 60 percent of the overall rating, and the remaining 40 percent covers customer feedback, pipeline accuracy and collaboration with presales and support. Quarterly reviews only update goals and forecasts and do not produce a rating. Sales staff on an improvement plan keep their commission plan, but they cannot be assigned new strategic accounts until the plan has ended and the regional director has confirmed the outcome."
+      },
+      {
+        "variant_id": "operations-2025",
+        "label": "Operations and support staff, 2025 cycle",
+        "slots": {
+          "population": "employees in operations, customer support and facilities",
+          "cycle_frequency": "once a year",
+          "review_months": "October",
+          "rating_scale": "a five point scale from Below expectations to Exceptional",
+          "calibration_body": "the country management team",
+          "raise_effective": "on 1 January",
+          "pip_weeks": "10"
+        }
+      },
+      {
+        "variant_id": "managers-2025",
+        "label": "People managers, 2025 cycle",
+        "slots": {
+          "population": "all employees who manage at least one direct report",
+          "cycle_frequency": "once a year, with an added upward feedback survey",
+          "review_months": "September",
+          "rating_scale": "a four point scale from Not meeting to Outstanding, plus a separate leadership score",
+          "calibration_body": "the executive committee",
+          "raise_effective": "on 1 December",
+          "pip_weeks": "12",
+          "min_responses": "four"
+        },
+        "extra_section": "Upward feedback addendum: in the month before the review window, each manager's direct reports answer an anonymous survey of twelve questions about clarity, support, fairness and development. Results are shown to the manager and their own manager only when at least {min_responses} direct reports have responded, to protect anonymity. The leadership score in the review is based on these results together with the manager's own reflection, and it is discussed in calibration alongside the main rating."
+      },
+      {
+        "variant_id": "graduates-2025",
+        "label": "Graduate programme, 2025 cycle",
+        "slots": {
+          "population": "graduates on the two year graduate programme",
+          "cycle_frequency": "every six months, at the end of each rotation",
+          "review_months": "March and September",
+          "rating_scale": "a three point scale of Developing, Proficient and Strong",
+          "calibration_body": "the graduate programme board",
+          "raise_effective": "at the start of the next rotation",
+          "pip_weeks": "6"
+        }
+      }
+    ]
+  },
+  {
+    "topic_id": "hr-probation-period",
+    "category": "hr",
+    "title": "Probation Period Guidelines",
+    "sections": [
+      "New employees on permanent contracts at {site} start with a probation period of {probation_months} months. Probation is a mutual trial: the company assesses whether the employee is suited to the role, and the employee decides whether the company is right for them. The length is stated in the employment contract, and it may be shorter for internal moves but never longer than this policy allows. Fixed term contracts of less than one year have a proportionally shorter probation, as set out in the contract. Probation does not apply to employees who move to a new role within the company at the same level.",
+      "The manager holds a structured check in around week {midpoint_week}, using the probation review form in the HR portal. The form covers the agreed objectives, the quality of work, working relationships and any training still needed. Concerns must be raised clearly at this point, with examples and a plan to address them, so that the final decision is never a surprise. The employee can add comments to the form, and both parties sign it electronically. HR follows up with any manager who has not completed the form within two weeks, and escalates to the department head if it is still missing after a month.",
+      "The final probation review must be completed {confirm_by}. If performance is satisfactory, HR sends a confirmation letter and the employee gains access to the benefits reserved for confirmed staff, such as enhanced sick pay and the personal learning budget. If the manager does not complete the review in time, the probation is treated as passed. Where there are genuine but fixable concerns, {extension_rule} Any extension must come with written objectives, a date for the next review and a named person in HR who follows the case, so that the employee knows exactly what is expected.",
+      "During probation, either side can end employment with {notice_during}. A decision not to confirm employment is taken by the manager together with HR, after at least one documented conversation about the concerns, except in cases of serious misconduct. The employee is invited to a short meeting, may bring a colleague, and receives the decision and the last working day in writing. The HR contact for probation questions is {person} ({email}). Pay for accrued but untaken holiday is settled in the final salary, and company equipment must be returned on the last working day.",
+      "{leave_rule} Employees in probation are covered by the same health, safety, anti harassment and whistleblowing protections as everyone else, and they can join the pension plan from day one where the plan allows. Absence during probation, for illness or any other reason, may lead to an extension of equal length so that there is enough time to assess the role fairly. This is discussed openly with the employee rather than applied automatically. Managers should also make sure that new joiners complete the mandatory compliance training within the first month, because it is part of the probation assessment."
+    ],
+    "variants": [
+      {
+        "variant_id": "france-cadres",
+        "label": "France, managers and executives (cadres)",
+        "slots": {
+          "site": "the Paris office",
+          "probation_months": "four",
+          "midpoint_week": "eight",
+          "confirm_by": "at least two weeks before the end of the probation period",
+          "extension_rule": "probation may be extended once by up to four months, with the employee's written agreement given before the first period ends.",
+          "notice_during": "notice that grows with length of service, from 24 hours in the first week up to one month after three months, as set by the labour code",
+          "leave_rule": "Paid leave accrues from the first day and can be taken during probation with the manager's approval."
+        }
+      },
+      {
+        "variant_id": "france-employees",
+        "label": "France, non executive employees",
+        "slots": {
+          "site": "the Paris office",
+          "probation_months": "two",
+          "midpoint_week": "four",
+          "confirm_by": "at least one week before the end of the probation period",
+          "extension_rule": "probation may be extended once by up to two months, with the employee's written agreement given before the first period ends.",
+          "notice_during": "48 hours of notice after one month of service and 24 hours before that",
+          "leave_rule": "Paid leave accrues from the first day, but booking more than five days during probation needs HR approval."
+        }
+      },
+      {
+        "variant_id": "germany-2025",
+        "label": "Germany, all employees",
+        "slots": {
+          "site": "the Berlin office",
+          "probation_months": "six",
+          "midpoint_week": "twelve",
+          "confirm_by": "by the end of the fifth month, because statutory protection against dismissal starts after six months",
+          "extension_rule": "probation cannot be formally extended beyond six months; instead the manager and HR may agree a documented development plan with the employee before the decision.",
+          "notice_during": "two weeks of notice, effective on any day",
+          "leave_rule": "Leave accrues at one twelfth of the annual entitlement per full month, and the full entitlement becomes available after six months."
+        },
+        "extra_section": "Germany addendum: the works council must be consulted before any dismissal during probation, even though protection against unfair dismissal does not yet apply. Allow one full week for the consultation in the planning, and do not hand over a termination letter before the works council has responded or the week has passed. Notices of termination must be given in writing with a handwritten signature; email, chat or scanned letters are not legally valid and would restart the process."
+      },
+      {
+        "variant_id": "uk-2025",
+        "label": "United Kingdom, all employees",
+        "slots": {
+          "site": "the London office",
+          "probation_months": "six",
+          "midpoint_week": "twelve",
+          "confirm_by": "within the last two weeks of the probation period",
+          "extension_rule": "probation may be extended once by up to three months, confirmed in a letter from HR.",
+          "notice_during": "one week of notice on either side",
+          "leave_rule": "Holiday can be booked during probation without restriction."
+        }
+      },
+      {
+        "variant_id": "poland-2025",
+        "label": "Poland, all employees",
+        "slots": {
+          "site": "the Warsaw office",
+          "probation_months": "three",
+          "midpoint_week": "six",
+          "confirm_by": "at least ten days before the trial contract ends, because a new employment contract must be signed",
+          "extension_rule": "probation cannot be extended, because the trial contract has a fixed statutory maximum, so the manager must decide before it expires.",
+          "notice_during": "two weeks of notice for a three month trial contract",
+          "leave_rule": "Leave accrues at one twelfth of the annual entitlement for each month of the trial contract."
+        }
+      },
+      {
+        "variant_id": "uk-senior",
+        "label": "United Kingdom, director level and above",
+        "slots": {
+          "site": "the London office",
+          "probation_months": "nine",
+          "midpoint_week": "sixteen",
+          "confirm_by": "by the chief executive or a delegated executive within the last month of probation",
+          "extension_rule": "probation is not extended for senior hires, and the decision is made at the end of the period.",
+          "notice_during": "one month of notice on either side",
+          "leave_rule": "Holiday can be booked during probation, but more than ten consecutive days need approval from the executive sponsor.",
+          "onboarding_coach": "an external onboarding coach funded for six sessions"
+        },
+        "extra_section": "Senior hire addendum: each senior hire is paired with an executive sponsor and {onboarding_coach} during the probation period. A short 360 feedback round with peers, direct reports and key stakeholders is run at the midpoint check in, and the summary is shared with the new leader before the final review. The sponsor and the chief people officer agree the final recommendation together, and any concern is raised with the new leader at least one month before the decision."
+      }
+    ]
+  },
+  {
+    "topic_id": "hr-overtime-on-call",
+    "category": "hr",
+    "title": "Overtime and On Call Pay",
+    "sections": [
+      "This policy applies to employees of {site} whose contracts entitle them to overtime pay or on call allowances, as shown in the employment contract. Senior roles that are paid a salary covering all hours worked are excluded from overtime pay but still receive on call allowances where they are on a rota. Standard working time is {weekly_hours} hours per week. Overtime means hours worked beyond the contracted hours at the explicit request of the manager, approved before the work is done wherever possible. Extra hours worked voluntarily without a request are not overtime and are not paid.",
+      "Approved overtime on working days is paid at {overtime_rate} of the normal hourly rate. Work on Saturdays, Sundays and public holidays is paid at {weekend_rate}. Overtime is recorded in the time tracking tool by the end of the week in which it was worked, and managers approve it within five working days so that it can be included in the next payroll. Instead of payment, employees may choose time off in lieu: {toil_rule}. The choice between payment and time off is made for each entry and cannot be changed after approval.",
+      "Teams that provide service outside business hours run an on call rota published at least four weeks in advance. Each employee on the rota receives {oncall_weekly_fee} for each full week on call, prorated for partial weeks, whether or not they are called. When called out, the time spent working is paid at the overtime rate with a minimum of {callout_minimum} per call out, which covers short incidents and the time needed to log on. Several calls within the same minimum period count as one call out. On call staff must be able to respond within thirty minutes.",
+      "To protect health and safety, nobody may work more than {max_hours} hours in a single week, including overtime and call outs, averaged over any period of four months. Employees must have at least eleven consecutive hours of rest between working days; after a night call out, the start of the next working day moves back accordingly without loss of pay. Nobody should be on call more than one week in four unless they volunteer. Managers who see repeated overtime in a team should treat it as a resourcing problem and raise it with their director rather than relying on goodwill.",
+      "Questions about overtime entries, rota pay or rest rules go to the workforce planning lead {person} ({email}). Disputes about unpaid overtime can be raised with HR and are reviewed within ten working days, using the time tracking records as evidence. Any change to rates is agreed with employee representatives before it takes effect and is announced at least one month ahead. This policy is reviewed every year together with the pay review, and the current rates are always shown in the time tracking tool next to each entry type."
+    ],
+    "variants": [
+      {
+        "variant_id": "rotterdam-warehouse",
+        "label": "Rotterdam distribution centre",
+        "slots": {
+          "site": "the Rotterdam distribution centre",
+          "weekly_hours": "38",
+          "overtime_rate": "125 percent",
+          "weekend_rate": "150 percent, rising to 200 percent on public holidays",
+          "toil_rule": "each overtime hour converts to one and a quarter hours of time off, to be taken within three months",
+          "oncall_weekly_fee": "EUR 250",
+          "callout_minimum": "two hours",
+          "max_hours": "48"
+        }
+      },
+      {
+        "variant_id": "lyon-it-ops",
+        "label": "Lyon IT operations team",
+        "slots": {
+          "site": "the Lyon IT operations team",
+          "weekly_hours": "35",
+          "overtime_rate": "125 percent for the first eight hours each week and 150 percent after that",
+          "weekend_rate": "200 percent",
+          "toil_rule": "each overtime hour converts to one hour of time off, and the premium part is still paid in cash",
+          "oncall_weekly_fee": "EUR 300",
+          "callout_minimum": "one hour",
+          "max_hours": "44"
+        }
+      },
+      {
+        "variant_id": "dublin-support",
+        "label": "Dublin customer support centre",
+        "slots": {
+          "site": "the Dublin customer support centre",
+          "weekly_hours": "39",
+          "overtime_rate": "150 percent",
+          "weekend_rate": "200 percent",
+          "toil_rule": "each overtime hour converts to one and a half hours of time off, to be taken within the same quarter",
+          "oncall_weekly_fee": "EUR 220",
+          "callout_minimum": "ninety minutes",
+          "max_hours": "48"
+        },
+        "extra_section": "Dublin addendum: the Sunday premium above is the company's compensation for Sunday work under Irish working time law, and it applies to every hour worked on a Sunday, including scheduled shifts. Agents who work at night, between midnight and 7:00, receive an additional night allowance shown in the time tracking tool. Public holiday work also earns one extra day of paid leave, which is added to the holiday balance automatically once the shift is approved."
+      },
+      {
+        "variant_id": "krakow-engineering",
+        "label": "Krakow engineering hub",
+        "slots": {
+          "site": "the Krakow engineering hub",
+          "weekly_hours": "40",
+          "overtime_rate": "150 percent",
+          "weekend_rate": "200 percent",
+          "toil_rule": "time off is given hour for hour and must be agreed in writing before the end of the settlement period",
+          "oncall_weekly_fee": "PLN 1,200",
+          "callout_minimum": "one hour",
+          "max_hours": "48"
+        }
+      },
+      {
+        "variant_id": "munich-field-service",
+        "label": "Munich field service engineers",
+        "slots": {
+          "site": "the Munich field service team",
+          "weekly_hours": "37.5",
+          "overtime_rate": "125 percent",
+          "weekend_rate": "150 percent on Saturdays and 200 percent on Sundays and public holidays",
+          "toil_rule": "overtime hours are credited to the working time account, which is capped at 80 hours",
+          "oncall_weekly_fee": "EUR 350",
+          "callout_minimum": "three hours, including travel to the customer site",
+          "max_hours": "48",
+          "meal_allowance": "EUR 14"
+        },
+        "extra_section": "Field service addendum: travel time to and from customer sites outside the normal working day counts as working time and is paid at the overtime rate. Engineers may take the company van home during their on call weeks so that they can drive straight to a customer. A meal allowance of {meal_allowance} is paid for any call out lasting longer than six hours, without receipts. Hotel nights after a late call out far from home are booked through the travel policy."
+      },
+      {
+        "variant_id": "lisbon-support",
+        "label": "Lisbon customer support centre",
+        "slots": {
+          "site": "the Lisbon customer support centre",
+          "weekly_hours": "40",
+          "overtime_rate": "125 percent for the first hour and 137.5 percent after that",
+          "weekend_rate": "150 percent",
+          "toil_rule": "each overtime hour converts to one hour of time off, to be taken within ninety days",
+          "oncall_weekly_fee": "EUR 180",
+          "callout_minimum": "one hour",
+          "max_hours": "48"
+        }
+      }
+    ]
+  },
+  {
+    "topic_id": "hr-pension-contributions",
+    "category": "hr",
+    "title": "Workplace Pension Contributions",
+    "sections": [
+      "Employees of the {site} entity are eligible for the {plan_name}, a defined contribution plan in which the value of the pension depends on the contributions paid in and the investment returns earned on them. Membership starts automatically {enrolment_window}. Employees can opt out within one month of being enrolled and receive a full refund of their own contributions, but they lose the employer contribution for that period. Anyone who opts out is automatically enrolled again every three years where the law requires it, and can opt back in at any time through the benefits portal without waiting for the next window.",
+      "The default employee contribution is {employee_default} of pensionable salary, deducted from pay each month. The company contributes {employer_match}. Pensionable salary means basic salary only; bonuses, overtime and allowances are excluded. Employees can increase their own contribution at any time, up to the tax approved limit, and the change takes effect from the next payroll. Contributions are paid to the provider within five working days after payday, and members can see them in their online account shortly after. Payslips show both the employee and the employer contribution for the month, so members can check that the amounts match.",
+      "{salary_sacrifice} Members should take independent advice before making large changes, because contribution limits and tax relief depend on personal circumstances such as other pension savings and total income. The company does not give financial advice. The benefits team can explain how the plan works, show how a contribution change affects take home pay using the modeller in the portal, and provide the provider's contact details for questions about investments or transfers. Members approaching retirement are offered a free group session with the provider every spring.",
+      "Employer contributions vest {vesting}. Before vesting, employer contributions are returned to the company if the employee leaves, while the employee's own contributions always belong to the employee. Members choose how their account is invested from a range of funds selected by the plan trustees, including a default lifestyle fund that gradually moves into lower risk assets as retirement approaches. Most members stay in the default fund. Fund performance and charges are published each year in the annual statement sent by {provider}, which administers the plan and runs the member website.",
+      "Employees who leave keep their vested pension pot. They can leave it in the plan, transfer it to a new employer's plan or move it to a personal pension. Transfers in from previous employers are accepted where the provider confirms that the scheme is eligible. During paid parental leave or sick leave, contributions continue based on the salary the employee would normally earn. For questions on enrolment, opt outs or contribution changes, contact {person} ({email}) in the benefits team. Changes to the plan rules are announced at least three months before they take effect."
+    ],
+    "variants": [
+      {
+        "variant_id": "uk-2025",
+        "label": "United Kingdom, 2025 plan rules",
+        "slots": {
+          "site": "UK",
+          "plan_name": "Kestrel Retirement Plan",
+          "enrolment_window": "on the first day of employment",
+          "employee_default": "5 percent",
+          "employer_match": "a matching contribution of up to 8 percent of salary",
+          "salary_sacrifice": "Contributions are made through salary exchange by default, which saves national insurance for both the employee and the company, and the company adds half of its own saving to the member's pension.",
+          "vesting": "immediately",
+          "provider": "Northgate Pensions Trust"
+        },
+        "extra_section": "Transition note for members who joined under the 2022 rules: any unvested employer contributions became fully vested on 1 April 2025, and the waiting period before enrolment was removed for new joiners from the same date. Members who had chosen not to use salary exchange under the old rules were moved to it automatically unless they asked to stay out. Statements issued after April show the vested amounts, and members who spot a difference should contact the benefits team."
+      },
+      {
+        "variant_id": "uk-2022",
+        "label": "United Kingdom, 2022 plan rules",
+        "slots": {
+          "site": "UK",
+          "plan_name": "Kestrel Retirement Plan",
+          "enrolment_window": "after three months of employment",
+          "employee_default": "4 percent",
+          "employer_match": "a matching contribution of up to 6 percent of salary",
+          "salary_sacrifice": "Contributions are deducted after national insurance; salary exchange is available on request but is not used by default.",
+          "vesting": "after two years of plan membership",
+          "provider": "Northgate Pensions Trust"
+        }
+      },
+      {
+        "variant_id": "ireland-2025",
+        "label": "Ireland, 2025 plan rules",
+        "slots": {
+          "site": "Irish",
+          "plan_name": "Kestrel Ireland Pension Scheme",
+          "enrolment_window": "after six months of employment",
+          "employee_default": "5 percent",
+          "employer_match": "double the employee contribution, up to 10 percent of salary",
+          "salary_sacrifice": "Contributions are deducted from gross salary and receive income tax relief at the member's marginal rate, within age related limits.",
+          "vesting": "after one year of service",
+          "provider": "Clontarf Life Assurance"
+        }
+      },
+      {
+        "variant_id": "netherlands-2025",
+        "label": "Netherlands, 2025 plan rules",
+        "slots": {
+          "site": "Dutch",
+          "plan_name": "Kestrel Netherlands Pension Plan",
+          "enrolment_window": "on the first day of employment",
+          "employee_default": "4.5 percent",
+          "employer_match": "a fixed 12 percent of pensionable salary above the state pension offset",
+          "salary_sacrifice": "Contributions are deducted before tax, and each member builds personal pension capital under the new national pension rules.",
+          "vesting": "immediately",
+          "provider": "Polderbank Pensioen"
+        }
+      },
+      {
+        "variant_id": "germany-2025",
+        "label": "Germany, 2025 plan rules",
+        "slots": {
+          "site": "German",
+          "plan_name": "Kestrel Direct Insurance Plan",
+          "enrolment_window": "after the first full month of employment",
+          "employee_default": "2 percent",
+          "employer_match": "a 20 percent subsidy on the deferred salary plus a fixed 3 percent of salary",
+          "salary_sacrifice": "Contributions are made through deferred compensation, which is free of tax and social security contributions up to the annual limits.",
+          "vesting": "after three years of plan membership",
+          "provider": "Rheinwald Versicherung",
+          "deferral_cap": "EUR 7,248"
+        },
+        "extra_section": "Germany addendum: employees who hold a direct insurance contract from a former employer can ask the company to take it over, and the company will do so where the insurer agrees and the contract terms are compatible. Deferred compensation above {deferral_cap} per year is possible only through a separate written agreement, because amounts above that level lose the social security exemption. Changes to the deferral amount can be made twice a year, in January and July."
+      },
+      {
+        "variant_id": "sweden-2025",
+        "label": "Sweden, 2025 plan rules",
+        "slots": {
+          "site": "Swedish",
+          "plan_name": "Kestrel Occupational Pension Supplement",
+          "enrolment_window": "from the month in which the employee turns 25",
+          "employee_default": "2 percent",
+          "employer_match": "4.5 percent of salary up to the income ceiling and 30 percent of salary above it",
+          "salary_sacrifice": "Members may exchange gross salary for extra pension, and the company adds 5.8 percent to the exchanged amount because its payroll taxes are lower on pension than on salary.",
+          "vesting": "immediately",
+          "provider": "Nordvik Pension"
+        }
+      }
+    ]
+  },
+  {
+    "topic_id": "hr-health-insurance-enrolment",
+    "category": "hr",
+    "title": "Health Insurance Enrolment",
+    "sections": [
+      "Employees of the {site} entity can join the company medical plan provided by {insurer}. New employees must enrol within {enrol_days} days of their start date through the benefits portal; if they miss this window, they can only join at the next annual enrolment period in November, unless they have a qualifying life event. Cover starts on the first day of the month after enrolment is confirmed. The plan complements the public health system and does not replace any mandatory national cover, which employees keep in all cases. Enrolment is voluntary, and declining it does not affect any other benefit.",
+      "The plan offers {plan_tiers}. All tiers cover hospital treatment, specialist consultations, diagnostic tests and mental health support, including a number of therapy sessions each year. Higher tiers add dental, optical and physiotherapy benefits and lower the excess paid per claim. Employees can move up or down one tier at the annual enrolment period. A summary of benefits and the full policy wording are available in the portal, and the insurer's member app shows the remaining annual limits for each benefit. Employees should read the exclusions list, which covers cosmetic treatment and some existing conditions.",
+      "The company pays {employer_share} for the employee. Any employee contribution is deducted monthly from salary, and in some countries the employer contribution is a taxable benefit that appears on the payslip. {dependants_rule} Dependants must be registered with proof of relationship, such as a marriage certificate, a registered partnership certificate or a birth certificate, uploaded to the portal. Cover for a dependant ends at the end of the month in which they stop being eligible, and the insurer offers them an individual policy without new medical questions if they apply within one month.",
+      "A qualifying life event allows changes outside the annual enrolment period. Events include marriage or registered partnership, the birth or adoption of a child, divorce, the death of a dependant, a partner losing their own cover, or moving country. Changes must be requested within {life_event_days} days of the event, with supporting documents. Requests made after this deadline wait until the next annual enrolment period. Changes take effect from the date of the event for births and adoptions, and from the first day of the next month for all other events.",
+      "Claims are submitted directly to the insurer through the member app, usually within ninety days of treatment. Pre authorisation is required for planned hospital stays and some scans, so members should call the insurer before booking them. Medical information is shared only between the employee and the insurer; HR never sees diagnoses or claim details. For enrolment, eligibility or payroll questions contact the benefits coordinator {person} ({email}). For questions about a claim, call the insurer's helpline printed on the membership card, which is open every day of the week."
+    ],
+    "variants": [
+      {
+        "variant_id": "spain-2025",
+        "label": "Spain entity, 2025 plan year",
+        "slots": {
+          "site": "Spanish",
+          "insurer": "Mediterra Salud",
+          "enrol_days": "30",
+          "plan_tiers": "two tiers, Essential and Plus",
+          "employer_share": "100 percent of the Essential tier premium and 50 percent of the cost of upgrading to Plus",
+          "dependants_rule": "Partners and children under 26 can be added at the employee's cost, at a discounted group rate.",
+          "life_event_days": "30",
+          "tax_free_cap": "EUR 500"
+        },
+        "extra_section": "Spain addendum: the medical plan premium paid by the company is exempt from income tax up to {tax_free_cap} per insured person per year, and the part above that amount is taxed as a benefit in kind through payroll. The same exemption applies to premiums for a partner and children. Dental cover in the Plus tier includes two cleanings per year and a discount on orthodontics. Employees moving to another Spanish region keep their cover without a new enrolment."
+      },
+      {
+        "variant_id": "spain-2024",
+        "label": "Spain entity, 2024 plan year",
+        "slots": {
+          "site": "Spanish",
+          "insurer": "Mediterra Salud",
+          "enrol_days": "60",
+          "plan_tiers": "a single tier called Essential",
+          "employer_share": "80 percent of the premium",
+          "dependants_rule": "Partners and children under 25 can be added at the employee's cost.",
+          "life_event_days": "45"
+        }
+      },
+      {
+        "variant_id": "italy-2025",
+        "label": "Italy entity, 2025 plan year",
+        "slots": {
+          "site": "Italian",
+          "insurer": "Assicura Lombarda",
+          "enrol_days": "30",
+          "plan_tiers": "three tiers, Base, Comfort and Premium",
+          "employer_share": "the full premium of the Base tier and 40 percent of the premium of higher tiers",
+          "dependants_rule": "Children under 26 are covered free of charge, and partners can be added for a monthly contribution.",
+          "life_event_days": "60"
+        }
+      },
+      {
+        "variant_id": "uk-2025",
+        "label": "UK entity, 2025 plan year",
+        "slots": {
+          "site": "UK",
+          "insurer": "Brightwell Health",
+          "enrol_days": "31",
+          "plan_tiers": "three tiers, Core, Enhanced and Complete",
+          "employer_share": "the full premium at every tier",
+          "dependants_rule": "Partners and children under 21, or under 25 in full time education, can be added at the employee's cost.",
+          "life_event_days": "31"
+        }
+      },
+      {
+        "variant_id": "uae-2025",
+        "label": "UAE entity, 2025 plan year",
+        "slots": {
+          "site": "UAE",
+          "insurer": "Gulfshore Medical",
+          "enrol_days": "14",
+          "plan_tiers": "two tiers, Standard and Gold",
+          "employer_share": "the full premium for the employee and all registered dependants",
+          "dependants_rule": "A spouse and up to three children under 18 are covered at no cost, in line with local rules for sponsored family members.",
+          "life_event_days": "30"
+        },
+        "extra_section": "UAE addendum: the insurance card is needed for visa processing and the national identity card, so enrolment must be completed before the residency medical test. Employees based in Dubai receive a policy that meets the essential benefits standard set by the Dubai health authority, and employees based in Abu Dhabi receive a policy approved by the Abu Dhabi health department. Newborns must be added within thirty days of birth to keep continuous cover for their visa application."
+      },
+      {
+        "variant_id": "portugal-2025",
+        "label": "Portugal entity, 2025 plan year",
+        "slots": {
+          "site": "Portuguese",
+          "insurer": "Atlantica Seguros",
+          "enrol_days": "45",
+          "plan_tiers": "two tiers, Essential and Plus",
+          "employer_share": "70 percent of the premium of either tier",
+          "dependants_rule": "Partners and children under 25 can be added, and the company pays 50 percent of their premium.",
+          "life_event_days": "30"
+        }
+      }
+    ]
+  },
+  {
+    "topic_id": "hr-learning-budget",
+    "category": "hr",
+    "title": "Learning and Development Budget",
+    "sections": [
+      "Every employee in {population} has a personal learning budget of {annual_budget} per calendar year to spend on training that develops skills relevant to their current or next role. The budget covers courses, certifications, exam fees, books and learning subscriptions. It does not roll over to the next year and cannot be paid out in cash. Employees agree learning goals with their manager during the review cycle, and the budget should support those goals rather than being spent at random in the last weeks of the year. New joiners receive a pro rata budget from their start month.",
+      "In addition to the money, employees can take up to {study_days} paid study days per year for exams, course attendance and exam preparation. Study days are booked as a separate leave type in the HR portal and approved by the manager like holiday. All employees also have unlimited access to {platform} during working hours; time spent on it counts as working time and does not use study days. Mandatory compliance training is separate and is never charged to the personal budget. Study days that are not used by the end of the year are lost.",
+      "Purchases up to {approval_threshold} are approved by the line manager in the learning tool, usually within three working days. More expensive items, programmes that run over several years and anything involving travel also need approval from the department head. Employees should book through the learning tool where possible so that the invoice goes directly to the company. If paying personally, claim the cost through expenses with the receipt and the approval reference. Learning that is clearly unrelated to work, such as hobby courses, is not covered, and the manager may refuse items that do not match the agreed goals.",
+      "{conference_rule} Employees who attend an external event are asked to share what they learned with their team within a month, in a short talk, a written summary or a demo. Speaking at conferences is encouraged; when an employee is accepted as a speaker, the ticket and travel are paid from the department budget rather than the personal learning budget, subject to the travel policy. Attendance at events organised by suppliers or customers is not learning and follows the gifts and hospitality rules instead.",
+      "Larger qualifications are an investment by the company, so a repayment agreement applies: {repayment_rule}. Repayment is waived in cases of redundancy, ill health or termination by the company. Employees who fail an exam can retake it once at the company's cost; further retakes are paid personally. Questions about the budget, approvals or repayment go to the learning partner {person} ({email}). The policy and the budget amounts are reviewed every year together with the pay review, and changes apply from the following January."
+    ],
+    "variants": [
+      {
+        "variant_id": "engineering-2025",
+        "label": "Engineering, 2025 budget",
+        "slots": {
+          "population": "the engineering organisation",
+          "annual_budget": "EUR 2,000",
+          "study_days": "five",
+          "platform": "the Brightpath Learning library",
+          "approval_threshold": "EUR 500",
+          "conference_rule": "One external technical conference per year can be paid from the personal budget, including the ticket, while travel and hotel are paid by the department.",
+          "repayment_rule": "for any single item over EUR 3,000, employees who resign within twelve months of completion repay the full cost, and those who resign within twenty four months repay half"
+        }
+      },
+      {
+        "variant_id": "engineering-2023",
+        "label": "Engineering, 2023 budget",
+        "slots": {
+          "population": "the engineering organisation",
+          "annual_budget": "EUR 1,500",
+          "study_days": "three",
+          "platform": "the Brightpath Learning library",
+          "approval_threshold": "EUR 300",
+          "conference_rule": "Conference tickets cannot be paid from the personal budget and need a separate approval from the department head.",
+          "repayment_rule": "for any single item over EUR 2,000, employees who resign within eighteen months of completion repay the full cost"
+        }
+      },
+      {
+        "variant_id": "sales-2025",
+        "label": "Sales and customer success, 2025 budget",
+        "slots": {
+          "population": "the sales and customer success teams",
+          "annual_budget": "EUR 1,200",
+          "study_days": "three",
+          "platform": "the Brightpath Learning library",
+          "approval_threshold": "EUR 400",
+          "conference_rule": "Up to two industry events per year can be attended, with tickets paid from the personal budget and travel paid by the regional sales budget.",
+          "repayment_rule": "for any single item over EUR 2,500, employees who resign within twelve months of completion repay the full cost"
+        }
+      },
+      {
+        "variant_id": "finance-legal-2025",
+        "label": "Finance and legal, 2025 budget",
+        "slots": {
+          "population": "the finance and legal functions",
+          "annual_budget": "EUR 3,500",
+          "study_days": "ten",
+          "platform": "the Brightpath Learning library and the Ledgerline professional education catalogue",
+          "approval_threshold": "EUR 800",
+          "conference_rule": "Conferences that count toward mandatory continuing professional education hours are paid from the personal budget.",
+          "repayment_rule": "professional qualifications such as accounting or bar exams are repaid in full if the employee resigns within twelve months of qualifying, and 50 percent is repaid if they resign within twenty four months",
+          "membership_cap": "EUR 900"
+        },
+        "extra_section": "Professional bodies addendum: annual membership fees for one professional body that the role requires, such as an accounting institute or a bar association, are paid by the company outside the personal budget, up to {membership_cap} per year. Fees for additional memberships come from the personal budget if the manager agrees they are relevant. Employees must keep their continuing education records up to date with their professional body, and the learning partner can provide certificates for internal courses that count toward those hours."
+      },
+      {
+        "variant_id": "operations-2025",
+        "label": "Operations and warehouse staff, 2025 budget",
+        "slots": {
+          "population": "the operations and warehouse teams",
+          "annual_budget": "EUR 600",
+          "study_days": "two",
+          "platform": "the Brightpath Learning library",
+          "approval_threshold": "EUR 250",
+          "conference_rule": "Trade fair visits are organised as group trips by the site manager and are not paid from the personal budget.",
+          "repayment_rule": "no repayment applies to forklift, safety or technical licences, while for other items over EUR 1,500 a resignation within twelve months means repaying half the cost"
+        },
+        "extra_section": "Site addendum: language courses in the local language are paid in full for warehouse staff who are not yet fluent, outside the personal budget, and lessons can take place during paid working time with the shift supervisor's agreement. Courses are run on site in small groups twice a week. Staff who complete the first level receive a certificate and priority access to team leader training, which is also funded outside the personal budget."
+      },
+      {
+        "variant_id": "managers-2025",
+        "label": "People managers, 2025 budget",
+        "slots": {
+          "population": "the people manager population",
+          "annual_budget": "EUR 2,500",
+          "study_days": "five",
+          "platform": "the Brightpath Learning library",
+          "approval_threshold": "EUR 1,000",
+          "conference_rule": "One leadership conference per year can be paid from the personal budget, including the ticket.",
+          "repayment_rule": "for coaching certifications and leadership programmes over EUR 3,000, a resignation within twelve months of completion means repaying the full cost"
+        }
+      }
+    ]
+  },
+  {
+    "topic_id": "hr-whistleblowing",
+    "category": "hr",
+    "title": "Whistleblowing and Misconduct Reporting Procedure",
+    "sections": [
+      "This procedure explains how anyone working with the {site} entity, including employees, contractors, agency workers, interns, job applicants and former staff, can report suspected wrongdoing safely. Reportable concerns include fraud, bribery, breaches of competition or data protection law, health and safety dangers, environmental harm, harassment that a person feels unable to raise through normal channels, and the deliberate concealment of any of these. Personal grievances about one's own employment terms are handled under the grievance policy instead, unless they reveal a wider wrongdoing that affects other people or the company.",
+      "Concerns can be raised with a line manager, with HR, or directly with the ethics officer {person} ({email}). Reports can also be made anonymously, at any time and in several languages, through the independent hotline operated by {hotline_provider}, by phone or through its web form. Anonymous reporters receive a case number and a password so that they can follow the case and answer questions without revealing their identity. Reports should include as much detail as possible, such as dates, places and documents, but nobody needs proof before raising a concern; reasonable suspicion is enough.",
+      "The ethics office acknowledges every report within {ack_days} days. It assesses the report, appoints an investigator who is independent of the people involved, and agrees the scope of the investigation with {committee}. The reporter receives feedback on the actions taken within {feedback_months} months of the acknowledgement, although some details may be withheld to protect the privacy of others or the integrity of the investigation. Investigations are confidential, and the identity of the reporter is shared only with the people who strictly need it, unless the reporter agrees otherwise in writing.",
+      "Retaliation against anyone who reports in good faith is forbidden. This includes dismissal, demotion, loss of bonus, negative reviews, exclusion from projects or harassment linked to the report, and it also protects colleagues who help the reporter or give evidence. Anyone who feels they have suffered retaliation should tell the ethics office immediately, and the matter will be investigated as serious misconduct. People who knowingly make false reports are not protected and may face disciplinary action. Reporters also have the right to report directly to {external_authority}, without using internal channels first.",
+      "Records of reports and investigations are kept securely, separate from personnel files, for {retention_years} years after the case closes, and are then deleted unless legal proceedings are ongoing. Personal data in reports is processed only for handling the case. A summary of case numbers, categories and outcomes, without names, is presented twice a year to the audit committee of the board. This procedure is reviewed every year and is published on the intranet and on the external website, so that people without intranet access, such as former staff and suppliers, can also use it."
+    ],
+    "variants": [
+      {
+        "variant_id": "france-2025",
+        "label": "France entity, 2025 procedure",
+        "slots": {
+          "site": "French",
+          "hotline_provider": "Clearline Ethics",
+          "ack_days": "seven",
+          "committee": "the group compliance committee",
+          "feedback_months": "three",
+          "external_authority": "the national rights ombudsman or the sector authority listed in the national decree",
+          "retention_years": "five"
+        }
+      },
+      {
+        "variant_id": "france-2022",
+        "label": "France entity, 2022 procedure",
+        "slots": {
+          "site": "French",
+          "hotline_provider": "Clearline Ethics",
+          "ack_days": "ten",
+          "committee": "the general counsel",
+          "feedback_months": "six",
+          "external_authority": "the judicial or administrative authorities or the relevant professional body",
+          "retention_years": "two"
+        }
+      },
+      {
+        "variant_id": "germany-2025",
+        "label": "Germany entity, 2025 procedure",
+        "slots": {
+          "site": "German",
+          "hotline_provider": "Clearline Ethics",
+          "ack_days": "seven",
+          "committee": "the group compliance committee, with the works council liaison informed",
+          "feedback_months": "three",
+          "external_authority": "the federal external reporting office",
+          "retention_years": "three"
+        }
+      },
+      {
+        "variant_id": "netherlands-2025",
+        "label": "Netherlands entity, 2025 procedure",
+        "slots": {
+          "site": "Dutch",
+          "hotline_provider": "Veritas Hotline Services",
+          "ack_days": "seven",
+          "committee": "the Dutch management board and the confidential adviser",
+          "feedback_months": "three",
+          "external_authority": "the national whistleblowers authority",
+          "retention_years": "five"
+        },
+        "extra_section": "Netherlands addendum: before deciding whether to report, anyone can consult the company's external confidential adviser, who gives advice on the options and the protections available. The adviser can be reached on {phone} during office hours and does not share anything with the company without the person's consent. Conversations with the adviser are not reports and do not start an investigation. The national whistleblowers authority also offers free advice to people who prefer to speak to someone outside the company."
+      },
+      {
+        "variant_id": "uk-2025",
+        "label": "UK entity, 2025 procedure",
+        "slots": {
+          "site": "UK",
+          "hotline_provider": "Veritas Hotline Services",
+          "ack_days": "five",
+          "committee": "the chair of the audit committee",
+          "feedback_months": "two",
+          "external_authority": "a prescribed person, such as the relevant regulator",
+          "retention_years": "six"
+        },
+        "extra_section": "UK addendum: disclosures that qualify under whistleblowing law are protected from the first day of employment, with no minimum length of service. Employees can get free confidential advice from an independent whistleblowing charity before they raise a concern, and doing so is not a breach of confidentiality. No settlement agreement or confidentiality clause signed with the company can prevent a protected disclosure to a regulator, and any clause that seems to say otherwise is void."
+      },
+      {
+        "variant_id": "spain-2025",
+        "label": "Spain entity, 2025 procedure",
+        "slots": {
+          "site": "Spanish",
+          "hotline_provider": "Clearline Ethics",
+          "ack_days": "seven",
+          "committee": "the regional compliance committee",
+          "feedback_months": "three",
+          "external_authority": "the independent whistleblower protection authority",
+          "retention_years": "four"
+        }
+      }
+    ]
+  },
+  {
+    "topic_id": "hr-resignation-offboarding",
+    "category": "hr",
+    "title": "Resignation, Notice and Offboarding",
+    "sections": [
+      "Employees of the {site} entity who decide to leave must resign in writing, by letter or email to their line manager with HR in copy. The notice period starts the day after the resignation is received. Unless the contract says otherwise, the notice period is {notice_junior} for employees below manager level and {notice_senior} for managers and above. Notice can be shortened by mutual agreement; requests to leave earlier go to the manager, who decides with HR within five working days. Resignations cannot be withdrawn without the company's agreement once they have been acknowledged in writing.",
+      "{last_day_rule} The manager agrees a handover plan with the leaver in the first week of notice, covering open work, documentation, client relationships and any access that must be transferred. Leavers are invited to an exit interview with HR in their final two weeks. The interview is optional and confidential, and only anonymised themes are reported to leadership. In some roles, particularly where the leaver is joining a competitor, the company may place them on garden leave for part of the notice period, with full pay and benefits but no access to systems or clients.",
+      "All company equipment, including the laptop, phone, access badge, security tokens and any company card, must be returned {equipment_return}. IT disables system access at 18:00 on the last working day, or immediately when garden leave starts. Leavers should move any personal files off company systems before that time, and must not copy company data, client contacts or code to personal devices or accounts. Equipment that is not returned is charged at its residual value and deducted from the final pay where the law allows, after a reminder from IT.",
+      "The final pay {final_pay}. It includes salary up to the last day, payment for accrued but unused holiday, and any approved overtime and expenses, minus any holiday taken in excess and any charge for unreturned equipment. Bonus and commission eligibility follows the rules of the relevant plan; in most plans the employee must be employed, and not under notice, on the payment date. Pension contributions stop with the final salary, and the provider writes to the leaver about their options. Company share awards follow the leaver rules of the share plan.",
+      "{reference_rule} Questions about notice periods, final pay or the exit process go to the offboarding coordinator {person} ({email}). Former employees can still access their payslips and tax documents in the payroll self service portal for twelve months after leaving, and can ask HR for copies after that. Leavers who are considering coming back later are welcome; rehire eligibility is recorded at exit and is usually positive. Alumni can join the company alumni network, which shares open roles and news a few times a year."
+    ],
+    "variants": [
+      {
+        "variant_id": "netherlands-2025",
+        "label": "Netherlands entity, 2025",
+        "slots": {
+          "site": "Dutch",
+          "notice_junior": "one month",
+          "notice_senior": "two months",
+          "last_day_rule": "The last day of employment is always the last day of a calendar month, so notice runs to the end of the month in which it would otherwise expire.",
+          "equipment_return": "at the office reception on or before the last working day",
+          "final_pay": "is paid with the regular payroll at the end of the month after leaving, together with the accrued holiday allowance",
+          "reference_rule": "HR issues a standard reference confirming dates and job title on request, and managers may give personal references only with HR approval."
+        }
+      },
+      {
+        "variant_id": "netherlands-2023",
+        "label": "Netherlands entity, 2023",
+        "slots": {
+          "site": "Dutch",
+          "notice_junior": "one month",
+          "notice_senior": "three months",
+          "last_day_rule": "The last day of employment is the day on which the notice period expires.",
+          "equipment_return": "by courier within five working days of the last day, using the prepaid box that IT sends to the leaver's home",
+          "final_pay": "is paid within two weeks after the last day",
+          "reference_rule": "HR issues a written reference covering dates, job title and conduct on request."
+        }
+      },
+      {
+        "variant_id": "belgium-2025",
+        "label": "Belgium entity, 2025",
+        "slots": {
+          "site": "Belgian",
+          "notice_junior": "the statutory period based on length of service, starting at one week",
+          "notice_senior": "the statutory period based on length of service",
+          "last_day_rule": "Notice starts on the Monday after the week in which the resignation was delivered, as Belgian law requires.",
+          "equipment_return": "in person to the IT desk on the last working day",
+          "final_pay": "is paid on the next regular payroll date, with the holiday pay for leavers shown as a separate line",
+          "reference_rule": "HR issues the social documents, including the employment certificate, within five days of the last day, and a reference letter on request."
+        },
+        "extra_section": "Belgium addendum: when the company ends the contract, the employee may take paid time off to look for a new job during the notice period, up to one day per week, and outplacement support is offered where the law requires it. These rights do not apply in the same way when the employee resigns, but leavers who need time for interviews can ask their manager for flexible hours. The holiday pay for leavers is also reported on the holiday certificate that the next employer will request."
+      },
+      {
+        "variant_id": "uk-2025",
+        "label": "UK entity, 2025",
+        "slots": {
+          "site": "UK",
+          "notice_junior": "four weeks",
+          "notice_senior": "three months",
+          "last_day_rule": "The last day is the day on which the notice period expires, and any remaining holiday can be taken during notice by agreement.",
+          "equipment_return": "on or before the last working day, at any office or by prepaid courier",
+          "final_pay": "is paid on the normal payday after the last day, and the leaver's tax form is issued within two weeks",
+          "reference_rule": "The company provides factual references only, confirming dates of employment and job title."
+        }
+      },
+      {
+        "variant_id": "spain-2025",
+        "label": "Spain entity, 2025",
+        "slots": {
+          "site": "Spanish",
+          "notice_junior": "fifteen days",
+          "notice_senior": "one month",
+          "last_day_rule": "The last day is the day on which the notice period expires; the company may waive the notice but must then pay for the waived days.",
+          "equipment_return": "within three working days of the last day",
+          "final_pay": "is calculated in a settlement document signed on the last day and paid within ten days",
+          "reference_rule": "HR provides the employment certificate and the certificate needed for unemployment benefits electronically within ten days."
+        }
+      },
+      {
+        "variant_id": "singapore-2025",
+        "label": "Singapore entity, 2025",
+        "slots": {
+          "site": "Singapore",
+          "notice_junior": "one month",
+          "notice_senior": "two months",
+          "last_day_rule": "Employees may offset unused annual leave against the notice period with the manager's agreement.",
+          "equipment_return": "to the IT desk on the last working day",
+          "final_pay": "is paid on the last working day, as local employment law requires",
+          "reference_rule": "HR issues a certificate of employment and a letter for tax clearance on request."
+        },
+        "extra_section": "Singapore addendum: for foreign employees, the company must notify the tax authority at least one month before the last day so that tax clearance can be obtained, and it withholds money due to the leaver until clearance is given. The work pass is cancelled by HR within one week of the last day, and the leaver must then leave the country or obtain a new pass within the period allowed by the immigration authority. HR will provide the cancellation letter."
+      }
+    ]
+  }
+]

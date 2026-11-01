@@ -1,5 +1,8 @@
-"""Guardian RAG: privacy-safe RAG with two-stage PII detection and post-generation audit."""
+"""Guardian RAG: privacy-safe RAG with three-stage PII detection and post-generation audit."""
 
 from __future__ import annotations
 
-__version__ = "0.1.0"
+from importlib.metadata import version
+
+__version__ = version("guardian-rag")
+"""Read from the installed metadata so `cz bump` only has to edit pyproject.toml."""

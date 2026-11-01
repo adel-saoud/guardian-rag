@@ -1,8 +1,8 @@
 """End-to-end RAG generation: prompt, call Ollama, verify citations.
 
-This is the only object the API layer touches. It holds the OllamaClient
-plus configuration (model id, sampling). The post-generation PII audit
-runs over this object's output before the answer reaches the user.
+This is the only generation object the API layer touches. The
+post-generation PII audit runs over its output before the answer reaches
+the user.
 """
 
 from __future__ import annotations
@@ -25,28 +25,16 @@ class Generator:
     ollama:
         The async Ollama client.
     model:
-        Ollama model id, e.g. `llama3.2:3b`.
-    max_output_tokens:
-        Optional cap on the model's output length.
+        Ollama model id, e.g. `qwen3.5:4b`.
     temperature:
-        Optional sampling temperature. Default None means use Ollama's default.
+        Sampling temperature; None keeps the model's Ollama default. The
+        faithfulness eval sets 0.0 so a rerun gives the same answers.
     """
 
-    def __init__(
-        self,
-        ollama: OllamaClient,
-        model: str,
-        max_output_tokens: int | None = None,
-        temperature: float | None = None,
-    ) -> None:
+    def __init__(self, ollama: OllamaClient, model: str, temperature: float | None = None) -> None:
         self._ollama = ollama
         self._model = model
-        self._max_output_tokens = max_output_tokens
         self._temperature = temperature
-
-    @property
-    def model(self) -> str:
-        return self._model
 
     async def generate(
         self,
@@ -64,10 +52,7 @@ class Generator:
 
         messages = build_messages(query, parents)
         response = await self._ollama.chat(
-            model=self._model,
-            messages=messages,
-            max_output_tokens=self._max_output_tokens,
-            temperature=self._temperature,
+            model=self._model, messages=messages, temperature=self._temperature
         )
         result = verify_citations(response.content, parents)
         logger.info(

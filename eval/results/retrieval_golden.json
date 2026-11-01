@@ -1,0 +1,36 @@
+{
+  "dataset": "golden",
+  "n_documents": 30,
+  "n_queries": 30,
+  "children_per_query": 30,
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "reranker_model": "cross-encoder/ms-marco-MiniLM-L6-v2",
+  "results": {
+    "dense": {
+      "ndcg@10": 1.0,
+      "recall@10": 1.0,
+      "mrr@10": 1.0,
+      "latency_p50_ms": 8.724790997803211,
+      "latency_p95_ms": 32.22900000400841
+    },
+    "hybrid (bm25_weight=0.4)": {
+      "ndcg@10": 1.0,
+      "recall@10": 1.0,
+      "mrr@10": 1.0,
+      "latency_p50_ms": 8.331707998877391,
+      "latency_p95_ms": 9.09983299789019
+    },
+    "hybrid + rerank": {
+      "ndcg@10": 1.0,
+      "recall@10": 1.0,
+      "mrr@10": 1.0,
+      "latency_p50_ms": 26.9650419941172,
+      "latency_p95_ms": 51.73587502213195
+    }
+  },
+  "rerank_vs_hybrid": {
+    "ndcg@10_delta": 0.0,
+    "ci95_low": 0.0,
+    "ci95_high": 0.0
+  }
+}

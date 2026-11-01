@@ -29,6 +29,7 @@ class RealGlinerBackend:
         labels: list[str],
         threshold: float,
     ) -> list[GlinerSpan]:
+        """Delegate to `GLiNER.predict_entities`, whose dicts match `GlinerSpan`."""
         spans = cast(
             "list[GlinerSpan]",
             self._model.predict_entities(text, labels, threshold=threshold),
@@ -40,6 +41,7 @@ class RealDebertaValidatorBackend:
     """Stage-3 backend backed by a HuggingFace zero-shot NLI pipeline."""
 
     HYPOTHESIS_TEMPLATE = "This text is {}."
+    """Filled with an `ENTITY_TO_HYPOTHESIS` value: "This text is a personal name."."""
 
     def __init__(
         self,
@@ -50,6 +52,7 @@ class RealDebertaValidatorBackend:
         self._pipeline = pipeline("zero-shot-classification", model=model_name)
 
     def score(self, text: str, hypothesis: str) -> float:
+        """Score `hypothesis` against a generic alternative and return its probability."""
         result = cast(
             "dict[str, Any]",
             self._pipeline(

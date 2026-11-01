@@ -63,13 +63,10 @@ class PiiEntity(BaseModel):
 
     @model_validator(mode="after")
     def _check_offsets(self) -> PiiEntity:
+        """Reject empty or inverted spans, which would corrupt redaction offsets."""
         if self.end <= self.start:
             raise ValueError(f"end ({self.end}) must be greater than start ({self.start})")
         return self
-
-    @property
-    def length(self) -> int:
-        return self.end - self.start
 
     def overlaps(self, other: PiiEntity) -> bool:
         """True if this entity shares any character with ``other``."""
@@ -80,8 +77,7 @@ class RedactionMap(BaseModel):
     """Mapping between placeholder tokens and the original PII spans.
 
     Stored separately from the redacted text. Never embedded into the vector
-    store. Used to render before/after views in the dashboard and to support
-    audit replay.
+    store. Served by `GET /v1/audit/{document_id}` and read by the dashboard.
     """
 
     model_config = ConfigDict(frozen=True, extra="forbid")
@@ -92,10 +88,6 @@ class RedactionMap(BaseModel):
 
     entities: list[PiiEntity] = Field(default_factory=lambda: [])
     """All entities that were redacted, in source-document order."""
-
-    def reverse(self) -> dict[str, str]:
-        """Original text -> placeholder. Used for consistency checks."""
-        return {v: k for k, v in self.placeholders.items()}
 
 
 class AuditResult(BaseModel):

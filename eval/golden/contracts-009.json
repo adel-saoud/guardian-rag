@@ -22,5 +22,10 @@
       "end": 154
     }
   ],
-  "qa_pairs": []
+  "qa_pairs": [
+    {
+      "question": "How are payments to the supplier made?",
+      "reference_answer": "By wire transfer."
+    }
+  ]
 }

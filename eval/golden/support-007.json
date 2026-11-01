@@ -22,5 +22,10 @@
       "end": 127
     }
   ],
-  "qa_pairs": []
+  "qa_pairs": [
+    {
+      "question": "What did the customer request?",
+      "reference_answer": "Cancellation of their subscription."
+    }
+  ]
 }

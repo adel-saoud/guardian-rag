@@ -1,0 +1,862 @@
+{
+  "generated_at": "2026-10-31T22:08:04+00:00",
+  "command": "uv run python scripts/reproduce.py",
+  "git": {
+    "commit": "uncommitted",
+    "dirty": true
+  },
+  "python": "3.14.4",
+  "packages": {
+    "guardian-rag": "0.2.0",
+    "presidio-analyzer": "2.2.362",
+    "spacy": "3.8.16",
+    "gliner": "0.2.26",
+    "transformers": "5.1.0",
+    "torch": "2.12.0",
+    "sentence-transformers": "5.5.1",
+    "qdrant-client": "1.18.0",
+    "rank-bm25": "0.2.2"
+  },
+  "hardware": {
+    "system": "Darwin",
+    "release": "27.0.0",
+    "machine": "arm64",
+    "cpu": "Apple M4 Pro",
+    "cpu_count": 14,
+    "accelerator": "none (CPU only)"
+  },
+  "seeds": {
+    "paired_bootstrap_ci": 0,
+    "domain_corpus": 0,
+    "generator_temperature": 0.0,
+    "judge_temperature": 0.0
+  },
+  "datasets": [
+    {
+      "path": "eval/golden",
+      "sha256": "099cf63837255e999b052a5bdec5145baf30f2c35b08a776ae7498de96d5bb31",
+      "description": "30 synthetic documents, 91 planted PII entities, 30 QA pairs"
+    },
+    {
+      "path": "eval/faithfulness/judge_labels.jsonl",
+      "sha256": "adf5b4c627b9215ea82dd4e09bbf3b42e13ba91f9cca793b6b0a834caff56b65",
+      "description": "30 judge cases labelled and reviewed by the maintainer"
+    },
+    {
+      "path": "eval/retrieval/golden_queries.jsonl",
+      "sha256": "e478defd0dbfeea225578bf1acc2510bafa2a0002161444d667df3bf5f0a0cd0",
+      "description": "golden retrieval smoke queries"
+    },
+    {
+      "path": "eval/retrieval/domain",
+      "sha256": "84f3a31cd976bff1730bc4bfbfe8589435ca241bd527ca4246717f396f83f151",
+      "description": "in-domain topic specs, rendered with seed 0"
+    },
+    {
+      "path": "eval/retrieval/domain_queries.jsonl",
+      "sha256": "a6d95d3c955258d9a4c621aaedea4f2a4038c84a93754ec6a14e2108185a8a19",
+      "description": "in-domain queries"
+    },
+    {
+      "path": "eval/injection/cases.jsonl",
+      "sha256": "3c3ad2783ccac5e20e64c0019391d719db3177633d29494051a71005e094885c",
+      "description": "own injection set"
+    },
+    {
+      "path": "data/beir/BeIR/scifact",
+      "sha256": "34850dc4783e512a7f8423848e813c4983ec2715bc2e6dca60c0014e509e2ed3",
+      "description": "BEIR SciFact corpus and queries, downloaded at a pinned revision"
+    },
+    {
+      "path": "data/beir/BeIR/scifact-qrels",
+      "sha256": "ad1352e8d2663c61310770fcd87fe946fde6652953a5136608f0a70cf34b7781",
+      "description": "BEIR SciFact test qrels, downloaded at a pinned revision"
+    },
+    {
+      "path": "data/hf/deepset-prompt-injections",
+      "sha256": "238db0a37fb85a2aa3c97af4a990a877f2f5a05d399ad224e50be734ce7d6e2a",
+      "description": "deepset/prompt-injections, pinned revision"
+    }
+  ],
+  "models": [
+    {
+      "role": "pii_ner",
+      "name": "urchade/gliner_multi_pii-v1",
+      "source": "huggingface",
+      "revision": "1fcf13e85f4eef5394e1fcd406cf2ca9ea82351d"
+    },
+    {
+      "role": "pii_validator",
+      "name": "MoritzLaurer/deberta-v3-xsmall-zeroshot-v1.1-all-33",
+      "source": "huggingface",
+      "revision": "262ae02f29173eec1c250f90804dc7edc677dcff"
+    },
+    {
+      "role": "embedding",
+      "name": "sentence-transformers/all-MiniLM-L6-v2",
+      "source": "huggingface",
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+    },
+    {
+      "role": "reranker",
+      "name": "cross-encoder/ms-marco-MiniLM-L6-v2",
+      "source": "huggingface",
+      "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a"
+    },
+    {
+      "role": "injection_classifier",
+      "name": "protectai/deberta-v3-base-prompt-injection-v2",
+      "source": "huggingface",
+      "revision": "90c9989b1a342275dd0d1a95aad283c04e075671"
+    },
+    {
+      "role": "generator",
+      "name": "qwen3.5:4b",
+      "source": "ollama",
+      "ollama_version": "0.40.10",
+      "think": false,
+      "digest": "7f3251fa6878a78a606bcb3c074283306e5ad2ea411a7774a9dd98a4bc7f2d13"
+    },
+    {
+      "role": "judge",
+      "name": "qwen3.5:4b",
+      "source": "ollama",
+      "ollama_version": "0.40.10",
+      "think": false,
+      "digest": "7f3251fa6878a78a606bcb3c074283306e5ad2ea411a7774a9dd98a4bc7f2d13"
+    }
+  ],
+  "results_files": [
+    "eval/results/faithfulness.json",
+    "eval/results/injection.json",
+    "eval/results/pii.json",
+    "eval/results/retrieval_domain.json",
+    "eval/results/retrieval_golden.json",
+    "eval/results/retrieval_scifact.json"
+  ],
+  "metrics": [
+    {
+      "name": "recall",
+      "suite": "pii/overall",
+      "value": 1.0,
+      "n": 91
+    },
+    {
+      "name": "precision",
+      "suite": "pii/overall",
+      "value": 0.9289617486338798,
+      "n": 183
+    },
+    {
+      "name": "recall",
+      "suite": "pii/contracts",
+      "value": 1.0,
+      "n": 30
+    },
+    {
+      "name": "precision",
+      "suite": "pii/contracts",
+      "value": 0.828125,
+      "n": 64
+    },
+    {
+      "name": "recall",
+      "suite": "pii/hr",
+      "value": 1.0,
+      "n": 31
+    },
+    {
+      "name": "precision",
+      "suite": "pii/hr",
+      "value": 0.9636363636363636,
+      "n": 55
+    },
+    {
+      "name": "recall",
+      "suite": "pii/support",
+      "value": 1.0,
+      "n": 30
+    },
+    {
+      "name": "precision",
+      "suite": "pii/support",
+      "value": 1.0,
+      "n": 64
+    },
+    {
+      "name": "ndcg@10",
+      "suite": "retrieval/scifact/dense",
+      "value": 0.6580545601245054,
+      "n": 300,
+      "n_documents": 5183
+    },
+    {
+      "name": "recall@10",
+      "suite": "retrieval/scifact/dense",
+      "value": 0.8087777777777777,
+      "n": 300,
+      "n_documents": 5183
+    },
+    {
+      "name": "mrr@10",
+      "suite": "retrieval/scifact/dense",
+      "value": 0.6119193121693122,
+      "n": 300,
+      "n_documents": 5183
+    },
+    {
+      "name": "latency_p50_ms",
+      "suite": "retrieval/scifact/dense",
+      "value": 103.92487500212155,
+      "n": 300,
+      "n_documents": 5183
+    },
+    {
+      "name": "latency_p95_ms",
+      "suite": "retrieval/scifact/dense",
+      "value": 217.4164159805514,
+      "n": 300,
+      "n_documents": 5183
+    },
+    {
+      "name": "ndcg@10",
+      "suite": "retrieval/scifact/hybrid (bm25_weight=0.4)",
+      "value": 0.7028002548430048,
+      "n": 300,
+      "n_documents": 5183
+    },
+    {
+      "name": "recall@10",
+      "suite": "retrieval/scifact/hybrid (bm25_weight=0.4)",
+      "value": 0.8248888888888889,
+      "n": 300,
+      "n_documents": 5183
+    },
+    {
+      "name": "mrr@10",
+      "suite": "retrieval/scifact/hybrid (bm25_weight=0.4)",
+      "value": 0.6664563492063492,
+      "n": 300,
+      "n_documents": 5183
+    },
+    {
+      "name": "latency_p50_ms",
+      "suite": "retrieval/scifact/hybrid (bm25_weight=0.4)",
+      "value": 109.21166697517037,
+      "n": 300,
+      "n_documents": 5183
+    },
+    {
+      "name": "latency_p95_ms",
+      "suite": "retrieval/scifact/hybrid (bm25_weight=0.4)",
+      "value": 287.7552080026362,
+      "n": 300,
+      "n_documents": 5183
+    },
+    {
+      "name": "ndcg@10",
+      "suite": "retrieval/scifact/hybrid + rerank",
+      "value": 0.7113114628742435,
+      "n": 300,
+      "n_documents": 5183
+    },
+    {
+      "name": "recall@10",
+      "suite": "retrieval/scifact/hybrid + rerank",
+      "value": 0.8576666666666667,
+      "n": 300,
+      "n_documents": 5183
+    },
+    {
+      "name": "mrr@10",
+      "suite": "retrieval/scifact/hybrid + rerank",
+      "value": 0.6711044973544974,
+      "n": 300,
+      "n_documents": 5183
+    },
+    {
+      "name": "latency_p50_ms",
+      "suite": "retrieval/scifact/hybrid + rerank",
+      "value": 357.87462498410605,
+      "n": 300,
+      "n_documents": 5183
+    },
+    {
+      "name": "latency_p95_ms",
+      "suite": "retrieval/scifact/hybrid + rerank",
+      "value": 1320.884707994992,
+      "n": 300,
+      "n_documents": 5183
+    },
+    {
+      "name": "rerank_minus_hybrid_ndcg@10",
+      "suite": "retrieval/scifact",
+      "value": 0.008511208031238771,
+      "n": 300,
+      "n_documents": 5183,
+      "ci95": [
+        -0.015421260144819676,
+        0.03319611265108144
+      ]
+    },
+    {
+      "name": "ndcg@10",
+      "suite": "retrieval/golden/dense",
+      "value": 1.0,
+      "n": 30,
+      "n_documents": 30
+    },
+    {
+      "name": "recall@10",
+      "suite": "retrieval/golden/dense",
+      "value": 1.0,
+      "n": 30,
+      "n_documents": 30
+    },
+    {
+      "name": "mrr@10",
+      "suite": "retrieval/golden/dense",
+      "value": 1.0,
+      "n": 30,
+      "n_documents": 30
+    },
+    {
+      "name": "latency_p50_ms",
+      "suite": "retrieval/golden/dense",
+      "value": 8.724790997803211,
+      "n": 30,
+      "n_documents": 30
+    },
+    {
+      "name": "latency_p95_ms",
+      "suite": "retrieval/golden/dense",
+      "value": 32.22900000400841,
+      "n": 30,
+      "n_documents": 30
+    },
+    {
+      "name": "ndcg@10",
+      "suite": "retrieval/golden/hybrid (bm25_weight=0.4)",
+      "value": 1.0,
+      "n": 30,
+      "n_documents": 30
+    },
+    {
+      "name": "recall@10",
+      "suite": "retrieval/golden/hybrid (bm25_weight=0.4)",
+      "value": 1.0,
+      "n": 30,
+      "n_documents": 30
+    },
+    {
+      "name": "mrr@10",
+      "suite": "retrieval/golden/hybrid (bm25_weight=0.4)",
+      "value": 1.0,
+      "n": 30,
+      "n_documents": 30
+    },
+    {
+      "name": "latency_p50_ms",
+      "suite": "retrieval/golden/hybrid (bm25_weight=0.4)",
+      "value": 8.331707998877391,
+      "n": 30,
+      "n_documents": 30
+    },
+    {
+      "name": "latency_p95_ms",
+      "suite": "retrieval/golden/hybrid (bm25_weight=0.4)",
+      "value": 9.09983299789019,
+      "n": 30,
+      "n_documents": 30
+    },
+    {
+      "name": "ndcg@10",
+      "suite": "retrieval/golden/hybrid + rerank",
+      "value": 1.0,
+      "n": 30,
+      "n_documents": 30
+    },
+    {
+      "name": "recall@10",
+      "suite": "retrieval/golden/hybrid + rerank",
+      "value": 1.0,
+      "n": 30,
+      "n_documents": 30
+    },
+    {
+      "name": "mrr@10",
+      "suite": "retrieval/golden/hybrid + rerank",
+      "value": 1.0,
+      "n": 30,
+      "n_documents": 30
+    },
+    {
+      "name": "latency_p50_ms",
+      "suite": "retrieval/golden/hybrid + rerank",
+      "value": 26.9650419941172,
+      "n": 30,
+      "n_documents": 30
+    },
+    {
+      "name": "latency_p95_ms",
+      "suite": "retrieval/golden/hybrid + rerank",
+      "value": 51.73587502213195,
+      "n": 30,
+      "n_documents": 30
+    },
+    {
+      "name": "rerank_minus_hybrid_ndcg@10",
+      "suite": "retrieval/golden",
+      "value": 0.0,
+      "n": 30,
+      "n_documents": 30,
+      "ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "ndcg@10",
+      "suite": "retrieval/domain/dense",
+      "value": 0.8181705674069011,
+      "n": 135,
+      "n_documents": 270
+    },
+    {
+      "name": "recall@10",
+      "suite": "retrieval/domain/dense",
+      "value": 0.9925925925925926,
+      "n": 135,
+      "n_documents": 270
+    },
+    {
+      "name": "mrr@10",
+      "suite": "retrieval/domain/dense",
+      "value": 0.7618283362727807,
+      "n": 135,
+      "n_documents": 270
+    },
+    {
+      "name": "latency_p50_ms",
+      "suite": "retrieval/domain/dense",
+      "value": 14.353708975249901,
+      "n": 135,
+      "n_documents": 270
+    },
+    {
+      "name": "latency_p95_ms",
+      "suite": "retrieval/domain/dense",
+      "value": 40.329875017050654,
+      "n": 135,
+      "n_documents": 270
+    },
+    {
+      "name": "ndcg@10",
+      "suite": "retrieval/domain/hybrid (bm25_weight=0.4)",
+      "value": 0.9019103698852042,
+      "n": 135,
+      "n_documents": 270
+    },
+    {
+      "name": "recall@10",
+      "suite": "retrieval/domain/hybrid (bm25_weight=0.4)",
+      "value": 1.0,
+      "n": 135,
+      "n_documents": 270
+    },
+    {
+      "name": "mrr@10",
+      "suite": "retrieval/domain/hybrid (bm25_weight=0.4)",
+      "value": 0.8692063492063492,
+      "n": 135,
+      "n_documents": 270
+    },
+    {
+      "name": "latency_p50_ms",
+      "suite": "retrieval/domain/hybrid (bm25_weight=0.4)",
+      "value": 16.147457994520664,
+      "n": 135,
+      "n_documents": 270
+    },
+    {
+      "name": "latency_p95_ms",
+      "suite": "retrieval/domain/hybrid (bm25_weight=0.4)",
+      "value": 21.365749998949468,
+      "n": 135,
+      "n_documents": 270
+    },
+    {
+      "name": "ndcg@10",
+      "suite": "retrieval/domain/hybrid + rerank",
+      "value": 0.8880773227658721,
+      "n": 135,
+      "n_documents": 270
+    },
+    {
+      "name": "recall@10",
+      "suite": "retrieval/domain/hybrid + rerank",
+      "value": 1.0,
+      "n": 135,
+      "n_documents": 270
+    },
+    {
+      "name": "mrr@10",
+      "suite": "retrieval/domain/hybrid + rerank",
+      "value": 0.8518694885361552,
+      "n": 135,
+      "n_documents": 270
+    },
+    {
+      "name": "latency_p50_ms",
+      "suite": "retrieval/domain/hybrid + rerank",
+      "value": 121.64920798386447,
+      "n": 135,
+      "n_documents": 270
+    },
+    {
+      "name": "latency_p95_ms",
+      "suite": "retrieval/domain/hybrid + rerank",
+      "value": 178.10420799651183,
+      "n": 135,
+      "n_documents": 270
+    },
+    {
+      "name": "rerank_minus_hybrid_ndcg@10",
+      "suite": "retrieval/domain",
+      "value": -0.01383304711933206,
+      "n": 135,
+      "n_documents": 270,
+      "ci95": [
+        -0.04264238696172591,
+        0.014337470557315853
+      ]
+    },
+    {
+      "name": "detection_rate",
+      "suite": "injection/own/rules/all",
+      "value": 0.525,
+      "n": 40
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/own/rules/all",
+      "value": 0.1,
+      "n": 20,
+      "false_positives": 2
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/own/rules/benign",
+      "value": 0.1,
+      "n": 20,
+      "false_positives": 2
+    },
+    {
+      "name": "detection_rate",
+      "suite": "injection/own/rules/direct",
+      "value": 0.45,
+      "n": 20
+    },
+    {
+      "name": "detection_rate",
+      "suite": "injection/own/rules/indirect",
+      "value": 0.6,
+      "n": 20
+    },
+    {
+      "name": "detection_rate",
+      "suite": "injection/own/classifier/all",
+      "value": 0.95,
+      "n": 40
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/own/classifier/all",
+      "value": 0.15,
+      "n": 20,
+      "false_positives": 3
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/own/classifier/benign",
+      "value": 0.15,
+      "n": 20,
+      "false_positives": 3
+    },
+    {
+      "name": "detection_rate",
+      "suite": "injection/own/classifier/direct",
+      "value": 0.95,
+      "n": 20
+    },
+    {
+      "name": "detection_rate",
+      "suite": "injection/own/classifier/indirect",
+      "value": 0.95,
+      "n": 20
+    },
+    {
+      "name": "detection_rate",
+      "suite": "injection/own/classifier+rules/all",
+      "value": 0.975,
+      "n": 40
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/own/classifier+rules/all",
+      "value": 0.25,
+      "n": 20,
+      "false_positives": 5
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/own/classifier+rules/benign",
+      "value": 0.25,
+      "n": 20,
+      "false_positives": 5
+    },
+    {
+      "name": "detection_rate",
+      "suite": "injection/own/classifier+rules/direct",
+      "value": 0.95,
+      "n": 20
+    },
+    {
+      "name": "detection_rate",
+      "suite": "injection/own/classifier+rules/indirect",
+      "value": 1.0,
+      "n": 20
+    },
+    {
+      "name": "detection_rate",
+      "suite": "injection/deepset_test/rules/all",
+      "value": 0.1,
+      "n": 60
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/deepset_test/rules/all",
+      "value": 0.0,
+      "n": 56,
+      "false_positives": 0
+    },
+    {
+      "name": "detection_rate",
+      "suite": "injection/deepset_test/rules/likely_de",
+      "value": 0.058823529411764705,
+      "n": 17
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/deepset_test/rules/likely_de",
+      "value": 0.0,
+      "n": 17,
+      "false_positives": 0
+    },
+    {
+      "name": "detection_rate",
+      "suite": "injection/deepset_test/rules/likely_en",
+      "value": 0.11627906976744186,
+      "n": 43
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/deepset_test/rules/likely_en",
+      "value": 0.0,
+      "n": 39,
+      "false_positives": 0
+    },
+    {
+      "name": "detection_rate",
+      "suite": "injection/deepset_test/classifier/all",
+      "value": 0.36666666666666664,
+      "n": 60
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/deepset_test/classifier/all",
+      "value": 0.0,
+      "n": 56,
+      "false_positives": 0
+    },
+    {
+      "name": "detection_rate",
+      "suite": "injection/deepset_test/classifier/likely_de",
+      "value": 0.47058823529411764,
+      "n": 17
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/deepset_test/classifier/likely_de",
+      "value": 0.0,
+      "n": 17,
+      "false_positives": 0
+    },
+    {
+      "name": "detection_rate",
+      "suite": "injection/deepset_test/classifier/likely_en",
+      "value": 0.32558139534883723,
+      "n": 43
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/deepset_test/classifier/likely_en",
+      "value": 0.0,
+      "n": 39,
+      "false_positives": 0
+    },
+    {
+      "name": "detection_rate",
+      "suite": "injection/deepset_test/classifier+rules/all",
+      "value": 0.43333333333333335,
+      "n": 60
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/deepset_test/classifier+rules/all",
+      "value": 0.0,
+      "n": 56,
+      "false_positives": 0
+    },
+    {
+      "name": "detection_rate",
+      "suite": "injection/deepset_test/classifier+rules/likely_de",
+      "value": 0.47058823529411764,
+      "n": 17
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/deepset_test/classifier+rules/likely_de",
+      "value": 0.0,
+      "n": 17,
+      "false_positives": 0
+    },
+    {
+      "name": "detection_rate",
+      "suite": "injection/deepset_test/classifier+rules/likely_en",
+      "value": 0.4186046511627907,
+      "n": 43
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/deepset_test/classifier+rules/likely_en",
+      "value": 0.0,
+      "n": 39,
+      "false_positives": 0
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/golden_corpus/rules/all",
+      "value": 0.0,
+      "n": 30,
+      "false_positives": 0
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/golden_corpus/rules/contracts",
+      "value": 0.0,
+      "n": 10,
+      "false_positives": 0
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/golden_corpus/rules/hr",
+      "value": 0.0,
+      "n": 10,
+      "false_positives": 0
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/golden_corpus/rules/support",
+      "value": 0.0,
+      "n": 10,
+      "false_positives": 0
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/golden_corpus/classifier/all",
+      "value": 0.1,
+      "n": 30,
+      "false_positives": 3
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/golden_corpus/classifier/contracts",
+      "value": 0.0,
+      "n": 10,
+      "false_positives": 0
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/golden_corpus/classifier/hr",
+      "value": 0.0,
+      "n": 10,
+      "false_positives": 0
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/golden_corpus/classifier/support",
+      "value": 0.3,
+      "n": 10,
+      "false_positives": 3
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/golden_corpus/classifier+rules/all",
+      "value": 0.1,
+      "n": 30,
+      "false_positives": 3
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/golden_corpus/classifier+rules/contracts",
+      "value": 0.0,
+      "n": 10,
+      "false_positives": 0
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/golden_corpus/classifier+rules/hr",
+      "value": 0.0,
+      "n": 10,
+      "false_positives": 0
+    },
+    {
+      "name": "false_positive_rate",
+      "suite": "injection/golden_corpus/classifier+rules/support",
+      "value": 0.3,
+      "n": 10,
+      "false_positives": 3
+    },
+    {
+      "name": "original_rate",
+      "suite": "faithfulness",
+      "value": 0.9333333333333333,
+      "n": 30
+    },
+    {
+      "name": "redacted_rate",
+      "suite": "faithfulness",
+      "value": 0.8,
+      "n": 30
+    },
+    {
+      "name": "redacted_minus_original",
+      "suite": "faithfulness",
+      "value": -0.1333333333333333,
+      "n": 30
+    },
+    {
+      "name": "judge_agreement",
+      "suite": "faithfulness/judge",
+      "value": 0.9,
+      "n": 30
+    },
+    {
+      "name": "judge_cohen_kappa",
+      "suite": "faithfulness/judge",
+      "value": 0.7963800904977376,
+      "n": 30
+    }
+  ]
+}

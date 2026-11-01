@@ -10,7 +10,6 @@ from guardian_rag.pii.models import (
     PiiEntity,
     PiiEntityType,
     PiiStage,
-    RedactionMap,
 )
 
 
@@ -44,20 +43,6 @@ def test_entity_overlap_detection():
     assert a.overlaps(b)
     assert b.overlaps(a)
     assert not a.overlaps(c)
-
-
-def test_entity_length():
-    assert _entity(3, 11).length == 8
-
-
-def test_redaction_map_reverse_round_trips():
-    m = RedactionMap(
-        document_id="doc-1",
-        placeholders={"[PERSON_1]": "John Smith", "[EMAIL_1]": "john@example.com"},
-    )
-    rev = m.reverse()
-    assert rev["John Smith"] == "[PERSON_1]"
-    assert rev["john@example.com"] == "[EMAIL_1]"
 
 
 def test_audit_result_clean_default():

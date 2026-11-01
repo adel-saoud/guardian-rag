@@ -24,8 +24,8 @@
   ],
   "qa_pairs": [
     {
-      "question": "What IP address did the login attempts come from?",
-      "reference_answer": "The login attempts came from the IP address listed in the ticket."
+      "question": "What problem does the customer report?",
+      "reference_answer": "They cannot log in."
     }
   ]
 }

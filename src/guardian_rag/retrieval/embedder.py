@@ -35,9 +35,11 @@ class Embedder:
 
     @property
     def dim(self) -> int:
+        """Vector size, used to create the Qdrant collection."""
         return self._dim
 
     def embed(self, texts: list[str]) -> list[list[float]]:
+        """Return one vector per text, failing loudly if the backend drops any."""
         if not texts:
             return []
         vectors = self._backend.encode(texts)
@@ -46,4 +48,5 @@ class Embedder:
         return vectors
 
     def embed_one(self, text: str) -> list[float]:
+        """Embed a single query."""
         return self.embed([text])[0]

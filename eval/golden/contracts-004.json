@@ -22,5 +22,10 @@
       "end": 137
     }
   ],
-  "qa_pairs": []
+  "qa_pairs": [
+    {
+      "question": "What is being leased?",
+      "reference_answer": "Office space."
+    }
+  ]
 }

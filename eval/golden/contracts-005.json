@@ -22,5 +22,10 @@
       "end": 150
     }
   ],
-  "qa_pairs": []
+  "qa_pairs": [
+    {
+      "question": "What are the payment terms for the vendor?",
+      "reference_answer": "Net-30."
+    }
+  ]
 }

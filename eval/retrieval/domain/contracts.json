@@ -1,0 +1,1520 @@
+[
+  {
+    "topic_id": "contracts-msa-payment-terms",
+    "category": "contracts",
+    "title": "Master Services Agreement: Fees, Invoicing and Payment Schedule",
+    "sections": [
+      "This schedule forms part of the Master Services Agreement between Halvorsen Digital Ltd (the Supplier) and {client} (the Customer) and sets out how fees are invoiced and paid. It applies to all statements of work signed under the agreement unless a statement of work expressly overrides a clause by number. Fees are quoted and invoiced in {currency}, and exchange rate risk sits with the Supplier. The Customer's accounts payable contact for all invoicing matters is {person} ({email}). The Supplier's commercial contact is {person_2}, who must be copied on any notice that concerns overdue amounts, credit notes or suspension of services. Where this schedule conflicts with the main agreement, this schedule prevails for payment matters only.",
+      "The Supplier invoices monthly in arrears on the first working day of each month for time and materials work, and on milestone acceptance for fixed price work. Every invoice must quote the Customer purchase order number, the statement of work reference and the billing period. Invoices are submitted through {invoice_portal}; invoices sent by email only are not deemed received. An invoice that is missing a purchase order number may be rejected within five working days, and the payment clock restarts when a corrected invoice is submitted. Expenses are rebilled at cost with receipts, capped at ten percent of the fees in the same invoice unless approved in advance and in writing by the Customer's project sponsor.",
+      "Undisputed invoices are payable within {payment_days} days of the date of receipt. Payment is made by bank transfer to the Supplier account stated here, {iban}, and the Supplier will never change its bank details by email alone: any change is confirmed by a signed letter and a call back to a number already on file. Remittance advice should be sent to the Supplier's finance team on the day payment is released. If the due date falls on a weekend or public holiday, payment is due on the next working day. Early payment discounts are not offered under this agreement, and no set-off is permitted against fees except for service credits that both parties have agreed in writing.",
+      "If the Customer wishes to dispute an invoice, it must notify the Supplier in writing within {dispute_window} of receipt, stating the disputed amount and the reason. The undisputed portion must still be paid on time. The finance leads of both parties will meet within ten working days to resolve the dispute, escalating to the executive sponsors if it remains open after thirty days. Amounts that are overdue and not disputed accrue interest at {late_interest}, calculated daily from the due date until payment in full. If an undisputed invoice remains unpaid thirty days after a written reminder, the Supplier may suspend non-critical services on fourteen days' notice, but may not withhold data or access to deliverables already paid for.",
+      "Rates are fixed for the first twelve months from the effective date. After that, the Supplier may increase rates once per contract year by giving ninety days' written notice, and any increase is capped at {fee_increase_cap}. Rate increases never apply to fixed price statements of work already signed. The Customer may request an annual rate benchmark at its own cost, and both parties will negotiate in good faith if the benchmark shows rates more than fifteen percent above the market median. This schedule is governed by {governing_law}, and any payment claim below the small claims threshold may be brought in that forum without first using the escalation process in the main agreement."
+    ],
+    "variants": [
+      {
+        "variant_id": "brightwater-freight",
+        "label": "Brightwater Freight, 2024 edition",
+        "slots": {
+          "client": "Brightwater Freight Ltd",
+          "currency": "pounds sterling",
+          "invoice_portal": "the Ledgerline supplier portal",
+          "payment_days": "30",
+          "dispute_window": "fifteen days",
+          "late_interest": "4 percent per year above the Bank of England base rate",
+          "fee_increase_cap": "the UK consumer price index for the previous calendar year",
+          "governing_law": "the laws of England and Wales"
+        }
+      },
+      {
+        "variant_id": "kestrel-pharma",
+        "label": "Kestrel Pharma GmbH, version 2",
+        "slots": {
+          "client": "Kestrel Pharma GmbH",
+          "currency": "euros",
+          "invoice_portal": "the Kestrel procurement hub",
+          "payment_days": "45",
+          "dispute_window": "twenty days",
+          "late_interest": "9 percentage points above the European Central Bank base rate",
+          "fee_increase_cap": "3 percent",
+          "governing_law": "German law, with exclusive jurisdiction of the courts of Frankfurt am Main"
+        },
+        "extra_section": "Addendum for German invoicing. From the 2025 revision, every invoice to Kestrel Pharma must be issued as a structured electronic invoice in XRechnung or ZUGFeRD format and uploaded to the procurement hub. PDF invoices are returned unprocessed and do not start the payment period. Each invoice must also show the Customer's VAT identification number and the cost centre code supplied in the purchase order. Credit notes follow the same format rules and must reference the original invoice number."
+      },
+      {
+        "variant_id": "oakridge-retail",
+        "label": "Oakridge Retail Group, 2025 renewal",
+        "slots": {
+          "client": "Oakridge Retail Group plc",
+          "currency": "pounds sterling",
+          "invoice_portal": "the Oakridge e-invoicing gateway",
+          "payment_days": "75",
+          "dispute_window": "ten working days",
+          "late_interest": "2 percent per year above the Bank of England base rate",
+          "fee_increase_cap": "5 percent",
+          "governing_law": "the laws of England and Wales"
+        }
+      },
+      {
+        "variant_id": "vantor-energy",
+        "label": "Vantor Energy SA, French entity",
+        "slots": {
+          "client": "Vantor Energy SA",
+          "currency": "euros",
+          "invoice_portal": "the Vantor Paybridge platform",
+          "payment_days": "60",
+          "dispute_window": "eight days",
+          "late_interest": "three times the French legal interest rate, plus the fixed recovery indemnity of 40 euros per invoice",
+          "fee_increase_cap": "the Syntec index variation over the previous year",
+          "governing_law": "French law, with jurisdiction of the commercial court of Lyon"
+        }
+      },
+      {
+        "variant_id": "lumen-bay-hotels",
+        "label": "Lumen Bay Hotels, short-form version",
+        "slots": {
+          "client": "Lumen Bay Hotels LLC",
+          "currency": "US dollars",
+          "invoice_portal": "the Lumen Bay vendor desk",
+          "payment_days": "14",
+          "dispute_window": "seven days",
+          "late_interest": "1.5 percent per month or the maximum rate allowed by law, whichever is lower",
+          "fee_increase_cap": "4 percent",
+          "governing_law": "the laws of the State of New York"
+        }
+      },
+      {
+        "variant_id": "ferrum-steelworks",
+        "label": "Ferrum Steelworks, version 4 (Spain)",
+        "slots": {
+          "client": "Ferrum Steelworks SA",
+          "currency": "euros",
+          "invoice_portal": "the Ferrum Factura portal",
+          "payment_days": "90",
+          "dispute_window": "thirty days",
+          "late_interest": "the statutory late payment rate published under Spanish law",
+          "fee_increase_cap": "2.5 percent",
+          "governing_law": "Spanish law, with jurisdiction of the courts of Bilbao"
+        },
+        "extra_section": "Addendum on supply chain finance. Ferrum Steelworks operates a confirming programme through its relationship bank. Once an invoice is approved, the Supplier may elect to receive payment early from the bank, at a discount calculated on the remaining days to the due date at the programme rate, which is reviewed quarterly. Joining the programme is optional, requires a one page enrolment form, and does not change the contractual due date or the Customer's liability for the full invoice amount."
+      }
+    ]
+  },
+  {
+    "topic_id": "contracts-mutual-nda",
+    "category": "contracts",
+    "title": "Mutual Non-Disclosure Agreement",
+    "sections": [
+      "This Mutual Non-Disclosure Agreement is made between Halvorsen Digital Ltd and {counterparty}, each of which may disclose and receive confidential information. The information is shared solely for the purpose of {purpose}, and the receiving party may not use it for any other purpose, including benchmarking, product development or reverse engineering. Each party appoints a single point of contact for the exchange: for Halvorsen this is {person} ({email}). No licence to any patent, trade mark or copyright is granted by disclosure, and nothing in this agreement obliges either party to proceed with any transaction. Each party bears its own costs in connection with the evaluation, including the fees of its own advisers.",
+      "Confidential information means any information disclosed in writing, orally or by demonstration that is marked as confidential or that a reasonable person would understand to be confidential, including source code, pricing, customer lists, roadmaps and personal data. Information disclosed orally or visually is protected only if the disclosing party confirms its confidential nature in a written summary within {marking_days} of disclosure. Information is not confidential if it is or becomes public through no fault of the recipient, was already lawfully known to the recipient, is independently developed without use of the information, or is received from a third party free of any duty of confidence. The burden of proving that an exclusion applies rests on the recipient.",
+      "The recipient will protect confidential information with at least the care it uses for its own information of similar sensitivity, and never less than reasonable care. Access is limited to employees, officers, professional advisers and approved subcontractors who need to know it for the purpose and who are bound by written duties at least as strict as these. The recipient is responsible for any breach by those people. If the recipient is required by law, a regulator or a court order to disclose information, it will give prompt notice where lawful, disclose only the minimum required and cooperate with any attempt to obtain a protective order. Copies may only be made where strictly necessary for the purpose.",
+      "This agreement covers disclosures made during a period of {term_years} from the effective date. The obligations of confidence continue for {survival_years} after the end of that period, except that obligations relating to trade secrets and source code continue for as long as the information remains a trade secret. On written request, or at the end of the disclosure period, the recipient will return or securely destroy all confidential information within {return_days} and confirm destruction in writing signed by an officer. Copies held in routine backup systems may be retained until overwritten in the normal cycle, provided they are not accessed and remain subject to this agreement.",
+      "Each party acknowledges that damages alone may not be an adequate remedy for breach, and the disclosing party may seek injunctive relief without proving actual loss or posting a bond, to the extent the court allows. This agreement is governed by {governing_law}. Neither party may assign it without the other's written consent, except to a successor of its entire business. Notices must be sent to the legal department of the receiving party, with a copy by email; for the counterparty, notices go to {person_2} ({email_2}). This agreement is the entire understanding on its subject and may only be amended in writing signed by both parties."
+    ],
+    "variants": [
+      {
+        "variant_id": "corrin-biotech",
+        "label": "Corrin Biotech, research partnership",
+        "slots": {
+          "counterparty": "Corrin Biotech Ltd",
+          "purpose": "evaluating a joint research partnership on clinical trial scheduling software",
+          "marking_days": "fourteen days",
+          "term_years": "two years",
+          "survival_years": "five years",
+          "return_days": "thirty days",
+          "governing_law": "the laws of Scotland"
+        }
+      },
+      {
+        "variant_id": "saltmarsh-capital",
+        "label": "Saltmarsh Capital Partners, investment diligence",
+        "slots": {
+          "counterparty": "Saltmarsh Capital Partners LLP",
+          "purpose": "assessing a potential investment in a minority shareholding of Halvorsen Digital Ltd",
+          "marking_days": "ten days",
+          "term_years": "one year",
+          "survival_years": "three years",
+          "return_days": "ten days",
+          "governing_law": "the laws of England and Wales"
+        },
+        "extra_section": "Standstill and non-solicitation. For twelve months from the effective date, Saltmarsh Capital Partners will not acquire, or offer to acquire, any shares in Halvorsen Digital Ltd other than through the process agreed with the board, and will not solicit for employment any employee it met or learned about during the diligence. General recruitment advertising not aimed at Halvorsen staff is not a breach. The standstill ends early if a third party announces a firm offer for the company."
+      },
+      {
+        "variant_id": "pinecrest-robotics",
+        "label": "Pinecrest Robotics, version 3",
+        "slots": {
+          "counterparty": "Pinecrest Robotics Inc.",
+          "purpose": "evaluating an integration between our scheduling platform and Pinecrest warehouse robots",
+          "marking_days": "thirty days",
+          "term_years": "three years",
+          "survival_years": "two years",
+          "return_days": "fifteen days",
+          "governing_law": "the laws of the State of Delaware"
+        }
+      },
+      {
+        "variant_id": "aurelle-cosmetiques",
+        "label": "Aurelle Cosmetiques, France",
+        "slots": {
+          "counterparty": "Aurelle Cosmetiques SAS",
+          "purpose": "negotiating a white-label supply arrangement for our booking software",
+          "marking_days": "fifteen days",
+          "term_years": "two years",
+          "survival_years": "seven years",
+          "return_days": "twenty days",
+          "governing_law": "French law, with jurisdiction of the commercial court of Lyon"
+        }
+      },
+      {
+        "variant_id": "tidewell-software",
+        "label": "Tidewell Software, pilot programme",
+        "slots": {
+          "counterparty": "Tidewell Software BV",
+          "purpose": "running a ninety day paid pilot of the Tidewell routing engine",
+          "marking_days": "seven days",
+          "term_years": "six months",
+          "survival_years": "three years",
+          "return_days": "five working days",
+          "governing_law": "the laws of the Netherlands"
+        }
+      },
+      {
+        "variant_id": "granite-peak-health",
+        "label": "Granite Peak Health, 2025 template",
+        "slots": {
+          "counterparty": "Granite Peak Health Ltd",
+          "purpose": "exploring a data sharing arrangement for anonymised patient flow statistics",
+          "marking_days": "twenty-one days",
+          "term_years": "eighteen months",
+          "survival_years": "ten years",
+          "return_days": "forty-five days",
+          "governing_law": "the laws of Ireland"
+        },
+        "extra_section": "Health data rider. Neither party will disclose information that identifies, or could reasonably identify, an individual patient. If identifiable patient data is received by mistake, the recipient will tell the disclosing party within twenty-four hours, delete it without keeping copies and confirm the deletion in writing. Statistics must be aggregated to groups of at least ten patients before they are shared. This rider prevails over any other clause of the agreement."
+      }
+    ]
+  },
+  {
+    "topic_id": "contracts-software-licence",
+    "category": "contracts",
+    "title": "Enterprise Software Licence Agreement",
+    "sections": [
+      "{licensor} grants Halvorsen Digital Ltd a non-exclusive, non-transferable licence to install and use {product} for its internal business operations. The licence is measured by {licence_metric} and the initial entitlement is {licence_quantity}. Use is permitted in {territory}; deployment outside that territory, including on cloud regions hosted elsewhere, needs prior written approval from the licensor. Affiliates may use the software under this licence provided Halvorsen remains responsible for their compliance. The software may not be sublicensed, rented, offered as a service to third parties or used to build a competing product. Our internal software asset owner for this licence is {person} ({email}), who keeps the entitlement register.",
+      "Halvorsen may make a reasonable number of copies for backup, disaster recovery and non-production testing, provided that standby and test environments do not process live transactions. Disaster recovery instances may be activated for up to thirty days per year without additional fees. Decompiling or reverse engineering the software is prohibited except to the extent applicable law expressly permits it for interoperability. All proprietary notices must be kept on every copy. Open source components shipped with the software are governed by their own licences, which the licensor lists in the release notes, and the licensor warrants that no component requires Halvorsen to disclose its own source code or licence its own software to others.",
+      "The licensor may verify compliance no more than once in any twelve month period, by giving at least {audit_notice} written notice. Audits take place during normal business hours, are performed by an independent auditor bound by confidentiality, and must not unreasonably disrupt operations. Halvorsen may instead provide a self-certified usage report generated by the licensor's own measurement tool. If an audit shows use above the entitlement, Halvorsen will purchase the additional licences at {overuse_rate}, and no other penalty applies. The licensor bears the audit costs unless underlicensing exceeds five percent of the entitlement, in which case Halvorsen reimburses the reasonable cost of the audit.",
+      "Annual support and maintenance is included in the first year and renews each year at the rate in the order form. Support covers bug fixes, security patches and all new minor and major versions released during the support term. The licensor's support desk is staffed {support_hours}, and severity one incidents must be acknowledged within one hour and worked continuously until a workaround is in place. Each major version is supported for at least thirty-six months after the release of its successor. If support lapses, reinstatement requires payment of the missed support fees plus a reinstatement charge of ten percent of those fees.",
+      "The licensor warrants that for ninety days after delivery the software will perform materially in line with its documentation, and that it contains no malicious code. Halvorsen's sole remedy for breach of the performance warranty is repair, replacement or a refund of the licence fee for the affected software. The licence is perpetual once the fees are paid, but the licensor may terminate it if Halvorsen commits a material breach that remains uncured thirty days after notice. On termination Halvorsen will uninstall the software and certify deletion. Commercial questions go to the licensor's account manager, {person_2}, and legal notices to the address stated in the order form."
+    ],
+    "variants": [
+      {
+        "variant_id": "quarry-analytics-v4",
+        "label": "Quarry Analytics Suite, version 4",
+        "slots": {
+          "licensor": "Quarrystone Software Ltd",
+          "product": "Quarry Analytics Suite 4.x",
+          "licence_metric": "named users",
+          "licence_quantity": "250 named users",
+          "territory": "the United Kingdom and Ireland",
+          "audit_notice": "thirty days'",
+          "overuse_rate": "the list price in force at the date of the audit, less the original discount",
+          "support_hours": "from 8am to 6pm UK time on working days"
+        }
+      },
+      {
+        "variant_id": "quarry-analytics-v5",
+        "label": "Quarry Analytics Suite, version 5 upgrade",
+        "slots": {
+          "licensor": "Quarrystone Software Ltd",
+          "product": "Quarry Analytics Suite 5.x",
+          "licence_metric": "concurrent users",
+          "licence_quantity": "120 concurrent users",
+          "territory": "the European Economic Area and the United Kingdom",
+          "audit_notice": "forty-five days'",
+          "overuse_rate": "the discounted price stated in the original order form",
+          "support_hours": "24 hours a day, 7 days a week"
+        }
+      },
+      {
+        "variant_id": "ledgerpeak-erp-onprem",
+        "label": "LedgerPeak ERP, on-premise edition",
+        "slots": {
+          "licensor": "LedgerPeak Systems Inc.",
+          "product": "LedgerPeak ERP 11",
+          "licence_metric": "processor cores",
+          "licence_quantity": "64 processor cores",
+          "territory": "any country worldwide, excluding sanctioned territories",
+          "audit_notice": "sixty days'",
+          "overuse_rate": "list price plus 15 percent",
+          "support_hours": "from 7am to 7pm Central European Time, Monday to Saturday"
+        }
+      },
+      {
+        "variant_id": "ledgerpeak-erp-cloud",
+        "label": "LedgerPeak ERP, private cloud edition",
+        "slots": {
+          "licensor": "LedgerPeak Systems Inc.",
+          "product": "LedgerPeak ERP 11 Private Cloud",
+          "licence_metric": "production server instances",
+          "licence_quantity": "8 production instances",
+          "territory": "the European Union only",
+          "audit_notice": "ninety days'",
+          "overuse_rate": "list price with no discount",
+          "support_hours": "24 hours a day on business days"
+        }
+      },
+      {
+        "variant_id": "sentrovia-vault",
+        "label": "Sentrovia Vault, 2025 order",
+        "slots": {
+          "licensor": "Sentrovia Security AB",
+          "product": "Sentrovia Vault secrets manager",
+          "licence_metric": "managed endpoints",
+          "licence_quantity": "5,000 managed endpoints",
+          "territory": "the Nordic countries and the United Kingdom",
+          "audit_notice": "twenty-one days'",
+          "overuse_rate": "the per endpoint rate stated in the order form",
+          "support_hours": "around the clock, every day of the year"
+        },
+        "extra_section": "Source code escrow. Because Sentrovia Vault protects production credentials, the licensor deposits the source code and build instructions of each major release with an independent escrow agent within thirty days of release. Halvorsen may request release of the deposit if the licensor becomes insolvent, stops supporting the product, or fails to fix a severity one defect for more than fifteen days. Escrow fees are shared equally, and Halvorsen may commission one verification test per year."
+      },
+      {
+        "variant_id": "palisade-cad",
+        "label": "Palisade CAD Studio, engineering seats",
+        "slots": {
+          "licensor": "Palisade Design Tools GmbH",
+          "product": "Palisade CAD Studio 2026",
+          "licence_metric": "named engineering seats",
+          "licence_quantity": "40 named seats",
+          "territory": "Germany, Austria and Switzerland",
+          "audit_notice": "fourteen days'",
+          "overuse_rate": "twice the list price",
+          "support_hours": "from 9am to 5pm Central European Time on working days"
+        },
+        "extra_section": "Home use rights. Each named engineer may also install the software on one personal or home computer for work related to Halvorsen projects, provided the home copy is never used at the same time as the office copy. Home installations count against the same seat and must be removed when the engineer leaves or the seat is reassigned. Seats may be reassigned between engineers no more than once every ninety days, except when an employee leaves."
+      }
+    ]
+  },
+  {
+    "topic_id": "contracts-office-lease",
+    "category": "contracts",
+    "title": "Office Lease: Key Commercial Terms",
+    "sections": [
+      "This summary records the key commercial terms of the lease of office premises at {building}, {city}, taken by Halvorsen Digital as tenant. The demised premises comprise {floor_area} of open plan office space together with shared use of the reception, meeting suites and bicycle store. The landlord's managing agent for day to day matters is {person} ({email}, {phone}). The lease term is ten years from the date of completion. This summary is for internal reference only: where it differs from the signed lease, the lease prevails, and any proposed change to the premises must be cleared with the workplace team before anyone contacts the landlord or the managing agent.",
+      "The annual rent is {annual_rent}, exclusive of VAT, payable quarterly in advance. A rent free period of six months applied from completion and has now expired. Rent is reviewed {rent_review}, and a review can never result in a decrease. The tenant has provided security equal to {deposit}, held in a separate designated account or instrument, and returned within two months of the end of the lease less any sums properly due. Rent paid more than fourteen days late bears interest at four percent above the base rate. Rent invoices are checked by the workplace team before payment, and any query is raised with the managing agent within ten working days.",
+      "In addition to rent, the tenant pays a service charge covering cleaning of common parts, security, lift maintenance, building insurance and the managing agent's fee. The budgeted service charge for the current year is {service_charge}, and the landlord provides a reconciled statement within six months of each year end. The tenant may inspect the invoices supporting the statement on reasonable notice. Capital improvements to the building are not recoverable through the service charge, and any single item of non-routine expenditure above twenty thousand in the local currency must be notified in advance with at least two quotes. Disputes about the service charge are referred to an independent surveyor.",
+      "The premises may be used as offices within the relevant planning class and for ancillary training and events of up to one hundred people. The building is open to occupiers {access_hours}; access outside those hours requires a booking with security at least one working day ahead and may carry an air conditioning surcharge. The tenant may install its own access control on the demised floors, provided the fire alarm remains integrated with the building system. Signage is permitted in the reception directory and on the floor lobby only. Sharing occupation with group companies is allowed without consent, but subletting part of the premises requires the landlord's consent, not to be unreasonably withheld.",
+      "The tenant may terminate the lease on {break_date} by giving at least nine months' written notice, provided that the rent has been paid in full and the tenant gives vacant possession. No penalty is payable on exercise of the break. At the end of the term, or on an earlier break, the tenant must remove its fit out and reinstate the premises to the condition recorded in the schedule of condition annexed to the lease, fair wear and tear excepted. A cash settlement in lieu of reinstatement may be negotiated. Break notices must be signed by a director and approved in advance by the property committee, chaired by {person_2}."
+    ],
+    "variants": [
+      {
+        "variant_id": "leeds-wellington",
+        "label": "Leeds, Wellington Place",
+        "slots": {
+          "building": "4 Wellington Place",
+          "city": "Leeds",
+          "floor_area": "1,850 square metres",
+          "annual_rent": "GBP 612,000",
+          "rent_review": "upwards only every five years to open market rent",
+          "deposit": "six months' rent",
+          "service_charge": "GBP 148,000",
+          "access_hours": "from 6am to 10pm on weekdays and from 8am to 2pm on Saturdays",
+          "break_date": "the fifth anniversary of the term start date"
+        }
+      },
+      {
+        "variant_id": "lyon-part-dieu",
+        "label": "Lyon, Part-Dieu tower",
+        "slots": {
+          "building": "Tour Ombrelle, Part-Dieu",
+          "city": "Lyon",
+          "floor_area": "1,200 square metres",
+          "annual_rent": "EUR 396,000",
+          "rent_review": "annually in line with the ILAT commercial rent index",
+          "deposit": "three months' rent",
+          "service_charge": "EUR 96,000",
+          "access_hours": "from 7am to 9pm on weekdays",
+          "break_date": "the end of the third year"
+        },
+        "extra_section": "French lease addendum. This is a commercial lease under the French Commercial Code, so in addition to the contractual break the tenant has a statutory right to leave at the end of each three year period. Any notice to terminate, whether contractual or statutory, must be served by a commissioner of justice (bailiff) or by registered letter with acknowledgment of receipt, at least six months before the relevant date. An email or ordinary letter is not valid notice."
+      },
+      {
+        "variant_id": "utrecht-stationsplein",
+        "label": "Utrecht, Stationsplein",
+        "slots": {
+          "building": "Stationsplein 21",
+          "city": "Utrecht",
+          "floor_area": "950 square metres",
+          "annual_rent": "EUR 285,000",
+          "rent_review": "annually by the Dutch consumer price index",
+          "deposit": "a bank guarantee equal to three months' rent plus VAT and service charge",
+          "service_charge": "EUR 61,000",
+          "access_hours": "24 hours a day, with a staffed reception from 7am to 7pm",
+          "break_date": "the end of year five"
+        }
+      },
+      {
+        "variant_id": "bilbao-abandoibarra",
+        "label": "Bilbao, Abandoibarra",
+        "slots": {
+          "building": "Edificio Ribera, Abandoibarra",
+          "city": "Bilbao",
+          "floor_area": "700 square metres",
+          "annual_rent": "EUR 168,000",
+          "rent_review": "annually in line with the Spanish consumer price index, capped at 3 percent",
+          "deposit": "two months' rent",
+          "service_charge": "EUR 39,000",
+          "access_hours": "from 7am to 8pm on weekdays",
+          "break_date": "the end of the third year"
+        }
+      },
+      {
+        "variant_id": "turin-lingotto",
+        "label": "Turin, Lingotto district",
+        "slots": {
+          "building": "Palazzo Nizza, Via Nizza 280",
+          "city": "Turin",
+          "floor_area": "1,400 square metres",
+          "annual_rent": "EUR 330,000",
+          "rent_review": "annually at 75 percent of the ISTAT consumer price index",
+          "deposit": "three months' rent",
+          "service_charge": "EUR 72,000",
+          "access_hours": "from 7am to 9pm on weekdays and from 8am to 1pm on Saturdays",
+          "break_date": "the end of the sixth year"
+        }
+      },
+      {
+        "variant_id": "aarhus-harbour",
+        "label": "Aarhus, harbour front",
+        "slots": {
+          "building": "Bassin 7, Aarhus Docklands",
+          "city": "Aarhus",
+          "floor_area": "1,050 square metres",
+          "annual_rent": "DKK 2,450,000",
+          "rent_review": "annually by the Danish net price index, with a floor of 2 percent",
+          "deposit": "six months' rent",
+          "service_charge": "DKK 520,000",
+          "access_hours": "around the clock with key card access",
+          "break_date": "the end of the fourth year"
+        },
+        "extra_section": "Green lease clauses. Landlord and tenant share half hourly energy and water data for the demised floors each month, and meet twice a year to review consumption against the building's energy plan. The landlord has installed twelve electric vehicle charging points in the basement car park, four of which are reserved for the tenant at cost price electricity. The tenant may not install gas fired equipment, and any fit out must meet the building's sustainability guide."
+      }
+    ]
+  },
+  {
+    "topic_id": "contracts-supplier-onboarding",
+    "category": "contracts",
+    "title": "Supplier Onboarding and Bank Detail Verification Procedure",
+    "sections": [
+      "This procedure applies to every new supplier set up in the vendor master of {entity}, and to any change in an existing supplier's bank details. Its purpose is to stop payment fraud, in particular requests to change bank details that come from compromised or spoofed supplier email accounts. Supplier set up is owned by the vendor master team, which is kept separate from the teams that raise purchase orders and release payments. No supplier may be paid before onboarding is complete. Questions about this procedure go to the vendor master lead, {person} ({email}). A supplier whose onboarding is still incomplete after sixty days is closed and must restart the process.",
+      "The requesting budget holder submits a new supplier request with a business justification and an estimated annual spend. The supplier must then provide {kyc_documents}, together with a completed bank details form on its own letterhead signed by a director. Suppliers with an estimated annual spend above {approval_threshold} also require approval from the procurement category manager and a financial health check from a credit reference agency. Suppliers who will access our systems or personal data are routed to the information security questionnaire before any contract is signed. Sole traders and freelancers are onboarded only through the contingent labour process, not through this procedure, because of employment status checks.",
+      "Bank details are never accepted from an email alone. The vendor master team verifies every new or changed bank account by {callback_rule}. The call is made by someone other than the person who received the request, and the result is recorded in the supplier file with the date, the number called and the name of the supplier contact. A complete verification note reads, for example: account {iban} confirmed by telephone on {phone}. Where the supplier cannot be reached, the change is put on hold and the existing bank details remain in use. Any pressure to skip verification, including urgent requests from senior managers, is escalated to the fraud response team the same day.",
+      "Before activation every supplier is screened against sanctions and adverse media lists using {sanctions_tool}, and the screen is repeated automatically each night for the whole vendor master. Suppliers providing services on our premises must hold public liability insurance of at least {insurance_minimum} and provide a certificate before the first visit. Professional indemnity cover is required for consultancies and its amount is set in the contract. A positive sanctions match blocks the supplier immediately, and the compliance officer decides within two working days whether it is a false positive. The vendor master team never overrides a sanctions block on its own authority, whatever the business urgency.",
+      "The first payment to a new supplier, and the first payment after any change of bank details, is held for {first_payment_hold} and released only after a second member of the treasury team confirms the verification record. Payment runs flag any invoice paid to an account changed in the previous ninety days. Supplier records are reviewed {review_cycle}, and suppliers with no transactions in eighteen months are deactivated. Internal audit samples twenty supplier changes each quarter, and any change made without a complete verification record is reported to the audit committee as a control failure, with the name of the approver and the corrective action taken."
+    ],
+    "variants": [
+      {
+        "variant_id": "uk-leeds",
+        "label": "UK entity, Leeds shared service centre",
+        "slots": {
+          "entity": "Halvorsen Digital Ltd (United Kingdom)",
+          "kyc_documents": "a certificate of incorporation, a VAT registration certificate and a bank letter or recent bank statement",
+          "approval_threshold": "GBP 50,000",
+          "callback_rule": "calling the supplier on a number taken from a previously verified invoice or the supplier's public website, never from the request itself",
+          "sanctions_tool": "the Vigilant screening service",
+          "insurance_minimum": "GBP 5 million",
+          "first_payment_hold": "three working days",
+          "review_cycle": "every two years"
+        }
+      },
+      {
+        "variant_id": "france-lyon",
+        "label": "French entity, 2025 revision",
+        "slots": {
+          "entity": "Halvorsen Digital SAS (France)",
+          "kyc_documents": "a Kbis extract less than three months old, an URSSAF vigilance certificate and a RIB issued by the bank",
+          "approval_threshold": "EUR 40,000",
+          "callback_rule": "a call to the supplier's registered switchboard plus a check of the account holder name through the bank's account verification service",
+          "sanctions_tool": "the Vigilant screening service",
+          "insurance_minimum": "EUR 3 million",
+          "first_payment_hold": "five working days",
+          "review_cycle": "every year"
+        },
+        "extra_section": "French subcontracting vigilance. For any supplier whose contract is worth 5,000 euros or more, French law requires us to collect an up to date URSSAF vigilance certificate every six months for the whole contract term. The vendor master team sends an automatic reminder thirty days before each certificate expires. If a valid certificate is not received, payments are suspended and the procurement lead is informed, because the company can be held jointly liable for unpaid social charges."
+      },
+      {
+        "variant_id": "iberia-bilbao",
+        "label": "Iberia entity, Bilbao office",
+        "slots": {
+          "entity": "Halvorsen Digital Iberia SL",
+          "kyc_documents": "a tax identification certificate, a certificate of being up to date with social security and a bank ownership certificate",
+          "approval_threshold": "EUR 30,000",
+          "callback_rule": "a video call with the supplier's finance manager, who shows the account holder name in their online banking",
+          "sanctions_tool": "the ComplyScan list service",
+          "insurance_minimum": "EUR 2 million",
+          "first_payment_hold": "seven calendar days",
+          "review_cycle": "every eighteen months"
+        }
+      },
+      {
+        "variant_id": "us-subsidiary",
+        "label": "US subsidiary, version 3",
+        "slots": {
+          "entity": "Halvorsen Digital Inc. (United States)",
+          "kyc_documents": "a signed W-9 form and a voided cheque or a bank letter",
+          "approval_threshold": "USD 75,000",
+          "callback_rule": "a call to the number in the supplier's signed contract plus a micro deposit test that the supplier must confirm",
+          "sanctions_tool": "the OFAC list check in the ComplyScan service",
+          "insurance_minimum": "USD 2 million",
+          "first_payment_hold": "two business days",
+          "review_cycle": "every year"
+        },
+        "extra_section": "US tax reporting. Suppliers that are not corporations, such as partnerships and LLCs taxed as partnerships, are flagged for annual 1099 reporting when payments exceed the federal threshold. If a supplier refuses to provide a valid W-9 or the taxpayer identification number does not match IRS records, backup withholding is applied to every payment until the issue is resolved. Accounts payable reviews the 1099 flag list each January before forms are filed."
+      },
+      {
+        "variant_id": "nordics-aarhus",
+        "label": "Nordic entities, Aarhus",
+        "slots": {
+          "entity": "Halvorsen Digital ApS (Denmark) and Halvorsen Digital AB (Sweden)",
+          "kyc_documents": "a company register extract, a tax registration confirmation and a bank confirmation letter",
+          "approval_threshold": "DKK 300,000",
+          "callback_rule": "a call to the number listed in the Danish CVR register or the Swedish company register",
+          "sanctions_tool": "the Vigilant screening service",
+          "insurance_minimum": "DKK 20 million",
+          "first_payment_hold": "four working days",
+          "review_cycle": "every three years"
+        }
+      },
+      {
+        "variant_id": "benelux-utrecht",
+        "label": "Benelux entity, Utrecht",
+        "slots": {
+          "entity": "Halvorsen Digital BV (Netherlands)",
+          "kyc_documents": "a Chamber of Commerce extract and a bank statement showing the account holder name",
+          "approval_threshold": "EUR 60,000",
+          "callback_rule": "a call to the supplier's number in the Chamber of Commerce register, confirmed by an IBAN name check",
+          "sanctions_tool": "the ComplyScan list service",
+          "insurance_minimum": "EUR 2.5 million",
+          "first_payment_hold": "three working days",
+          "review_cycle": "every two years"
+        }
+      }
+    ]
+  },
+  {
+    "topic_id": "contracts-data-processing-agreement",
+    "category": "contracts",
+    "title": "Data Processing Agreement",
+    "sections": [
+      "This Data Processing Agreement applies where {processor} (the Processor) processes personal data on behalf of Halvorsen Digital (the Controller) in providing {service}. The personal data concerned covers {data_categories}. The Processor acts only on the Controller's documented instructions, which are the main agreement, this agreement and any written instruction from the Controller's data protection officer, {person} ({email}). If the Processor believes an instruction breaches data protection law, it must say so immediately and may suspend that processing until the instruction is confirmed or changed. The Processor may not process the data for its own purposes, including product analytics, benchmarking or the training of statistical models.",
+      "Personal data is stored and processed in {data_location}. Remote access from other countries is permitted only for support staff listed in the sub-processor register and only under {transfer_mechanism}. The Processor will complete a transfer impact assessment before any new transfer outside the European Economic Area and share a summary with the Controller on request. Any request by a public authority for access to the data must be challenged where there are reasonable grounds, notified to the Controller unless legally prohibited, and answered with the minimum data required. The Processor publishes a transparency report on such requests every year and tells the Controller when a new report is available.",
+      "The Controller gives general authorisation for the sub-processors listed in the annex. The Processor will give at least {subprocessor_notice} notice before adding or replacing a sub-processor, by email to the privacy mailbox and by updating its online register. The Controller may object on reasonable data protection grounds within that period; if the parties cannot agree, the Controller may terminate the affected service without penalty and receive a pro rata refund of prepaid fees. The Processor imposes the same data protection obligations on each sub-processor by written contract and remains fully liable for their performance. Emergency replacements needed to keep the service running may be notified afterwards, within five working days.",
+      "The Processor maintains the technical and organisational measures in the security annex, including encryption of personal data at rest and in transit, multi-factor authentication for all administrative access, and logging of access to production systems kept for at least twelve months. Staff with access are bound by confidentiality and trained every year. The Processor will notify the Controller of a personal data breach without undue delay and in any case within {breach_notice} of becoming aware of it, giving the nature of the breach, the categories and approximate number of data subjects, the likely consequences and the measures taken. Breach notifications go to the security operations line on {phone} and are then confirmed in writing.",
+      "The Processor makes available all information needed to demonstrate compliance and allows {audit_rights}. Current third party certifications and penetration test summaries are provided on request without charge. At the end of the service the Processor will, at the Controller's choice, return all personal data in a commonly used machine readable format or delete it, and will delete remaining copies, including backups, within {deletion_period}. The Processor confirms deletion in writing. The Processor assists the Controller with data subject requests, impact assessments and consultations with supervisory authorities, and may charge for that assistance only where the effort exceeds two working days in a contract year."
+    ],
+    "variants": [
+      {
+        "variant_id": "nestorra-eu",
+        "label": "Nestorra Hosting, EU region",
+        "slots": {
+          "processor": "Nestorra Hosting BV",
+          "service": "managed database hosting",
+          "data_categories": "customer account data, booking history and support tickets",
+          "data_location": "data centres in Amsterdam and Frankfurt",
+          "transfer_mechanism": "the EU standard contractual clauses, module three",
+          "subprocessor_notice": "thirty days'",
+          "breach_notice": "24 hours",
+          "audit_rights": "one on-site audit per year on thirty days' notice",
+          "deletion_period": "thirty days"
+        }
+      },
+      {
+        "variant_id": "nestorra-uk",
+        "label": "Nestorra Hosting, UK region",
+        "slots": {
+          "processor": "Nestorra Hosting UK Ltd",
+          "service": "managed database hosting",
+          "data_categories": "customer account data, booking history and support tickets",
+          "data_location": "data centres in London and Manchester",
+          "transfer_mechanism": "the UK International Data Transfer Addendum",
+          "subprocessor_notice": "fourteen days'",
+          "breach_notice": "36 hours",
+          "audit_rights": "one remote audit per year by questionnaire, with an on-site audit only after a breach",
+          "deletion_period": "sixty days"
+        }
+      },
+      {
+        "variant_id": "parcelpoint-mail",
+        "label": "Parcelpoint Mail, marketing emails",
+        "slots": {
+          "processor": "Parcelpoint Mail SAS",
+          "service": "marketing email delivery and campaign analytics",
+          "data_categories": "names, email addresses, consent records and email engagement events",
+          "data_location": "the Parcelpoint data centre in Lyon, with backups in Paris",
+          "transfer_mechanism": "the EU standard contractual clauses covering its US support team",
+          "subprocessor_notice": "forty-five days'",
+          "breach_notice": "48 hours",
+          "audit_rights": "one audit per year by an independent auditor chosen by the Controller",
+          "deletion_period": "ninety days"
+        }
+      },
+      {
+        "variant_id": "talentloop-ats",
+        "label": "TalentLoop recruiting platform, version 2",
+        "slots": {
+          "processor": "TalentLoop Software Ltd",
+          "service": "applicant tracking for recruitment",
+          "data_categories": "candidate CVs, interview notes, right to work documents and diversity monitoring answers",
+          "data_location": "Ireland",
+          "transfer_mechanism": "the EU standard contractual clauses, module three, with supplementary encryption measures",
+          "subprocessor_notice": "sixty days'",
+          "breach_notice": "12 hours",
+          "audit_rights": "two audits per year, one of which may be on site",
+          "deletion_period": "fourteen days"
+        },
+        "extra_section": "Candidate retention rider. Records of unsuccessful candidates are deleted automatically six months after the recruitment campaign closes, unless the candidate has opted in to the talent pool, in which case they are kept for two years and the candidate is asked to renew consent after the first year. Diversity monitoring answers are stored separately from CVs and are only ever reported in groups of at least ten people. Right to work documents of hired candidates move to the HR system on the start date."
+      },
+      {
+        "variant_id": "voxline-porto",
+        "label": "Voxline contact centre, Porto",
+        "slots": {
+          "processor": "Voxline Servicos Lda",
+          "service": "outsourced customer support by phone and chat",
+          "data_categories": "caller names, phone numbers, call recordings and order details",
+          "data_location": "Portugal, at the Porto contact centre and a hosting provider in Lisbon",
+          "transfer_mechanism": "the EU standard contractual clauses covering weekend overflow handled in Cape Town",
+          "subprocessor_notice": "twenty days'",
+          "breach_notice": "8 hours",
+          "audit_rights": "unannounced spot checks of the contact centre floor plus one formal audit per year",
+          "deletion_period": "seven days for call recordings and thirty days for all other data"
+        },
+        "extra_section": "Call recording rules. Calls are recorded for quality and training, and callers hear a notice at the start of every call. Recording pauses automatically while a caller reads out payment card details, which are entered into a secure payment page and never stored by the contact centre. Agents work on a clear desk basis, personal phones are kept in lockers outside the contact centre floor, and screen capture is disabled on agent workstations."
+      },
+      {
+        "variant_id": "ledgerwise-payroll",
+        "label": "Ledgerwise payroll, Nordic entities",
+        "slots": {
+          "processor": "Ledgerwise Payroll A/S",
+          "service": "payroll calculation and payslip delivery",
+          "data_categories": "employee identifiers, salary, tax and bank details",
+          "data_location": "Denmark and Sweden",
+          "transfer_mechanism": "no transfer mechanism at all, because transfers outside the European Economic Area are prohibited",
+          "subprocessor_notice": "ninety days'",
+          "breach_notice": "24 hours",
+          "audit_rights": "one audit per year and an additional audit after any breach",
+          "deletion_period": "thirty days after the end of the statutory bookkeeping retention period of five years"
+        }
+      }
+    ]
+  },
+  {
+    "topic_id": "contracts-sla-service-credits",
+    "category": "contracts",
+    "title": "Service Level Agreement and Service Credits",
+    "sections": [
+      "This Service Level Agreement forms part of the subscription agreement between {provider} and Halvorsen Digital for {service}. It defines how availability is measured, how quickly incidents are handled and what compensation applies when targets are missed. Availability is measured each calendar month at the provider's network edge, using synthetic checks run every minute from at least three regions. A minute counts as unavailable when more than five percent of checks fail or core transactions return errors. Halvorsen's service owner for this agreement is {person} ({email}), who receives the monthly service report, chairs the quarterly service review and approves any credit settlement with the provider.",
+      "The provider commits to monthly availability of {uptime_target}. Planned maintenance is excluded from the calculation only when it takes place within {maintenance_window} and is announced at least five working days ahead on the status page. Emergency maintenance to fix a critical security vulnerability is also excluded, but for no more than four hours per month. Downtime caused by Halvorsen's own systems, by force majeure events or by suspension for non-payment is excluded as well. Any other downtime, including downtime caused by the provider's hosting partners or sub-processors, counts against the target, and the provider may not reclassify an incident as maintenance after the event.",
+      "Incidents are classified by Halvorsen when reported. Priority one means the service is down or a core function is unusable for all users; priority two means a major function is degraded or unavailable for a subset of users; priority three covers minor defects and questions. The provider must respond to a priority one incident within {p1_response} and to a priority two incident within {p2_response}. A response means an engineer has acknowledged the ticket and begun work, not an automated reply. Priority one incidents get an update every thirty minutes and a written root cause analysis within five working days. The provider's duty escalation manager can be reached on {phone}.",
+      "If availability in a month falls below the target, Halvorsen is entitled to service credits calculated as a percentage of the monthly fee for the affected service, as follows: {credit_table}. Credits for missed response times are an additional two percent of the monthly fee per missed priority one response. Total credits in any month are capped at {credit_cap} of the monthly fee. Credits are applied to the next invoice and are not paid in cash, except in the final month of the agreement, when they are refunded within thirty days. Credits are a price adjustment reflecting the reduced value of the service, not an estimate of loss.",
+      "To claim a credit, Halvorsen must submit a request through the support portal within {claim_window} after the end of the affected month, referencing the incident numbers concerned. The provider will confirm or dispute the claim within ten working days using its monitoring data, which Halvorsen may verify against its own records. If availability falls below the target in three consecutive months, or in any four months out of twelve, Halvorsen may terminate the affected service on thirty days' notice without paying any early termination charge. Credits are Halvorsen's sole financial remedy for missed service levels, but they do not limit the right to terminate for chronic failure."
+    ],
+    "variants": [
+      {
+        "variant_id": "stratus-pro-eu",
+        "label": "Stratus Cloud, Pro plan, EU region",
+        "slots": {
+          "provider": "Stratus Cloud Services BV",
+          "service": "the Stratus Pro hosting platform in the EU region",
+          "uptime_target": "99.9 percent",
+          "maintenance_window": "Sunday from 1am to 5am Central European Time",
+          "p1_response": "30 minutes",
+          "p2_response": "2 hours",
+          "credit_table": "10 percent below 99.9 percent, 25 percent below 99.0 percent and 50 percent below 95.0 percent",
+          "credit_cap": "50 percent",
+          "claim_window": "thirty days"
+        }
+      },
+      {
+        "variant_id": "stratus-enterprise-eu",
+        "label": "Stratus Cloud, Enterprise plan, EU region",
+        "slots": {
+          "provider": "Stratus Cloud Services BV",
+          "service": "the Stratus Enterprise hosting platform in the EU region",
+          "uptime_target": "99.99 percent",
+          "maintenance_window": "Sunday from 2am to 4am Central European Time",
+          "p1_response": "15 minutes",
+          "p2_response": "1 hour",
+          "credit_table": "10 percent below 99.99 percent, 25 percent below 99.9 percent and 100 percent below 99.0 percent",
+          "credit_cap": "100 percent",
+          "claim_window": "sixty days"
+        },
+        "extra_section": "Enterprise plan additions. A named technical account manager is assigned to Halvorsen and attends the quarterly service review in person. For the Enterprise plan, availability credits of more than 10 percent are applied automatically to the next invoice without a claim, based on the provider's own monitoring; Halvorsen may still claim any additional credit it believes is due within the normal claim window. Architecture reviews of up to five days per year are included at no charge."
+      },
+      {
+        "variant_id": "stratus-pro-us",
+        "label": "Stratus Cloud, Pro plan, US East region",
+        "slots": {
+          "provider": "Stratus Cloud Services Inc.",
+          "service": "the Stratus Pro hosting platform in the US East region",
+          "uptime_target": "99.9 percent",
+          "maintenance_window": "Saturday from 11pm to 3am US Eastern Time",
+          "p1_response": "1 hour",
+          "p2_response": "4 hours",
+          "credit_table": "5 percent below 99.9 percent, 15 percent below 99.0 percent and 30 percent below 95.0 percent",
+          "credit_cap": "30 percent",
+          "claim_window": "fifteen days"
+        }
+      },
+      {
+        "variant_id": "helio-payments",
+        "label": "Helio Payments gateway, version 2",
+        "slots": {
+          "provider": "Helio Payments Ltd",
+          "service": "card payment processing and the merchant API",
+          "uptime_target": "99.95 percent",
+          "maintenance_window": "Tuesday from 3am to 4am UK time",
+          "p1_response": "10 minutes",
+          "p2_response": "1 hour",
+          "credit_table": "15 percent below 99.95 percent, 30 percent below 99.5 percent and 60 percent below 99.0 percent",
+          "credit_cap": "60 percent",
+          "claim_window": "forty-five days"
+        },
+        "extra_section": "Authorisation success target. In addition to availability, the provider commits that at least 99.5 percent of well formed authorisation requests each month receive a response from the card network within three seconds. Declines issued by card issuers do not count as failures. If the target is missed, an extra credit of 10 percent of the monthly fee applies, outside the general credit cap. The provider shares a daily authorisation latency report through the merchant dashboard."
+      },
+      {
+        "variant_id": "quillmail-business",
+        "label": "Quillmail transactional email, Business tier",
+        "slots": {
+          "provider": "Quillmail Ltd",
+          "service": "transactional email delivery",
+          "uptime_target": "99.5 percent",
+          "maintenance_window": "any night from midnight to 4am UK time",
+          "p1_response": "2 hours",
+          "p2_response": "8 business hours",
+          "credit_table": "5 percent below 99.5 percent and 10 percent below 98.0 percent",
+          "credit_cap": "10 percent",
+          "claim_window": "thirty days"
+        }
+      },
+      {
+        "variant_id": "beacon-premium",
+        "label": "Beacon Observability, Premium support",
+        "slots": {
+          "provider": "Beacon Observability AB",
+          "service": "metrics, logs and alerting",
+          "uptime_target": "99.9 percent",
+          "maintenance_window": "the first Wednesday of each month from 6am to 7am Central European Time",
+          "p1_response": "20 minutes",
+          "p2_response": "3 hours",
+          "credit_table": "10 percent below 99.9 percent, 20 percent below 99.5 percent and 40 percent below 98.5 percent",
+          "credit_cap": "40 percent",
+          "claim_window": "twenty days"
+        }
+      }
+    ]
+  },
+  {
+    "topic_id": "contracts-consulting-sow",
+    "category": "contracts",
+    "title": "Consulting Statement of Work",
+    "sections": [
+      "This Statement of Work is issued under the Master Consulting Agreement between Halvorsen Digital and {consultancy}, and describes the services for {project}. Terms not defined here have the meaning given in the master agreement. The work starts on {start_date} and is planned to run for {duration}, including a two week discovery phase whose findings may adjust the later scope by change request. The engagement is managed on the Halvorsen side by {person} ({email}), who approves timesheets, accepts deliverables and is the only person who can authorise scope changes. The consultancy's engagement lead is {person_2}, who attends the weekly steering meeting and owns the risk log.",
+      "The consultancy will provide {team}. Named key personnel may not be replaced during the engagement without Halvorsen's written consent, except for illness, parental leave or departure from the consultancy, in which case a replacement of equal seniority is proposed within ten working days and onboarded at the consultancy's cost for the first five days. Consultants work on Halvorsen premises at least two days a week and follow Halvorsen's information security and site rules. Halvorsen provides laptops and system access, and consultancy devices may not connect to the internal network. Subcontracting any part of the work requires prior written approval from the Halvorsen engagement manager.",
+      "Services are charged on a time and materials basis at a blended rate of {day_rate} per consultant day of eight hours, excluding VAT. Total fees under this Statement of Work may not exceed {fee_cap} without a signed change request, and the consultancy must warn Halvorsen in writing when eighty percent of the cap has been consumed. Timesheets are submitted weekly and approved within five working days. Travel to the main Halvorsen site is not chargeable; other travel is charged at cost under the Halvorsen expenses policy and needs prior approval. Invoices are issued monthly in arrears and paid on the payment terms of the master agreement.",
+      "The deliverables are listed in the annex, each with its acceptance criteria. When a deliverable is submitted, Halvorsen has {acceptance_days} to accept it or to list in writing how it fails the criteria. The consultancy then corrects the deliverable and resubmits it, and the review period starts again. If a deliverable fails acceptance twice, Halvorsen may require a third attempt at no charge, accept it with a fee reduction agreed in good faith, or terminate this Statement of Work and recover fees paid for that deliverable. A deliverable is deemed accepted if Halvorsen uses it in production or does not respond within the review period.",
+      "Either party may request a change in scope, timeline or staffing through the change request form. The consultancy assesses the impact on cost and timeline within five working days, and no work on the change starts until the form is signed. Changes with an estimated cost below {change_threshold} may be signed by the Halvorsen engagement manager alone; larger changes also need approval from the budget owner in finance. Delays caused by Halvorsen, such as late access or slow decisions, are recorded in the weekly status report and may justify a timeline change, but not additional fees unless the consultants were left idle for more than three working days."
+    ],
+    "variants": [
+      {
+        "variant_id": "cobalt-crm-migration",
+        "label": "Cobalt Advisory, CRM migration",
+        "slots": {
+          "consultancy": "Cobalt Advisory Ltd",
+          "project": "migrating our customer records from the legacy CRM to the new platform",
+          "start_date": "3 March 2025",
+          "duration": "sixteen weeks",
+          "team": "one engagement lead, two senior data engineers and one test analyst",
+          "day_rate": "GBP 950",
+          "fee_cap": "GBP 310,000",
+          "acceptance_days": "ten working days",
+          "change_threshold": "GBP 15,000"
+        }
+      },
+      {
+        "variant_id": "cobalt-data-governance",
+        "label": "Cobalt Advisory, data governance phase 2",
+        "slots": {
+          "consultancy": "Cobalt Advisory Ltd",
+          "project": "designing a data governance framework and data catalogue for the finance function",
+          "start_date": "1 September 2025",
+          "duration": "ten weeks",
+          "team": "one engagement lead and one data governance specialist",
+          "day_rate": "GBP 1,100",
+          "fee_cap": "GBP 115,000",
+          "acceptance_days": "five working days",
+          "change_threshold": "GBP 10,000"
+        }
+      },
+      {
+        "variant_id": "veltane-erp-iberia",
+        "label": "Veltane Consulting, ERP rollout Iberia",
+        "slots": {
+          "consultancy": "Veltane Consulting SL",
+          "project": "rolling out the finance module of our ERP to the Bilbao entity",
+          "start_date": "12 January 2026",
+          "duration": "twenty-four weeks",
+          "team": "one programme manager, three functional consultants and one integration developer",
+          "day_rate": "EUR 820",
+          "fee_cap": "EUR 640,000",
+          "acceptance_days": "fifteen working days",
+          "change_threshold": "EUR 25,000"
+        }
+      },
+      {
+        "variant_id": "northfold-pentest",
+        "label": "Northfold Security, penetration test and remediation",
+        "slots": {
+          "consultancy": "Northfold Security Ltd",
+          "project": "testing and hardening the customer portal ahead of the ISO 27001 surveillance audit",
+          "start_date": "6 October 2025",
+          "duration": "six weeks",
+          "team": "two senior penetration testers and one remediation lead",
+          "day_rate": "GBP 1,250",
+          "fee_cap": "GBP 70,000",
+          "acceptance_days": "ten working days",
+          "change_threshold": "GBP 5,000"
+        },
+        "extra_section": "Rules of engagement. Testing of production systems takes place only between 8pm and 6am UK time, from the source IP addresses listed in the authorisation letter signed by the chief information security officer. Denial of service and social engineering tests are out of scope. Any critical vulnerability is reported by phone to the security operations centre within one hour of discovery, and testing on the affected system stops until Halvorsen confirms it may continue. Test data is deleted within thirty days of the final report."
+      },
+      {
+        "variant_id": "aldermoor-pricing",
+        "label": "Aldermoor Partners, pricing strategy",
+        "slots": {
+          "consultancy": "Aldermoor Partners LLP",
+          "project": "reviewing subscription pricing and packaging for the small business market",
+          "start_date": "17 February 2026",
+          "duration": "eight weeks",
+          "team": "one partner for two days a week and two consultants full time",
+          "day_rate": "GBP 1,600",
+          "fee_cap": "GBP 210,000",
+          "acceptance_days": "seven working days",
+          "change_threshold": "GBP 20,000"
+        },
+        "extra_section": "Success fee. In addition to time and materials fees, Aldermoor Partners earns a success fee of 5 percent of the increase in annual recurring revenue from the small business segment in the twelve months after the new pricing launches, compared with the previous twelve months, capped at GBP 150,000. The increase is calculated by Halvorsen finance and shared with Aldermoor within sixty days of the measurement period. No success fee is due if the new pricing is not launched within six months."
+      },
+      {
+        "variant_id": "kanto-app-redesign",
+        "label": "Kanto Studio, mobile app redesign",
+        "slots": {
+          "consultancy": "Kanto Studio BV",
+          "project": "redesigning the booking flow of the customer mobile app",
+          "start_date": "5 May 2025",
+          "duration": "twelve weeks",
+          "team": "one design lead, two product designers and one user researcher",
+          "day_rate": "EUR 780",
+          "fee_cap": "EUR 190,000",
+          "acceptance_days": "ten working days",
+          "change_threshold": "EUR 12,000"
+        }
+      }
+    ]
+  },
+  {
+    "topic_id": "contracts-employment-template",
+    "category": "contracts",
+    "title": "Employment Contract Template: Permanent Employee",
+    "sections": [
+      "This template is used for permanent, full time employees of {employer} whose normal place of work is {workplace}. It must not be edited outside the bracketed fields without approval from the legal team, and offers must be issued from the HR system so that the signed version is stored centrally. The hiring manager completes the job title, start date, salary and reporting line; all other terms below are fixed. Questions about the template go to the HR business partner, {person} ({email}). Fixed term contracts, apprentices and senior executives use separate templates, as do employees who will work mainly from another country.",
+      "Employment starts with a probationary period of {probation}, during which either party may end the contract on one week's notice, or the shorter notice the law allows. The manager holds a review meeting before the end of probation and confirms the outcome in writing; probation may be extended once where the law permits, if the employee has been absent or objectives are not yet met. Normal working time is {weekly_hours}, with flexible start and finish times around core hours of 10am to 4pm. Overtime is not paid for employees above the senior grade, but time off in lieu may be agreed with the manager in advance.",
+      "Salary is paid monthly in arrears by bank transfer on the last working day of the month and is reviewed annually in April, with no obligation to increase it. The company provides {pension}, subject to the scheme rules. Employees are entitled to {holiday} of paid holiday per year in addition to public holidays, accrued monthly; up to five unused days may be carried over to the first quarter of the next year. During sickness absence the employee receives {sick_pay}, provided the manager is notified before 10am on the first day of absence and medical certificates are supplied as required. Benefits such as health insurance are described in the benefits guide.",
+      "After probation, the employee must give {notice_employee} written notice to resign. The company must give the employee the same notice or the statutory minimum, whichever is longer. The company may place the employee on garden leave for all or part of the notice period, or pay salary in lieu of notice where the law allows. The company may end the contract without notice for gross misconduct following a fair disciplinary process. On termination the employee must return all company property, including laptops, access badges and documents, and accrued but untaken holiday is paid out or, where the law allows, deducted if taken in excess.",
+      "The employee must keep confidential all information about the company, its clients and its employees, both during and after employment. Intellectual property created in the course of employment belongs to the company. Outside work that may conflict with the employee's duties requires prior written approval. Personal data is processed as described in the employee privacy notice. This contract is governed by {governing_law}. Collective agreements apply only where stated in the contract or required by law. Signed contracts are countersigned by the people director, {person_2}, and a copy is provided to the employee within five working days of signature, together with the staff handbook."
+    ],
+    "variants": [
+      {
+        "variant_id": "uk-leeds",
+        "label": "United Kingdom, Leeds office",
+        "slots": {
+          "employer": "Halvorsen Digital Ltd",
+          "workplace": "the Leeds office at Wellington Place, with hybrid working",
+          "probation": "six months",
+          "weekly_hours": "37.5 hours per week, Monday to Friday",
+          "pension": "an employer pension contribution of 5 percent of basic salary, matched up to 7 percent",
+          "holiday": "25 days",
+          "sick_pay": "full pay for up to eight weeks in any rolling twelve month period, then statutory sick pay",
+          "notice_employee": "one month's",
+          "governing_law": "the laws of England and Wales"
+        }
+      },
+      {
+        "variant_id": "france-lyon",
+        "label": "France, Lyon office (cadre)",
+        "slots": {
+          "employer": "Halvorsen Digital SAS",
+          "workplace": "the Lyon office at Part-Dieu",
+          "probation": "four months",
+          "weekly_hours": "a forfait jours arrangement of 218 working days per year",
+          "pension": "the mandatory AGIRC-ARRCO contributions plus a supplementary scheme at 2 percent of salary",
+          "holiday": "25 working days",
+          "sick_pay": "full salary from the first day for up to ninety days, topping up social security payments",
+          "notice_employee": "three months'",
+          "governing_law": "French law and the Syntec collective agreement"
+        },
+        "extra_section": "French addendum. Under the company agreement on the right to disconnect, employees are not expected to read or answer work messages between 8pm and 8am, at weekends or during holidays, and managers may not hold this against them. Because of the forfait jours arrangement, workload is reviewed in a dedicated annual interview. Employees receive meal vouchers worth 11 euros for each day worked, of which the company pays 60 percent."
+      },
+      {
+        "variant_id": "netherlands-utrecht",
+        "label": "Netherlands, Utrecht office",
+        "slots": {
+          "employer": "Halvorsen Digital BV",
+          "workplace": "the Utrecht office at Stationsplein",
+          "probation": "one month",
+          "weekly_hours": "40 hours per week",
+          "pension": "two thirds of the premium of the sector pension fund",
+          "holiday": "25 days",
+          "sick_pay": "70 percent of salary topped up to 100 percent during the first year of illness",
+          "notice_employee": "one month's",
+          "governing_law": "Dutch law"
+        }
+      },
+      {
+        "variant_id": "spain-bilbao",
+        "label": "Spain, Bilbao office",
+        "slots": {
+          "employer": "Halvorsen Digital Iberia SL",
+          "workplace": "the Bilbao office at Abandoibarra",
+          "probation": "six months for qualified technicians",
+          "weekly_hours": "40 hours per week, with intensive summer hours in July and August",
+          "pension": "a contribution of 3 percent of salary to the company pension plan",
+          "holiday": "23 working days",
+          "sick_pay": "a top up to 100 percent of salary from the first day for up to six months",
+          "notice_employee": "fifteen days'",
+          "governing_law": "Spanish law and the applicable regional collective agreement"
+        }
+      },
+      {
+        "variant_id": "denmark-aarhus",
+        "label": "Denmark, Aarhus office",
+        "slots": {
+          "employer": "Halvorsen Digital ApS",
+          "workplace": "the Aarhus office on the harbour front",
+          "probation": "three months",
+          "weekly_hours": "37 hours per week",
+          "pension": "a pension contribution of 10 percent of salary from the company plus 4 percent from the employee",
+          "holiday": "25 days plus five extra holiday days",
+          "sick_pay": "full salary during illness under the Salaried Employees Act",
+          "notice_employee": "one month's",
+          "governing_law": "Danish law, including the Salaried Employees Act"
+        },
+        "extra_section": "Danish addendum. Employees join the canteen lunch scheme at a monthly deduction of 450 kroner, which can be cancelled with one month's notice. The company pays for private health insurance covering treatment and physiotherapy, and a broadband connection at home taxed under the multimedia rules. Holiday is accrued and taken under the Holiday Act, with the main holiday of three weeks taken between May and September unless agreed otherwise."
+      },
+      {
+        "variant_id": "italy-turin",
+        "label": "Italy, Turin office",
+        "slots": {
+          "employer": "Halvorsen Digital Italia Srl",
+          "workplace": "the Turin office in the Lingotto district",
+          "probation": "three months",
+          "weekly_hours": "40 hours per week",
+          "pension": "the TFR severance accrual plus a 1.5 percent contribution to the sector supplementary pension fund",
+          "holiday": "26 working days",
+          "sick_pay": "full pay for the first 180 days of illness in a calendar year, topping up the national insurance allowance",
+          "notice_employee": "thirty calendar days'",
+          "governing_law": "Italian law and the national collective agreement for the commerce sector"
+        }
+      }
+    ]
+  },
+  {
+    "topic_id": "contracts-non-compete",
+    "category": "contracts",
+    "title": "Restrictive Covenants Policy: Non-Compete and Non-Solicitation",
+    "sections": [
+      "This policy explains when Halvorsen Digital uses post-employment restrictive covenants for {covered_roles} employed under {jurisdiction}, and how they are drafted, paid for and enforced. Restrictions must be no wider than needed to protect client relationships, confidential information and the stability of the workforce; covenants that a court would see as excessive are unenforceable and damage our reputation as an employer. Covenants are included in contracts only through the approved clause bank, never drafted ad hoc by managers. Any request to add, tighten or remove a covenant for an individual employee is reviewed by employment counsel, {person} ({email}), before the offer or variation is issued.",
+      "The non-compete restriction prevents the employee, for {noncompete_months} after the end of employment, from working for or advising a competitor in a role similar to the one they held in their last twelve months with us. Competitors are businesses selling scheduling or workforce management software to the same customer segments, listed by name in an annex that is reviewed each year. The restriction applies only within {geography}. It does not stop the employee from holding up to three percent of the shares of a listed company, or from working for a customer of Halvorsen in an internal role that does not compete with our products.",
+      "Where a non-compete applies, the employee receives {nc_compensation} for every month of the restriction, paid monthly after employment ends where a payment is due. Payment stops if the employee breaches the covenant, and amounts paid during a breach may be reclaimed. The company may release the employee from the non-compete by written notice no later than {waiver_deadline}, in which case no compensation is due unless the law says otherwise. Any period of garden leave at the end of employment is {garden_leave_rule}. HR records every release decision in the leaver file so that payroll does not start or stop compensation payments by mistake.",
+      "For {nonsolicit_months} after employment ends, the employee may not solicit or deal with any client or prospective client with whom they had material dealings in their final twelve months, and may not solicit or hire any employee at manager grade or above with whom they worked closely. Responding to a general job advertisement is not solicitation. The non-solicitation covenant does not require compensation and applies whether or not the non-compete is released. Managers should remind leavers of these obligations in the exit interview, and the reminder is confirmed in the leaver letter, which lists the restrictions and their end dates.",
+      "If HR or a manager learns that a former employee may be breaching a covenant, they must not contact the individual or the new employer directly. The facts are passed to employment counsel, who decides within five working days whether to send a reminder letter, seek written undertakings or start proceedings. Proceedings require approval from the general counsel and the chief people officer, {person_2}. Evidence such as emails or public social media posts should be preserved, but never obtained by accessing personal accounts or devices. Covenants are reviewed every two years against current case law and legislation in each jurisdiction where we employ people."
+    ],
+    "variants": [
+      {
+        "variant_id": "england-sales",
+        "label": "England and Wales, sales staff",
+        "slots": {
+          "covered_roles": "account executives and sales managers",
+          "jurisdiction": "English law",
+          "noncompete_months": "three months",
+          "geography": "the United Kingdom",
+          "nc_compensation": "no separate payment, as the restriction is supported by the salary and benefits of employment,",
+          "waiver_deadline": "the last day of employment",
+          "garden_leave_rule": "deducted month for month from the non-compete period",
+          "nonsolicit_months": "six months"
+        }
+      },
+      {
+        "variant_id": "england-leadership",
+        "label": "England and Wales, senior leadership",
+        "slots": {
+          "covered_roles": "directors and members of the leadership team",
+          "jurisdiction": "English law",
+          "noncompete_months": "six months",
+          "geography": "the United Kingdom and Ireland",
+          "nc_compensation": "an amount equal to 50 percent of monthly base salary",
+          "waiver_deadline": "the date on which notice of termination is given",
+          "garden_leave_rule": "deducted month for month from the non-compete period",
+          "nonsolicit_months": "twelve months"
+        }
+      },
+      {
+        "variant_id": "france-cadres",
+        "label": "France, engineers and managers",
+        "slots": {
+          "covered_roles": "cadres in engineering, product and sales roles",
+          "jurisdiction": "French law and the Syntec collective agreement",
+          "noncompete_months": "twelve months",
+          "geography": "France, Belgium and Switzerland",
+          "nc_compensation": "a monthly indemnity equal to one third of average gross monthly salary",
+          "waiver_deadline": "fifteen days after the end of employment, or the last day worked if notice is not worked",
+          "garden_leave_rule": "not deducted, because the restriction runs from the actual departure date",
+          "nonsolicit_months": "twelve months"
+        }
+      },
+      {
+        "variant_id": "germany-engineering",
+        "label": "Germany, engineering staff",
+        "slots": {
+          "covered_roles": "software engineers and architects",
+          "jurisdiction": "German law",
+          "noncompete_months": "twelve months",
+          "geography": "Germany, Austria and Switzerland",
+          "nc_compensation": "a payment of 50 percent of the last contractual remuneration, as required by the Commercial Code,",
+          "waiver_deadline": "the last day of employment, although payment remains due for one year after the release is given",
+          "garden_leave_rule": "not deducted from the non-compete period",
+          "nonsolicit_months": "twelve months"
+        },
+        "extra_section": "German addendum on offsetting. Under the Commercial Code, any income the former employee earns, or maliciously fails to earn, during the restriction is offset against the compensation to the extent that compensation plus new income would exceed 110 percent of the previous remuneration, or 125 percent if the employee had to move home. Former employees must report their new income each quarter on request, and payments are adjusted from the following month."
+      },
+      {
+        "variant_id": "netherlands-staff",
+        "label": "Netherlands, permanent staff",
+        "slots": {
+          "covered_roles": "permanent employees in client facing and engineering roles",
+          "jurisdiction": "Dutch law",
+          "noncompete_months": "nine months",
+          "geography": "the Netherlands and Belgium",
+          "nc_compensation": "no payment unless a court orders compensation,",
+          "waiver_deadline": "the last day of employment",
+          "garden_leave_rule": "deducted month for month from the non-compete period",
+          "nonsolicit_months": "nine months"
+        }
+      },
+      {
+        "variant_id": "us-new-york",
+        "label": "United States, New York sales staff",
+        "slots": {
+          "covered_roles": "sales and customer success staff based in New York",
+          "jurisdiction": "New York law",
+          "noncompete_months": "six months",
+          "geography": "the United States and Canada",
+          "nc_compensation": "continued base salary under the garden leave clause",
+          "waiver_deadline": "the termination date",
+          "garden_leave_rule": "treated as part of the non-compete period",
+          "nonsolicit_months": "twelve months"
+        },
+        "extra_section": "US state law note. Employees who live or work in California, Minnesota or any other state that bans post-employment non-competes are never given a non-compete clause, and the non-solicitation of clients is limited to the use of trade secrets. Before relocating a covered employee to another state, HR must ask employment counsel whether the covenant remains valid, and an amended agreement is signed where needed."
+      }
+    ]
+  },
+  {
+    "topic_id": "contracts-liability-indemnity",
+    "category": "contracts",
+    "title": "Limitation of Liability and Indemnity Schedule",
+    "sections": [
+      "This schedule sets out the agreed liability and indemnity position in the {agreement_type} between Halvorsen Digital and {counterparty} (the supplier). It was negotiated from the Halvorsen standard position and approved by the legal team; deviations recorded here prevail over the main terms. Neither party limits liability for death or personal injury caused by negligence, for fraud or fraudulent misrepresentation, or for any liability that cannot be limited by law. Commercial owners must check this schedule before agreeing to any change in scope that could increase exposure. The legal owner of this contract is {person} ({email}), who keeps the negotiation history and the approved fallback positions.",
+      "Subject to the unlimited liabilities above, each party's total liability arising out of or in connection with the agreement in any contract year, whether in contract, tort including negligence, or otherwise, is limited to {general_cap}. Where a claim relates to a single statement of work, the cap is calculated using the fees under that statement of work only if that produces a higher figure. Neither party is liable for loss of profits, revenue, goodwill or anticipated savings, or for any indirect or consequential loss, even if it was foreseeable. Service credits paid count towards the cap. Unpaid fees properly due are never subject to the cap.",
+      "Liability for breach of the data protection and confidentiality obligations is subject to a separate cap of {data_cap}, which applies in addition to, and not as part of, the general cap. This super-cap covers the reasonable costs of investigating a personal data breach, notifying regulators and data subjects, credit monitoring for affected individuals, and fines to the extent they can lawfully be recovered. Claims under the super-cap must be supported by evidence of the costs incurred. A breach caused by the supplier's failure to follow the security annex cannot be used to reduce its liability by arguing contributory fault on the part of Halvorsen.",
+      "The supplier will defend and indemnify Halvorsen against any third party claim that the services or deliverables infringe intellectual property rights, and against the resulting damages, settlements and reasonable legal costs. Halvorsen must notify the supplier of the claim within {ip_notice} of becoming aware of it, give the supplier control of the defence, and provide reasonable assistance at the supplier's cost. The supplier may modify the deliverable to avoid infringement, procure a licence or, as a last resort, refund the fees paid for the affected item. The IP indemnity is uncapped. It does not apply to infringement caused by Halvorsen's modifications or by combination with products not supplied by the supplier.",
+      "The supplier maintains professional indemnity insurance of at least {pi_insurance} for each claim and in the aggregate, plus cyber insurance of an equivalent amount, for the term of the agreement and six years afterwards, and provides certificates each year on request. Any claim under the agreement must be notified in writing, with reasonable detail, within {claim_period} of the claimant becoming aware of the facts giving rise to it, and proceedings must start within twelve months after that notice. Claims notices go to the contract owner and to the supplier's legal contact, {person_2}. Each party must take reasonable steps to mitigate its loss."
+    ],
+    "variants": [
+      {
+        "variant_id": "orbivane-managed-network",
+        "label": "Orbivane Networks, managed network services",
+        "slots": {
+          "agreement_type": "managed network services agreement",
+          "counterparty": "Orbivane Networks Ltd",
+          "general_cap": "125 percent of the fees paid and payable in that contract year",
+          "data_cap": "GBP 5 million",
+          "ip_notice": "fourteen days",
+          "pi_insurance": "GBP 10 million",
+          "claim_period": "six months"
+        }
+      },
+      {
+        "variant_id": "orbivane-sdwan",
+        "label": "Orbivane Networks, SD-WAN rollout 2026",
+        "slots": {
+          "agreement_type": "SD-WAN implementation agreement",
+          "counterparty": "Orbivane Networks Ltd",
+          "general_cap": "the total fees payable under the agreement",
+          "data_cap": "GBP 2 million",
+          "ip_notice": "thirty days",
+          "pi_insurance": "GBP 5 million",
+          "claim_period": "nine months"
+        }
+      },
+      {
+        "variant_id": "ashgrove-analytics",
+        "label": "Ashgrove Data Labs, analytics platform",
+        "slots": {
+          "agreement_type": "platform subscription agreement",
+          "counterparty": "Ashgrove Data Labs Ltd",
+          "general_cap": "the greater of GBP 1 million and twice the annual subscription fees",
+          "data_cap": "three times the annual subscription fees",
+          "ip_notice": "ten working days",
+          "pi_insurance": "GBP 3 million",
+          "claim_period": "twelve months"
+        }
+      },
+      {
+        "variant_id": "vireo-payroll",
+        "label": "Vireo Payroll Services, Ireland",
+        "slots": {
+          "agreement_type": "payroll outsourcing agreement",
+          "counterparty": "Vireo Payroll Services DAC",
+          "general_cap": "EUR 2 million",
+          "data_cap": "EUR 8 million",
+          "ip_notice": "twenty days",
+          "pi_insurance": "EUR 6 million",
+          "claim_period": "eighteen months"
+        },
+        "extra_section": "Payroll error indemnity. In addition to the caps above, the supplier indemnifies Halvorsen against interest, surcharges and penalties imposed by the Revenue Commissioners or any social insurance authority where they result from the supplier's calculation or filing errors, provided Halvorsen supplied correct and timely input data. The supplier also pays the reasonable cost of correcting affected payslips and filings. This indemnity is capped at EUR 500,000 per year and sits outside the general cap."
+      },
+      {
+        "variant_id": "mosaic-development",
+        "label": "Mosaic Code Collective, software development",
+        "slots": {
+          "agreement_type": "software development framework agreement",
+          "counterparty": "Mosaic Code Collective BV",
+          "general_cap": "100 percent of the fees paid in the twelve months before the claim",
+          "data_cap": "EUR 1.5 million",
+          "ip_notice": "seven days",
+          "pi_insurance": "EUR 2 million",
+          "claim_period": "three months"
+        },
+        "extra_section": "Open source licence indemnity. The supplier also indemnifies Halvorsen against claims that a deliverable breaches the terms of an open source licence because the supplier included a component it did not declare in the software bill of materials. This indemnity is capped at EUR 750,000 and covers the cost of replacing the component, legal costs and any settlement. It does not apply to components that Halvorsen asked the supplier to use."
+      },
+      {
+        "variant_id": "tessellate-hosting",
+        "label": "Tessellate Cloud, infrastructure hosting",
+        "slots": {
+          "agreement_type": "infrastructure hosting agreement",
+          "counterparty": "Tessellate Cloud Inc.",
+          "general_cap": "the fees paid in the six months before the event giving rise to the claim",
+          "data_cap": "USD 4 million",
+          "ip_notice": "thirty days",
+          "pi_insurance": "USD 10 million",
+          "claim_period": "twelve months"
+        }
+      }
+    ]
+  },
+  {
+    "topic_id": "contracts-termination-for-convenience",
+    "category": "contracts",
+    "title": "Termination for Convenience and Exit Clause",
+    "sections": [
+      "This clause note summarises the right of Halvorsen Digital to end the {agreement_type} with {counterparty} without cause, and the exit obligations that follow any termination. The right exists so that Halvorsen can respond to changes in strategy, budget or ownership without having to prove a breach. It is separate from termination for material breach, insolvency or chronic service failure, which are covered by their own clauses and carry no fee. Before any notice is sent, the business owner must obtain sign off from procurement and legal. The procurement lead for this contract is {person} ({email}), who also keeps the exit plan up to date.",
+      "Halvorsen may terminate the agreement, or any individual statement of work or service, for convenience by giving {notice_period} written notice. The right cannot be exercised so that termination takes effect before {lock_in}. Partial termination is allowed if the remaining services can operate on their own, and the fees are then reduced in proportion. The supplier has no right to terminate for convenience. Notice must be signed by an authorised signatory under the delegation of authority, and sent to the supplier's notice address and by email to its account director, {person_2}. A notice sent only by email is not effective under this agreement.",
+      "On termination for convenience Halvorsen pays all fees for services performed up to the termination date, plus {termination_fee}. Halvorsen also reimburses non-cancellable commitments that the supplier entered into specifically for Halvorsen with prior written approval, such as dedicated hardware or third party licences, after the supplier has used reasonable efforts to cancel or redeploy them. No payment is due for loss of profit on the cancelled services. The supplier must submit its final invoice with supporting evidence within thirty days after termination, and any amount not invoiced within that time is waived and cannot be claimed later.",
+      "From the date of notice the supplier must continue to perform the services to the contractual service levels until termination takes effect. On request, the supplier will provide exit assistance for up to {wind_down} after termination, including knowledge transfer sessions, handover of documentation and runbooks, and cooperation with any replacement supplier. Exit assistance beyond the activities in the agreed exit plan is charged at {transition_rate}. The exit plan is reviewed every year, and the supplier may not reduce the team assigned to Halvorsen during the notice period without consent, other than for reasons outside its control such as resignations.",
+      "Within {data_return} of termination, the supplier will return all Halvorsen data in an agreed open format, with a checksum report confirming completeness, and then delete all remaining copies and certify the deletion in writing. Until data is returned, the supplier may not suspend access to it, even if fees are disputed. Licences granted to Halvorsen for deliverables already paid for survive termination. Clauses on confidentiality, liability, intellectual property, data protection and payment of accrued fees also survive. Any dispute about exit charges is resolved through the escalation process, but it does not delay the return of data or the handover of services."
+    ],
+    "variants": [
+      {
+        "variant_id": "orbivane-managed-network",
+        "label": "Orbivane Networks, managed network services",
+        "slots": {
+          "agreement_type": "managed network services agreement",
+          "counterparty": "Orbivane Networks Ltd",
+          "notice_period": "ninety days'",
+          "lock_in": "the first anniversary of the service start date",
+          "termination_fee": "a fee equal to three months of the average monthly charges",
+          "wind_down": "six months",
+          "transition_rate": "the day rates in the rate card less 10 percent",
+          "data_return": "thirty days"
+        }
+      },
+      {
+        "variant_id": "ashgrove-analytics",
+        "label": "Ashgrove Data Labs, analytics subscription",
+        "slots": {
+          "agreement_type": "platform subscription agreement",
+          "counterparty": "Ashgrove Data Labs Ltd",
+          "notice_period": "sixty days'",
+          "lock_in": "the end of the first contract year",
+          "termination_fee": "the unpaid subscription fees for the rest of the current contract year, discounted by 20 percent",
+          "wind_down": "three months",
+          "transition_rate": "the standard professional services rate of GBP 1,050 per day",
+          "data_return": "fifteen days"
+        }
+      },
+      {
+        "variant_id": "veltane-application-support",
+        "label": "Veltane Consulting, application support",
+        "slots": {
+          "agreement_type": "application management services agreement",
+          "counterparty": "Veltane Consulting SL",
+          "notice_period": "four months'",
+          "lock_in": "1 July 2026",
+          "termination_fee": "a fixed fee of EUR 45,000, reducing by EUR 1,500 for each full month after the lock-in date",
+          "wind_down": "four months",
+          "transition_rate": "EUR 700 per consultant day",
+          "data_return": "twenty days"
+        }
+      },
+      {
+        "variant_id": "clearpath-facilities-leeds",
+        "label": "ClearPath Facilities, Leeds office services",
+        "slots": {
+          "agreement_type": "facilities management agreement for the Leeds office",
+          "counterparty": "ClearPath Facilities Ltd",
+          "notice_period": "three months'",
+          "lock_in": "the end of the second contract year",
+          "termination_fee": "the unrecovered cost of the supplier's mobilisation, capped at GBP 25,000",
+          "wind_down": "one month",
+          "transition_rate": "the hourly rates in the pricing schedule",
+          "data_return": "ten days"
+        },
+        "extra_section": "Staff transfer on exit. The cleaning, reception and maintenance staff who work mainly on the Leeds contract are likely to transfer to a replacement supplier, or to Halvorsen if the services are brought in house, under the TUPE regulations. During the notice period the supplier must provide anonymised employee information within ten working days of request, and may not change the terms, numbers or identity of the assigned staff without consent. Each party indemnifies the other for employment liabilities arising in its own period."
+      },
+      {
+        "variant_id": "tessellate-hosting",
+        "label": "Tessellate Cloud, infrastructure hosting",
+        "slots": {
+          "agreement_type": "infrastructure hosting agreement",
+          "counterparty": "Tessellate Cloud Inc.",
+          "notice_period": "thirty days'",
+          "lock_in": "the end of the twenty-four month reserved capacity term",
+          "termination_fee": "the remaining reserved capacity charges up to the end of the reserved term",
+          "wind_down": "ninety days",
+          "transition_rate": "USD 180 per engineer hour",
+          "data_return": "sixty days"
+        },
+        "extra_section": "Data egress on exit. When Halvorsen gives notice of termination, the supplier waives all data egress and bulk export charges for data transferred out of its platform during the exit period, up to 500 terabytes. Halvorsen may also request a one off export to encrypted physical drives, shipped at cost. Snapshots and backups remain available for restore until the end of the exit assistance period, after which they are deleted with the rest of the data."
+      },
+      {
+        "variant_id": "lumivex-hr-platform",
+        "label": "Lumivex HR, people platform version 3",
+        "slots": {
+          "agreement_type": "HR platform subscription agreement",
+          "counterparty": "Lumivex HR Software Oy",
+          "notice_period": "six months'",
+          "lock_in": "the end of the initial term of thirty-six months",
+          "termination_fee": "no fee, as the long notice period already reflects the supplier's investment",
+          "wind_down": "two months",
+          "transition_rate": "EUR 1,200 per day",
+          "data_return": "forty-five days"
+        }
+      }
+    ]
+  },
+  {
+    "topic_id": "contracts-renewal-auto-renewal",
+    "category": "contracts",
+    "title": "Renewal and Auto-Renewal Terms",
+    "sections": [
+      "This summary covers the term and renewal provisions of the subscription with {vendor} for {product}. The agreement runs for an initial term of {initial_term} from the subscription start date shown on the order form. After that, it renews automatically for successive periods of {renewal_term} unless either party gives notice of non-renewal. Automatic renewal is convenient but has caused unplanned spend in the past, so every renewing contract has a named owner who must take an active decision before the notice deadline. The contract owner sits in {owner_team}, and the renewal record is maintained by {person} ({email}) in the contract register.",
+      "To stop the agreement renewing, notice of non-renewal must reach the vendor at least {nonrenewal_notice} before the end of the current term. Notice must be in writing and sent to the vendor's legal notice address with a copy to the account manager; cancelling through the vendor's online portal is only valid if the portal issues a written confirmation. Notice given late has no effect, and the agreement then renews for the full renewal period. The vendor is not required to remind Halvorsen of the deadline, although most vendors do. Notice of non-renewal may be withdrawn by mutual written agreement before the term ends.",
+      "On each renewal the fees may increase by up to {price_uplift}, provided the vendor gives written notice of the new fees at least ninety days before the end of the current term. If the vendor misses that deadline, the existing fees continue for the renewal period. Discounts granted for the initial term, such as launch or multi-year discounts, do not automatically carry over and must be renegotiated. Additional licences bought during a term are co-termed and renew at the same unit price as the main subscription. Halvorsen may reduce the licence count at renewal by up to twenty percent without penalty or loss of discount.",
+      "The contract register sends an automatic reminder to the contract owner {reminder_lead} before the non-renewal deadline, then again thirty days before it. On receiving the first reminder, the owner reviews usage, satisfaction and alternatives, and records a decision to renew, renegotiate or exit. Renewals above the owner's delegated authority require approval from the finance business partner before the deadline, not after the invoice arrives. If no decision is recorded fourteen days before the deadline, procurement escalates to the owner's director and may send a protective non-renewal notice to keep options open, which can later be withdrawn by agreement with the vendor.",
+      "Where Halvorsen exits at the end of a term, the vendor must make data available for export for thirty days and then delete it. Renewal does not reopen the liability, data protection or security terms unless either party requests a review in its renewal notice. Multi-year renewals require a business case reviewed by procurement. Questions about whether a renewal notice was validly given should be raised with the legal team immediately, with copies of all correspondence. The vendor's account manager for renewal discussions is {person_2}, but commercial negotiations are always led by procurement rather than by the business owner."
+    ],
+    "variants": [
+      {
+        "variant_id": "beacon-observability",
+        "label": "Beacon Observability, monitoring platform",
+        "slots": {
+          "vendor": "Beacon Observability AB",
+          "product": "the Beacon metrics and alerting platform",
+          "initial_term": "twelve months",
+          "renewal_term": "twelve months",
+          "owner_team": "the platform engineering team",
+          "nonrenewal_notice": "sixty days",
+          "price_uplift": "5 percent",
+          "reminder_lead": "one hundred and twenty days"
+        }
+      },
+      {
+        "variant_id": "quarrystone-support",
+        "label": "Quarrystone, analytics suite support",
+        "slots": {
+          "vendor": "Quarrystone Software Ltd",
+          "product": "support and maintenance of Quarry Analytics Suite",
+          "initial_term": "thirty-six months",
+          "renewal_term": "twelve months",
+          "owner_team": "the data and analytics team",
+          "nonrenewal_notice": "ninety days",
+          "price_uplift": "the UK retail price index plus 2 percent",
+          "reminder_lead": "one hundred and fifty days"
+        }
+      },
+      {
+        "variant_id": "lumivex-hr-platform",
+        "label": "Lumivex HR, people platform",
+        "slots": {
+          "vendor": "Lumivex HR Software Oy",
+          "product": "the Lumivex HR people platform",
+          "initial_term": "thirty-six months",
+          "renewal_term": "twenty-four months",
+          "owner_team": "the people operations team",
+          "nonrenewal_notice": "six months",
+          "price_uplift": "7 percent",
+          "reminder_lead": "nine months"
+        },
+        "extra_section": "Price lock option. At each renewal Halvorsen may choose a price lock instead of the standard renewal: the fees are fixed for a renewal term of thirty-six months with no annual uplift, in return for a commitment not to reduce the licence count by more than ten percent during that term. The option must be elected in writing at least ninety days before the renewal date. Licences added during a locked term are priced at the locked unit rate."
+      },
+      {
+        "variant_id": "quillmail-email",
+        "label": "Quillmail, transactional email",
+        "slots": {
+          "vendor": "Quillmail Ltd",
+          "product": "the Quillmail transactional email service",
+          "initial_term": "twelve months",
+          "renewal_term": "one month",
+          "owner_team": "the customer engagement team",
+          "nonrenewal_notice": "thirty days",
+          "price_uplift": "10 percent",
+          "reminder_lead": "seventy-five days"
+        }
+      },
+      {
+        "variant_id": "sentrovia-vault",
+        "label": "Sentrovia Vault, secrets management",
+        "slots": {
+          "vendor": "Sentrovia Security AB",
+          "product": "the Sentrovia Vault subscription",
+          "initial_term": "twenty-four months",
+          "renewal_term": "twelve months",
+          "owner_team": "the security engineering team",
+          "nonrenewal_notice": "forty-five days",
+          "price_uplift": "4 percent",
+          "reminder_lead": "one hundred days"
+        }
+      },
+      {
+        "variant_id": "paperfield-esignature",
+        "label": "Paperfield e-signature, enterprise plan",
+        "slots": {
+          "vendor": "Paperfield Inc.",
+          "product": "the Paperfield electronic signature service",
+          "initial_term": "twelve months",
+          "renewal_term": "twelve months",
+          "owner_team": "the legal operations team",
+          "nonrenewal_notice": "thirty days",
+          "price_uplift": "the vendor's published list price increase for that year",
+          "reminder_lead": "ninety days"
+        },
+        "extra_section": "US renewal notice. Because the agreement is governed by California law, the vendor must send a written renewal reminder between fifteen and forty-five days before the non-renewal deadline, stating the renewal price and how to cancel. If it fails to do so, Halvorsen may cancel at any time after renewal and receive a refund of unused prepaid fees. The vendor must also allow cancellation online through the same admin console used to buy the subscription."
+      }
+    ]
+  },
+  {
+    "topic_id": "contracts-ip-assignment",
+    "category": "contracts",
+    "title": "Intellectual Property Assignment Agreement",
+    "sections": [
+      "This agreement is made between Halvorsen Digital and {contractor} (the Contractor) in connection with {project}. It records who owns the intellectual property in everything the Contractor creates for Halvorsen, including source code, designs, documentation, data models and inventions. It supplements the services agreement and prevails over it on any question of ownership. The Contractor confirms that every individual who works on the project, including employees and approved subcontractors, has signed terms that allow the Contractor to make this assignment. Halvorsen's contact for questions about ownership, licences and open source use is {person} ({email}) in the legal team.",
+      "The Contractor assigns to Halvorsen, with full title guarantee, all present and future intellectual property rights in the deliverables, by way of present assignment of future rights where the law allows. The assignment takes effect {assignment_trigger}. Until it takes effect, Halvorsen has an exclusive, royalty free licence to use the deliverables for the purposes of the project. The Contractor will sign any further documents needed to register or enforce the rights, at Halvorsen's cost, and appoints Halvorsen as its attorney to sign them if it fails to do so within ten working days of a written request from the legal team.",
+      "Background intellectual property means tools, libraries and know-how that the Contractor owned before the project or develops independently of it. Background IP stays with the Contractor. Where background IP is incorporated into a deliverable, the Contractor grants Halvorsen {background_licence}. The Contractor must list all background IP it intends to incorporate in the annex before using it, and anything not listed is treated as part of the deliverables and assigned with them. The Contractor may reuse general skills and know-how learned on the project, but never Halvorsen confidential information or code written for the deliverables, even in modified form.",
+      "{moral_rights} Open source software may be included in a deliverable only {open_source_rule}. Copyleft licences that would require Halvorsen to release its own source code are never permitted in deliverables distributed to customers. The Contractor provides a software bill of materials with every release, listing each third party component, its version and its licence. Halvorsen may run automated licence scanning on all code, and any component found that was not declared must be removed or replaced at the Contractor's cost within ten working days. Repeated undeclared components are treated as a material breach of the services agreement.",
+      "All source code, build scripts and documentation are committed to {delivery_repo} as the work progresses, and are never held only on the Contractor's own systems. On completion or termination, the Contractor deletes Halvorsen material from its systems, except one archival copy where required by law, and confirms deletion in writing. The Contractor warrants that the deliverables are its original work and do not infringe third party rights. This agreement is governed by {governing_law}. Notices to the Contractor are sent to its registered office and to its project lead, {person_2}, and take effect on receipt."
+    ],
+    "variants": [
+      {
+        "variant_id": "mosaic-booking-engine",
+        "label": "Mosaic Code Collective, booking engine v2",
+        "slots": {
+          "contractor": "Mosaic Code Collective BV",
+          "project": "the development of version 2 of the booking engine",
+          "assignment_trigger": "on creation of each deliverable, without any further act",
+          "background_licence": "a perpetual, irrevocable, worldwide, royalty free licence to use, modify and sublicense it as part of the deliverable",
+          "moral_rights": "Under Dutch law, the Contractor and its personnel waive their personality rights in the deliverables to the extent permitted, and will not object to modification of the work.",
+          "open_source_rule": "if it is on the Halvorsen approved licence list, which includes the MIT, Apache 2.0 and BSD licences",
+          "delivery_repo": "the Halvorsen source repository group for the booking engine",
+          "governing_law": "Dutch law"
+        }
+      },
+      {
+        "variant_id": "kanto-design-system",
+        "label": "Kanto Studio, design system",
+        "slots": {
+          "contractor": "Kanto Studio BV",
+          "project": "the creation of the Halvorsen design system and icon set",
+          "assignment_trigger": "on payment of the invoice covering each deliverable",
+          "background_licence": "a perpetual, worldwide, non-exclusive licence to use the incorporated assets, but not to sell them as a standalone product",
+          "moral_rights": "The designers keep their personality rights under Dutch law but agree not to require attribution inside Halvorsen products.",
+          "open_source_rule": "for icon fonts and typefaces released under the SIL Open Font Licence",
+          "delivery_repo": "the shared design repository in the Halvorsen design workspace",
+          "governing_law": "Dutch law"
+        }
+      },
+      {
+        "variant_id": "riverbend-data-pipeline",
+        "label": "Riverbend Software, data pipeline contract",
+        "slots": {
+          "contractor": "Riverbend Software Ltd, a personal service company",
+          "project": "building the reporting data pipeline",
+          "assignment_trigger": "on creation of each deliverable, without any further act",
+          "background_licence": "a perpetual, irrevocable, worldwide, royalty free and transferable licence",
+          "moral_rights": "The Contractor waives, and will procure that its director waives, all moral rights under the Copyright, Designs and Patents Act 1988.",
+          "open_source_rule": "with prior written approval from the Halvorsen architecture board for each component",
+          "delivery_repo": "the data platform team's area of the Halvorsen source repository",
+          "governing_law": "the laws of England and Wales"
+        }
+      },
+      {
+        "variant_id": "atelier-brume-illustrations",
+        "label": "Atelier Brume, Lyon, app illustrations",
+        "slots": {
+          "contractor": "Atelier Brume SARL",
+          "project": "illustrations and animations for the mobile app",
+          "assignment_trigger": "on delivery of each illustration, for the full legal term of protection and for all media worldwide, as French law requires the assigned rights to be listed precisely",
+          "background_licence": "a non-exclusive licence limited to the Halvorsen apps and marketing material",
+          "moral_rights": "Under French law moral rights cannot be waived, so the artists keep the right to be credited, and Halvorsen will credit them on the about page of the app.",
+          "open_source_rule": "where the asset licence has been confirmed in writing by the legal team",
+          "delivery_repo": "the asset library in the Halvorsen design workspace",
+          "governing_law": "French law"
+        },
+        "extra_section": "French remuneration rider. Because French law expects authors to share in the revenue from their work, the fee is split into a lump sum for the creation of each illustration and a fixed annual exploitation fee of 1,200 euros for as long as the illustrations are used in the app. The lump sum is justified in writing by the fact that revenue attributable to the illustrations cannot be calculated. The annual fee is paid each January and stops once Halvorsen confirms in writing that the illustrations have been withdrawn."
+      },
+      {
+        "variant_id": "brightline-test-automation",
+        "label": "Brightline Testing, test automation",
+        "slots": {
+          "contractor": "Brightline Testing s.r.o.",
+          "project": "building the automated regression test suite",
+          "assignment_trigger": "on acceptance of each sprint deliverable",
+          "background_licence": "a perpetual, royalty free licence to use its test framework only within Halvorsen",
+          "moral_rights": "The Contractor's personnel consent to Halvorsen modifying and adapting the work, and will not assert authorship claims under Czech law.",
+          "open_source_rule": "if the licence is permissive and the component has had a release within the last two years",
+          "delivery_repo": "the quality engineering repository on the Halvorsen code platform",
+          "governing_law": "Czech law"
+        }
+      },
+      {
+        "variant_id": "redwood-ridge-algorithm",
+        "label": "Redwood Ridge Labs, scheduling algorithm research",
+        "slots": {
+          "contractor": "Redwood Ridge Labs LLC",
+          "project": "research and development of the shift optimisation algorithm",
+          "assignment_trigger": "on creation, and the Contractor must disclose every invention to Halvorsen within thirty days of conception",
+          "background_licence": "a non-exclusive, royalty free licence, with an option to buy the background IP outright at the price set in the annex",
+          "moral_rights": "Moral rights are limited under US law, and to the extent they exist the Contractor waives them.",
+          "open_source_rule": "with prior written approval from the legal team",
+          "delivery_repo": "the restricted research repository on the Halvorsen code platform",
+          "governing_law": "the laws of the State of California"
+        },
+        "extra_section": "Patent cooperation. Halvorsen decides whether to file patent applications for any invention. The Contractor will make its researchers available to review drafts, will procure signed inventor declarations and assignment deeds for each filing within fifteen days of request, and will keep laboratory notebooks that record dates of conception. For each patent application filed, the Contractor receives a fixed bonus of USD 5,000, and a further USD 10,000 when the patent is granted."
+      }
+    ]
+  },
+  {
+    "topic_id": "contracts-product-warranty",
+    "category": "contracts",
+    "title": "Limited Product Warranty",
+    "sections": [
+      "Halvorsen Digital warrants that the {product} supplied to business customers in {region} will be free from defects in materials and workmanship under normal use for {warranty_period} from the date of delivery. Batteries and other consumable parts are covered for {battery_period}. This warranty is given to the original purchaser only and is not transferable, except to a group company of the purchaser. It is in addition to any rights the customer has under mandatory law, which it does not limit. Proof of purchase, either the invoice or the delivery note showing the serial number, is required for any claim under this warranty.",
+      "To make a claim, the customer must report the defect through the support portal within {claim_window} of discovering it, giving the serial number, a description of the fault and the troubleshooting steps already taken. Support may ask for photos, logs or a remote diagnostic session before authorising a return. If a return is authorised, the customer receives a return merchandise authorisation number that must be shown on the outside of the package. {return_shipping} Devices returned without an authorisation number are sent back unrepaired at the customer's cost. The warranty desk can be reached on {phone} during business hours.",
+      "If a device is found to be defective and covered by the warranty, Halvorsen will, at its option, {remedy_order}. Replacement units may be new or refurbished to an equivalent standard of performance, and are covered for the remainder of the original warranty period or ninety days, whichever is longer. Data and configuration stored on the device are not covered, and the customer must back them up before returning it. Where a repair or replacement is not commercially reasonable, Halvorsen will refund the purchase price less a reasonable deduction for use. These remedies are the customer's sole remedies under this warranty.",
+      "The warranty does not cover damage caused by accident, misuse, liquid or dust ingress beyond the device's rated protection, power surges, unauthorised repair or modification, installation not in line with the installation guide, or use with accessories not approved by Halvorsen. Cosmetic wear that does not affect function, such as scratches on the housing, is also excluded. Software is covered by the separate subscription terms, not by this warranty. If a returned device is found to have no fault, or the fault is excluded, Halvorsen may charge a diagnostic fee of 60 euros or the local equivalent, plus return shipping.",
+      "Customers can extend cover by purchasing {extended_option} at the time of order or within ninety days of delivery. Extended cover includes advance replacement, in which a replacement device is shipped before the faulty device is returned, provided the faulty device is then returned within fifteen days. Extended cover cannot be added to devices that have already been reported as faulty. Warranty and extended cover questions from resellers go to the channel support manager, {person} ({email}). Halvorsen may update these terms for future orders, but changes never apply to devices that have already been delivered."
+    ],
+    "variants": [
+      {
+        "variant_id": "timeclock-t300-eu",
+        "label": "TimeClock T300 terminal, EU customers",
+        "slots": {
+          "product": "TimeClock T300 wall mounted terminals",
+          "region": "the European Union",
+          "warranty_period": "twenty-four months",
+          "battery_period": "twelve months",
+          "claim_window": "sixty days",
+          "return_shipping": "Halvorsen pays return shipping during the first twelve months of the warranty; after that, the customer pays shipping to the repair centre and Halvorsen pays the return leg.",
+          "remedy_order": "repair the device, replace it, or refund the price, in that order of preference",
+          "extended_option": "a three year Care Plus plan at 89 euros per device"
+        }
+      },
+      {
+        "variant_id": "timeclock-t300-uk",
+        "label": "TimeClock T300 terminal, UK customers",
+        "slots": {
+          "product": "TimeClock T300 wall mounted terminals",
+          "region": "the United Kingdom",
+          "warranty_period": "twelve months",
+          "battery_period": "six months",
+          "claim_window": "thirty days",
+          "return_shipping": "The customer pays shipping to the Leeds repair centre, and Halvorsen pays the return leg.",
+          "remedy_order": "repair or replace the device",
+          "extended_option": "a two year Care Plus plan at 69 pounds per device"
+        }
+      },
+      {
+        "variant_id": "timeclock-t500-biometric",
+        "label": "TimeClock T500 biometric terminal, version 2",
+        "slots": {
+          "product": "TimeClock T500 biometric terminals",
+          "region": "the European Union and the United Kingdom",
+          "warranty_period": "thirty-six months",
+          "battery_period": "eighteen months",
+          "claim_window": "forty-five days",
+          "return_shipping": "Halvorsen pays shipping in both directions for the whole warranty period, using its nominated courier.",
+          "remedy_order": "replace the device with a new or refurbished unit, or repair it if no replacement is available",
+          "extended_option": "a five year Care Premium plan at 199 euros per device"
+        },
+        "extra_section": "Biometric data on returned devices. Before a T500 terminal is returned, the customer must run the secure wipe function, which erases all fingerprint templates and the local user database, and record the wipe confirmation code in the return request. If the device cannot be powered on, the customer must say so, and the repair centre removes and destroys the storage module on arrival, without reading it, under its data protection procedure."
+      },
+      {
+        "variant_id": "badgegate-r20",
+        "label": "BadgeGate R20 reader, EU customers",
+        "slots": {
+          "product": "BadgeGate R20 door badge readers",
+          "region": "the European Union",
+          "warranty_period": "twenty-four months",
+          "battery_period": "twelve months, which for this model means the backup capacitor",
+          "claim_window": "ninety days",
+          "return_shipping": "Faulty readers are not shipped back: once support confirms the fault, the customer disposes of the reader under local electronic waste rules and a replacement is shipped free of charge.",
+          "remedy_order": "replace the reader, as this model cannot be repaired",
+          "extended_option": "a three year Care Plus plan at 35 euros per reader"
+        }
+      },
+      {
+        "variant_id": "kiosk-k10-us",
+        "label": "Kiosk K10 self-service station, US customers",
+        "slots": {
+          "product": "Kiosk K10 self-service stations",
+          "region": "the United States and Canada",
+          "warranty_period": "twelve months",
+          "battery_period": "ninety days",
+          "claim_window": "thirty days",
+          "return_shipping": "Kiosks are repaired on site by an authorised technician, so no shipping is required, and on-site visits are scheduled within five business days.",
+          "remedy_order": "repair the station on site, replace defective modules, or replace the whole station",
+          "extended_option": "an annual on-site service contract at 240 US dollars per station"
+        },
+        "extra_section": "Implied warranties in North America. To the extent permitted by state or provincial law, any implied warranty of merchantability or fitness for a particular purpose is limited to the twelve month warranty period. Some states do not allow limits on how long an implied warranty lasts, or the exclusion of incidental or consequential damages, so these limits may not apply to every customer. This warranty gives specific legal rights, and customers may have other rights that vary by state or province."
+      },
+      {
+        "variant_id": "tablet-dock-d2-refurb",
+        "label": "Tablet Dock D2, refurbished units",
+        "slots": {
+          "product": "refurbished Tablet Dock D2 charging stations",
+          "region": "the European Union and the United Kingdom",
+          "warranty_period": "six months",
+          "battery_period": "three months",
+          "claim_window": "fourteen days",
+          "return_shipping": "The customer pays shipping in both directions.",
+          "remedy_order": "repair the dock or replace it with another refurbished unit",
+          "extended_option": "a one year extension at 25 euros per dock"
+        }
+      }
+    ]
+  }
+]

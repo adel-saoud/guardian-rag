@@ -1,4 +1,11 @@
-# ADR 003: Conditional DeBERTa validation
+---
+status: superseded by 0010
+date: 2026-10-31
+---
+
+# Conditional DeBERTa validation
+
+Superseded by [0010](0010-three-stage-pii-detection.md), which merges 0001, 0002 and 0003. Kept for history; not updated since.
 
 ## Context
 
@@ -21,7 +28,7 @@ probability falls below `accept_threshold` (default 0.5) are dropped.
 
 - Conditional cost: DeBERTa only runs on borderline spans, not all spans.
 - Mirrors the two-stage routing pattern in
-  `llm-cost-autopilot` ([ADR 004](004-hierarchical-chunking.md) for the other
+  `llm-cost-autopilot` ([ADR 004](0004-hierarchical-chunking.md) for the other
   major two-stage decision).
 - Tuning surface: lowering the score threshold turns DeBERTa into a hot
   path; raising it narrows the safety net.

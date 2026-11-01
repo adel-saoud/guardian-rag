@@ -6,42 +6,79 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  quality:
-    name: Lint, type-check, test
+  pre-commit:
+    name: Pre-commit hooks
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v4
+        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
         with:
+          python-version: "3.14"
           enable-cache: true
-
-      - name: Set up Python
-        run: uv python install 3.11
 
       - name: Install dependencies
         run: uv sync --extra dev
 
-      - name: Lint
-        run: uv run ruff check .
+      - name: Run hooks
+        run: uv run pre-commit run --all-files --show-diff-on-failure
 
-      - name: Format check
-        run: uv run ruff format --check .
+  tests:
+    name: Tests (Python 3.14)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
-      - name: Type-check
-        run: uv run pyright
+      - name: Install uv
+        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+        with:
+          python-version: "3.14"
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync --extra dev
 
       - name: Test (with coverage)
         run: uv run pytest
 
       - name: Upload coverage
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: coverage-xml
           path: coverage.xml
+
+  build:
+    name: Build and smoke-test the wheel
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+        with:
+          python-version: "3.14"
+          enable-cache: true
+
+      - name: Build
+        run: uv build
+
+      - name: Install the wheel in a clean venv and import the ASGI app
+        run: |
+          uv venv --python 3.14 "$RUNNER_TEMP/wheel-venv"
+          uv pip install --python "$RUNNER_TEMP/wheel-venv" dist/*.whl
+          "$RUNNER_TEMP/wheel-venv/bin/python" -c "from guardian_rag.main import app; print(app.title, app.version)"

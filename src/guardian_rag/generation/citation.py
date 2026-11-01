@@ -19,6 +19,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from guardian_rag.ingestion.models import ParentChunk
 
 _CITATION_RE = re.compile(r"\[(\d+)\]")
+"""Matches `[3]` but not `[PERSON_1]`, so placeholders are never read as citations."""
 
 
 class GroundedAnswer(BaseModel):
@@ -34,14 +35,6 @@ class GroundedAnswer(BaseModel):
     answer: str
     cited_parent_ids: list[str] = Field(default_factory=lambda: [])
     ungrounded_citations: list[int] = Field(default_factory=lambda: [])
-
-    @property
-    def has_citations(self) -> bool:
-        return bool(self.cited_parent_ids)
-
-    @property
-    def all_citations_grounded(self) -> bool:
-        return not self.ungrounded_citations
 
 
 def extract_citation_indices(answer: str) -> list[int]:

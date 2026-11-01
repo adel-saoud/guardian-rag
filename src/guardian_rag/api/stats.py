@@ -12,10 +12,13 @@ router = APIRouter(prefix="/v1", tags=["stats"])
 
 @router.get("/stats", response_model=StatsResponse)
 def stats(stats: StatsDep, store: StoreDep) -> StatsResponse:
+    """In-memory counters since process start, plus the live Qdrant point count."""
     return StatsResponse(
         n_documents=stats.n_documents,
         n_entities_total=stats.n_entities_total,
         n_leaks_caught=stats.n_leaks_caught,
+        n_injections_blocked=stats.n_injections_blocked,
+        n_parents_quarantined=stats.n_parents_quarantined,
         entity_type_breakdown=dict(stats.entity_type_breakdown),
         vector_store_size=store.count(),
     )

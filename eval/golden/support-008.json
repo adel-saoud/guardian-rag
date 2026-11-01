@@ -22,5 +22,10 @@
       "end": 117
     }
   ],
-  "qa_pairs": []
+  "qa_pairs": [
+    {
+      "question": "What kind of request did the customer make?",
+      "reference_answer": "A feature request."
+    }
+  ]
 }

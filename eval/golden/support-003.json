@@ -22,5 +22,10 @@
       "end": 126
     }
   ],
-  "qa_pairs": []
+  "qa_pairs": [
+    {
+      "question": "Where will the refund be returned?",
+      "reference_answer": "To the customer's card."
+    }
+  ]
 }

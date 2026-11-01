@@ -1,14 +1,14 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["uv_build>=0.13.5,<0.14"]
+build-backend = "uv_build"
 
 [project]
 name = "guardian-rag"
 version = "0.1.0"
-description = "Privacy-safe RAG pipeline with two-stage PII detection at ingestion and a post-generation audit on every answer. EU AI Act Article 10-aligned by design."
+description = "Privacy-safe RAG pipeline with three-stage PII detection at ingestion, cross-encoder reranking, prompt-injection screening, and a post-generation audit on every answer. EU AI Act Article 10-aligned by design."
 readme = "README.md"
 license = "MIT"
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 authors = [{ name = "Adel Saoud" }]
 keywords = [
     "rag",
@@ -20,13 +20,16 @@ keywords = [
     "llmops",
     "qdrant",
     "ollama",
+    "reranking",
+    "prompt-injection",
 ]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
-    "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Topic :: Software Development :: Libraries :: Application Frameworks",
     "Topic :: Security",
 ]
@@ -45,10 +48,7 @@ dependencies = [
     "rank-bm25>=0.2.2",
     "qdrant-client>=1.12",
     "presidio-analyzer>=2.2",
-    "presidio-anonymizer>=2.2",
     "pypdf>=5.1",
-    "markdown-it-py>=3.0",
-    "jinja2>=3.1",
 ]
 
 [project.optional-dependencies]
@@ -60,15 +60,16 @@ ml = [
     "numpy>=1.26",
 ]
 dashboard = ["streamlit>=1.45", "plotly>=6.0", "pandas>=2.2", "pillow>=11.0"]
+# Retrieval and injection benchmarks read BEIR / HF datasets shipped as parquet.
+bench = ["pyarrow>=18.0", "huggingface-hub>=0.30"]
 dev = [
-    "pytest>=8.3",
+    "pytest>=9.0",
     "pytest-asyncio>=0.24",
-    "pytest-cov>=6.0",
-    "pytest-mock>=3.14",
-    "ruff>=0.11",
-    "pyright>=1.1.400",
+    "pytest-cov>=7.0",
+    "ruff>=0.17",
+    "pyright>=1.1.414",
     "pre-commit>=4.0",
-    "respx>=0.21",
+    "commitizen>=4.19",
 ]
 
 [project.urls]
@@ -76,15 +77,9 @@ Homepage = "https://github.com/adel-saoud/guardian-rag"
 Repository = "https://github.com/adel-saoud/guardian-rag"
 Issues = "https://github.com/adel-saoud/guardian-rag/issues"
 
-[project.scripts]
-guardian = "guardian_rag.cli:app"
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/guardian_rag"]
-
 [tool.ruff]
 line-length = 100
-target-version = "py311"
+target-version = "py312"
 src = ["src", "tests"]
 
 [tool.ruff.lint]
@@ -110,6 +105,7 @@ ignore = [
     "PLR0912",
     "PLR0913",
     "PLR0915",
+    "PLR0917",
     "PLR2004",
     "PLC0415",
     "PLW0108",
@@ -119,15 +115,11 @@ ignore = [
     "RUF001",
     "RUF002",
     "RUF003",
-    "S101",
 ]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**/*.py" = ["ANN", "PLR2004", "S101", "S105", "S106", "S311"]
 "scripts/**/*.py" = ["ANN", "S311", "T201"]
-
-[tool.ruff.lint.pydocstyle]
-convention = "google"
 
 [tool.ruff.format]
 quote-style = "double"
@@ -138,11 +130,12 @@ docstring-code-format = true
 include = ["src", "tests"]
 exclude = [
     "src/guardian_rag/dashboard/app.py",
+    "src/guardian_rag/injection/_real_backends.py",
     "src/guardian_rag/pii/_real_backends.py",
     "src/guardian_rag/retrieval/_real_backends.py",
 ]
 typeCheckingMode = "strict"
-pythonVersion = "3.11"
+pythonVersion = "3.12"
 reportMissingTypeStubs = "warning"
 reportUnknownMemberType = "warning"
 reportUnknownArgumentType = "warning"
@@ -157,7 +150,7 @@ reportUnknownVariableType = "none"
 reportUnknownParameterType = "none"
 
 [tool.pytest.ini_options]
-minversion = "8.0"
+minversion = "9.0"
 addopts = [
     "-ra",
     "--strict-markers",
@@ -177,6 +170,7 @@ source = ["src/guardian_rag"]
 branch = true
 omit = [
     "src/guardian_rag/dashboard/*",
+    "src/guardian_rag/injection/_real_backends.py",
     "src/guardian_rag/pii/_real_backends.py",
     "src/guardian_rag/retrieval/_real_backends.py",
 ]
@@ -188,4 +182,11 @@ exclude_lines = [
     "if TYPE_CHECKING:",
     "raise NotImplementedError",
 ]
-fail_under = 85
+fail_under = 90
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version_provider = "uv"
+tag_format = "v$version"
+update_changelog_on_bump = false
+major_version_zero = true

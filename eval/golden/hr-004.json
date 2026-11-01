@@ -22,5 +22,10 @@
       "end": 133
     }
   ],
-  "qa_pairs": []
+  "qa_pairs": [
+    {
+      "question": "What was decided about the leave request?",
+      "reference_answer": "The leave request was approved."
+    }
+  ]
 }

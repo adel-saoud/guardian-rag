@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from guardian_rag.eval.loader import load_golden_corpus
+from guardian_rag.eval.loader import golden_entities_as_pii, load_golden_corpus
 from guardian_rag.eval.models import GoldenDocument, GoldenEntity
 from guardian_rag.pii.models import PiiEntityType
 
@@ -38,3 +38,11 @@ def test_malformed_json_raises(tmp_path: Path):
     (tmp_path / "bad.json").write_text("not json", encoding="utf-8")
     with pytest.raises(ValueError, match="JSON"):
         load_golden_corpus(tmp_path)
+
+
+def test_golden_entities_as_pii_keeps_spans(golden_corpus_dir: Path):
+    document = load_golden_corpus(golden_corpus_dir)[0]
+    entities = golden_entities_as_pii(document)
+    assert len(entities) == len(document.entities)
+    for entity in entities:
+        assert document.text[entity.start : entity.end] == entity.text

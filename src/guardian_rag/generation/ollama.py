@@ -1,9 +1,9 @@
 """Async adapter for the local Ollama HTTP API.
 
-Mirrors the pattern in `llm-cost-autopilot/router/ollama.py` so the two
-projects stay consistent. Non-streaming `POST /api/chat` only. The
-underlying `httpx.AsyncClient` is injected so tests can plug in a
-`MockTransport` and never touch the network.
+Non-streaming `POST /api/chat`, plus `GET /api/version` for the startup
+version check. The underlying `httpx.AsyncClient`
+is injected so tests can plug in a `MockTransport` and never touch the
+network.
 
 Reference: https://docs.ollama.com/api/chat
 """
@@ -27,6 +27,7 @@ logger = structlog.get_logger(__name__)
 
 
 Role = Literal["system", "user", "assistant"]
+"""Message roles accepted by Ollama's `/api/chat` that this client sends."""
 
 
 class ChatMessage(BaseModel):
@@ -63,15 +64,21 @@ class OllamaClient:
     http:
         An `httpx.AsyncClient` configured with the desired base URL and
         timeout. Injected so tests can plug in `httpx.MockTransport`.
+    think:
+        Sent as Ollama's `think` on every chat. Qwen3.5 thinks by default,
+        which multiplies output tokens and latency and can push a trace in
+        front of the answer, so Guardian sends `false` unless
+        `GUARDIAN_OLLAMA_THINK` turns it on.
     max_retries:
         Total attempts on transient transport errors (network, timeout, 5xx).
         Use 1 to disable retries entirely.
     """
 
-    def __init__(self, http: httpx.AsyncClient, max_retries: int = 3) -> None:
+    def __init__(self, http: httpx.AsyncClient, *, think: bool, max_retries: int = 3) -> None:
         if max_retries < 1:
             raise ValueError("max_retries must be >= 1")
         self._http = http
+        self._think = think
         self._max_retries = max_retries
 
     async def chat(
@@ -82,11 +89,16 @@ class OllamaClient:
         max_output_tokens: int | None = None,
         temperature: float | None = None,
     ) -> OllamaChatResponse:
-        """Send one chat turn and return a structured response."""
+        """Send one chat turn and return a structured response.
+
+        `max_output_tokens` and `temperature` map to Ollama's `num_predict`
+        and `temperature` options; None keeps the model default.
+        """
         payload: dict[str, Any] = {
             "model": model,
             "messages": [m.model_dump() for m in messages],
             "stream": False,
+            "think": self._think,
         }
         options: dict[str, Any] = {}
         if max_output_tokens is not None:
@@ -111,7 +123,18 @@ class OllamaClient:
             latency_ms=latency_ms,
         )
 
+    async def version(self) -> str:
+        """Return the server version from `GET /api/version`, for the startup check."""
+        response = await self._http.get("/api/version")
+        if response.status_code >= 400:
+            raise OllamaError(f"Ollama /api/version returned {response.status_code}")
+        try:
+            return str(cast("dict[str, Any]", response.json())["version"])
+        except (ValueError, KeyError) as exc:
+            raise OllamaError(f"no version in /api/version: {response.text[:200]}") from exc
+
     async def _post_with_retry(self, path: str, payload: dict[str, Any]) -> httpx.Response:
+        """POST with retries on transport errors and 5xx; a 4xx fails at once as `OllamaError`."""
         retryer = AsyncRetrying(
             stop=stop_after_attempt(self._max_retries),
             wait=wait_exponential_jitter(initial=0.1, max=2.0),
@@ -136,6 +159,7 @@ class OllamaClient:
 
     @staticmethod
     def _parse_chat_body(response: httpx.Response) -> dict[str, Any]:
+        """Decode the body and check it carries `message.content`."""
         try:
             body = cast("dict[str, Any]", response.json())
         except ValueError as exc:

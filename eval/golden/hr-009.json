@@ -22,5 +22,10 @@
       "end": 126
     }
   ],
-  "qa_pairs": []
+  "qa_pairs": [
+    {
+      "question": "What was awarded to the employee?",
+      "reference_answer": "A training completion certificate."
+    }
+  ]
 }

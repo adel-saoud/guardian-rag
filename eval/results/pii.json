@@ -1,0 +1,38 @@
+{
+  "detector": "presidio+gliner",
+  "n_documents": 30,
+  "overall": {
+    "planted": 91,
+    "detected": 183,
+    "recall_hits": 91,
+    "precision_hits": 170,
+    "recall": 1.0,
+    "precision": 0.9289617486338798
+  },
+  "per_category": {
+    "contracts": {
+      "planted": 30,
+      "detected": 64,
+      "recall_hits": 30,
+      "precision_hits": 53,
+      "recall": 1.0,
+      "precision": 0.828125
+    },
+    "hr": {
+      "planted": 31,
+      "detected": 55,
+      "recall_hits": 31,
+      "precision_hits": 53,
+      "recall": 1.0,
+      "precision": 0.9636363636363636
+    },
+    "support": {
+      "planted": 30,
+      "detected": 64,
+      "recall_hits": 30,
+      "precision_hits": 64,
+      "recall": 1.0,
+      "precision": 1.0
+    }
+  }
+}

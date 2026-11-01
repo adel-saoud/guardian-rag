@@ -20,9 +20,6 @@ from guardian_rag.pii.models import PiiEntity, PiiStage
 logger = structlog.get_logger(__name__)
 
 
-# Each domain PII type gets a short, human-readable label that DeBERTa NLI
-# can score against. The wording matters: "personal name" works better than
-# "PERSON" because the model was trained on natural language hypotheses.
 ENTITY_TO_HYPOTHESIS: dict[str, str] = {
     "PERSON": "a personal name",
     "EMAIL": "an email address",
@@ -38,6 +35,11 @@ ENTITY_TO_HYPOTHESIS: dict[str, str] = {
     "ORGANIZATION": "an organisation name",
     "LOCATION": "a geographic location",
 }
+"""Natural-language hypothesis per entity type, scored by the NLI model.
+
+"a personal name" works better than "PERSON" because the model was trained
+on natural-language hypotheses.
+"""
 
 
 @runtime_checkable

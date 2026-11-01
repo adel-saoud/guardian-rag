@@ -22,5 +22,10 @@
       "end": 139
     }
   ],
-  "qa_pairs": []
+  "qa_pairs": [
+    {
+      "question": "Whose software is licensed under these terms?",
+      "reference_answer": "Hooli Inc."
+    }
+  ]
 }

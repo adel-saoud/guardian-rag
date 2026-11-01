@@ -1,286 +1,182 @@
 # Guardian RAG
 
-> Privacy-safe RAG pipeline. Detects and redacts PII at ingestion, then audits
-> every generated answer before it reaches the user. EU AI Act Article 10-aligned
-> by design.
->
-> **100% recall, 0.93 precision** on a 91-entity synthetic golden corpus.
-> Run it yourself: `uv run python scripts/eval.py --with-gliner`.
+A RAG pipeline for teams that must answer questions over documents full of personal data: PII is detected and replaced with typed placeholders before anything is indexed, queries and documents are screened for prompt injection, and every answer is audited for leaks before it is returned.
 
 [![CI](https://github.com/adel-saoud/guardian-rag/actions/workflows/ci.yml/badge.svg)](https://github.com/adel-saoud/guardian-rag/actions/workflows/ci.yml)
-[![Eval](https://github.com/adel-saoud/guardian-rag/actions/workflows/eval.yml/badge.svg)](https://github.com/adel-saoud/guardian-rag/actions/workflows/eval.yml)
-[![Python](https://img.shields.io/badge/python-3.11%2B-blue)](https://www.python.org/)
-[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
-[![Pyright](https://img.shields.io/badge/types-pyright%20strict-1f5fff)](https://github.com/microsoft/pyright)
-[![Coverage](https://img.shields.io/badge/coverage-93%25-brightgreen)](pyproject.toml)
+[![Python](https://img.shields.io/badge/python-3.12%2B-blue)](pyproject.toml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
----
+## Why
 
-Standard RAG pipelines ingest documents, embed them, and return answers.
-None of them ask: what if those documents contain names, IBANs, or passport
-numbers?
+Most RAG pipelines embed documents as they are, so names, IBANs and passport numbers end up in the vector store and in the prompt. Guardian pseudonymizes PII at ingestion with typed placeholders (`[PERSON_1] reported to [PERSON_2]`), so retrieval still works on the redacted text, and re-checks every answer before it leaves.
 
-**This one does.** Guardian RAG runs a three-stage PII detection pipeline (Presidio, GLiNER,
-then DeBERTa validation on low-confidence spans only)
-before any document enters the vector store, and audits every generated
-answer before it reaches the user. PII is replaced with typed placeholders
-so retrieval still works: `[PERSON_1] reported to [PERSON_2]` is useful
-context; blank tokens are not.
+I built it after running RAG over internal documents for a large organisation, where the hard question was never retrieval quality. It was what happens when a document contains a name, an ID or bank details.
 
-> **Why I built this.** Running RAG over HR documents for tens of thousands
-> of employees, the hard question was never retrieval quality. It was: what
-> happens when a document contains a name, an ID or bank details?
+## Try it
 
-![Guardian RAG dashboard with three panels: aggregate PII protection
-stats, live redaction explorer, and eval results gauges](docs/dashboard.png)
+No API key, no GPU. The first run downloads the model weights from Hugging Face.
 
----
+### Requirements
 
-## Try it (no API key needed)
+| Component | Minimum | Needed for |
+|:--|:--|:--|
+| Python | 3.12 | everything |
+| uv | 0.13 | install and run |
+| Ollama | 0.17.5, with `qwen3.5:4b` | generation, the faithfulness eval |
+| Qdrant | 1.17.0 | the API and `scripts/demo.py` |
+
+An older Ollama or Qdrant stops startup with an error naming the minimum. A misspelled or removed `GUARDIAN_*` variable also stops startup, naming the closest valid setting ([configuration](docs/configuration.md)). Qwen3.5 thinks by default; Guardian sends `think: false` (`GUARDIAN_OLLAMA_THINK`).
 
 ```bash
 git clone https://github.com/adel-saoud/guardian-rag
 cd guardian-rag
 uv sync --extra dev --extra ml --extra dashboard
-
-# Step 1, regenerate the synthetic golden corpus (30 docs, 91 entities)
-uv run python scripts/seed_demo_corpus.py
-
-# Step 2, run the PII detection eval
 uv run python scripts/eval.py --with-gliner
 ```
 
-Expected output:
+The eval runs Presidio and GLiNER (the DeBERTa validator is not part of this eval) over 30 synthetic documents with 91 planted entities and prints recall and precision per slice (overall: 100.0% recall, 0.93 precision).
 
-```
-                  Guardian RAG, PII detection eval
-┏━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━┓
-┃ Slice     ┃ Planted ┃ Detected ┃   R hits  ┃   P hits   ┃ Recall ┃ Precision ┃
-┡━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━┩
-│ contracts │      30 │       64 │        30 │         53 │ 100.0% │      0.83 │
-│ hr        │      31 │       55 │        31 │         53 │ 100.0% │      0.96 │
-│ support   │      30 │       64 │        30 │         64 │ 100.0% │      1.00 │
-├───────────┼─────────┼──────────┼───────────┼────────────┼────────┼───────────┤
-│ overall   │      91 │      183 │        91 │        170 │ 100.0% │      0.93 │
-└───────────┴─────────┴──────────┴───────────┴────────────┴────────┴───────────┘
-
-PII Recall      100.0%
-PII Precision   0.93
-Faithfulness    N/A  (informational, requires Ollama)
-Leaks caught    0  (post-generation audit)
-```
-
-**With Ollama** (for the full RAG path including generation and the
-post-generation audit):
-
-```bash
-docker compose up -d ollama qdrant
-docker compose exec ollama ollama pull llama3.2:3b
-uv run python scripts/demo.py
-```
-
-Expected response headers on every `/v1/query`:
-
-```
-X-Guardian-Pii-Audit:    clean | redacted
-X-Guardian-Chunks-Used:  <n>
-X-Guardian-Faithfulness: <reserved, judge wiring is on the roadmap>
-X-Guardian-Request-Id:   chatcmpl-<uuid>
-```
-
-## Open the dashboard
+Open the dashboard (PII stats, a live redaction explorer, eval results), which runs the same three detection stages as the API:
 
 ```bash
 uv run streamlit run src/guardian_rag/dashboard/app.py
 ```
 
-Three panels:
+![Dashboard: names, an organisation, an email and an IBAN replaced by typed placeholders, with the stage that caught each; PII stats over the 30 golden documents; per-category eval results](docs/dashboard.png)
 
-1. **PII Protection Stats**, aggregate counters, entity-type donut,
-   leak captures.
-2. **Redaction Explorer**, upload text, see entities highlighted in
-   red, side-by-side with the typed-placeholder redaction.
-3. **Eval Results**, per-category recall + precision gauges against
-   the 30-document golden corpus.
+The full RAG path with generation and the post-generation audit needs Ollama and Qdrant:
 
----
+```bash
+docker compose up -d ollama qdrant
+docker compose exec ollama ollama pull qwen3.5:4b
+uv run python scripts/demo.py
+```
 
 ## How it works
 
 ```mermaid
-flowchart TD
-    Doc([Document Input]) --> Presidio[Stage 1: Presidio<br/>regex recognisers<br/>structured PII<br/>~5ms]
-    Presidio --> GLiNER[Stage 2: GLiNER NER<br/>unstructured PII<br/>names, orgs, locations<br/>~50ms]
-    GLiNER --> Conf{Confidence<br/>>= 0.85?}
-    Conf -- Yes --> Redact[Redact via Presidio Anonymizer<br/>typed placeholders<br/>'PERSON_1', 'EMAIL_1']
-    Conf -- No --> Validate[Stage 3: DeBERTa validation<br/>only on low-confidence spans<br/>conditional, not blanket]
-    Validate --> Redact
-    Redact --> HChunk[Hierarchical Chunking<br/>child 256 tokens / parent 1024<br/>clean text only]
-    HChunk --> Embed[Embed children<br/>all-MiniLM-L6-v2]
-    Embed --> Qdrant[(Qdrant<br/>child vectors + parent payload)]
-
-    Query([User Query]) --> QDetect[Redact query<br/>before embedding]
-    QDetect --> Retrieve[Hybrid Retrieval<br/>dense child + BM25<br/>fetch parent for context]
-    Qdrant --> Retrieve
-    Retrieve --> Generate[Ollama llama3.2:3b<br/>grounded prompt<br/>cite parent chunks]
-    Generate --> Audit[Post-generation Audit<br/>Presidio + GLiNER on answer<br/>redact if leak detected]
-    Audit --> Response([Safe Response<br/>X-Guardian-Pii-Audit: clean or redacted])
-
-    style Doc fill:#1f2937,stroke:#374151,color:#f9fafb
-    style Query fill:#1f2937,stroke:#374151,color:#f9fafb
-    style Audit fill:#450a0a,stroke:#991b1b,color:#fca5a5
-    style Response fill:#052e16,stroke:#166534,color:#86efac
-    style Qdrant fill:#1e1b4b,stroke:#4338ca,color:#c7d2fe
-    style Validate fill:#1e1b4b,stroke:#4338ca,color:#c7d2fe
+flowchart LR
+    Doc([Document]) --> PII[PII detection<br/>Presidio, GLiNER,<br/>DeBERTa if unsure]
+    PII --> Chunk[Typed placeholders<br/>parent / child chunks]
+    Chunk --> Screen[Injection screen<br/>per parent]
+    Screen --> Store[(Qdrant + BM25)]
+    Query([Query]) --> QPII[Redact query] --> QScreen{Injection<br/>screen}
+    QScreen -- flagged --> Refuse([Refused])
+    QScreen -- clean --> Retrieve[Hybrid retrieval]
+    Store --> Retrieve
+    Retrieve --> Gen[Ollama generation<br/>context as data]
+    Gen --> Audit[Post-generation<br/>PII audit] --> Answer([Answer])
 ```
 
-### Why three stages
+1. **Detect.** Presidio regex recognisers catch structured PII (emails, IBANs, cards). GLiNER catches names, organisations and locations. DeBERTa validates only the GLiNER spans scored below 0.85.
+2. **Redact and chunk.** Each span becomes a typed placeholder; the text is split into 1024-token parents for generation and 256-token children for retrieval.
+3. **Screen.** Every parent is screened for prompt injection at ingestion and quarantined if flagged. Each query is redacted, then screened, and refused if flagged.
+4. **Retrieve and generate.** Dense and BM25 scores are fused over children; Ollama answers from the parents, wrapped in `<document>` tags the prompt marks as data.
+5. **Audit.** The same detector runs over the answer. A leak is redacted; an audit error returns a safe text, never the raw answer.
 
-| Detection type | Best tool | Why |
-|:--|:--|:--|
-| Structured PII (email, phone, IBAN, credit card, IP, SSN) | Presidio regex recognisers | Regex beats ML on deterministic patterns. 99%+ precision. |
-| Unstructured PII (names, orgs, locations, implicit refs) | GLiNER NER | ML beats regex on contextual entities. F1 around 0.81 on multi-domain PII benchmarks. |
-| Low-confidence GLiNER spans | DeBERTa validation pass | Conditional safety net. Fires only when GLiNER score is below `GUARDIAN_DEBERTA_THRESHOLD` (default 0.85). |
+Full diagram, components and failure modes: [docs/architecture.md](docs/architecture.md).
 
-DeBERTa firing on every span would double inference cost. Firing only on
-uncertain spans gives the safety net without the latency tax.
+## Results
 
----
+All numbers are on CPU (Apple M4 Pro), produced by one command, and recorded with versions, model revisions, dataset hashes and sample sizes in [`results/manifest.json`](results/manifest.json):
 
-## Why not just use Presidio?
-
-Presidio is a great PII library. It is not a RAG system. Guardian
-wraps Presidio plus GLiNER, then adds the rest of the privacy-safe
-pipeline on top.
-
-| Problem | Approach |
-|:--|:--|
-| **Regex alone misses names, organisations, and locations** | GLiNER second stage catches contextual entities Presidio cannot match. |
-| **ML alone is slow on deterministic patterns** | Presidio first stage handles emails, IBANs, credit cards, IPs in ~5 ms. |
-| **Blank redaction breaks RAG context** | Typed placeholders preserve grammar so chunks remain useful for retrieval and generation. |
-| **The LLM can paraphrase or hallucinate PII** | Post-generation audit re-runs the same detector over every answer before it reaches the user. |
-| **Chunking forces a recall vs precision tradeoff** | Hierarchical chunking: child 256 tokens for precise retrieval, parent 1024 tokens for generation context. |
-| **Same person under different names in different docs** | Cross-document entity resolution is roadmap. Within a single document, identical spans map to the same placeholder. |
-| **Audit failures could leak unredacted text** | Fail-closed by default: any exception inside the audit returns a safe replacement, never the raw answer. |
-
----
-
-## API surface
-
-| Method | Path | Purpose |
-|:--|:--|:--|
-| `POST` | `/v1/ingest` | Detect, redact, chunk, embed, store |
-| `POST` | `/v1/query` | Hybrid RAG + post-generation audit |
-| `GET`  | `/v1/audit/{document_id}` | Full PII detection record |
-| `GET`  | `/v1/stats` | Aggregate entity + leak counters |
-| `GET`  | `/health` | Liveness |
-
----
-
-## Project structure
-
-```
-src/guardian_rag/
-├── config.py                  env-driven via pydantic-settings (GUARDIAN_*)
-├── pii/                       3-stage detector, redactor, post-generation audit
-├── ingestion/                 loader, hierarchical chunker, pipeline, redaction store
-├── retrieval/                 embedder, Qdrant store, BM25 index, hybrid retriever
-├── generation/                Ollama client, grounded prompt, citation verification
-├── eval/                      golden corpus loader, recall + precision, judge
-├── api/                       FastAPI surface (5 routes), lifespan, deps
-└── dashboard/                 Streamlit, 3 panels (pyright-excluded)
-
-scripts/
-├── seed_demo_corpus.py        regenerate the 30-document golden dataset
-├── eval.py                    PII recall + precision against the corpus
-├── demo.py                    end-to-end local demo
-└── composite_dashboard.py     2x2 README screenshot composite
-
-context/
-├── architecture.md
-├── roadmap.md
-└── decisions/                 7 ADRs
+```bash
+uv sync --all-extras
+ollama pull qwen3.5:4b
+uv run python scripts/reproduce.py
 ```
 
-Full module map and design decisions in [`context/architecture.md`](context/architecture.md).
+SciFact (CC-BY-SA-4.0) and `deepset/prompt-injections` (Apache-2.0) are downloaded at run time into the gitignored `data/` directory at pinned revisions. Per-eval JSON is in [`eval/results/`](eval/results/).
 
----
+**PII detection**, Presidio + GLiNER, 30 synthetic documents, 91 planted entities ([`eval/golden/`](eval/golden/)):
 
-## Tech stack
+| Slice | Planted | Recall | Precision |
+|:--|--:|--:|--:|
+| contracts | 30 | 100.0% | 0.83 |
+| hr | 31 | 100.0% | 0.96 |
+| support | 30 | 100.0% | 1.00 |
+| overall | 91 | 100.0% | 0.93 |
 
-| | Library / Tool | What it does |
-|:--|:--|:--|
-| **PII** | `presidio-analyzer` | Microsoft's open-source PII toolkit. Handles emails, IBANs, credit cards via regex. |
-| | `gliner` | Small AI model (~100M params) that finds PII spans. You pass the entity types as a plain list at runtime, no per-use-case training. |
-| | `transformers` | Runs the DeBERTa "is this actually a person name?" validator on borderline GLiNER spans. |
-| **RAG** | `langchain-text-splitters` + `tiktoken` | Splits documents into the parent/child chunk hierarchy. |
-| | `sentence-transformers` | MiniLM embeddings for dense retrieval. |
-| | `qdrant-client` | Vector store. Real Qdrant in production, in-process for tests. |
-| | `rank-bm25` | Keyword search alongside vector search so rare terms (IBANs, product codes) still rank. |
-| **Generation** | `httpx` + `tenacity` | Async client for Ollama with retry. |
-| **API** | `fastapi` + `uvicorn` | HTTP surface. |
-| **Dashboard** | `streamlit` + `plotly` + `pandas` | 3-panel demo UI. |
-| **Dev** | `uv` | Package manager + lockfile. |
-| | `ruff` | Lint + format. |
-| | `pyright` strict | Type checker. 0 errors, 0 warnings across the project. |
-| | `pytest` + `pytest-asyncio` | Hermetic test suite. No network, no keys. |
+**Retrieval**, BEIR SciFact test split, 5,183 abstracts, 300 queries:
 
----
+| Config | nDCG@10 | Recall@10 | MRR@10 | p50 ms | p95 ms |
+|:--|--:|--:|--:|--:|--:|
+| dense (MiniLM) | 0.658 | 0.809 | 0.612 | 104 | 217 |
+| hybrid, dense + BM25 | 0.703 | 0.825 | 0.666 | 109 | 288 |
+| hybrid + cross-encoder rerank | 0.711 | 0.858 | 0.671 | 358 | 1,321 |
 
-## Configuration
+**Retrieval, in-domain sanity check**, 270 synthetic documents in families of six near-duplicates, 135 queries. The corpus, queries and judgements were all written by the project author:
 
-All knobs are env-driven via `pydantic-settings` with the `GUARDIAN_` prefix.
-The common ones:
+| Config | nDCG@10 | Recall@10 | MRR@10 | p50 ms | p95 ms |
+|:--|--:|--:|--:|--:|--:|
+| dense (MiniLM) | 0.818 | 0.993 | 0.762 | 14 | 40 |
+| hybrid, dense + BM25 | 0.902 | 1.000 | 0.869 | 16 | 21 |
+| hybrid + cross-encoder rerank | 0.888 | 1.000 | 0.852 | 122 | 178 |
 
-| Variable | Default | Purpose |
-|:--|:--|:--|
-| `GUARDIAN_GLINER_MODEL` | `urchade/gliner_multi_pii-v1` | GLiNER model id |
-| `GUARDIAN_DEBERTA_THRESHOLD` | `0.85` | Below this, DeBERTa validates GLiNER spans |
-| `GUARDIAN_EMBEDDING_MODEL` | `sentence-transformers/all-MiniLM-L6-v2` | Retrieval embedder |
-| `GUARDIAN_OLLAMA_MODEL` | `llama3.2:3b` | Generation model |
-| `GUARDIAN_QDRANT_URL` | `http://localhost:6333` | Qdrant base URL |
-| `GUARDIAN_AUDIT_FAIL_CLOSED` | `true` | Redact on audit error vs re-raise |
+The reranker gave no gain on either set: +0.009 nDCG@10 on SciFact (95% paired bootstrap CI -0.015 to +0.033) and -0.014 on the in-domain set (CI -0.043 to +0.014), for several times the p50 latency (tables above). It ships **off** by default. Details in [ADR 0008](docs/adr/0008-cross-encoder-reranking.md).
 
-See [`src/guardian_rag/config.py`](src/guardian_rag/config.py) for the complete list.
+**Prompt-injection screening**, threshold 0.5:
 
----
+| Set | Screener | Detection | False positives |
+|:--|:--|--:|--:|
+| `deepset/prompt-injections` test, 60 injections / 56 benign | classifier + rules (query default) | 43.3% | 0.0% |
+| same | classifier only | 36.7% | 0.0% |
+| Golden corpus, 30 benign redacted documents | rules (chunk default) | n/a | 0 of 30 |
+| same | classifier | n/a | 3 of 30 |
+| Own set, 20 indirect injections in business documents | rules (chunk default) | 60.0% | n/a |
+| same | classifier | 95.0% | n/a |
 
-## Honest limitations
+The classifier catches far more indirect injections but flags 3 of the 10 benign support tickets. A false positive at ingestion silently removes a real document, so chunks use rules and the classifier guards queries. Details in [ADR 0009](docs/adr/0009-prompt-injection-screening.md).
 
-- **30-document eval corpus.** Plenty for a portfolio demo. Production
-  deployments need 1000+ documents and per-domain threshold calibration.
-- **GLiNER may miss highly contextual PII.** Implicit references like
-  "the CTO" pointing to a previously-named person are not yet resolved.
-- **Typed placeholders break consistency across documents.** The same
-  person under different names in different documents lands as
-  different `[PERSON_n]` tokens. Cross-document entity resolution is
-  [roadmap](context/roadmap.md).
-- **Post-generation audit adds ~150 ms per query** on CPU. Acceptable
-  for HR or contract workflows; not for sub-100ms SLAs.
-- **Text PDFs only.** Scanned documents need OCR (out of scope).
-- **Pseudonymisation, not anonymisation.** Re-identification by
-  combining quasi-identifiers is theoretically possible.
-- **"EU AI Act Article 10-aligned" describes design intent.** Actual
-  compliance requires a DPIA and legal review for your specific
-  deployment.
+**Answer quality after redaction**, 30 golden QA pairs about non-PII facts, each answered by `qwen3.5:4b` (temperature 0, thinking off) from the original and from the redacted document, and scored by the same model as judge against a reference answer:
 
----
+| Context | Judged correct |
+|:--|--:|
+| original document | 93.3% |
+| redacted document | 80.0% |
 
-## Companion projects
+The drop is five company-name questions: GLiNER redacts organisations, so the answer says `[ORGANIZATION_1]` instead of the company. Organisation names stay redacted by default, the safer choice for pseudonymised data ([ADR 0013](docs/adr/0013-redact-organisation-names.md)). The judge agrees with 30 hand-labelled cases 90.0% of the time (Cohen's kappa 0.80; 3 false positives, 0 false negatives), so it leans lenient. The rates are reported, never a gate.
 
-- [llm-regression-detector](https://github.com/adel-saoud/llm-regression-detector), CI quality gate for LLM systems, catches accuracy drops before merge
-- [llm-gateway](https://github.com/adel-saoud/llm-gateway), RAG-aware LLM gateway with per-stage cost attribution
-- [llm-cost-autopilot](https://github.com/adel-saoud/llm-cost-autopilot), two-stage zero-shot complexity router that picks the cheapest capable model
+## Design decisions
 
-Four projects, three axes:
+- **Three detection stages, not one model.** Regex for structured PII, GLiNER for contextual entities, DeBERTa only on uncertain spans. [ADR 0010](docs/adr/0010-three-stage-pii-detection.md).
+- **Rules, not the classifier, on ingested chunks.** A false positive at ingestion silently drops a real document. [ADR 0009](docs/adr/0009-prompt-injection-screening.md).
+- **Reranker built, measured and shipped off.** No gain on two sets, several times the latency. [ADR 0008](docs/adr/0008-cross-encoder-reranking.md).
 
-- **Cost**: `gateway` tracks where the budget went; `autopilot` prevents it going to the wrong place.
-- **Quality**: `detector` catches quality drops when prompts change.
-- **Privacy**: `guardian` keeps personal data out of both the index and the response.
+All decisions, with status: [docs/adr/README.md](docs/adr/README.md).
 
----
+## Limits
+
+- **Small, synthetic eval corpus.** 30 documents and 91 entities. A real deployment needs 1,000+ documents and per-domain threshold calibration.
+- **No independent in-domain retrieval benchmark.** The in-domain set was written by the author from templates; it checks the reranker decision on realistic text but does not replace labelled real queries.
+- **Faithfulness is measured with a small local judge.** The judge is the generator model, the 30 labels are reviewed by the maintainer, and the judge accepts 3 answers the labels reject. Self-preference mostly cancels out of the original-versus-redacted gap, not out of the absolute rates.
+- **Organisation names are redacted**, which costs answers about companies (five of 30 questions above).
+- **The reranker did not help.** Tried with a MiniLM cross-encoder on two sets; no measurable gain, several times the latency.
+- **Injection screening is partial.** 43.3% detection on a held-out query set, rules-only (60%) on documents. Paraphrased or non-English injections get through; spotlighting and the audit are the remaining layers.
+- **GLiNER can miss highly contextual PII**, such as "the CTO" pointing to a person named earlier. The audit uses the same detector, so it can miss it too.
+- **Placeholders are per document.** The same person under different names in different documents gets different `[PERSON_n]` tokens. Cross-document resolution is on the [roadmap](docs/roadmap.md).
+- **Text PDFs only.** Scanned documents need OCR, out of scope.
+- **Pseudonymisation, not anonymisation.** Re-identification by combining quasi-identifiers stays possible. "EU AI Act Article 10-aligned" describes design intent; compliance needs a DPIA and legal review per deployment.
+
+## Part of a system
+
+- [llm-gateway](https://github.com/adel-saoud/llm-gateway): cost per RAG stage (retrieval, reranking, generation, evaluation) for a pipeline like this one.
+- [llm-cost-autopilot](https://github.com/adel-saoud/llm-cost-autopilot): routes each request to the cheapest capable model.
+- [llm-regression-detector](https://github.com/adel-saoud/llm-regression-detector): CI quality gate that catches answer-quality drops before merge.
+- [trace-to-golden](https://github.com/adel-saoud/trace-to-golden): turns production traces into reviewed, PII-free golden cases for that gate.
+- [agent-mesh](https://github.com/adel-saoud/agent-mesh): a multi-agent system with the same controls (redacted traces, approval before writes).
+
+## Development
+
+```bash
+uv sync --extra dev
+uv run pre-commit install --hook-type pre-commit --hook-type commit-msg
+uv run pre-commit run --all-files
+uv run pytest
+```
+
+Configuration: [docs/configuration.md](docs/configuration.md). HTTP API: [docs/api.md](docs/api.md). Layout: [docs/project-structure.md](docs/project-structure.md). Changes: [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 
-[MIT](LICENSE), use it, fork it, ship it.
+[MIT](LICENSE)

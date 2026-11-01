@@ -11,6 +11,7 @@ from qdrant_client import QdrantClient
 from guardian_rag.ingestion.models import ChildChunk, ParentChunk
 from guardian_rag.retrieval.embedder import Embedder
 from guardian_rag.retrieval.hybrid import BM25Index, HybridRetriever
+from guardian_rag.retrieval.reranker import Reranker
 from guardian_rag.retrieval.store import QdrantStore
 
 
@@ -122,8 +123,6 @@ def test_invalid_weights_rejected():
     store = _store({})
     with pytest.raises(ValueError, match="bm25_weight"):
         HybridRetriever(store, bm25_weight=1.5)
-    with pytest.raises(ValueError, match="candidate_multiplier"):
-        HybridRetriever(store, candidate_multiplier=0)
 
 
 def test_refresh_picks_up_new_documents():
@@ -134,3 +133,57 @@ def test_refresh_picks_up_new_documents():
     assert bm25.size == 0
     retriever.refresh()
     assert bm25.size == 1
+
+
+@dataclass
+class ReverseTextBackend:
+    """Fake cross-encoder that prefers texts sorting last alphabetically."""
+
+    def score(self, query: str, texts: list[str]) -> list[float]:
+        order = sorted(texts)
+        return [float(order.index(t)) for t in texts]
+
+
+def test_hybrid_reranker_reorders_fused_pool():
+    store = _store(
+        {
+            "alpha doc": [1.0, 0.0, 0.0, 0.0],
+            "zeta doc": [0.5, 0.5, 0.0, 0.0],
+            "alpha query": [1.0, 0.0, 0.0, 0.0],
+        }
+    )
+    _seed(store, ["alpha doc", "zeta doc"])
+    retriever = HybridRetriever(
+        store, reranker=Reranker(ReverseTextBackend(), "fake"), rerank_candidates=5
+    )
+    result = retriever.retrieve("alpha query", top_k=1)
+    # Dense alone ranks "alpha doc" first; the reranker overrides it.
+    assert [h.text for h in result.children] == ["zeta doc"]
+    assert result.children[0].rerank_score is not None
+    assert result.children[0].fused_score is not None
+
+
+def test_invalid_rerank_candidates_rejected():
+    with pytest.raises(ValueError, match="rerank_candidates"):
+        HybridRetriever(_store({}), rerank_candidates=0)
+
+
+def test_quarantined_parent_never_retrieved():
+    store = _store({"alpha doc": [1.0, 0.0, 0.0, 0.0], "alpha query": [1.0, 0.0, 0.0, 0.0]})
+    parent_id = _uuid()
+    parent = ParentChunk(
+        chunk_id=parent_id,
+        document_id="doc-1",
+        text="poisoned",
+        order=0,
+        injection_quarantined=True,
+        screener_id="rules:v1",
+    )
+    child = ChildChunk(
+        chunk_id=_uuid(), document_id="doc-1", parent_id=parent_id, text="alpha doc", order=0
+    )
+    store.upsert([parent], [child])
+    retriever = HybridRetriever(store)
+    retriever.refresh()
+    assert retriever.retrieve("alpha query", top_k=3).children == []
+    assert store.iter_children_for_bm25() == []

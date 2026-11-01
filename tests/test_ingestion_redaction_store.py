@@ -42,16 +42,6 @@ def test_save_is_atomic_no_tmp_leftovers(tmp_path: Path):
     assert leftover == []
 
 
-def test_exists_and_delete(tmp_path: Path):
-    store = RedactionMapStore(tmp_path)
-    assert not store.exists("doc-1")
-    store.save(_map())
-    assert store.exists("doc-1")
-    assert store.delete("doc-1") is True
-    assert not store.exists("doc-1")
-    assert store.delete("doc-1") is False
-
-
 def test_unsafe_document_id_rejected(tmp_path: Path):
     store = RedactionMapStore(tmp_path)
     with pytest.raises(ValueError, match="unsafe"):

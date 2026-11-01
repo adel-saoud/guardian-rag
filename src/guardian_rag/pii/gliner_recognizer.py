@@ -32,9 +32,6 @@ class GlinerSpan(TypedDict):
     score: float
 
 
-# GLiNER label -> domain PII type. Labels are lower case by convention.
-# Anything not in this map is ignored, which lets us reuse the same backend
-# for non-PII GLiNER use cases without leaking unrelated entities.
 GLINER_LABEL_TO_DOMAIN: dict[str, PiiEntityType] = {
     "person": PiiEntityType.PERSON,
     "email": PiiEntityType.EMAIL,
@@ -50,8 +47,10 @@ GLINER_LABEL_TO_DOMAIN: dict[str, PiiEntityType] = {
     "organization": PiiEntityType.ORGANIZATION,
     "location": PiiEntityType.LOCATION,
 }
+"""GLiNER label (lower case by convention) to domain PII type. Other labels are ignored."""
 
 DEFAULT_PII_LABELS: tuple[str, ...] = tuple(GLINER_LABEL_TO_DOMAIN.keys())
+"""Candidate labels sent to GLiNER by default: every label the map can translate."""
 
 
 @runtime_checkable
@@ -96,6 +95,7 @@ class GlinerRecognizer:
         self._threshold = threshold
 
     def detect(self, text: str) -> list[PiiEntity]:
+        """Return GLiNER spans as `PiiEntity` records in source order, unknown labels dropped."""
         if not text:
             return []
         spans = self._backend.predict_entities(text, self._labels, self._threshold)

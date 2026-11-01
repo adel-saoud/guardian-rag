@@ -12,6 +12,7 @@ from pathlib import Path
 import structlog
 
 from guardian_rag.eval.models import GoldenDocument
+from guardian_rag.pii.models import PiiEntity, PiiStage
 
 logger = structlog.get_logger(__name__)
 
@@ -30,3 +31,23 @@ def load_golden_corpus(root: Path | str) -> list[GoldenDocument]:
             raise
     logger.info("golden.load.complete", n_docs=len(docs), root=str(base))
     return docs
+
+
+def golden_entities_as_pii(document: GoldenDocument) -> list[PiiEntity]:
+    """Turn a golden document's planted entities into `PiiEntity` spans.
+
+    The retrieval and injection benchmarks redact the golden corpus with
+    its ground-truth spans, so their numbers do not depend on detector
+    recall. The stage is nominal; nothing downstream reads it.
+    """
+    return [
+        PiiEntity(
+            entity_type=entity.entity_type,
+            start=entity.start,
+            end=entity.end,
+            score=1.0,
+            text=entity.text,
+            stage=PiiStage.PRESIDIO,
+        )
+        for entity in document.entities
+    ]

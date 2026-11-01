@@ -162,3 +162,14 @@ def test_empty_upsert_is_a_noop():
 def test_search_zero_top_k_returns_empty():
     store = _store({"query": [1.0, 0.0, 0.0, 0.0]})
     assert store.search_dense("query", top_k=0) == []
+
+
+def test_parents_from_hits_carries_screening_verdict():
+    store = _store({"child a": [1.0, 0.0, 0.0, 0.0]})
+    parents, children = _make_chunks(child_texts=["child a"])
+    stamped = [p.model_copy(update={"screener_id": "rules:v1"}) for p in parents]
+    store.upsert(stamped, children)
+    hits = store.search_dense("child a", top_k=1)
+    loaded = store.parents_from_hits(hits)
+    assert loaded[0].screener_id == "rules:v1"
+    assert loaded[0].injection_quarantined is False
