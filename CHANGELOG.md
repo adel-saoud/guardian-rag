@@ -6,6 +6,17 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Docs
+
+- Numbers re-measured after the torch 2.15, transformers 5.22,
+  sentence-transformers 6.2 and GLiNER 0.2.29 update
+  (`scripts/reproduce.py`). PII recall and precision are unchanged, and
+  retrieval quality moves only in the third decimal. Retrieval latencies
+  are lower (SciFact rerank p50 358 to 131 ms). The faithfulness judge
+  agrees with the hand labels on 26 of 30 cases instead of 27 (Cohen's
+  kappa 0.73), with one more false positive; the judge runs on Ollama,
+  which this update does not touch.
+
 ## [0.2.0] - 2026-11-01
 
 The changes below break the 0.1 interface; while the major version is 0 a

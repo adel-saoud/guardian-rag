@@ -10,22 +10,22 @@
       "ndcg@10": 1.0,
       "recall@10": 1.0,
       "mrr@10": 1.0,
-      "latency_p50_ms": 8.724790997803211,
-      "latency_p95_ms": 32.22900000400841
+      "latency_p50_ms": 6.15383300009853,
+      "latency_p95_ms": 12.308250000387488
     },
     "hybrid (bm25_weight=0.4)": {
       "ndcg@10": 1.0,
       "recall@10": 1.0,
       "mrr@10": 1.0,
-      "latency_p50_ms": 8.331707998877391,
-      "latency_p95_ms": 9.09983299789019
+      "latency_p50_ms": 3.710250000040105,
+      "latency_p95_ms": 4.0154170001187595
     },
     "hybrid + rerank": {
       "ndcg@10": 1.0,
       "recall@10": 1.0,
       "mrr@10": 1.0,
-      "latency_p50_ms": 26.9650419941172,
-      "latency_p95_ms": 51.73587502213195
+      "latency_p50_ms": 17.636625000704953,
+      "latency_p95_ms": 18.366792000051646
     }
   },
   "rerank_vs_hybrid": {

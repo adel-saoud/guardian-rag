@@ -101,19 +101,19 @@ SciFact (CC-BY-SA-4.0) and `deepset/prompt-injections` (Apache-2.0) are download
 
 | Config | nDCG@10 | Recall@10 | MRR@10 | p50 ms | p95 ms |
 |:--|--:|--:|--:|--:|--:|
-| dense (MiniLM) | 0.658 | 0.809 | 0.612 | 104 | 217 |
-| hybrid, dense + BM25 | 0.703 | 0.825 | 0.666 | 109 | 288 |
-| hybrid + cross-encoder rerank | 0.711 | 0.858 | 0.671 | 358 | 1,321 |
+| dense (MiniLM) | 0.658 | 0.809 | 0.612 | 71 | 120 |
+| hybrid, dense + BM25 | 0.703 | 0.825 | 0.666 | 69 | 144 |
+| hybrid + cross-encoder rerank | 0.711 | 0.858 | 0.671 | 131 | 257 |
 
 **Retrieval, in-domain sanity check**, 270 synthetic documents in families of six near-duplicates, 135 queries. The corpus, queries and judgements were all written by the project author:
 
 | Config | nDCG@10 | Recall@10 | MRR@10 | p50 ms | p95 ms |
 |:--|--:|--:|--:|--:|--:|
-| dense (MiniLM) | 0.818 | 0.993 | 0.762 | 14 | 40 |
-| hybrid, dense + BM25 | 0.902 | 1.000 | 0.869 | 16 | 21 |
-| hybrid + cross-encoder rerank | 0.888 | 1.000 | 0.852 | 122 | 178 |
+| dense (MiniLM) | 0.818 | 0.993 | 0.761 | 11 | 18 |
+| hybrid, dense + BM25 | 0.902 | 1.000 | 0.869 | 13 | 16 |
+| hybrid + cross-encoder rerank | 0.888 | 1.000 | 0.852 | 65 | 117 |
 
-The reranker gave no gain on either set: +0.009 nDCG@10 on SciFact (95% paired bootstrap CI -0.015 to +0.033) and -0.014 on the in-domain set (CI -0.043 to +0.014), for several times the p50 latency (tables above). It ships **off** by default. Details in [ADR 0008](docs/adr/0008-cross-encoder-reranking.md).
+The reranker gave no gain on either set: +0.009 nDCG@10 on SciFact (95% paired bootstrap CI -0.015 to +0.033) and -0.014 on the in-domain set (CI -0.043 to +0.014), for about 2 to 5 times the p50 latency (tables above). It ships **off** by default. Details in [ADR 0008](docs/adr/0008-cross-encoder-reranking.md).
 
 **Prompt-injection screening**, threshold 0.5:
 
@@ -135,7 +135,7 @@ The classifier catches far more indirect injections but flags 3 of the 10 benign
 | original document | 93.3% |
 | redacted document | 80.0% |
 
-The drop is five company-name questions: GLiNER redacts organisations, so the answer says `[ORGANIZATION_1]` instead of the company. Organisation names stay redacted by default, the safer choice for pseudonymised data ([ADR 0013](docs/adr/0013-redact-organisation-names.md)). The judge agrees with 30 hand-labelled cases 90.0% of the time (Cohen's kappa 0.80; 3 false positives, 0 false negatives), so it leans lenient. The rates are reported, never a gate.
+The drop is five company-name questions: GLiNER redacts organisations, so the answer says `[ORGANIZATION_1]` instead of the company. Organisation names stay redacted by default, the safer choice for pseudonymised data ([ADR 0013](docs/adr/0013-redact-organisation-names.md)). The judge agrees with 30 hand-labelled cases 86.7% of the time (Cohen's kappa 0.73; 4 false positives, 0 false negatives), so it leans lenient. The rates are reported, never a gate.
 
 ## Design decisions
 

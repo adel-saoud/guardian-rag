@@ -11,11 +11,11 @@
   },
   "judge_agreement": {
     "n": 30,
-    "agreement": 0.9,
-    "cohen_kappa": 0.7963800904977376,
+    "agreement": 0.8666666666666667,
+    "cohen_kappa": 0.7272727272727274,
     "true_positives": 16,
-    "false_positives": 3,
-    "true_negatives": 11,
+    "false_positives": 4,
+    "true_negatives": 10,
     "false_negatives": 0,
     "labels": "eval/faithfulness/judge_labels.jsonl",
     "labelled_by": [
@@ -343,7 +343,7 @@
     {
       "case_id": "judge-010",
       "label": false,
-      "verdict": false
+      "verdict": true
     },
     {
       "case_id": "judge-011",
