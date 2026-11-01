@@ -6,10 +6,11 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
-Next release: 0.2.0. The changes below break the 0.1 interface, and while
-the major version is 0 a breaking change is a minor bump. Removed names
-have no aliases: an old variable name now stops startup with the closest
-valid one.
+## [0.2.0] - 2026-11-01
+
+The changes below break the 0.1 interface; while the major version is 0 a
+breaking change is a minor bump. Removed names have no aliases: an old
+variable name now stops startup with the closest valid one.
 
 ### Breaking
 
