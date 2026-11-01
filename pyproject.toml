@@ -4,7 +4,7 @@ build-backend = "uv_build"
 
 [project]
 name = "guardian-rag"
-version = "0.1.0"
+version = "0.2.0"
 description = "Privacy-safe RAG pipeline with three-stage PII detection at ingestion, cross-encoder reranking, prompt-injection screening, and a post-generation audit on every answer. EU AI Act Article 10-aligned by design."
 readme = "README.md"
 license = "MIT"
